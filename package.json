@@ -1,0 +1,20 @@
+{
+  "name": "tree-sitter-d2",
+  "version": "0.1.0",
+  "description": "Tree sitter grammar for d2lang",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "main": "bindings/node",
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "repository": "https://github.com/ravsii/tree-sitter-d2",
+  "tree-sitter": [
+    {
+      "scope": "source.d2",
+      "file-types": ["d2"],
+      "injection-regex": "d2"
+    }
+  ]
+}
