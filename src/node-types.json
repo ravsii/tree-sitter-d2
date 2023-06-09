@@ -1,14 +1,27 @@
 [
   {
+    "type": "colon",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "direction",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
+          "type": "colon",
+          "named": true
+        },
+        {
           "type": "direction_opts",
+          "named": true
+        },
+        {
+          "type": "whitespace",
           "named": true
         }
       ]
@@ -20,6 +33,30 @@
     "fields": {}
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "shape_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "shape_param",
+          "named": true
+        },
+        {
+          "type": "whitespace",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "shape_declaration",
     "named": true,
     "fields": {},
@@ -28,11 +65,69 @@
       "required": true,
       "types": [
         {
-          "type": "connection",
+          "type": "colon",
           "named": true
         },
         {
-          "type": "shape_name",
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "shape_body",
+          "named": true
+        },
+        {
+          "type": "shape_label",
+          "named": true
+        },
+        {
+          "type": "whitespace",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "shape_label",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "shape_param",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "colon",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "param_value",
+          "named": true
+        },
+        {
+          "type": "shape_body",
+          "named": true
+        },
+        {
+          "type": "whitespace",
           "named": true
         }
       ]
@@ -61,10 +156,6 @@
         {
           "type": "shape_declaration",
           "named": true
-        },
-        {
-          "type": "whitespace",
-          "named": true
         }
       ]
     }
@@ -74,15 +165,7 @@
     "named": false
   },
   {
-    "type": ";",
-    "named": false
-  },
-  {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "connection",
     "named": true
   },
   {
@@ -102,12 +185,12 @@
     "named": true
   },
   {
-    "type": "right",
-    "named": false
+    "type": "param_value",
+    "named": true
   },
   {
-    "type": "shape_name",
-    "named": true
+    "type": "right",
+    "named": false
   },
   {
     "type": "text",
@@ -122,7 +205,15 @@
     "named": true
   },
   {
+    "type": "{",
+    "named": false
+  },
+  {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]

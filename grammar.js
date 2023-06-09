@@ -6,13 +6,18 @@ module.exports = grammar({
       $.direction,
       $.comment,
       $.shape_declaration,
-      $.whitespace,
       $.newline,
     )),
 
     comment: _ => token(seq('#', /.*/)),
 
-    direction: $ => seq("direction", ":", $.direction_opts),
+    direction: $ => seq(
+      "direction",
+      $.colon,
+      optional($.whitespace),
+      $.direction_opts
+    ),
+
     direction_opts: _ => choice(
       "up",
       "right",
@@ -20,31 +25,55 @@ module.exports = grammar({
       "down"
     ),
 
-    shape_declaration: $ => choice(
-      seq(
-        $.shape_name,
-        optional(
-          seq($.connection, $.shape_name)),
-        // optional($.shape_label),
-        // optional(seq("{", $.shape_body, "}")),
-      ),
-      seq($.shape_name, ";")
+    shape_declaration: $ => seq(
+      $.identifier,
+      optional(choice(
+        $.colon,
+        $.shape_label,
+      )),
+      optional($.whitespace),
+      optional($.shape_body),
     ),
-    shape_name: _ => /[а-яА-Я\w]+/,
+
     shape_label: $ => seq(":", choice(
       seq("|", $.text, "|"),
       $.text,
     )),
-    shape_body: _ => /w+/,
 
-    connection: _ => token(choice(
-      seq("-", repeat1("-")),
-      seq(optional("<"), repeat1("-"), optional(">"))
+    shape_body: $ => seq(
+      "{",
+      repeat(seq(
+        optional($.whitespace),
+        $.shape_param,
+      )),
+      optional($.whitespace),
+      "}"
+    ),
+
+    shape_param: $ => prec.left(seq(
+      $.identifier,
+      $.colon,
+      $.param_value,
+      optional(seq($.whitespace, $.shape_body)),
     )),
 
+    // connection: _ => token(
+    //   choice(
+    //     seq("-", repeat1("-")),
+    //     seq(optional("<"), repeat1("-"), optional(">"))
+    //   )
+    // ),
 
+    identifier: $ => choice(prec.left(seq(
+      $._ident_regex,
+      optional(seq(/ +/, $._ident_regex)))),
+    ),
+    _ident_regex: _ => /[\p{L}0-9]+/i,
+    param_value: _ => /[\w\-_]+/i,
     text: _ => /.*/,
-    whitespace: _ => /[ \t]+/,
-    newline: _ => /(\n)+/,
+    whitespace: _ => /\s+/,
+    newline: _ => "\n",
+    colon: _ => ":",
   }
 });
+
