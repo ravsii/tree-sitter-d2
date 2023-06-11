@@ -53,6 +53,7 @@ module.exports = grammar({
     shape_param: $ => prec.left(seq(
       $.identifier,
       $.colon,
+      optional($.whitespace),
       $.param_value,
       optional(seq($.whitespace, $.shape_body)),
     )),
@@ -64,11 +65,15 @@ module.exports = grammar({
     //   )
     // ),
 
-    identifier: $ => choice(prec.left(seq(
+    identifier: $ => prec.left(seq(
       $._ident_regex,
-      optional(seq(/ +/, $._ident_regex)))),
-    ),
-    _ident_regex: _ => /[\p{L}0-9]+/i,
+      optional(seq(/ +/, $._ident_regex)),
+      optional($.sub_identifier),
+    )),
+    sub_identifier: $ => prec.left(seq(
+      ".", $.identifier,
+    )),
+    _ident_regex: _ => /[\p{L}0-9\-]+/i,
     param_value: _ => /[\w\-_]+/i,
     text: _ => /.*/,
     whitespace: _ => /\s+/,
