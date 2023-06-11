@@ -1,20 +1,14 @@
 [package]
-name = "tree-sitter-YOUR-LANGUAGE-NAME"
-description = "YOUR-LANGUAGE-NAME grammar for the tree-sitter parsing library"
+name = "tree-sitter-d2"
+description = "d2 grammar for the tree-sitter parsing library"
 version = "0.0.1"
-keywords = ["incremental", "parsing", "YOUR-LANGUAGE-NAME"]
+keywords = ["incremental", "parsing", "d2"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-YOUR-LANGUAGE-NAME"
+repository = "https://github.com/ravsii/tree-sitter-d2"
 edition = "2018"
 license = "MIT"
-
 build = "bindings/rust/build.rs"
-include = [
-  "bindings/rust/*",
-  "grammar.js",
-  "queries/*",
-  "src/*",
-]
+include = ["bindings/rust/*", "grammar.js", "queries/*", "src/*"]
 
 [lib]
 path = "bindings/rust/lib.rs"
