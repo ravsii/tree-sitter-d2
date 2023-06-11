@@ -70,9 +70,7 @@ module.exports = grammar({
       optional(seq(/ +/, $._ident_regex)),
       optional($.sub_identifier),
     )),
-    sub_identifier: $ => prec.left(seq(
-      ".", $.identifier,
-    )),
+    sub_identifier: $ => seq(".", $.identifier),
     _ident_regex: _ => /[\p{L}0-9\-]+/i,
     param_value: _ => /[\w\-_]+/i,
     text: _ => /.*/,
