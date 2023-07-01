@@ -1,0 +1,15 @@
+==================
+Hello World
+==================
+
+x -> y: hello world
+
+---
+
+(source_file
+  (expression
+    (shape_title
+      (identifier)
+      (connection)
+      (identifier))
+    (shape_label)))

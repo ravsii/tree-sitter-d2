@@ -1,13 +1,15 @@
-update: generate highlight
-
 generate:
 	tree-sitter generate
 
 highlight: generate
-	tree-sitter highlight --html test_small.d2 > test_small.html
+	tree-sitter highlight --html test.d2 > test.html
 
 parse: generate
-	tree-sitter parse test_small.d2
+	clear
+	tree-sitter parse test.d2
+
+test:
+	tree-sitter test
 
 # watch uses 2 utility tools, reload for live reloading and watchexec to
 # watch for changes on d2/js/scm files and perform "make highlight"
@@ -17,7 +19,6 @@ watch-install:
 watch-hl:
 	watchexec --exts d2,js,scm -- make highlight & \
 	reload
-
 
 watch-parse:
 	watchexec --exts d2,js,scm -- make parse

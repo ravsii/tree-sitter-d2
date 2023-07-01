@@ -3,80 +3,76 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat(choice(
-      $.direction,
-      $.comment,
-      $.shape_declaration,
-      $.newline,
+      // $.direction,
+      $.expression,
     )),
 
-    comment: _ => token(seq('#', /.*/)),
-
-    direction: $ => seq(
-      "direction",
-      $.colon,
-      optional($.whitespace),
-      $.direction_opts
+    extras: $ => choice(
+      $._comment,
+      /\s+/,
     ),
 
-    direction_opts: _ => choice(
+    direction: _ => seq("direction", ":", choice(
       "up",
       "right",
       "left",
       "down"
+    )),
+
+    expression: $ => seq(
+      $.shape_title,
+      $.shape_label,
     ),
 
-    shape_declaration: $ => seq(
+    shape_title: $ => prec.right(repeat1(choice(
+      $.connection,
       $.identifier,
-      optional(choice(
-        $.colon,
-        $.shape_label,
-      )),
-      optional($.whitespace),
-      optional($.shape_body),
-    ),
+    ))),
 
     shape_label: $ => seq(":", choice(
-      seq("|", $.text, "|"),
-      $.text,
+      seq("|", /.+/, "|"),
+      /.+/,
     )),
 
-    shape_body: $ => seq(
-      "{",
-      repeat(seq(
-        optional($.whitespace),
-        $.shape_param,
-      )),
-      optional($.whitespace),
-      "}"
-    ),
+    // shape_body: $ => prec.right(seq(
+    //   "{",
+    //   /\s*/,
+    //   repeat(seq(/\s*/, $.shape_param)),
+    //   /\s*/,
+    //   "}"
+    // )),
 
-    shape_param: $ => prec.left(seq(
-      $.identifier,
-      $.colon,
-      optional($.whitespace),
-      $.param_value,
-      optional(seq($.whitespace, $.shape_body)),
-    )),
-
-    // connection: _ => token(
-    //   choice(
-    //     seq("-", repeat1("-")),
-    //     seq(optional("<"), repeat1("-"), optional(">"))
-    //   )
+    // shape_param: $ => seq(
+    //   $.identifier,
+    //   /\s*/,
+    //   ":",
+    //   optional(/\s+/),
+    //   $.param_value,
+    //   optional($.param_body),
     // ),
 
-    identifier: $ => prec.left(seq(
+    // param_body: $ => seq("{", /.+/, "}"),
+
+    // building blocks
+
+    identifier: $ => seq(
       $._ident_regex,
-      optional(seq(/ +/, $._ident_regex)),
-      optional($.sub_identifier),
-    )),
+      // repeat(seq(/\s+/, $._ident_regex)),
+      // optional($.sub_identifier),
+    ),
+
     sub_identifier: $ => seq(".", $.identifier),
-    _ident_regex: _ => /[\p{L}0-9\-]+/i,
+
+
+    connection: _ => "->",
+
     param_value: _ => /[\w\-_]+/i,
-    text: _ => /.*/,
-    whitespace: _ => /\s+/,
-    newline: _ => "\n",
-    colon: _ => ":",
+
+    // const-like rules
+
+    _ident_regex: _ => /[\p{L}0-9\-]+/,
+
+    _comment: _ => token(seq('#', /.*/)),
   }
 });
 
