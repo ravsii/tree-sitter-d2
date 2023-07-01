@@ -1,8 +1,8 @@
 # tree-sitter-d2
 
-This is an alternative to pleshevskiy's [tree-sitter-d2](https://github.com/pleshevskiy/tree-sitter-d2) ([updated version](https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2)), but this project is barely usable at the moment, so consider using an alternative
+This is an alternative to pleshevskiy's [tree-sitter-d2](https://github.com/pleshevskiy/tree-sitter-d2) ([updated version](https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2)).
 
-**WIP, THIS IS NOT USABLE YET**
+**WIP, THIS IS NOT USABLE YET**, but you can check the progress at `dev` branch.
 
 ## There's an alternative, why?
 
