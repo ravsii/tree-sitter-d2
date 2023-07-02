@@ -76,4 +76,3 @@ SQLite; Cassandra
   (expression
     (shape_title
       (identifier))))
-

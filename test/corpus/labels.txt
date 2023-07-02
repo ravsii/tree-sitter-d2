@@ -1,0 +1,18 @@
+==================
+Simple Labels
+==================
+
+pg: PostgreSQL
+Cloud: my cloud
+
+---
+
+(source_file
+  (expression
+    (shape_title
+      (identifier))
+    (shape_label))
+  (expression
+    (shape_title
+      (identifier))
+    (shape_label)))

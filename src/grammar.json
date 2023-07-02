@@ -155,6 +155,18 @@
         {
           "type": "SYMBOL",
           "name": "_ident_regex"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sub_identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -246,10 +258,6 @@
           }
         ]
       }
-    },
-    "param_value": {
-      "type": "PATTERN",
-      "value": "[\\w\\-_]+"
     },
     "_ident_regex": {
       "type": "PATTERN",

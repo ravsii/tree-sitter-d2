@@ -30,7 +30,7 @@ module.exports = grammar({
       $.identifier,
     ))),
 
-    shape_label: $ => seq(":", choice(
+    shape_label: _ => seq(":", choice(
       seq("|", /.+/, "|"),
       /.+/,
     )),
@@ -58,8 +58,7 @@ module.exports = grammar({
 
     identifier: $ => seq(
       $._ident_regex,
-      // repeat(seq(/\s+/, $._ident_regex)),
-      // optional($.sub_identifier),
+      optional($.sub_identifier),
     ),
 
     sub_identifier: $ => seq(".", $.identifier),
@@ -71,7 +70,7 @@ module.exports = grammar({
       seq("<", repeat1("-"), ">"),
     )),
 
-    param_value: _ => /[\w\-_]+/i,
+    // param_value: _ => /[\w\-_]+/i,
 
     // const-like rules
 
