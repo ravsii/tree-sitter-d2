@@ -22,7 +22,7 @@ module.exports = grammar({
     expression: $ => seq(
       $.shape_title,
       optional($.shape_label),
-      /\n+/,
+      choice(";", /\n+/),
     ),
 
     shape_title: $ => prec.right(repeat1(choice(
@@ -75,7 +75,7 @@ module.exports = grammar({
 
     // const-like rules
 
-    _ident_regex: _ => /[\p{L}0-9\-]+/,
+    _ident_regex: _ => /[\p{L}0-9\-_"' ]+/,
 
     _comment: _ => token(seq('#', /.*/)),
   }

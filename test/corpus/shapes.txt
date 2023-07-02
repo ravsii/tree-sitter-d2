@@ -31,3 +31,49 @@ xy
   (expression
     (shape_title
       (identifier))))
+
+==================
+Special characters in name
+==================
+
+imAShape
+im_a_shape
+im a shape
+i'm a shape
+a-shape
+
+---
+
+(source_file
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier))))
+
+==================
+Semicolon delimiter
+==================
+
+SQLite; Cassandra
+
+---
+
+(source_file
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier))))
+

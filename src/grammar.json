@@ -80,8 +80,17 @@
           ]
         },
         {
-          "type": "PATTERN",
-          "value": "\\n+"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\n+"
+            }
+          ]
         }
       ]
     },
@@ -244,7 +253,7 @@
     },
     "_ident_regex": {
       "type": "PATTERN",
-      "value": "[\\p{L}0-9\\-]+"
+      "value": "[\\p{L}0-9\\-_\"' ]+"
     },
     "_comment": {
       "type": "TOKEN",
