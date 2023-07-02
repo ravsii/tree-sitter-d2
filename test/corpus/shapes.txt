@@ -1,0 +1,33 @@
+==================
+Single shape
+==================
+
+x
+
+---
+
+(source_file
+  (expression
+    (shape_title
+      (identifier))))
+
+==================
+Multiple Shapes
+==================
+
+x
+y
+xy
+
+---
+
+(source_file
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier)))
+  (expression
+    (shape_title
+      (identifier))))

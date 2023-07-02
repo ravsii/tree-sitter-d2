@@ -1,0 +1,67 @@
+==================|||
+Isolated valid connections
+==================|||
+
+--
+->
+<-
+<->
+
+---|||
+
+(source_file
+  (expression
+    (shape_title
+      (connection)))
+  (expression
+    (shape_title
+      (connection)))
+  (expression
+    (shape_title
+      (connection)))
+  (expression
+    (shape_title
+      (connection))))
+      
+==================|||
+Isolated long connections
+==================|||
+
+----------
+--------->
+<---------
+<-------->
+
+---|||
+
+(source_file
+  (expression
+    (shape_title
+      (connection)))
+  (expression
+    (shape_title
+      (connection)))
+  (expression
+    (shape_title
+      (connection)))
+  (expression
+    (shape_title
+      (connection))))
+      
+==================|||
+Invalid connections
+==================|||
+
+-
+>
+<
+<>
+
+---|||
+
+(source_file
+  (expression
+    (shape_title
+      (identifier)))
+  (ERROR
+    (UNEXPECTED '>')))

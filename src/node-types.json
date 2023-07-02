@@ -1,119 +1,35 @@
 [
   {
-    "type": "colon",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "direction",
+    "type": "expression",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "colon",
-          "named": true
-        },
-        {
-          "type": "direction_opts",
-          "named": true
-        },
-        {
-          "type": "whitespace",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "direction_opts",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "sub_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "shape_body",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "shape_param",
-          "named": true
-        },
-        {
-          "type": "whitespace",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "shape_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "colon",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "shape_body",
-          "named": true
-        },
         {
           "type": "shape_label",
           "named": true
         },
         {
-          "type": "whitespace",
+          "type": "shape_title",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "shape_label",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "text",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
-    "type": "shape_param",
+    "type": "shape_title",
     "named": true,
     "fields": {},
     "children": {
@@ -121,23 +37,11 @@
       "required": true,
       "types": [
         {
-          "type": "colon",
+          "type": "connection",
           "named": true
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "param_value",
-          "named": true
-        },
-        {
-          "type": "shape_body",
-          "named": true
-        },
-        {
-          "type": "whitespace",
           "named": true
         }
       ]
@@ -152,34 +56,7 @@
       "required": false,
       "types": [
         {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "direction",
-          "named": true
-        },
-        {
-          "type": "newline",
-          "named": true
-        },
-        {
-          "type": "shape_declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "sub_identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
+          "type": "expression",
           "named": true
         }
       ]
@@ -194,7 +71,7 @@
     "named": false
   },
   {
-    "type": "comment",
+    "type": "connection",
     "named": true
   },
   {
@@ -210,39 +87,15 @@
     "named": false
   },
   {
-    "type": "newline",
-    "named": true
-  },
-  {
-    "type": "param_value",
-    "named": true
-  },
-  {
     "type": "right",
     "named": false
-  },
-  {
-    "type": "text",
-    "named": true
   },
   {
     "type": "up",
     "named": false
   },
   {
-    "type": "whitespace",
-    "named": true
-  },
-  {
-    "type": "{",
-    "named": false
-  },
-  {
     "type": "|",
-    "named": false
-  },
-  {
-    "type": "}",
     "named": false
   }
 ]
