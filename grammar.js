@@ -21,7 +21,8 @@ module.exports = grammar({
 
     expression: $ => seq(
       $.shape_title,
-      $.shape_label,
+      optional($.shape_label),
+      /\n+/,
     ),
 
     shape_title: $ => prec.right(repeat1(choice(
@@ -63,8 +64,12 @@ module.exports = grammar({
 
     sub_identifier: $ => seq(".", $.identifier),
 
-
-    connection: _ => "->",
+    connection: _ => token(choice(
+      seq("-", repeat1("-")),
+      seq("<", repeat1("-")),
+      seq(repeat1("-"), ">"),
+      seq("<", repeat1("-"), ">"),
+    )),
 
     param_value: _ => /[\w\-_]+/i,
 
