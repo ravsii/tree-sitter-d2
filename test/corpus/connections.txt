@@ -11,17 +11,13 @@ Isolated valid connections
 
 (source_file
   (expression
-    (shape_title
-      (connection)))
+    (connection))
   (expression
-    (shape_title
-      (connection)))
+    (connection))
   (expression
-    (shape_title
-      (connection)))
+    (connection))
   (expression
-    (shape_title
-      (connection))))
+    (connection)))
       
 ==================|||
 Isolated long connections
@@ -36,17 +32,13 @@ Isolated long connections
 
 (source_file
   (expression
-    (shape_title
-      (connection)))
+    (connection))
   (expression
-    (shape_title
-      (connection)))
+    (connection))
   (expression
-    (shape_title
-      (connection)))
+    (connection))
   (expression
-    (shape_title
-      (connection))))
+    (connection)))
       
 ==================|||
 Invalid connections
@@ -61,7 +53,6 @@ Invalid connections
 
 (source_file
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (ERROR
     (UNEXPECTED '>')))

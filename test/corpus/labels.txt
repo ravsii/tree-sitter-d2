@@ -9,10 +9,8 @@ Cloud: my cloud
 
 (source_file
   (expression
-    (shape_title
-      (identifier))
-    (shape_label))
+    (identifier)
+    (label))
   (expression
-    (shape_title
-      (identifier))
-    (shape_label)))
+    (identifier)
+    (label)))

@@ -1,3 +1,8 @@
+const PREC = {
+  connection: 100,
+  identifier: 50,
+}
+
 module.exports = grammar({
   name: 'd2',
 
@@ -20,17 +25,15 @@ module.exports = grammar({
     )),
 
     expression: $ => seq(
-      $.shape_title,
-      optional($.shape_label),
+      repeat1(choice(
+        $.identifier,
+        $.connection,
+      )),
+      optional($.label),
       choice(";", /\n+/),
     ),
 
-    shape_title: $ => prec.right(repeat1(choice(
-      $.connection,
-      $.identifier,
-    ))),
-
-    shape_label: _ => seq(":", choice(
+    label: _ => seq(":", choice(
       seq("|", /.+/, "|"),
       /.+/,
     )),
@@ -56,19 +59,16 @@ module.exports = grammar({
 
     // building blocks
 
-    identifier: $ => seq(
-      $._ident_regex,
-      optional($.sub_identifier),
-    ),
+    identifier: $ => prec.left(repeat1(seq($._ident_regex, optional($.sub_identifier)))),
 
     sub_identifier: $ => seq(".", $.identifier),
 
-    connection: _ => token(choice(
+    connection: _ => prec(PREC.connection, token(choice(
       seq("-", repeat1("-")),
       seq("<", repeat1("-")),
       seq(repeat1("-"), ">"),
       seq("<", repeat1("-"), ">"),
-    )),
+    ))),
 
     // param_value: _ => /[\w\-_]+/i,
 
@@ -76,7 +76,7 @@ module.exports = grammar({
 
     _ident_regex: _ => /[\p{L}0-9\-_"' ]+/,
 
-    _comment: _ => token(seq('#', /.*/)),
+    _comment: _ => token(seq('#', /.*/, /\n/)),
   }
 });
 
