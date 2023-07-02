@@ -1,8 +1,3 @@
-const PREC = {
-  connection: 100,
-  identifier: 50,
-}
-
 module.exports = grammar({
   name: 'd2',
 
@@ -12,10 +7,7 @@ module.exports = grammar({
       $.expression,
     )),
 
-    extras: $ => choice(
-      $._comment,
-      /\s+/,
-    ),
+    extras: $ => choice($._comment, /\s+/),
 
     direction: _ => seq("direction", ":", choice(
       "up",
@@ -34,7 +26,7 @@ module.exports = grammar({
     ),
 
     label: _ => seq(":", choice(
-      seq("|", /.+/, "|"),
+      // seq("|", /.+/, "|"),
       /.+/,
     )),
 
@@ -59,22 +51,29 @@ module.exports = grammar({
 
     // building blocks
 
-    identifier: $ => prec.left(repeat1(seq($._ident_regex, optional($.sub_identifier)))),
+    identifier: $ => prec.right(repeat1(
+      choice(
+        $._ident_regex,
+        $.sub_identifier,
+        "-",
+      )
+    )),
 
     sub_identifier: $ => seq(".", $.identifier),
 
-    connection: _ => prec(PREC.connection, token(choice(
-      seq("-", repeat1("-")),
-      seq("<", repeat1("-")),
-      seq(repeat1("-"), ">"),
-      seq("<", repeat1("-"), ">"),
-    ))),
+    // Trust me it's better that way than doing it via seq's/repeat's
+    connection: _ => choice(
+      /--+/,
+      /<-+/,
+      /-+>/,
+      /<-+>/,
+    ),
 
     // param_value: _ => /[\w\-_]+/i,
 
     // const-like rules
 
-    _ident_regex: _ => /[\p{L}0-9\-_"' ]+/,
+    _ident_regex: _ => /[\p{L}0-9_"' ]+/,
 
     _comment: _ => token(seq('#', /.*/, /\n/)),
   }

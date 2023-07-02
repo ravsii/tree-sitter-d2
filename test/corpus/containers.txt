@@ -1,0 +1,52 @@
+==================
+Base Container
+==================
+
+Cloud.shape: cloud
+
+---
+
+(source_file
+  (expression
+    (identifier
+      (sub_identifier
+        (identifier)))
+    (label)))
+
+==================
+Container With Spaces
+==================
+
+im a parent.im a child
+
+---
+
+(source_file
+  (expression
+    (identifier
+      (sub_identifier
+        (identifier)))))
+
+
+==================
+Complex container
+==================
+
+apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
+
+---
+
+(source_file
+  (expression
+    (identifier
+      (sub_identifier
+        (identifier
+          (sub_identifier
+            (identifier)))))
+    (connection)
+    (identifier
+      (sub_identifier
+        (identifier
+          (sub_identifier
+            (identifier)))))
+    (label)))

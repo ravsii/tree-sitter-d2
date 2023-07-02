@@ -41,18 +41,49 @@ Isolated long connections
     (connection)))
       
 ==================|||
-Invalid connections
+Invalid connection "-"
 ==================|||
 
 -
->
-<
-<>
 
 ---|||
 
 (source_file
   (expression
-    (identifier))
+    (identifier)))
+
+==================|||
+Invalid connection ">"
+==================|||
+
+>
+
+---|||
+
+(source_file
+  (ERROR
+    (UNEXPECTED '>')))
+
+==================|||
+Invalid connection "<"
+==================|||
+
+<
+
+---|||
+
+(source_file
+  (ERROR
+    (UNEXPECTED '\n')))
+
+==================|||
+Invalid connection "<>"
+==================|||
+
+<>
+
+---|||
+
+(source_file
   (ERROR
     (UNEXPECTED '>')))

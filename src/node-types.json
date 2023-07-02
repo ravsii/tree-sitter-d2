@@ -1,45 +1,11 @@
 [
   {
-    "type": "expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "shape_label",
-          "named": true
-        },
-        {
-          "type": "shape_title",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "sub_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "shape_label",
+    "type": "connection",
     "named": true,
     "fields": {}
   },
   {
-    "type": "shape_title",
+    "type": "expression",
     "named": true,
     "fields": {},
     "children": {
@@ -53,9 +19,33 @@
         {
           "type": "identifier",
           "named": true
+        },
+        {
+          "type": "label",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "sub_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "label",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -88,6 +78,10 @@
     }
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -98,10 +92,6 @@
   {
     "type": ";",
     "named": false
-  },
-  {
-    "type": "connection",
-    "named": true
   },
   {
     "type": "direction",
@@ -121,10 +111,6 @@
   },
   {
     "type": "up",
-    "named": false
-  },
-  {
-    "type": "|",
     "named": false
   }
 ]
