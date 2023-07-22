@@ -7,7 +7,10 @@ module.exports = grammar({
       $.expression,
     )),
 
-    extras: $ => choice($._comment, /\s+/),
+    extras: $ => choice(
+      $._comment,
+      /\s+/,
+    ),
 
     direction: _ => seq("direction", ":", choice(
       "up",
@@ -16,14 +19,14 @@ module.exports = grammar({
       "down"
     )),
 
-    expression: $ => seq(
+    expression: $ => prec.right(seq(
       repeat1(choice(
         $.identifier,
         $.connection,
       )),
       optional($.label),
-      choice(";", /\n+/),
-    ),
+      optional(choice(/\n+/, ";")),
+    )),
 
     label: _ => seq(":", choice(
       // seq("|", /.+/, "|"),
@@ -67,6 +70,12 @@ module.exports = grammar({
       /<-+/,
       /-+>/,
       /<-+>/,
+
+      // Multiline arrows
+      seq(/--+/, /\\\n+\s+/, /--+/),
+      seq(/<-+/, /\\\n+\s+/, /--+/),
+      seq(/--+/, /\\\n+\s+/, /-+>/),
+      seq(/<-+/, /\\\n+\s+/, /-+>/),
     ),
 
     // param_value: _ => /[\w\-_]+/i,

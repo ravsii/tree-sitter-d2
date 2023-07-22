@@ -87,3 +87,82 @@ Invalid connection "<>"
 (source_file
   (ERROR
     (UNEXPECTED '>')))
+
+==================|||
+Basic
+==================|||
+
+Write Replica Canada <-> Write Replica Australia
+
+Read Replica <- Master
+Write Replica -> Master
+
+Read Replica 1 -- Read Replica 2
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)))
+
+==================|||
+Connection labels
+==================|||
+
+Read Replica 1 -- Read Replica 2: Kept in sync
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
+==================|||
+Multiline shape
+==================|||
+
+a --\
+  -- b
+a <-\
+  -- b
+a --\
+  -> b
+a <-\
+  -> b
+  
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)))
