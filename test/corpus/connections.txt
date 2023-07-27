@@ -210,3 +210,27 @@ High Mem Instance -> EC2 <- High CPU Instance: Hosted By
     (connection)
     (identifier)
     (label)))
+
+==================|||
+Cycles
+==================|||
+
+Stage One -> Stage Two -> Stage Three -> Stage Four
+Stage Four -> Stage One: repeat
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
