@@ -71,6 +71,18 @@
         "type": "SEQ",
         "members": [
           {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
             "type": "REPEAT1",
             "content": {
               "type": "CHOICE",
@@ -85,6 +97,39 @@
                 }
               ]
             }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ")"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "connection_identifier"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "sub_identifier"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           },
           {
             "type": "CHOICE",
@@ -265,6 +310,10 @@
           ]
         }
       ]
+    },
+    "connection_identifier": {
+      "type": "PATTERN",
+      "value": "\\[\\d+\\]"
     },
     "_ident_regex": {
       "type": "PATTERN",

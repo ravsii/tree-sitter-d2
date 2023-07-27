@@ -234,3 +234,47 @@ Stage Four -> Stage One: repeat
     (connection)
     (identifier)
     (label)))
+
+==================|||
+Connection identifiers
+==================|||
+
+x -> y: hi
+x -> y: hello
+
+(x -> y)[0].style.stroke: red
+(x -> y)[1].style.stroke: blue
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (sub_identifier
+      (identifier
+        (sub_identifier
+          (identifier))))
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (sub_identifier
+      (identifier
+        (sub_identifier
+          (identifier))))
+    (label)))

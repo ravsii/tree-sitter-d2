@@ -21,13 +21,21 @@ module.exports = grammar({
     )),
 
     expression: $ => prec.right(seq(
+      optional("("),
       repeat1(choice(
         $.identifier,
         $.connection,
       )),
+      optional(")"),
+      optional(seq(
+        $.connection_identifier,
+        $.sub_identifier
+      )),
       optional($.label),
       optional(choice(/\n+/, ";")),
     )),
+
+
 
     label: _ => seq(":", choice(
       // seq("|", /.+/, "|"),
@@ -78,6 +86,8 @@ module.exports = grammar({
       seq(/--+/, /\\\n+\s+/, /-+>/),
       seq(/<-+/, /\\\n+\s+/, /-+>/),
     ),
+
+    connection_identifier: _ => /\[\d+\]/,
 
     // param_value: _ => /[\w\-_]+/i,
 

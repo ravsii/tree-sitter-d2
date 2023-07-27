@@ -17,11 +17,19 @@
           "named": true
         },
         {
+          "type": "connection_identifier",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
           "type": "label",
+          "named": true
+        },
+        {
+          "type": "sub_identifier",
           "named": true
         }
       ]
@@ -78,6 +86,14 @@
     }
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": "-",
     "named": false
   },
@@ -92,6 +108,10 @@
   {
     "type": ";",
     "named": false
+  },
+  {
+    "type": "connection_identifier",
+    "named": true
   },
   {
     "type": "direction",
