@@ -166,3 +166,29 @@ a <-\
     (identifier)
     (connection)
     (identifier)))
+
+==================|||
+Repeated Connections
+==================|||
+
+Database -> S3: backup
+Database -> S3
+Database -> S3: backup
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
