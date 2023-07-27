@@ -192,3 +192,21 @@ Database -> S3: backup
     (connection)
     (identifier)
     (label)))
+
+==================|||
+Connections Chaining
+==================|||
+
+# The label applies to each connection in the chain.
+High Mem Instance -> EC2 <- High CPU Instance: Hosted By
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))

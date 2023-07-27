@@ -9,6 +9,10 @@
           {
             "type": "SYMBOL",
             "name": "expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_comment"
           }
         ]
       }
@@ -277,11 +281,7 @@
           },
           {
             "type": "PATTERN",
-            "value": ".*"
-          },
-          {
-            "type": "PATTERN",
-            "value": "\\n"
+            "value": ".*\\n"
           }
         ]
       }

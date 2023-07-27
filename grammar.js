@@ -5,6 +5,7 @@ module.exports = grammar({
     source_file: $ => repeat(choice(
       // $.direction,
       $.expression,
+      $._comment,
     )),
 
     extras: $ => choice(
@@ -84,7 +85,7 @@ module.exports = grammar({
 
     _ident_regex: _ => /[\p{L}0-9_"' ]+/,
 
-    _comment: _ => token(seq('#', /.*/, /\n/)),
+    _comment: _ => token(seq('#', /.*\n/)),
   }
 });
 
