@@ -10,7 +10,9 @@ Cloud: my cloud
 (source_file
   (expression
     (identifier)
-    (label))
+    (label_block
+      (label)))
   (expression
     (identifier)
-    (label)))
+     (label_block
+       (label))))

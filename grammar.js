@@ -31,35 +31,18 @@ module.exports = grammar({
         $.connection_identifier,
         $.sub_identifier
       )),
-      optional($.label),
-      optional(choice(/\n+/, ";")),
+      optional($.label_block),
+      optional(choice(/\n+\s*/, ";")),
     )),
 
+    label_block: $ => choice(
+      seq(":", $.label),
+      seq(":", $.container),
+    ),
 
+    container: $ => seq("{", repeat($.expression), "}"),
 
-    label: _ => seq(":", choice(
-      // seq("|", /.+/, "|"),
-      /.+/,
-    )),
-
-    // shape_body: $ => prec.right(seq(
-    //   "{",
-    //   /\s*/,
-    //   repeat(seq(/\s*/, $.shape_param)),
-    //   /\s*/,
-    //   "}"
-    // )),
-
-    // shape_param: $ => seq(
-    //   $.identifier,
-    //   /\s*/,
-    //   ":",
-    //   optional(/\s+/),
-    //   $.param_value,
-    //   optional($.param_body),
-    // ),
-
-    // param_body: $ => seq("{", /.+/, "}"),
+    label: _ => /.+/,
 
     // building blocks
 

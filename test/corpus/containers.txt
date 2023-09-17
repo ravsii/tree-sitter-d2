@@ -11,7 +11,8 @@ Cloud.shape: cloud
     (identifier
       (sub_identifier
         (identifier)))
-    (label)))
+    (label_block
+        (label))))
 
 ==================
 Container With Spaces
@@ -49,4 +50,53 @@ apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
         (identifier
           (sub_identifier
             (identifier)))))
-    (label)))
+    (label_block
+        (label))))
+
+==================
+Nested Syntax
+==================
+
+clouds: {
+  aws: {
+    load_balancer -> api
+    api -> db
+  }
+  gcloud: {
+    auth -> db
+  }
+
+  gcloud -> aws
+}
+
+---
+
+(source_file
+  (expression
+    (identifier)
+    (label_block
+      (container
+        (expression
+          (identifier)
+          (label_block
+            (container
+              (expression
+                (identifier)
+                (connection)
+                (identifier))
+              (expression
+                (identifier)
+                (connection)
+                (identifier)))))
+        (expression
+          (identifier)
+          (label_block
+            (container
+              (expression
+                (identifier)
+                (connection)
+                (identifier)))))
+        (expression
+          (identifier)
+          (connection)
+          (identifier))))))

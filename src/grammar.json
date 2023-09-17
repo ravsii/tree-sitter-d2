@@ -136,7 +136,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "label"
+                "name": "label_block"
               },
               {
                 "type": "BLANK"
@@ -151,7 +151,7 @@
                 "members": [
                   {
                     "type": "PATTERN",
-                    "value": "\\n+"
+                    "value": "\\n+\\s*"
                   },
                   {
                     "type": "STRING",
@@ -167,23 +167,60 @@
         ]
       }
     },
-    "label": {
-      "type": "SEQ",
+    "label_block": {
+      "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
-              "type": "PATTERN",
-              "value": ".+"
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "label"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "container"
             }
           ]
         }
       ]
+    },
+    "container": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "label": {
+      "type": "PATTERN",
+      "value": ".+"
     },
     "identifier": {
       "type": "PREC_RIGHT",

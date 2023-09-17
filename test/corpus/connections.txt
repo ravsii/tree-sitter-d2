@@ -132,7 +132,8 @@ Read Replica 1 -- Read Replica 2: Kept in sync
     (identifier)
     (connection)
     (identifier)
-    (label)))
+    (label_block
+      (label))))
 
 ==================|||
 Multiline shape
@@ -182,7 +183,8 @@ Database -> S3: backup
     (identifier)
     (connection)
     (identifier)
-    (label))
+    (label_block
+      (label)))
   (expression
     (identifier)
     (connection)
@@ -191,7 +193,8 @@ Database -> S3: backup
     (identifier)
     (connection)
     (identifier)
-    (label)))
+    (label_block
+      (label))))
 
 ==================|||
 Connections Chaining
@@ -209,7 +212,8 @@ High Mem Instance -> EC2 <- High CPU Instance: Hosted By
     (identifier)
     (connection)
     (identifier)
-    (label)))
+    (label_block
+        (label))))
 
 ==================|||
 Cycles
@@ -233,7 +237,8 @@ Stage Four -> Stage One: repeat
     (identifier)
     (connection)
     (identifier)
-    (label)))
+    (label_block
+        (label))))
 
 ==================|||
 Connection identifiers
@@ -252,22 +257,14 @@ x -> y: hello
     (identifier)
     (connection)
     (identifier)
-    (label))
+    (label_block
+      (label)))
   (expression
     (identifier)
     (connection)
     (identifier)
-    (label))
-  (expression
-    (identifier)
-    (connection)
-    (identifier)
-    (connection_identifier)
-    (sub_identifier
-      (identifier
-        (sub_identifier
-          (identifier))))
-    (label))
+    (label_block
+      (label)))
   (expression
     (identifier)
     (connection)
@@ -277,4 +274,16 @@ x -> y: hello
       (identifier
         (sub_identifier
           (identifier))))
-    (label)))
+    (label_block
+      (label)))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (sub_identifier
+      (identifier
+        (sub_identifier
+          (identifier))))
+    (label_block
+        (label))))
