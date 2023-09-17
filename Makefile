@@ -5,12 +5,10 @@ highlight: generate
 	tree-sitter highlight --html test.d2 > test.html
 
 parse: generate
+	clear
 	tree-sitter parse test.d2
 
 test: generate
-	tree-sitter test
-
-clear-test: generate
 	clear
 	tree-sitter test
 
@@ -27,4 +25,4 @@ watch-parse:
 	watchexec --exts d2,js,scm -- make parse
 
 watch-test:
-	watchexec --exts d2,js,scm,txt -- make clear-test
+	watchexec --exts d2,js,scm,txt -- make test
