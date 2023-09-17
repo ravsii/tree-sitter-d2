@@ -1,3 +1,4 @@
 node_modules
 test.d2
 .vscode
+tree-sitter-d2.code-workspace
