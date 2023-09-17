@@ -31,13 +31,14 @@ module.exports = grammar({
         $.connection_identifier,
         $.sub_identifier
       )),
-      optional($.label_block),
+      optional(seq(":", optional($.label), optional($.container))),
       optional(choice(/\n+\s*/, ";")),
     )),
 
     label_block: $ => choice(
-      seq(":", $.label),
-      seq(":", $.container),
+      seq(":", optional($.label), optional($.container)),
+      // seq(":", $.container),
+      // seq(":", $.label),
     ),
 
     container: $ => seq("{", repeat($.expression), "}"),

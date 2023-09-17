@@ -36,11 +36,15 @@
           "named": true
         },
         {
+          "type": "container",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "label_block",
+          "type": "label",
           "named": true
         },
         {
@@ -60,25 +64,6 @@
       "types": [
         {
           "type": "sub_identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "label_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "container",
-          "named": true
-        },
-        {
-          "type": "label",
           "named": true
         }
       ]

@@ -10,9 +10,37 @@ Cloud: my cloud
 (source_file
   (expression
     (identifier)
-    (label_block
-      (label)))
+    (label))
   (expression
     (identifier)
-     (label_block
-       (label))))
+     (label)))
+
+==================
+Shorthand container labels
+==================
+
+#gcloud: Google Cloud {
+#  # any content
+#}
+
+---
+
+(source_file)
+
+==================
+Reserved keyword "label"
+==================
+
+gcloud: {
+  label: Google Cloud
+}
+
+---
+
+(source_file
+  (expression
+    (identifier)
+    (container
+      (expression
+        (identifier)
+        (label)))))

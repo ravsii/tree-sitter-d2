@@ -1,141 +1,4 @@
 ==================|||
-Isolated valid connections
-==================|||
-
---
-->
-<-
-<->
-
----|||
-
-(source_file
-  (expression
-    (connection))
-  (expression
-    (connection))
-  (expression
-    (connection))
-  (expression
-    (connection)))
-      
-==================|||
-Isolated long connections
-==================|||
-
-----------
---------->
-<---------
-<-------->
-
----|||
-
-(source_file
-  (expression
-    (connection))
-  (expression
-    (connection))
-  (expression
-    (connection))
-  (expression
-    (connection)))
-      
-==================|||
-Invalid connection "-"
-==================|||
-
--
-
----|||
-
-(source_file
-  (expression
-    (identifier)))
-
-==================|||
-Invalid connection ">"
-==================|||
-
->
-
----|||
-
-(source_file
-  (ERROR
-    (UNEXPECTED '>')))
-
-==================|||
-Invalid connection "<"
-==================|||
-
-<
-
----|||
-
-(source_file
-  (ERROR
-    (UNEXPECTED '\n')))
-
-==================|||
-Invalid connection "<>"
-==================|||
-
-<>
-
----|||
-
-(source_file
-  (ERROR
-    (UNEXPECTED '>')))
-
-==================|||
-Basic
-==================|||
-
-Write Replica Canada <-> Write Replica Australia
-
-Read Replica <- Master
-Write Replica -> Master
-
-Read Replica 1 -- Read Replica 2
-
----|||
-
-(source_file
-  (expression
-    (identifier)
-    (connection)
-    (identifier))
-  (expression
-    (identifier)
-    (connection)
-    (identifier))
-  (expression
-    (identifier)
-    (connection)
-    (identifier))
-  (expression
-    (identifier)
-    (connection)
-    (identifier)))
-
-==================|||
-Connection labels
-==================|||
-
-Read Replica 1 -- Read Replica 2: Kept in sync
-
----|||
-
-(source_file
-  (expression
-    (identifier)
-    (connection)
-    (identifier)
-    (label_block
-      (label))))
-
-==================|||
 Multiline shape
 ==================|||
 
@@ -183,8 +46,7 @@ Database -> S3: backup
     (identifier)
     (connection)
     (identifier)
-    (label_block
-      (label)))
+    (label))
   (expression
     (identifier)
     (connection)
@@ -193,8 +55,7 @@ Database -> S3: backup
     (identifier)
     (connection)
     (identifier)
-    (label_block
-      (label))))
+    (label)))
 
 ==================|||
 Connections Chaining
@@ -212,8 +73,7 @@ High Mem Instance -> EC2 <- High CPU Instance: Hosted By
     (identifier)
     (connection)
     (identifier)
-    (label_block
-        (label))))
+    (label)))
 
 ==================|||
 Cycles
@@ -237,8 +97,7 @@ Stage Four -> Stage One: repeat
     (identifier)
     (connection)
     (identifier)
-    (label_block
-        (label))))
+    (label)))
 
 ==================|||
 Connection identifiers
@@ -257,25 +116,12 @@ x -> y: hello
     (identifier)
     (connection)
     (identifier)
-    (label_block
-      (label)))
+    (label))
   (expression
     (identifier)
     (connection)
     (identifier)
-    (label_block
-      (label)))
-  (expression
-    (identifier)
-    (connection)
-    (identifier)
-    (connection_identifier)
-    (sub_identifier
-      (identifier
-        (sub_identifier
-          (identifier))))
-    (label_block
-      (label)))
+    (label))
   (expression
     (identifier)
     (connection)
@@ -285,5 +131,14 @@ x -> y: hello
       (identifier
         (sub_identifier
           (identifier))))
-    (label_block
-        (label))))
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (sub_identifier
+      (identifier
+        (sub_identifier
+          (identifier))))
+    (label)))

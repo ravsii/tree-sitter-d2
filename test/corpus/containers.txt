@@ -11,8 +11,7 @@ Cloud.shape: cloud
     (identifier
       (sub_identifier
         (identifier)))
-    (label_block
-        (label))))
+    (label)))
 
 ==================
 Container With Spaces
@@ -50,8 +49,7 @@ apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
         (identifier
           (sub_identifier
             (identifier)))))
-    (label_block
-        (label))))
+    (label)))
 
 ==================
 Nested Syntax
@@ -74,29 +72,26 @@ clouds: {
 (source_file
   (expression
     (identifier)
-    (label_block
-      (container
-        (expression
-          (identifier)
-          (label_block
-            (container
-              (expression
-                (identifier)
-                (connection)
-                (identifier))
-              (expression
-                (identifier)
-                (connection)
-                (identifier)))))
-        (expression
-          (identifier)
-          (label_block
-            (container
-              (expression
-                (identifier)
-                (connection)
-                (identifier)))))
-        (expression
-          (identifier)
-          (connection)
-          (identifier))))))
+    (container
+      (expression
+        (identifier)
+        (container
+          (expression
+            (identifier)
+            (connection)
+            (identifier))
+          (expression
+            (identifier)
+            (connection)
+            (identifier))))
+      (expression
+        (identifier)
+        (container
+          (expression
+            (identifier)
+            (connection)
+            (identifier))))
+      (expression
+        (identifier)
+        (connection)
+        (identifier)))))
