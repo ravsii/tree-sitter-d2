@@ -8,8 +8,7 @@ x
 
 (source_file
   (expression
-    (shape_title
-      (identifier))))
+    (identifier)))
 
 ==================
 Multiple Shapes
@@ -23,14 +22,11 @@ xy
 
 (source_file
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier))))
+    (identifier)))
 
 ==================
 Special characters in name
@@ -46,20 +42,15 @@ a-shape
 
 (source_file
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier))))
+    (identifier)))
 
 ==================
 Semicolon delimiter
@@ -71,9 +62,6 @@ SQLite; Cassandra
 
 (source_file
   (expression
-    (shape_title
-      (identifier)))
+    (identifier))
   (expression
-    (shape_title
-      (identifier))))
-
+    (identifier)))

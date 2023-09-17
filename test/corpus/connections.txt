@@ -1,67 +1,144 @@
 ==================|||
-Isolated valid connections
+Multiline shape
 ==================|||
 
---
-->
-<-
-<->
+a --\
+  -- b
+a <-\
+  -- b
+a --\
+  -> b
+a <-\
+  -> b
+  
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)))
+
+==================|||
+Repeated Connections
+==================|||
+
+Database -> S3: backup
+Database -> S3
+Database -> S3: backup
 
 ---|||
 
 (source_file
   (expression
-    (shape_title
-      (connection)))
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
   (expression
-    (shape_title
-      (connection)))
+    (identifier)
+    (connection)
+    (identifier))
   (expression
-    (shape_title
-      (connection)))
-  (expression
-    (shape_title
-      (connection))))
-      
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
 ==================|||
-Isolated long connections
+Connections Chaining
 ==================|||
 
-----------
---------->
-<---------
-<-------->
+# The label applies to each connection in the chain.
+High Mem Instance -> EC2 <- High CPU Instance: Hosted By
 
 ---|||
 
 (source_file
   (expression
-    (shape_title
-      (connection)))
-  (expression
-    (shape_title
-      (connection)))
-  (expression
-    (shape_title
-      (connection)))
-  (expression
-    (shape_title
-      (connection))))
-      
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
 ==================|||
-Invalid connections
+Cycles
 ==================|||
 
--
->
-<
-<>
+Stage One -> Stage Two -> Stage Three -> Stage Four
+Stage Four -> Stage One: repeat
 
 ---|||
 
 (source_file
   (expression
-    (shape_title
-      (identifier)))
-  (ERROR
-    (UNEXPECTED '>')))
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
+==================|||
+Connection identifiers
+==================|||
+
+x -> y: hi
+x -> y: hello
+
+(x -> y)[0].style.stroke: red
+(x -> y)[1].style.stroke: blue
+
+---|||
+
+(source_file
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (sub_identifier
+      (identifier
+        (sub_identifier
+          (identifier))))
+    (label))
+  (expression
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (sub_identifier
+      (identifier
+        (sub_identifier
+          (identifier))))
+    (label)))
