@@ -1,11 +1,10 @@
 # tree-sitter-d2
 
 ![Build & Test (main)](https://img.shields.io/github/actions/workflow/status/ravsii/tree-sitter-d2/test.yml?label=Build%20%26%20Test%20(main)&branch=main)
-![Build & Test (dev)](https://img.shields.io/github/actions/workflow/status/ravsii/tree-sitter-d2/test.yml?label=Build%20%26%20Test%20(dev)&branch=dev)
 
 This is an alternative to pleshevskiy's [tree-sitter-d2](https://github.com/pleshevskiy/tree-sitter-d2) ([updated version](https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2)).
 
-**WIP, THIS IS NOT USABLE YET**, but you can check the progress at `dev` branch.
+**WIP, THIS IS NOT USABLE YET**
 
 ## There's an alternative, why?
 
