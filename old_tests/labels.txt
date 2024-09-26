@@ -19,13 +19,17 @@ Cloud: my cloud
 Shorthand container labels
 ==================
 
-#gcloud: Google Cloud {
-#  # any content
-#}
+gcloud: Google Cloud {
+  # comment
+}
 
 ---
 
-(source_file)
+(source_file
+  (expression
+    (identifier)
+    (label)
+    (container)))
 
 ==================
 Reserved keyword "label"

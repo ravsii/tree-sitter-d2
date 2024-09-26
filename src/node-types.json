@@ -1,26 +1,6 @@
 [
   {
-    "type": "connection",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "container",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expression",
+    "type": "declaration",
     "named": true,
     "fields": {},
     "children": {
@@ -32,42 +12,40 @@
           "named": true
         },
         {
-          "type": "connection_identifier",
-          "named": true
-        },
-        {
-          "type": "container",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
         {
           "type": "label",
           "named": true
-        },
-        {
-          "type": "sub_identifier",
-          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "field",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "identifier",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "sub_identifier",
+          "type": "field",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "label",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "source_file",
@@ -78,37 +56,18 @@
       "required": false,
       "types": [
         {
-          "type": "expression",
+          "type": "comment",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "sub_identifier",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
         {
-          "type": "identifier",
+          "type": "declaration",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "(",
-    "named": false
-  },
-  {
-    "type": ")",
-    "named": false
-  },
-  {
-    "type": "-",
+    "type": "\u0000",
     "named": false
   },
   {
@@ -124,39 +83,11 @@
     "named": false
   },
   {
-    "type": "connection_identifier",
+    "type": "comment",
     "named": true
   },
   {
-    "type": "direction",
-    "named": false
-  },
-  {
-    "type": "down",
-    "named": false
-  },
-  {
-    "type": "label",
+    "type": "connection",
     "named": true
-  },
-  {
-    "type": "left",
-    "named": false
-  },
-  {
-    "type": "right",
-    "named": false
-  },
-  {
-    "type": "up",
-    "named": false
-  },
-  {
-    "type": "{",
-    "named": false
-  },
-  {
-    "type": "}",
-    "named": false
   }
 ]

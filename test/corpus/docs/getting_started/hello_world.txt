@@ -1,0 +1,14 @@
+==================|||
+Hello World
+==================|||
+
+x -> y: hello world
+  
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
