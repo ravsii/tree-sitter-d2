@@ -177,3 +177,21 @@ Stage Four -> Stage One: repeat
     (connection)
     (identifier)
     (label)))
+
+====================|||
+Referencing connections
+====================|||
+
+(x -> y)[0].style.stroke: red
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection_identifier)
+    (field)
+    (field)
+    (label)))

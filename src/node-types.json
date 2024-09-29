@@ -3,12 +3,36 @@
     "type": "declaration",
     "named": true,
     "fields": {
+      "conn_identifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "connection_identifier",
+            "named": true
+          }
+        ]
+      },
       "connection": {
         "multiple": true,
         "required": false,
         "types": [
           {
             "type": "connection",
+            "named": true
+          }
+        ]
+      },
+      "field": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "field",
             "named": true
           }
         ]
@@ -24,7 +48,7 @@
         ]
       },
       "label": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -43,17 +67,7 @@
   {
     "type": "identifier",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "field",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "label",
@@ -84,6 +98,14 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -101,6 +123,10 @@
   },
   {
     "type": "connection",
+    "named": true
+  },
+  {
+    "type": "connection_identifier",
     "named": true
   }
 ]

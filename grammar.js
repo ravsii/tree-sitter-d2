@@ -1,5 +1,6 @@
 const PREC = {
   connection: 100,
+  conn_identifier: 90,
 };
 
 const newline = /\n/;
@@ -26,12 +27,16 @@ module.exports = grammar({
     ),
 
     declaration: $ => seq(
+      optional("("),
       field("identifier", $.identifier),
       rseq(
         field("connection", $.connection),
         field("identifier", $.identifier),
       ),
-      optional(field("label", $.label)),
+      optional(")"),
+      optional(field("conn_identifier", $.connection_identifier)),
+      repeat(field("field", seq(".", $.field))),
+      repeat(field("label", $.label)),
       terminator,
     ),
 
@@ -41,13 +46,13 @@ module.exports = grammar({
       /-+>/,
       /--+/,
     ))),
+    connection_identifier: _ => token(seq(
+      "[", /\d+/, "]",
+    )),
     label: _ => seq(":", /.*/),
 
-    identifier: $ => choice(
-      $._ident,
-      seq($._ident, rseq(".", $.field))
-    ),
-    field: $ => $._ident_base,
+    identifier: $ => $._ident,
+    field: $ => $._ident,
 
     _ident: $ => seq($._ident_base, rseq(/[\s\-]+/, $._ident_base)),
     _ident_base: _ => /[\p{L}\d\'_]+/,
