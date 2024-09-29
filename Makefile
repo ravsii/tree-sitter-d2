@@ -8,6 +8,10 @@ parse: generate
 	clear
 	tree-sitter parse test.d2
 
+dparse: generate
+	clear
+	tree-sitter parse test.d2 -d
+
 test: generate
 	clear
 	tree-sitter test

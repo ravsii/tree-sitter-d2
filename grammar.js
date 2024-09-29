@@ -1,14 +1,20 @@
+const PREC = {
+  connection: 100,
+};
+
 const newline = /\n/;
 const terminator = choice(newline, ';', '\0');
 
 const opseq = (...x) => optional(seq(...x))
+const rseq = (...x) => repeat(seq(...x))
+const r1seq = (...x) => repeat1(seq(...x))
 
 module.exports = grammar({
   name: 'd2',
 
   extras: $ => [
     $.comment,
-    /\s/,
+    /\s+/,
   ],
 
   rules: {
@@ -20,22 +26,31 @@ module.exports = grammar({
     ),
 
     declaration: $ => seq(
-      $.identifier,
-      opseq($.connection, $.identifier),
-      optional($.label),
+      field("identifier", $.identifier),
+      rseq(
+        field("connection", $.connection),
+        field("identifier", $.identifier),
+      ),
+      optional(field("label", $.label)),
       terminator,
     ),
 
-    connection: _ => "->",
+    connection: _ => token(prec(PREC.connection, choice(
+      /<-+>/,
+      /<-+/,
+      /-+>/,
+      /--+/,
+    ))),
     label: _ => seq(":", /.*/),
 
-    identifier: $ => seq($._ident_recursive, opseq(".", $.field)),
-    field: $ => $._ident_base,
-    _ident_recursive: $ => seq(
-      $._ident_base,
-      opseq(/[\s\'\-\_]+/, $._ident_recursive),
+    identifier: $ => choice(
+      $._ident,
+      seq($._ident, rseq(".", $.field))
     ),
-    _ident_base: _ => /[\w]+/,
+    field: $ => $._ident_base,
+
+    _ident: $ => seq($._ident_base, rseq(/[\s\-]+/, $._ident_base)),
+    _ident_base: _ => /[\p{L}\d\'_]+/,
 
     comment: _ => token(seq('#', /.*/)),
   }
