@@ -1,8 +1,33 @@
 [
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "connection_refference",
     "named": true,
     "fields": {
+      "connection": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "connection",
+            "named": true
+          }
+        ]
+      },
       "connection_identifier": {
         "multiple": false,
         "required": true,
@@ -22,53 +47,33 @@
             "named": true
           }
         ]
+      },
+      "identifier": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
     }
   },
   {
     "type": "declaration",
     "named": true,
     "fields": {
-      "label": {
-        "multiple": true,
+      "block": {
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "label",
+            "type": "block",
             "named": true
           }
         ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "connection_refference",
-          "named": true
-        },
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expr",
-    "named": true,
-    "fields": {
+      },
       "connection": {
         "multiple": true,
         "required": false,
@@ -81,14 +86,34 @@
       },
       "identifier": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "identifier",
             "named": true
           }
         ]
+      },
+      "label": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "label",
+            "named": true
+          }
+        ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "connection_refference",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -166,5 +191,13 @@
   {
     "type": "connection_identifier",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

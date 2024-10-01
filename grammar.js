@@ -1,13 +1,16 @@
 const PREC = {
   connection: 100,
   conn_identifier: 90,
-  identifier: 50,
+
+  block: 20,
+  label: 10,
 };
 
 const newline = /\n/;
 const terminator = choice(newline, ';', '\0');
 
 const opseq = (...x) => optional(seq(...x))
+const opfield = (...x) => optional(field(...x))
 const rseq = (...x) => repeat(seq(...x))
 const r1seq = (...x) => repeat1(seq(...x))
 
@@ -30,13 +33,16 @@ module.exports = grammar({
     declaration: $ => seq(
       choice(
         $.connection_refference,
-        $.expr,
+        $._expr,
       ),
-      repeat(field("label", $.label)),
+      opseq(":",
+        opfield("label", $.label),
+        opfield("block", $.block),
+      ),
       terminator,
     ),
 
-    expr: $ => seq(
+    _expr: $ => seq(
       field("identifier", $.identifier),
       rseq(
         field("connection", $.connection),
@@ -50,11 +56,13 @@ module.exports = grammar({
       /-+>/,
       /--+/,
     ))),
-    label: _ => seq(":", /.*/),
+
+    block: $ => prec(PREC.block, seq("{", repeat($.declaration), "}")),
+    label: $ => prec(PREC.label, repeat1($._ident_base)),
 
     connection_refference: $ => seq(
       "(",
-      $.expr,
+      $._expr,
       ")",
       field("connection_identifier", $.connection_identifier),
       optional($._fields),
