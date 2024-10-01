@@ -13,21 +13,25 @@ Read Replica 1 -- Read Replica 2
 
 (source_file
   (declaration
-    (identifier)
-    (connection)
-    (identifier))
+    (expr
+      (identifier)
+      (connection)
+      (identifier)))
   (declaration
-    (identifier)
-    (connection)
-    (identifier))
+    (expr
+      (identifier)
+      (connection)
+      (identifier)))
   (declaration
-    (identifier)
-    (connection)
-    (identifier))
+    (expr
+      (identifier)
+      (connection)
+      (identifier)))
   (declaration
-    (identifier)
-    (connection)
-    (identifier)))
+    (expr
+      (identifier)
+      (connection)
+      (identifier))))
 
 ====================|||
 Connection labels
@@ -39,9 +43,10 @@ Read Replica 1 -- Read Replica 2: Kept in sync
 
 (source_file
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
+    (expr
+      (identifier)
+      (connection)
+      (identifier))
     (label)))
 
 ==============|||
@@ -61,21 +66,25 @@ be -> fe
 
 (source_file
   (declaration
-    (identifier)
+    (expr
+      (identifier))
     (label))
   (declaration
-    (identifier)
+    (expr
+      (identifier))
     (label))
   (comment)
   (declaration
-    (identifier)
-    (connection)
-    (identifier))
+    (expr
+      (identifier)
+      (connection)
+      (identifier)))
   (comment)
   (declaration
-    (identifier)
-    (connection)
-    (identifier)))
+    (expr
+      (identifier)
+      (connection)
+      (identifier))))
 
 ==============|||
 Example
@@ -93,21 +102,25 @@ super long shape id here -> super long shape id even longer here
 
 (source_file
   (declaration
-    (identifier)
-    (connection)
-    (identifier))
-  (declaration
-    (identifier)
-    (connection)
-    (identifier))
-  (declaration
-    (identifier)
-    (connection)
-    (identifier))
-  (declaration
+    (expr
     (identifier)
     (connection)
     (identifier)))
+  (declaration
+    (expr
+    (identifier)
+    (connection)
+    (identifier)))
+  (declaration
+    (expr
+    (identifier)
+    (connection)
+    (identifier)))
+  (declaration
+    (expr
+    (identifier)
+    (connection)
+    (identifier))))
 
 ==============|||
 Repeated Connections
@@ -121,18 +134,21 @@ Database -> S3: backup
 
 (source_file
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
+    (expr
+      (identifier)
+      (connection)
+      (identifier))
     (label))
   (declaration
-    (identifier)
-    (connection)
-    (identifier))
+    (expr
+      (identifier)
+      (connection)
+      (identifier)))
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
+    (expr
+      (identifier)
+      (connection)
+      (identifier))
     (label)))
 
 ==============|||
@@ -147,11 +163,12 @@ High Mem Instance -> EC2 <- High CPU Instance: Hosted By
 (source_file
   (comment)
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
-    (connection)
-    (identifier)
+    (expr
+      (identifier)
+      (connection)
+      (identifier)
+      (connection)
+      (identifier))
     (label)))
 
 ====================|||
@@ -165,17 +182,19 @@ Stage Four -> Stage One: repeat
 
 (source_file
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
-    (connection)
-    (identifier)
-    (connection)
-    (identifier))
+    (expr
+      (identifier)
+      (connection)
+      (identifier)
+      (connection)
+      (identifier)
+      (connection)
+      (identifier)))
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
+    (expr
+      (identifier)
+      (connection)
+      (identifier))
     (label)))
 
 ====================|||
@@ -188,10 +207,12 @@ Referencing connections
 
 (source_file
   (declaration
-    (identifier)
-    (connection)
-    (identifier)
-    (connection_identifier)
-    (field)
-    (field)
-    (label)))
+    (connection_refference
+      (expr
+        identifier: (identifier)
+        connection: (connection)
+        identifier: (identifier))
+      connection_identifier: (connection_identifier)
+      field: (identifier)
+      field: (identifier))
+    label: (label)))

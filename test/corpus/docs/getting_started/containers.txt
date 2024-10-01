@@ -1,0 +1,19 @@
+====================|||
+Containers
+====================|||
+
+apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
+
+---|||
+
+(source_file
+  (declaration
+    (expr
+      identifier: (identifier
+        field: (identifier)
+        field: (identifier))
+      connection: (connection)
+      identifier: (identifier
+        field: (identifier)
+        field: (identifier)))
+    label: (label)))

@@ -24,93 +24,14 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "("
+              "type": "SYMBOL",
+              "name": "connection_refference"
             },
             {
-              "type": "BLANK"
+              "type": "SYMBOL",
+              "name": "expr"
             }
           ]
-        },
-        {
-          "type": "FIELD",
-          "name": "identifier",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "connection",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "connection"
-                }
-              },
-              {
-                "type": "FIELD",
-                "name": "identifier",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": ")"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "conn_identifier",
-              "content": {
-                "type": "SYMBOL",
-                "name": "connection_identifier"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "FIELD",
-            "name": "field",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "."
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "field"
-                }
-              ]
-            }
-          }
         },
         {
           "type": "REPEAT",
@@ -142,6 +63,43 @@
         }
       ]
     },
+    "expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "identifier",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "connection",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "connection"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "identifier",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
     "connection": {
       "type": "TOKEN",
       "content": {
@@ -170,6 +128,56 @@
         }
       }
     },
+    "label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "PATTERN",
+          "value": ".*"
+        }
+      ]
+    },
+    "connection_refference": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expr"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "FIELD",
+          "name": "connection_identifier",
+          "content": {
+            "type": "SYMBOL",
+            "name": "connection_identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_fields"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
     "connection_identifier": {
       "type": "TOKEN",
       "content": {
@@ -190,26 +198,50 @@
         ]
       }
     },
-    "label": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".*"
-        }
-      ]
-    },
     "identifier": {
-      "type": "SYMBOL",
-      "name": "_ident"
+      "type": "PREC_LEFT",
+      "value": -1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_ident"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_fields"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
-    "field": {
-      "type": "SYMBOL",
-      "name": "_ident"
+    "_fields": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "."
+          },
+          {
+            "type": "FIELD",
+            "name": "field",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          }
+        ]
+      }
     },
     "_ident": {
       "type": "SEQ",
@@ -225,7 +257,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[\\s\\-]+"
+                "value": "[\\s\\-\\'_]+"
               },
               {
                 "type": "SYMBOL",
@@ -238,7 +270,7 @@
     },
     "_ident_base": {
       "type": "PATTERN",
-      "value": "[\\p{L}\\d\\'_]+"
+      "value": "[\\p{L}\\d]+"
     },
     "comment": {
       "type": "TOKEN",

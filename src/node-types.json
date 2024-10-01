@@ -1,24 +1,14 @@
 [
   {
-    "type": "declaration",
+    "type": "connection_refference",
     "named": true,
     "fields": {
-      "conn_identifier": {
+      "connection_identifier": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "connection_identifier",
-            "named": true
-          }
-        ]
-      },
-      "connection": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "connection",
             "named": true
           }
         ]
@@ -28,11 +18,63 @@
         "required": false,
         "types": [
           {
-            "type": ".",
-            "named": false
-          },
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declaration",
+    "named": true,
+    "fields": {
+      "label": {
+        "multiple": true,
+        "required": false,
+        "types": [
           {
-            "type": "field",
+            "type": "label",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "connection_refference",
+          "named": true
+        },
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expr",
+    "named": true,
+    "fields": {
+      "connection": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "connection",
             "named": true
           }
         ]
@@ -46,28 +88,24 @@
             "named": true
           }
         ]
-      },
-      "label": {
+      }
+    }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {
+      "field": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "label",
+            "type": "identifier",
             "named": true
           }
         ]
       }
     }
-  },
-  {
-    "type": "field",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "identifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "label",

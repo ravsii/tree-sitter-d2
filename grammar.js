@@ -1,6 +1,7 @@
 const PREC = {
   connection: 100,
   conn_identifier: 90,
+  identifier: 50,
 };
 
 const newline = /\n/;
@@ -27,17 +28,20 @@ module.exports = grammar({
     ),
 
     declaration: $ => seq(
-      optional("("),
+      choice(
+        $.connection_refference,
+        $.expr,
+      ),
+      repeat(field("label", $.label)),
+      terminator,
+    ),
+
+    expr: $ => seq(
       field("identifier", $.identifier),
       rseq(
         field("connection", $.connection),
         field("identifier", $.identifier),
       ),
-      optional(")"),
-      optional(field("conn_identifier", $.connection_identifier)),
-      repeat(field("field", seq(".", $.field))),
-      repeat(field("label", $.label)),
-      terminator,
     ),
 
     connection: _ => token(prec(PREC.connection, choice(
@@ -46,16 +50,24 @@ module.exports = grammar({
       /-+>/,
       /--+/,
     ))),
-    connection_identifier: _ => token(seq(
-      "[", /\d+/, "]",
-    )),
     label: _ => seq(":", /.*/),
 
-    identifier: $ => $._ident,
-    field: $ => $._ident,
+    connection_refference: $ => seq(
+      "(",
+      $.expr,
+      ")",
+      field("connection_identifier", $.connection_identifier),
+      optional($._fields),
+    ),
+    connection_identifier: _ => token(seq("[", /\d+/, "]",)),
 
-    _ident: $ => seq($._ident_base, rseq(/[\s\-]+/, $._ident_base)),
-    _ident_base: _ => /[\p{L}\d\'_]+/,
+    identifier: $ => prec.left(-1, seq(
+      $._ident,
+      optional($._fields),
+    )),
+    _fields: $ => r1seq(".", field("field", $.identifier)),
+    _ident: $ => seq($._ident_base, rseq(/[\s\-\'_]+/, $._ident_base)),
+    _ident_base: _ => /[\p{L}\d]+/,
 
     comment: _ => token(seq('#', /.*/)),
   }

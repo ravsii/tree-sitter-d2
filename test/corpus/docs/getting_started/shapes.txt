@@ -14,17 +14,22 @@ a-shape
 
 (source_file
   (declaration
-    (identifier))
+    (expr
+      (identifier)))
   (declaration
-    (identifier))
+    (expr
+      (identifier)))
   (declaration
-    (identifier))
+    (expr
+      (identifier)))
   (declaration
-    (identifier))
+    (expr
+      (identifier)))
   (comment)
   (comment)
   (declaration
-    (identifier)))
+    (expr
+      (identifier))))
 
 ==================
 Multiple Shapes
@@ -36,9 +41,11 @@ SQLite; Cassandra
 
 (source_file
   (declaration
-    (identifier))
+    (expr
+      (identifier)))
   (declaration
-    (identifier)))
+    (expr
+      (identifier))))
 
 ==================
 Shape and Label
@@ -50,7 +57,8 @@ pg: PostgreSQL
 
 (source_file
   (declaration
-    (identifier)
+    (expr
+      (identifier))
     (label)))
 
 ==================
@@ -64,12 +72,14 @@ Cloud.shape: cloud
 
 (source_file
   (declaration
-    (identifier)
-    (label))
+    (expr
+      identifier: (identifier))
+    label: (label))
   (declaration
-    (identifier)
-    (field)
-    (label)))
+    (expr
+      identifier: (identifier
+        field: (identifier)))
+    label: (label)))
 
 ==================
 Example (summary)
@@ -85,16 +95,21 @@ Cassandra
 
 (source_file
   (declaration
-    (identifier)
-    (label))
+    (expr
+      identifier: (identifier))
+    label: (label))
   (declaration
-    (identifier)
-    (label))
+    (expr
+      identifier: (identifier))
+    label: (label))
   (declaration
-    (identifier)
-    (field)
-    (label))
+    (expr
+      identifier: (identifier
+        field: (identifier)))
+    label: (label))
   (declaration
-    (identifier))
+    (expr
+      identifier: (identifier)))
   (declaration
-    (identifier)))
+    (expr
+      identifier: (identifier))))
