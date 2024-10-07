@@ -60,8 +60,11 @@ module.exports = grammar({
       /--+/,
     ))),
 
-    block: $ => prec(PREC.block, seq("{", repeat($.declaration), "}")),
-    label: $ => prec(PREC.label, repeat1($._ident_base)),
+    block: $ => seq("{", repeat($.declaration), "}"),
+    label: $ => choice(
+      repeat1($._ident_base),
+      token(seq('"', /.*/, '"')),
+    ),
 
     connection_refference: $ => seq(
       "(",
@@ -77,7 +80,10 @@ module.exports = grammar({
       optional($._fields),
     )),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => seq($._ident_base, rseq(/[\s\-\'_]+/, $._ident_base)),
+    _ident: $ => choice(
+      seq($._ident_base, rseq(/[\s\-\'_]+/, $._ident_base)), // normal
+      token("_"), // parent-ref
+    ),
     _ident_base: _ => /[\p{L}\d]+/,
 
     comment: _ => token(seq('#', /.*/)),

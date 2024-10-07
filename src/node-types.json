@@ -173,6 +173,10 @@
     "named": false
   },
   {
+    "type": "_",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },

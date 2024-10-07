@@ -174,39 +174,56 @@
       }
     },
     "block": {
-      "type": "PREC",
-      "value": 20,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "{"
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "declaration"
-            }
-          },
-          {
-            "type": "STRING",
-            "value": "}"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "declaration"
           }
-        ]
-      }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
     },
     "label": {
-      "type": "PREC",
-      "value": 10,
-      "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "SYMBOL",
-          "name": "_ident_base"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_ident_base"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\""
+              },
+              {
+                "type": "PATTERN",
+                "value": ".*"
+              },
+              {
+                "type": "STRING",
+                "value": "\""
+              }
+            ]
+          }
         }
-      }
+      ]
     },
     "connection_refference": {
       "type": "SEQ",
@@ -311,26 +328,38 @@
       }
     },
     "_ident": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_ident_base"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_ident_base"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[\\s\\-\\'_]+"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_ident_base"
+                  }
+                ]
+              }
+            }
+          ]
         },
         {
-          "type": "REPEAT",
+          "type": "TOKEN",
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[\\s\\-\\'_]+"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_ident_base"
-              }
-            ]
+            "type": "STRING",
+            "value": "_"
           }
         }
       ]
