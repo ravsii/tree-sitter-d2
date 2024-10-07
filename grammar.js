@@ -1,4 +1,6 @@
 const PREC = {
+  term: 1000,
+
   connection: 100,
   conn_identifier: 90,
 
@@ -6,8 +8,8 @@ const PREC = {
   label: 10,
 };
 
-const newline = /\n/;
-const terminator = choice(newline, ';', '\0');
+const terminator = token(prec(PREC.term,
+  choice(/\n/, ';', '\0')));
 
 const opseq = (...x) => optional(seq(...x))
 const opfield = (...x) => optional(field(...x))
@@ -38,6 +40,7 @@ module.exports = grammar({
       opseq(":",
         opfield("label", $.label),
         opfield("block", $.block),
+
       ),
       terminator,
     ),

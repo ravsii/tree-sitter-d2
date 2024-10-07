@@ -157,10 +157,6 @@
     }
   },
   {
-    "type": "\u0000",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -174,10 +170,6 @@
   },
   {
     "type": ":",
-    "named": false
-  },
-  {
-    "type": ";",
     "named": false
   },
   {

@@ -33,3 +33,91 @@ gcloud: Google Cloud {
     label: (label)
     block: (block
       (comment))))
+
+====================|||
+Container with keyword
+====================|||
+
+gcloud: {
+  label: Google Cloud
+}
+
+---|||
+
+(source_file
+  (declaration
+    identifier: (identifier)
+    block: (block
+      (declaration
+        identifier: (identifier)
+        label: (label)))))
+
+====================|||
+Example: Part 1
+====================|||
+
+clouds: {
+  aws: AWS {
+    load_balancer -> api
+    api -> db
+  }
+  gcloud: Google Cloud {
+    auth -> db
+  }
+
+  gcloud -> aws
+}
+
+users -> clouds.aws.load_balancer
+users -> clouds.gcloud.auth
+
+ci.deploys -> clouds
+
+---|||
+
+(source_file
+  (declaration
+    identifier: (identifier)
+    block: (block
+      (declaration
+        identifier: (identifier)
+        label: (label)
+        block: (block
+          (declaration
+            identifier: (identifier)
+            connection: (connection)
+            identifier: (identifier))
+          (declaration
+            identifier: (identifier)
+            connection: (connection)
+            identifier: (identifier))))
+      (declaration
+        identifier: (identifier)
+        label: (label)
+        block: (block
+          (declaration
+            identifier: (identifier)
+            connection: (connection)
+            identifier: (identifier))))
+      (declaration
+        identifier: (identifier)
+        connection: (connection)
+        identifier: (identifier))))
+  (declaration
+    identifier: (identifier)
+    connection: (connection)
+    identifier: (identifier
+      field: (identifier)
+      field: (identifier)))
+  (declaration
+    identifier: (identifier)
+    connection: (connection)
+    identifier: (identifier
+      field: (identifier)
+      field: (identifier)))
+  (declaration
+    identifier: (identifier
+      field: (identifier))
+    connection: (connection)
+    identifier: (identifier)))
+
