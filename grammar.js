@@ -19,6 +19,8 @@ const r1seq = (...x) => repeat1(seq(...x))
 module.exports = grammar({
   name: 'd2',
 
+  word: $ => $._ident_base,
+
   extras: $ => [
     $.comment,
     /\s+/,
@@ -39,9 +41,8 @@ module.exports = grammar({
       ),
       opseq(":",
         opfield("label", $.label),
-        opfield("block", $.block),
-
       ),
+      opfield("block", $.block),
       terminator,
     ),
 
@@ -62,8 +63,16 @@ module.exports = grammar({
 
     block: $ => seq("{", repeat($.declaration), "}"),
     label: $ => choice(
-      repeat1($._ident_base),
+      repeat1($._label_base),
       token(seq('"', /.*/, '"')),
+    ),
+
+    _label_base: $ => choice(
+      $._ident_base,
+      "\\",
+      ":",
+      ".",
+      "-"
     ),
 
     connection_refference: $ => seq(
@@ -84,7 +93,8 @@ module.exports = grammar({
       seq($._ident_base, rseq(/[\s\-\'_]+/, $._ident_base)), // normal
       token("_"), // parent-ref
     ),
-    _ident_base: _ => /[\p{L}\d]+/,
+    _ident_base: _ => /[\p{L}\d\/]+/,
+
 
     comment: _ => token(seq('#', /.*/)),
   }

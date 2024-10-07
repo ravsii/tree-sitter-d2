@@ -1,5 +1,6 @@
 {
   "name": "d2",
+  "word": "_ident_base",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -58,24 +59,24 @@
                       "type": "BLANK"
                     }
                   ]
-                },
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "FIELD",
-                      "name": "block",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "block"
-                      }
-                    },
-                    {
-                      "type": "BLANK"
-                    }
-                  ]
                 }
               ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "block",
+              "content": {
+                "type": "SYMBOL",
+                "name": "block"
+              }
             },
             {
               "type": "BLANK"
@@ -200,7 +201,7 @@
           "type": "REPEAT1",
           "content": {
             "type": "SYMBOL",
-            "name": "_ident_base"
+            "name": "_label_base"
           }
         },
         {
@@ -222,6 +223,31 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "_label_base": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_ident_base"
+        },
+        {
+          "type": "STRING",
+          "value": "\\"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "STRING",
+          "value": "-"
         }
       ]
     },
@@ -366,7 +392,7 @@
     },
     "_ident_base": {
       "type": "PATTERN",
-      "value": "[\\p{L}\\d]+"
+      "value": "[\\p{L}\\d\\/]+"
     },
     "comment": {
       "type": "TOKEN",

@@ -1,0 +1,63 @@
+====================|||
+Icons
+====================|||
+
+my network: {
+  icon: https://icons.terrastruct.com/infra/019-network.svg
+}
+
+---|||
+
+(source_file
+  (declaration
+    identifier: (identifier)
+    block: (block
+      (declaration
+        identifier: (identifier)
+        label: (label)))))
+
+====================|||
+Add shape: image for standalone icon shapes
+====================|||
+
+direction: right
+server: {
+  shape: image
+  icon: https://icons.terrastruct.com/tech/022-server.svg
+}
+
+github: {
+  shape: image
+  icon: https://icons.terrastruct.com/dev/github.svg
+}
+
+server -> github
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
