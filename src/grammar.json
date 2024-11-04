@@ -200,7 +200,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_label_codeblock"
+          "name": "label_codeblock"
         },
         {
           "type": "REPEAT1",
@@ -231,33 +231,117 @@
         }
       ]
     },
-    "_label_codeblock": {
+    "label_codeblock": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SEQ",
           "members": [
             {
-              "type": "REPEAT1",
-              "content": {
-                "type": "STRING",
-                "value": "|"
-              }
+              "type": "STRING",
+              "value": "|`"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_label_codeblock_lang"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^`]*"
+            },
+            {
+              "type": "STRING",
+              "value": "`|"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "|||"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_label_codeblock_lang"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_label_codeblock_body"
+            },
+            {
+              "type": "STRING",
+              "value": "|||"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "||"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_label_codeblock_lang"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_label_codeblock_body"
+            },
+            {
+              "type": "STRING",
+              "value": "||"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "|"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_label_codeblock_lang"
             },
             {
               "type": "PATTERN",
               "value": "[^\\|]+"
             },
             {
-              "type": "REPEAT1",
-              "content": {
-                "type": "STRING",
-                "value": "|"
-              }
+              "type": "STRING",
+              "value": "|"
             }
           ]
         }
       ]
+    },
+    "_label_codeblock_lang": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[a-zA-Z]+"
+      }
+    },
+    "_label_codeblock_body": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": ".+"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\s*"
+          }
+        ]
+      }
     },
     "_label_base": {
       "type": "CHOICE",
@@ -420,7 +504,7 @@
     },
     "_ident_base": {
       "type": "PATTERN",
-      "value": "[\\p{L}\\d\\/]+"
+      "value": "[\\p{L}\\d\\/\\*]+"
     },
     "comment": {
       "type": "TOKEN",

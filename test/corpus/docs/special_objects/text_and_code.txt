@@ -14,5 +14,333 @@ explanation: |md
 
 (source_file
   (declaration
-    identifier: (identifier)
-    label: (label)))
+    (identifier)
+    (label
+      (label_codeblock))))
+
+====================|||
+LaTeX
+====================|||
+
+plankton -> formula: will steal
+formula: {
+  equation: |latex
+    \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h}
+  |
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_codeblock))))))
+
+====================|||
+Go
+====================|||
+
+explanation: |go
+  awsSession := From(c.Request.Context())
+  client := s3.New(awsSession)
+
+  ctx, cancelFn := context.WithTimeout(c.Request.Context(), AWS_TIMEOUT)
+  defer cancelFn()
+|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock))))
+
+====================|||
+Advanced: Non-Markdown text
+====================|||
+
+title: A winning strategy {
+  shape: text
+  near: top-center
+  style: {
+    font-size: 55
+    italic: true
+  }
+}
+
+poll the people -> results
+results -> unfavorable -> poll the people
+results -> favorable -> will of the people
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)
+    (block
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+    (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier))
+    (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+Advanced: Block strings (double)
+====================|||
+
+my_code: ||ts
+  declare function getSmallPet(): Fish | Bird;
+||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock))))
+
+====================|||
+Advanced: Block strings (triple)
+====================|||
+
+my_code: |||ts
+  declare function getSmallPet(): Fish | Bird;
+  const works = (a > 1) || (b < 2)
+|||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock))))
+
+====================|||
+Advanced: Block strings (triple, more code)
+====================|||
+
+my_code: |||ts
+fn main() {
+   let numbers: Vec<i32> = vec![1, 2, 3];
+   
+   // using the map iterator adapter
+   let even_numbers: Vec<i32> = numbers.iter().map(|i| i * 2).collect();
+   
+   println!("numbers = {:?}", numbers);
+   println!("even_numbers = {:?}", even_numbers);
+}
+|||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock))))
+
+====================|||
+Advanced: Block strings (tick)
+====================|||
+
+my_code: |`ts
+    declare function getSmallPet(): Fish | Bird;
+    const works = (a > 1) || (b < 2)
+`|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock))))
+
+====================|||
+Advanced: LaTeX plugins
+====================|||
+
+grid-columns: 3
+grid-gap: 100
+
+*.style.fill: transparent
+*.style.stroke: black
+
+amscd plugin: {
+  ex: |tex
+    \\begin{CD} B @>{\\text{very long label}}>> C S^{{\\mathcal{W}}_\\Lambda}\\otimes T @>j>> T\\\\ @VVV V \\end{CD}
+  |
+}
+
+braket plugin: {
+  ex: |tex
+    \\bra{a}\\ket{b}
+  |
+}
+
+cancel plugin: {
+  ex: |tex
+    \\cancel{Culture + 5}
+  |
+}
+
+color plugin: {
+  ex: |tex
+    \\textcolor{red}{y} = \\textcolor{green}{\\sin} x
+  |
+}
+
+gensymb plugin: {
+  ex: |tex
+    \\lambda = 10.6\\,\\micro\\mathrm{m}
+  |
+}
+
+mhchem plugin: {
+  ex: |tex
+    \ce{SO4^2- + Ba^2+ -> BaSO4 v}
+  |
+}
+
+physics plugin: {
+  ex: |tex
+    \\var{F[g(x)]}
+    \\dd(\\cos\\theta)
+  |
+}
+
+multilines: {
+  ex: |tex
+    \\displaylines{x = a + b \\\\ y = b + c}
+    \\sum_{k=1}^{n} h_{k} \\int_{0}^{1} \\bigl(\\partial_{k} f(x_{k-1}+t h_{k} e_{k}) -\\partial_{k} f(a)\\bigr) \\,dt
+  |
+}
+
+asm: {
+  ex: |latex
+    \\min_{ \\mathclap{\\substack{ x \\in \\mathbb{R}^n \\ x \\geq 0 \\ Ax \\leq b }}} c^T x
+  |
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier
+    (identifier)
+    (identifier))
+    (label))
+  (declaration
+    (identifier
+    (identifier)
+    (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+      (identifier)
+      (label
+        (label_codeblock)))))
+)

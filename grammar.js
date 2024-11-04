@@ -5,11 +5,11 @@ const PREC = {
   conn_identifier: 90,
 
   block: 20,
+
   label: 10,
 };
 
-const terminator = token(prec(PREC.term,
-  choice(/\n/, ';', '\0')));
+const terminator = token(prec(PREC.term, choice(/\n/, ';', '\0')));
 
 const opseq = (...x) => optional(seq(...x))
 const opfield = (...x) => optional(field(...x))
@@ -63,14 +63,20 @@ module.exports = grammar({
 
     block: $ => seq("{", repeat($.declaration), "}"),
     label: $ => choice(
-      $._label_codeblock,
+      $.label_codeblock,
       repeat1($._label_base),
       token(seq('"', /.*/, '"')),
     ),
 
-    _label_codeblock: _ => choice(
-      seq(repeat1("|"), /[^\|]+/, repeat1("|")),
+    label_codeblock: $ => choice(
+      seq("|`", $._label_codeblock_lang, /[^`]*/, "`|"),
+      seq("|||", $._label_codeblock_lang, $._label_codeblock_body, "|||"),
+      seq("||", $._label_codeblock_lang, $._label_codeblock_body, "||"),
+      seq("|", $._label_codeblock_lang, /[^\|]+/, "|"),
     ),
+
+    _label_codeblock_lang: _ => token(/[a-zA-Z]+/),
+    _label_codeblock_body: _ => repeat1(seq(/.+/, /\s*/)),
 
     _label_base: $ => choice(
       $._ident_base,
@@ -95,7 +101,7 @@ module.exports = grammar({
       seq($._ident_base, rseq(/[\s\-\'_]+/, $._ident_base)), // normal
       token("_"), // parent-ref
     ),
-    _ident_base: _ => /[\p{L}\d\/]+/,
+    _ident_base: _ => /[\p{L}\d\/\*]+/,
 
 
     comment: _ => token(seq('#', /.*/)),

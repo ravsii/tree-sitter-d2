@@ -135,6 +135,21 @@
   {
     "type": "label",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "label_codeblock",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "label_codeblock",
+    "named": true,
     "fields": {}
   },
   {
@@ -178,6 +193,10 @@
     "named": false
   },
   {
+    "type": "`|",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
@@ -195,6 +214,18 @@
   },
   {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "|`",
+    "named": false
+  },
+  {
+    "type": "||",
+    "named": false
+  },
+  {
+    "type": "|||",
     "named": false
   },
   {
