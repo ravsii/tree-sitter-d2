@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "d2",
   "word": "_ident_base",
   "rules": {
@@ -198,6 +199,10 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "_label_codeblock"
+        },
+        {
           "type": "REPEAT1",
           "content": {
             "type": "SYMBOL",
@@ -226,6 +231,34 @@
         }
       ]
     },
+    "_label_codeblock": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "STRING",
+                "value": "|"
+              }
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^\\|]+"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "STRING",
+                "value": "|"
+              }
+            }
+          ]
+        }
+      ]
+    },
     "_label_base": {
       "type": "CHOICE",
       "members": [
@@ -234,20 +267,15 @@
           "name": "_ident_base"
         },
         {
-          "type": "STRING",
-          "value": "\\"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "STRING",
-          "value": "."
-        },
-        {
-          "type": "STRING",
-          "value": "-"
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 10,
+            "content": {
+              "type": "PATTERN",
+              "value": "[\\\\\\:\\.\\-\\%\\_#&]+"
+            }
+          }
         }
       ]
     },

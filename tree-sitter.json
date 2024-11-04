@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "d2",
+      "camelcase": "D2",
+      "scope": "source.d2",
+      "path": ".",
+      "file-types": [
+        "d2"
+      ],
+      "injection-regex": "d2"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree sitter grammar for d2lang",
+    "links": {
+      "repository": "https://github.com/ravsii/tree-sitter-d2"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

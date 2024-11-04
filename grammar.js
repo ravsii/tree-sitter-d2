@@ -63,16 +63,18 @@ module.exports = grammar({
 
     block: $ => seq("{", repeat($.declaration), "}"),
     label: $ => choice(
+      $._label_codeblock,
       repeat1($._label_base),
       token(seq('"', /.*/, '"')),
     ),
 
+    _label_codeblock: _ => choice(
+      seq(repeat1("|"), /[^\|]+/, repeat1("|")),
+    ),
+
     _label_base: $ => choice(
       $._ident_base,
-      "\\",
-      ":",
-      ".",
-      "-"
+      token(prec(PREC.label, /[\\\:\.\-\%\_#&]+/)) // idk how to make it better
     ),
 
     connection_refference: $ => seq(

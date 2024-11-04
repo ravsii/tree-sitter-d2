@@ -21,21 +21,6 @@
     "prebuildify": "^6.0.1"
   },
   "repository": "https://github.com/ravsii/tree-sitter-d2",
-  "tree-sitter": [
-    {
-      "scope": "source.d2",
-      "file-types": [
-        "d2"
-      ],
-      "injection-regex": "d2"
-    }
-  ],
-  "scripts": {
-    "install": "node-gyp-build",
-    "prestart": "tree-sitter build --wasm",
-    "start": "tree-sitter playground",
-    "test": "node --test bindings/node/*_test.js"
-  },
   "files": [
     "grammar.js",
     "binding.gyp",
@@ -44,5 +29,11 @@
     "queries/*",
     "src/**",
     "*.wasm"
-  ]
+  ],
+  "scripts": {
+    "install": "node-gyp-build",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  }
 }

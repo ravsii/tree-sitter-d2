@@ -140,6 +140,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -165,19 +166,11 @@
     "named": false
   },
   {
-    "type": "-",
-    "named": false
-  },
-  {
     "type": ".",
     "named": false
   },
   {
     "type": ":",
-    "named": false
-  },
-  {
-    "type": "\\",
     "named": false
   },
   {
@@ -198,6 +191,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

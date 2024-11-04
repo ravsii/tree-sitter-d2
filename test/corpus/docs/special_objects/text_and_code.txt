@@ -1,0 +1,18 @@
+====================|||
+Standalone text is Markdown
+====================|||
+
+explanation: |md
+  # I can do headers
+  - lists
+  - lists
+
+  And other normal markdown stuff
+|
+
+---|||
+
+(source_file
+  (declaration
+    identifier: (identifier)
+    label: (label)))
