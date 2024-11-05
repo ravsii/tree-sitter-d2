@@ -72,32 +72,32 @@ clouds: {
 
 (source_file
   (declaration
-    identifier: (identifier)
-    block: (block
+    (identifier)
+    (block
       (declaration
-        identifier: (identifier)
-        label: (label)
-        block: (block
+        (identifier)
+        (label)
+        (block
           (declaration
-            identifier: (identifier)
-            connection: (connection)
-            identifier: (identifier))
+            (identifier)
+            (connection)
+            (identifier))
           (declaration
-            identifier: (identifier)
-            connection: (connection)
-            identifier: (identifier))))
+            (identifier)
+            (connection)
+            (identifier))))
       (declaration
-        identifier: (identifier)
-        label: (label)
-        block: (block
+        (identifier)
+        (label)
+        (block
           (declaration
-            identifier: (identifier)
-            connection: (connection)
-            identifier: (identifier))))
+            (identifier)
+            (connection)
+            (identifier))))
       (declaration
-        identifier: (identifier)
-        connection: (connection)
-        identifier: (identifier)))))
+        (identifier)
+        (connection)
+        (identifier)))))
 
 ====================|||
 Reference parent

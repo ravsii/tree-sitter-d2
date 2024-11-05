@@ -34,17 +34,18 @@ module.exports = grammar({
       )
     ),
 
-    declaration: $ => seq(
+    declaration: $ => prec.right(seq(
       choice(
         $.connection_refference,
         $._expr,
       ),
-      opseq(":",
+      opseq(
+        ":",
         opfield("label", $.label),
+        opfield("block", $.block),
       ),
-      opfield("block", $.block),
-      terminator,
-    ),
+      optional(terminator),
+    )),
 
     _expr: $ => seq(
       field("identifier", $.identifier),
@@ -62,11 +63,11 @@ module.exports = grammar({
     ))),
 
     block: $ => seq("{", repeat($.declaration), "}"),
-    label: $ => choice(
+    label: $ => prec.right(choice(
       $.label_codeblock,
       repeat1($._label_base),
       token(seq('"', /.*/, '"')),
-    ),
+    )),
 
     label_codeblock: $ => choice(
       seq("|`", $._label_codeblock_lang, /[^`]*/, "`|"),
@@ -97,12 +98,8 @@ module.exports = grammar({
       optional($._fields),
     )),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => choice(
-      seq($._ident_base, rseq(/[\s\-\'_]+/, $._ident_base)), // normal
-      token("_"), // parent-ref
-    ),
-    _ident_base: _ => /[\p{L}\d\/\*]+/,
-
+    _ident: $ => seq($._ident_base, rseq(/[\s\-\'\_]+/, $._ident_base)),
+    _ident_base: _ => /[\p{L}\d\/\*\_]+/,
 
     comment: _ => token(seq('#', /.*/)),
   }
