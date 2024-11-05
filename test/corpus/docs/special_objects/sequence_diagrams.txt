@@ -1,0 +1,230 @@
+====================|||
+Basics
+====================|||
+
+shape: sequence_diagram
+alice -> bob: What does it mean\nto be well-adjusted?
+bob -> alice: The ability to play bridge or\ngolf as if they were games.
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
+====================|||
+Scoping Example
+====================|||
+
+Office chatter: {
+  shape: sequence_diagram
+  alice: Alice
+  bob: Bobby
+  awkward small talk: {
+    alice -> bob: uhm, hi
+    bob -> alice: oh, hello
+    icebreaker attempt: {
+      alice -> bob: what did you have for lunch?
+    }
+    unfortunate outcome: {
+      bob -> alice: that's personal
+    }
+  }
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (connection)
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (connection)
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (connection)
+                (identifier)
+                (label))))
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (connection)
+                (identifier)
+                (label)))))))))
+
+====================|||
+Ordering
+====================|||
+
+shape: sequence_diagram
+# Remember that semicolons allow multiple objects to be defined in one line
+# Actors will appear from left-to-right as a, b, c, d...
+a; b; c; d
+# ... even if the connections are in a different order
+c -> d
+d -> a
+b -> d
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (comment)
+  (comment)
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (comment)
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+Spans
+====================|||
+
+shape: sequence_diagram
+alice.t1 -> bob
+alice.t2 -> bob.a
+alice.t2.a -> bob.a
+alice.t2.a <- bob.a
+alice.t2 <- bob.a
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier)))
+  (declaration
+    (identifier
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier
+      (identifier)))
+  (declaration
+    (identifier
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier
+      (identifier)))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))))
+
+====================|||
+Groups
+====================|||
+
+shape: sequence_diagram
+# Predefine actors
+alice
+bob
+shower thoughts: {
+  alice -> bob: A physicist is an atom's way of knowing about atoms.
+  alice -> bob: Today is the first day of the rest of your life.
+}
+life advice: {
+  bob -> alice: If all else fails, lower your standards.
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (comment)
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (connection)
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (connection)
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (connection)
+        (identifier)
+        (label)))))
