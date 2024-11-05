@@ -130,6 +130,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -177,6 +187,10 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -218,6 +232,10 @@
   },
   {
     "type": "connection_identifier",
+    "named": true
+  },
+  {
+    "type": "escape_sequence",
     "named": true
   },
   {

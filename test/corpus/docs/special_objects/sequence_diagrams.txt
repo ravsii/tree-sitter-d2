@@ -228,3 +228,42 @@ life advice: {
         (connection)
         (identifier)
         (label)))))
+
+====================|||
+Notes
+====================|||
+
+shape: sequence_diagram
+alice -> bob
+bob."In the eyes of my dog, I'm a man."
+# Notes can go into groups, too
+important insight: {
+  bob."Cold hands, no gloves."
+}
+bob -> alice: Chocolate chip.
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier
+      (identifier)))
+  (comment)
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier
+          (identifier)))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))

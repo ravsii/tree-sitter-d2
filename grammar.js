@@ -89,23 +89,34 @@ module.exports = grammar({
     ),
 
     connection_refference: $ => seq(
-      "(",
-      $._expr,
-      ")",
+      "(", $._expr, ")",
       field("connection_identifier", $.connection_identifier),
       optional($._fields),
     ),
     connection_identifier: _ => token(seq("[", /\d+/, "]",)),
 
-    identifier: $ => prec.left(-1, seq(
-      $._ident,
-      optional($._fields),
-    )),
+    identifier: $ => choice(
+      seq('"', repeat(choice($.escape_sequence, /[^"\\]/,)), '"'),
+      $._identifier_base,
+    ),
+    _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => seq($._ident_base, rseq(/[\s\-\']+/, $._ident_base)),
+    _ident: $ => seq($._ident_base, rseq(/[\s\-\'\,]+/, $._ident_base)),
     _ident_base: _ => /[\p{L}\d\/\*\_]+/,
 
     comment: _ => token(seq('#', /.*/)),
+
+    escape_sequence: _ => token(choice(
+      '\\\\',    // Matches the backslash character "\"
+      '\\"',     // Matches an escaped double-quote "\""
+      '\\n',     // Matches a newline "\n"
+      '\\t',     // Matches a tab "\t"
+      '\\r',     // Matches a carriage return "\r"
+      '\\b',     // Matches a backspace "\b"
+      '\\f',     // Matches a form feed "\f"
+      /\\u[0-9a-fA-F]{4}/,  // Matches a Unicode escape sequence, e.g., "\u1234"
+      /\\x[0-9a-fA-F]{2}/   // Matches a hexadecimal escape sequence, e.g., "\x1F"
+    )),
   }
 });
 
