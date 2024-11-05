@@ -1,0 +1,175 @@
+====================|||
+Basics
+====================|||
+
+my_table: {
+  shape: sql_table
+  # This is defined using the shorthand syntax for labels discussed in the containers section.
+  # But here it's for the type of a constraint.
+  # The id field becomes a map that looks like {type: int; constraint: primary_key}
+  id: int {constraint: primary_key}
+  last_updated: timestamp with time zone
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (comment)
+      (comment)
+      (comment)
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+          (identifier)
+          (label))))
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+Multiple constraints
+====================|||
+
+x: int { constraint: [primary_key; unique] }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_constraint)
+          (label_constraint))))))
+
+
+====================|||
+Foreign Keys
+====================|||
+
+objects: {
+  shape: sql_table
+  id: int {constraint: primary_key}
+  disk: int {constraint: foreign_key}
+
+  json: jsonb {constraint: unique}
+  last_updated: timestamp with time zone
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+Example
+====================|||
+
+cloud: {
+  disks: {
+    shape: sql_table
+    id: int {constraint: primary_key}
+  }
+  blocks: {
+    shape: sql_table
+    id: int {constraint: primary_key}
+    disk: int {constraint: foreign_key}
+    blob: blob
+  }
+  blocks.disk -> disks.id
+
+  AWS S3 Vancouver -> disks
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (label)
+            (block
+              (declaration
+                (identifier)
+                (label))))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (label)
+            (block
+              (declaration
+                (identifier)
+                (label))))
+          (declaration
+            (identifier)
+            (label)
+            (block
+              (declaration
+                (identifier)
+                (label))))
+          (declaration
+            (identifier)
+            (label))))
+      (declaration
+        (identifier
+          (identifier))
+        (connection)
+        (identifier
+          (identifier)))
+      (declaration
+        (identifier)
+        (connection)
+        (identifier)))))

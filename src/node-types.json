@@ -137,11 +137,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "label_codeblock",
+          "named": true
+        },
+        {
+          "type": "label_constraint",
           "named": true
         }
       ]
@@ -189,6 +193,18 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "`|",
     "named": false
   },
@@ -202,6 +218,10 @@
   },
   {
     "type": "connection_identifier",
+    "named": true
+  },
+  {
+    "type": "label_constraint",
     "named": true
   },
   {

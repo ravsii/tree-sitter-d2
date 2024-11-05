@@ -67,6 +67,7 @@ module.exports = grammar({
       $.label_codeblock,
       repeat1($._label_base),
       token(seq('"', /.*/, '"')),
+      seq('[', $._label_constraints, ']'),
     )),
 
     label_codeblock: $ => choice(
@@ -78,6 +79,9 @@ module.exports = grammar({
 
     _label_codeblock_lang: _ => token(/[a-zA-Z]+/),
     _label_codeblock_body: _ => repeat1(seq(/.+/, /\s*/)),
+    _label_constraints: $ => repeat1(seq($.label_constraint, optional(";"))),
+
+    label_constraint: _ => token(/[a-z_]+/),
 
     _label_base: $ => choice(
       $._ident_base,
@@ -98,7 +102,7 @@ module.exports = grammar({
       optional($._fields),
     )),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => seq($._ident_base, rseq(/[\s\-\'\_]+/, $._ident_base)),
+    _ident: $ => seq($._ident_base, rseq(/[\s\-\']+/, $._ident_base)),
     _ident_base: _ => /[\p{L}\d\/\*\_]+/,
 
     comment: _ => token(seq('#', /.*/)),

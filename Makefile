@@ -26,7 +26,7 @@ watch-hl:
 	reload
 
 watch-parse:
-	watchexec --exts d2,js,scm -- make parse
+	watchexec --exts d2,js,scm,txt -- make parse
 
 watch-test:
 	watchexec --exts d2,js,scm,txt -- make test
