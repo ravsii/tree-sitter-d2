@@ -267,3 +267,188 @@ bob -> alice: Chocolate chip.
     (connection)
     (identifier)
     (label)))
+
+====================|||
+Self-messages
+====================|||
+
+bob -> alice: Chocolate chip.
+shape: sequence_diagram
+son -> father: Can I borrow your car?
+friend -> father: Never lend your car to anyone to whom you have given birth.
+father -> father: internal debate ensues
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
+====================|||
+Customization
+====================|||
+
+shape: sequence_diagram
+scorer: {shape: person}
+scorer.t -> itemResponse.t: getItem()
+scorer.t <- itemResponse.t: item {
+  style.stroke-dash: 5
+}
+
+scorer.t -> item.t1: getRubric()
+scorer.t <- item.t1: rubric {
+  style.stroke-dash: 5
+}
+
+scorer.t -> essayRubric.t: applyTo(essayResp)
+itemResponse -> essayRubric.t.c
+essayRubric.t.c -> concept.t: match(essayResponse)
+scorer <- essayRubric.t: score {
+  style.stroke-dash: 5
+}
+
+scorer.t -> itemOutcome.t1: new
+scorer.t -> item.t2: getNormalMinimum()
+scorer.t -> item.t3: getNormalMaximum()
+
+scorer.t -> itemOutcome.t2: setScore(score)
+scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label)
+    (block
+      (declaration
+        (identifier
+          (identifier))
+        (label))))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label)
+    (block
+      (declaration
+        (identifier
+          (identifier))
+        (label))))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier
+      (identifier))
+    (label)
+    (block
+      (declaration
+        (identifier
+          (identifier))
+        (label))))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier
+      (identifier))
+    (label)))

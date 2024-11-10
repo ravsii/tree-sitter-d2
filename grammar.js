@@ -85,7 +85,7 @@ module.exports = grammar({
 
     _label_base: $ => choice(
       $._ident_base,
-      token(prec(PREC.label, /[\\\:\.\-\%\_#&\?\'\,\']+/)) // idk how to make it better
+      token(prec(PREC.label, /[\(\)\\\:\.\-\%\_#&\?\'\,\']+/)) // idk how to make it better
     ),
 
     connection_refference: $ => seq(
