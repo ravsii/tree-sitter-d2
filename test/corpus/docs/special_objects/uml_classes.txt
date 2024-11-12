@@ -1,0 +1,26 @@
+====================|||
+Basics
+====================|||
+
+MyClass: {
+  shape: class
+
+  field: "[]string"
+  method(a uint64, b bool): (x, y int)
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (label)))))
