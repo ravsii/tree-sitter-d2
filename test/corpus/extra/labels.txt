@@ -1,0 +1,29 @@
+====================|||
+Escape label
+====================|||
+
+shape1: test label \{
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)))
+
+====================|||
+Escape label with block
+====================|||
+
+shape1: test label \{ {
+  # comment
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (comment))))
