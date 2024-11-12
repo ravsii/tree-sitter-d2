@@ -9,6 +9,7 @@ const PREC = {
   label: 10,
 };
 
+
 const terminator = token(prec(PREC.term, choice(/\n/, ';', '\0')));
 
 const opseq = (...x) => optional(seq(...x))
@@ -38,8 +39,9 @@ module.exports = grammar({
 
     declaration: $ => prec.right(seq(
       choice(
-        $.connection_refference,
-        $._expr,
+        prec(10, $.method_declaration),
+        prec(2, $.connection_refference),
+        prec(1, $._expr),
       ),
       opseq(
         ":",
@@ -49,13 +51,17 @@ module.exports = grammar({
       optional(terminator),
     )),
 
-    _expr: $ => seq(
+    _expr: $ => prec.right(seq(
       field("identifier", $.identifier),
       rseq(
         field("connection", $.connection),
         field("identifier", $.identifier),
       ),
-    ),
+    )),
+
+    method_declaration: $ => prec(10000, seq(
+      $._ident_base, "(", /[^\(]*/, ")",
+    )),
 
     connection: _ => token(prec(PREC.connection, choice(
       /<-+>/,
@@ -104,9 +110,8 @@ module.exports = grammar({
     ),
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => seq($._ident_base, rseq(/[\s\-\'\,]+/, $._ident_base)),
+    _ident: $ => r1seq($._ident_base, optional(/[\s\-\'\,\(\)]+/)),
     _ident_base: _ => /[\p{L}\d\/\*\_]+/,
-
 
     escape_sequence: _ => token(choice(
       '\\\\',

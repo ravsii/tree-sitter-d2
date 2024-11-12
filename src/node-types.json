@@ -112,6 +112,10 @@
         {
           "type": "connection_refference",
           "named": true
+        },
+        {
+          "type": "method_declaration",
+          "named": true
         }
       ]
     }
@@ -167,6 +171,11 @@
     "fields": {}
   },
   {
+    "type": "method_declaration",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -212,6 +221,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\{",
     "named": false
   },
   {
