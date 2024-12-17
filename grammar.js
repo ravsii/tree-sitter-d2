@@ -94,7 +94,7 @@ module.exports = grammar({
     _label_base: $ => choice(
       $._ident_base,
       token(prec(PREC.label, "\\{")),
-      token(prec(PREC.label, /[\(\)\\\:\.\-\%\_#&\?\'\,\']+/)) // idk how to make it better
+      token(prec(PREC.label, /[\(\)\\:\.\-%_#&\?\',\']+/)) // idk how to make it better
     ),
 
     connection_refference: $ => seq(
@@ -110,8 +110,8 @@ module.exports = grammar({
     ),
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => r1seq($._ident_base, optional(/[\s\-\'\,\(\)]+/)),
-    _ident_base: _ => /[\p{L}\d\/\*\_]+/,
+    _ident: $ => r1seq($._ident_base, optional(/[\s\-\',\(\)]+/)),
+    _ident_base: _ => /[\p{L}\d\/\*_]+/,
 
     escape_sequence: _ => token(choice(
       '\\\\',

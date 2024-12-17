@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "d2",
   "word": "_ident_base",
   "rules": {
@@ -497,7 +496,7 @@
             "value": 10,
             "content": {
               "type": "PATTERN",
-              "value": "[\\(\\)\\\\\\:\\.\\-\\%\\_#&\\?\\'\\,\\']+"
+              "value": "[\\(\\)\\\\:\\.\\-%_#&\\?\\',\\']+"
             }
           }
         }
@@ -657,7 +656,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[\\s\\-\\'\\,\\(\\)]+"
+                "value": "[\\s\\-\\',\\(\\)]+"
               },
               {
                 "type": "BLANK"
@@ -669,7 +668,7 @@
     },
     "_ident_base": {
       "type": "PATTERN",
-      "value": "[\\p{L}\\d\\/\\*\\_]+"
+      "value": "[\\p{L}\\d\\/\\*_]+"
     },
     "escape_sequence": {
       "type": "TOKEN",
@@ -732,3 +731,4 @@
   "inline": [],
   "supertypes": []
 }
+
