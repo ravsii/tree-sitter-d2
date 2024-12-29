@@ -1,6 +1,7 @@
 # tree-sitter-d2
 
-![Build & Test (main)](https://img.shields.io/github/actions/workflow/status/ravsii/tree-sitter-d2/test.yml?label=Build%20%26%20Test%20(main)&branch=main)
+[![Build](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml)
+[![Test](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml)
 
 This is an alternative to pleshevskiy's [tree-sitter-d2](https://github.com/pleshevskiy/tree-sitter-d2) ([updated version](https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2)).
 
