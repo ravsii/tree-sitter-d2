@@ -39,9 +39,9 @@ module.exports = grammar({
 
     declaration: $ => prec.right(seq(
       choice(
-        prec(10, $.method_declaration),
-        prec(2, $.connection_refference),
-        prec(1, $._expr),
+        $._method_declaration,
+        $.connection_refference,
+        $._expr,
       ),
       opseq(
         ":",
@@ -59,9 +59,31 @@ module.exports = grammar({
       ),
     )),
 
-    method_declaration: $ => prec(10000, seq(
-      $._ident_base, "(", /[^\(]*/, ")",
+    _method_declaration: $ => prec.right(100, seq(
+      $.identifier,
+      "(", optional($.arguments), ")",
+      opseq(":", "(", $.returns, ")")
     )),
+
+    returns: $ => alias($.arguments, "returns"),
+    arguments: $ => choice(
+      // arg type
+      seq($.argument_name, $.argument_type),
+      // arg type, arg type
+      seq(
+        $.argument_name, $.argument_type,
+        r1seq(",", $.argument_name, $.argument_type)
+      ),
+      // arg1, arg2 type1, arg3, arg4 type2
+      r1seq(
+        $.argument_name, r1seq(",", $.argument_name),
+        $.argument_type,
+        optional(","),
+      ),
+    ),
+    argument_name: _ => token(/[a-zA-Z0-9_]+/),
+    argument_type: _ => token(/[a-zA-Z0-9_\[\]]+/),
+
 
     connection: _ => token(prec(PREC.connection, choice(
       /<-+>/,

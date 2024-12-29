@@ -1,5 +1,24 @@
 [
   {
+    "type": "arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_name",
+          "named": true
+        },
+        {
+          "type": "argument_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -106,15 +125,23 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
         {
           "type": "connection_refference",
           "named": true
         },
         {
-          "type": "method_declaration",
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "returns",
           "named": true
         }
       ]
@@ -171,13 +198,28 @@
     "fields": {}
   },
   {
-    "type": "method_declaration",
+    "type": "returns",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "argument_name",
+          "named": true
+        },
+        {
+          "type": "argument_type",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -207,6 +249,10 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -233,6 +279,14 @@
   {
     "type": "`|",
     "named": false
+  },
+  {
+    "type": "argument_name",
+    "named": true
+  },
+  {
+    "type": "argument_type",
+    "named": true
   },
   {
     "type": "comment",
