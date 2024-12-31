@@ -84,11 +84,7 @@ vim.filetype.add({
 })
 ```
 
-2. Do
-
-```bash
-TSInstall d2
-```
+2. Do `:TSInstall d2`
 
 3. Copy queries to your `nvim-treesitter`. It should be located under your
    plugins manager directory.
@@ -103,7 +99,7 @@ TSInstall d2
 └── locals.scm
 ```
 
-4. `TSModuleInfo` should have `highlight` option enabled.
+4. Check if `:TSModuleInfo` has `highlight` option enabled.
 
 ### Helix
 
