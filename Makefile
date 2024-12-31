@@ -30,3 +30,10 @@ watch-parse:
 
 watch-test:
 	watchexec --exts d2,js,scm,txt -- make test
+
+# Do not use this, this is for temporary testing until I find a better way to
+# inject queries
+queries:
+	cp queries/* ~/.local/share/nvim/lazy/nvim-treesitter/queries/d2/
+
+.PHONY: all queries
