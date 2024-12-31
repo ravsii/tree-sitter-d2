@@ -6,7 +6,7 @@
 This is an alternative to pleshevskiy's [tree-sitter-d2] (up to date version on his own [git]).
 
 [tree-sitter-d2]: https://github.com/pleshevskiy/tree-sitter-d2
-[git]: (https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2)
+[git]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2
 
 _This is still in the development phase, but sort-of usable._
 
