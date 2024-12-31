@@ -42,8 +42,8 @@ pleshivsky's version handles other locales and spaces very poorly.
 
 - Markdown is a mess
 - Missing highlights for `shape`
-- Note that text in the right is red, meaning it was not parsed correctly and
-  instead throws an `@error` ([this rule])
+- Note that text on the right is red, meaning it was not parsed correctly and
+  throws an `@error` instead ([this rule])
 
 [this rule]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2/src/branch/main/queries/highlights.scm#L61
 
