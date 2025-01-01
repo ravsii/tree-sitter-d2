@@ -36,7 +36,7 @@ Please note that:
 
 pleshivsky's version handles other locales and spaces very poorly.
 
-| `nvim` + this project               | `helix` + pleshivky's grammar            |
+| `nvim` + this project               | `helix` + pleshivsky's grammar           |
 | ----------------------------------- | ---------------------------------------- |
 | ![this](./img/comparison1-nvim.png) | ![pleshiski's](./img/comparison1-hx.png) |
 
@@ -49,7 +49,7 @@ pleshivsky's version handles other locales and spaces very poorly.
 
 ### Various missing highlights
 
-| `nvim` + this project               | `helix` + pleshivky's grammar            |
+| `nvim` + this project               | `helix` + pleshivsky's grammar           |
 | ----------------------------------- | ---------------------------------------- |
 | ![this](./img/comparison2-nvim.png) | ![pleshiski's](./img/comparison2-hx.png) |
 
@@ -62,8 +62,6 @@ pleshivsky's version handles other locales and spaces very poorly.
 ### Neovim
 
 1. Add this to your config, after installing [nvim-treesitter]
-
-[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 
 ```lua
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
@@ -85,12 +83,19 @@ vim.filetype.add({
 ```
 
 2. Do `:TSInstall d2`
+3. Copy queries to one of your `rtp` paths. Usually `~/.config/nvim/` will do
+   the job. You can check it using `:echo &rtp` command.
 
-3. Copy queries to your `nvim-treesitter`. It should be located under your
-   plugins manager directory.
+Example using `~/.config/nvim`
 
-   i.e. for `lazy.nvim` it's `~/.local/share/nvim/lazy`, so the directory
-   should like like this:
+```text
+~/.config/nvim/queries/d2
+├── highlights.scm
+├── injections.scm
+└── locals.scm
+```
+
+Example using default [nvim-treesitter] dir with [lazy.nvim]
 
 ```text
 ~/.local/share/nvim/lazy/nvim-treesitter/queries/d2
@@ -100,6 +105,9 @@ vim.filetype.add({
 ```
 
 4. Check if `:TSModuleInfo` has `highlight` option enabled.
+
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[lazy.nvim]: https://github.com/folke/lazy.nvim
 
 ### Helix
 
