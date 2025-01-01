@@ -34,6 +34,7 @@ watch-test:
 # Do not use this, this is for temporary testing until I find a better way to
 # inject queries
 queries:
-	cp queries/* ~/.local/share/nvim/lazy/nvim-treesitter/queries/d2/
+	mkdir -p ~/.config/nvim/queries/d2/
+	cp queries/* ~/.config/nvim/queries/d2/
 
 .PHONY: all queries
