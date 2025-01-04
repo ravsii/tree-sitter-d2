@@ -29,6 +29,10 @@
         {
           "type": "declaration",
           "named": true
+        },
+        {
+          "type": "method_declaration",
+          "named": true
         }
       ]
     }
@@ -125,23 +129,11 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
-          "type": "arguments",
-          "named": true
-        },
-        {
           "type": "connection_refference",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "returns",
           "named": true
         }
       ]
@@ -196,6 +188,29 @@
     "type": "label_codeblock",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "method_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "returns",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "returns",

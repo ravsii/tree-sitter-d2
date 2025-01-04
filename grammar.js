@@ -41,7 +41,6 @@ module.exports = grammar({
       choice(
         $._expr,
         $.connection_refference,
-        $._method_declaration,
       ),
       opseq(
         ":",
@@ -59,7 +58,7 @@ module.exports = grammar({
       ),
     )),
 
-    _method_declaration: $ => prec.right(100, seq(
+    method_declaration: $ => prec.right(100, seq(
       $.identifier,
       "(", optional($.arguments), ")",
       opseq(":", "(", optional($.returns), ")")
@@ -91,7 +90,11 @@ module.exports = grammar({
       /--+/,
     ))),
 
-    block: $ => seq("{", repeat($.declaration), "}"),
+    block: $ => seq("{", repeat(choice(
+      $.declaration,
+      $.method_declaration,
+    )),
+      "}"),
     label: $ => prec.right(choice(
       $.label_codeblock,
       repeat1($._label_base),
@@ -125,14 +128,15 @@ module.exports = grammar({
     ),
     connection_identifier: _ => token(seq("[", /\d+/, "]",)),
 
-    identifier: $ => choice(
-      seq('"', repeat(choice($.escape_sequence, /[^"]/)), '"'),
-      $._identifier_base,
-    ),
+    identifier: $ => seq(
+      choice(
+        seq('"', repeat(choice($.escape_sequence, /[^"]/)), '"'),
+        $._identifier_base,
+      )),
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq(".", field("field", $.identifier)),
-    _ident: $ => r1seq($._ident_base, optional(/[\s\-\',]+/)),
-    _ident_base: _ => /[\p{L}\d\/\*_]+/,
+    _ident: $ => r1seq($._ident_base, optional(/[\s\',]+/)),
+    _ident_base: _ => /([\p{L}\d\/\*_+\-]|\\#)+/,
 
     escape_sequence: _ => token(choice(
       '\\\\',

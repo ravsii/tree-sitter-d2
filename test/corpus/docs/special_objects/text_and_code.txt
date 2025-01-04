@@ -108,13 +108,13 @@ results -> favorable -> will of the people
     (identifier)
     (connection)
     (identifier))
-    (declaration
+  (declaration
     (identifier)
     (connection)
     (identifier)
     (connection)
     (identifier))
-    (declaration
+  (declaration
     (identifier)
     (connection)
     (identifier)
