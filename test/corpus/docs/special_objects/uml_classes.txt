@@ -1,4 +1,59 @@
 ====================|||
+Basics (No Args, No Returns)
+====================|||
+
+MyClass: {
+  shape: class
+
+  field: "[]string"
+  method(): ()
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)))))
+
+====================|||
+Basics (No Args, Single Return)
+====================|||
+
+MyClass: {
+  shape: class
+
+  field: "[]string"
+  method(): (x int)
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (label))
+    (declaration
+      (identifier)
+      (returns
+        (argument_name)
+        (argument_type))))))
+
+====================|||
 Basics (Single Arg, no return)
 ====================|||
 
@@ -58,7 +113,6 @@ MyClass: {
       (returns
         (argument_name)
         (argument_type))))))
-
 
 ====================|||
 Basics (Multiple Args, Single Return)

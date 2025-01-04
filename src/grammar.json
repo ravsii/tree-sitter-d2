@@ -50,7 +50,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_method_declaration"
+                "name": "_expr"
               },
               {
                 "type": "SYMBOL",
@@ -58,7 +58,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_expr"
+                "name": "_method_declaration"
               }
             ]
           },
@@ -232,8 +232,16 @@
                     "value": "("
                   },
                   {
-                    "type": "SYMBOL",
-                    "name": "returns"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "returns"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
                   },
                   {
                     "type": "STRING",
@@ -800,7 +808,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[\\s\\-\\',\\(\\)]+"
+                "value": "[\\s\\-\\',]+"
               },
               {
                 "type": "BLANK"
