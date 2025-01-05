@@ -19,11 +19,10 @@ const terminator = token(prec(PREC.term, choice(/\n/, ';', '\0')));
  * @returns {ChoiceRule}
  */
 const opseq = (...rules) => optional(seq(...rules));
-const opfield = (...x) => optional(field(...x));
 const rseq = (...x) => repeat(seq(...x));
 const r1seq = (...x) => repeat1(seq(...x));
 
-export default grammar({
+module.exports = grammar({
   name: 'd2',
 
   word: $ => $._ident_base,
