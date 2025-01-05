@@ -31,6 +31,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "method_declaration",
           "named": true
         }
@@ -118,6 +122,10 @@
         },
         {
           "type": "connection_refference",
+          "named": true
+        },
+        {
+          "type": "import",
           "named": true
         },
         {
@@ -237,6 +245,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "method_declaration",
           "named": true
         }
@@ -309,6 +321,10 @@
   },
   {
     "type": "escape_sequence",
+    "named": true
+  },
+  {
+    "type": "import",
     "named": true
   },
   {

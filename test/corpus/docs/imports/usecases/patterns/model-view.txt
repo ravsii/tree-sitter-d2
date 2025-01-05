@@ -1,0 +1,98 @@
+====================|||
+models.d2
+====================|||
+
+postgres: {
+  shape: cylinder
+  icon: https://icons.terrastruct.com/dev%2Fpostgresql.svg
+  icon.near: bottom-center
+}
+it: IT Guy {
+  shape: person
+  style: {
+    fill: maroon
+  }
+}
+vpn: {
+  style: {
+    shadow: true
+  }
+  tooltip: IP is 192.2.2.1
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier
+          (identifier))
+        (label))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+access-view.d2
+====================|||
+
+...@models
+it -> vpn -> postgres
+
+---|||
+
+(source_file
+  (import)
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+ssh-view.d2
+====================|||
+
+...@models
+it -> postgres: ssh, bypassing VPN
+
+---|||
+
+(source_file
+  (import)
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))

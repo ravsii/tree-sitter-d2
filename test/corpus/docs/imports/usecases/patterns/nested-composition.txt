@@ -1,0 +1,119 @@
+====================|||
+overview.d2
+====================|||
+
+serviceA -> serviceB
+serviceB.link: layers.serviceB
+
+layers: {
+  serviceB: @serviceB
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (import)))))
+
+====================|||
+serviceB.d2
+====================|||
+
+aws vault: {
+  key
+  token
+}
+stripe: {
+  customer id
+}
+aws vault.key -> data
+aws vault.token -> data
+stripe.customer id -> data
+data.link: layers.data
+
+layers: {
+  data: @data
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier))
+      (declaration
+        (identifier))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier))))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier))
+  (declaration
+    (identifier
+      (identifier))
+    (connection)
+    (identifier))
+  (declaration
+    (identifier
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (import)))))
+
+====================|||
+data.d2
+====================|||
+
+users: {
+  shape: sql_table
+  id: int
+  token: string
+  customer_id: string
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label)))))
