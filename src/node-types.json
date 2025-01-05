@@ -247,6 +247,10 @@
         {
           "type": "declaration",
           "named": true
+        },
+        {
+          "type": "method_declaration",
+          "named": true
         }
       ]
     }
