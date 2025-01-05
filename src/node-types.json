@@ -87,16 +87,6 @@
     "type": "declaration",
     "named": true,
     "fields": {
-      "block": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          }
-        ]
-      },
       "connection": {
         "multiple": true,
         "required": false,
@@ -116,24 +106,22 @@
             "named": true
           }
         ]
-      },
-      "label": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "label",
-            "named": true
-          }
-        ]
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
+          "type": "block",
+          "named": true
+        },
+        {
           "type": "connection_refference",
+          "named": true
+        },
+        {
+          "type": "label",
           "named": true
         }
       ]

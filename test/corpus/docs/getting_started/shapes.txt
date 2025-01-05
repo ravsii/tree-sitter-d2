@@ -65,11 +65,11 @@ Cloud.shape: cloud
 (source_file
   (declaration
     identifier: (identifier)
-    label: (label))
+    (label))
   (declaration
     identifier: (identifier
         field: (identifier))
-    label: (label)))
+    (label)))
 
 ==================
 Example (summary)
@@ -86,14 +86,14 @@ Cassandra
 (source_file
   (declaration
     identifier: (identifier)
-    label: (label))
+    (label))
   (declaration
     identifier: (identifier)
-    label: (label))
+    (label))
   (declaration
     identifier: (identifier
       field: (identifier))
-    label: (label))
+    (label))
   (declaration
     identifier: (identifier))
   (declaration

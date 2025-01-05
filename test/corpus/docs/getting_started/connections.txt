@@ -195,4 +195,4 @@ Referencing connections
       connection_identifier: (connection_identifier)
       field: (identifier)
       field: (identifier))
-    label: (label)))
+    (label)))

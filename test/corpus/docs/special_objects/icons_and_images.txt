@@ -11,10 +11,10 @@ my network: {
 (source_file
   (declaration
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier)
-        label: (label)))))
+        (label)))))
 
 ====================|||
 Big Example
@@ -53,68 +53,68 @@ vpc: VPC 1 10.1.0.0./16 {
 (source_file
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        block: (block
+        (block
           (declaration
             identifier: (identifier)
-            label: (label))
+            (label))
           (declaration
             identifier: (identifier)
-            label: (label))
+            (label))
           (declaration
             identifier: (identifier)
-            label: (label))))
+            (label))))
       (declaration
         identifier: (identifier)
-        label: (label)
-        block: (block
+        (label)
+        (block
           (declaration
             identifier: (identifier)
-            block: (block
+            (block
               (declaration
                 identifier: (identifier)
-                label: (label))
+                (label))
               (declaration
                 identifier: (identifier)
-                label: (label))
+                (label))
               (declaration
                 identifier: (identifier)
-                label: (label))
+                (label))
               (declaration
                 identifier: (identifier)
-                label: (label))))
+                (label))))
           (declaration
             identifier: (identifier)
-            label: (label)
-            block: (block
+            (label)
+            (block
               (declaration
                 identifier: (identifier)
-                label: (label))
+                (label))
               (declaration
                 identifier: (identifier)
-                block: (block
+                (block
                   (declaration
                     identifier: (identifier)
-                    label: (label))
+                    (label))
                   (declaration
                     identifier: (identifier)
-                    label: (label))
+                    (label))
                   (declaration
                     identifier: (identifier)
-                    label: (label))))
+                    (label))))
               (declaration
                 identifier: (identifier)
-                label: (label)
-                block: (block
+                (label)
+                (block
                   (declaration
                     identifier: (identifier)
-                    label: (label)))))))))))
+                    (label)))))))))))
 
 ====================|||
 Add shape: image for standalone icon shapes

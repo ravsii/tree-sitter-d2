@@ -3,19 +3,22 @@
 
 const PREC = {
   term: 1000,
-
   connection: 100,
   conn_identifier: 90,
-
   block: 20,
-
   label: 10,
 };
 
 
 const terminator = token(prec(PREC.term, choice(/\n/, ';', '\0')));
 
-const opseq = (...x) => optional(seq(...x));
+/**
+ * Shortcut for optional(seq(...rules))
+ *
+ * @param {RuleOrLiteral[]} rules
+ * @returns {ChoiceRule}
+ */
+const opseq = (...rules) => optional(seq(...rules));
 const opfield = (...x) => optional(field(...x));
 const rseq = (...x) => repeat(seq(...x));
 const r1seq = (...x) => repeat1(seq(...x));
@@ -52,8 +55,8 @@ export default grammar({
       ),
       opseq(
         ':',
-        opfield('label', $.label),
-        opfield('block', $.block),
+        optional($.label),
+        optional($.block),
       ),
       optional(terminator),
     )),
