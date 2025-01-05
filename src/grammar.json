@@ -10,7 +10,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "declaration"
+            "name": "_base_declaration"
           },
           {
             "type": "SYMBOL",
@@ -38,6 +38,19 @@
           }
         ]
       }
+    },
+    "_base_declaration": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "method_declaration"
+        }
+      ]
     },
     "declaration": {
       "type": "PREC_RIGHT",
@@ -409,17 +422,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "declaration"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "method_declaration"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "_base_declaration"
           }
         },
         {
@@ -830,7 +834,8 @@
     },
     "_ident_base": {
       "type": "PATTERN",
-      "value": "([\\p{L}\\d\\/\\*_+\\-]|\\\\#)+"
+      "value": "([\\p{L}\\d\\/\\*_+\\-]|\\\\#)+",
+      "flags": "u"
     },
     "escape_sequence": {
       "type": "TOKEN",

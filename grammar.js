@@ -1,3 +1,6 @@
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 const PREC = {
   term: 1000,
 
@@ -12,12 +15,12 @@ const PREC = {
 
 const terminator = token(prec(PREC.term, choice(/\n/, ';', '\0')));
 
-const opseq = (...x) => optional(seq(...x))
-const opfield = (...x) => optional(field(...x))
-const rseq = (...x) => repeat(seq(...x))
-const r1seq = (...x) => repeat1(seq(...x))
+const opseq = (...x) => optional(seq(...x));
+const opfield = (...x) => optional(field(...x));
+const rseq = (...x) => repeat(seq(...x));
+const r1seq = (...x) => repeat1(seq(...x));
 
-module.exports = grammar({
+export default grammar({
   name: 'd2',
 
   word: $ => $._ident_base,
@@ -30,12 +33,17 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat(
       choice(
-        $.declaration,
+        $._base_declaration,
         $.comment,
-      )
+      ),
     ),
 
     comment: _ => token(seq('#', /.+/, '\n')),
+
+    _base_declaration: $ => choice(
+      $.declaration,
+      $.method_declaration,
+    ),
 
     declaration: $ => prec.right(seq(
       choice(
@@ -43,41 +51,42 @@ module.exports = grammar({
         $.connection_refference,
       ),
       opseq(
-        ":",
-        opfield("label", $.label),
-        opfield("block", $.block),
+        ':',
+        opfield('label', $.label),
+        opfield('block', $.block),
       ),
       optional(terminator),
     )),
 
+
     _expr: $ => prec.right(seq(
-      field("identifier", $.identifier),
+      field('identifier', $.identifier),
       rseq(
-        field("connection", $.connection),
-        field("identifier", $.identifier),
+        field('connection', $.connection),
+        field('identifier', $.identifier),
       ),
     )),
 
     method_declaration: $ => prec.right(100, seq(
       $.identifier,
-      "(", optional($.arguments), ")",
-      opseq(":", "(", optional($.returns), ")")
+      '(', optional($.arguments), ')',
+      opseq(':', '(', optional($.returns), ')'),
     )),
 
-    returns: $ => alias($.arguments, "returns"),
+    returns: $ => alias($.arguments, 'returns'),
     arguments: $ => choice(
       // arg type
       seq($.argument_name, $.argument_type),
       // arg type, arg type
       seq(
         $.argument_name, $.argument_type,
-        r1seq(",", $.argument_name, $.argument_type)
+        r1seq(',', $.argument_name, $.argument_type),
       ),
       // arg1, arg2 type1, arg3, arg4 type2
       r1seq(
-        $.argument_name, r1seq(",", $.argument_name),
+        $.argument_name, r1seq(',', $.argument_name),
         $.argument_type,
-        optional(","),
+        optional(','),
       ),
     ),
     argument_name: _ => token(/[a-zA-Z0-9_]+/),
@@ -90,11 +99,7 @@ module.exports = grammar({
       /--+/,
     ))),
 
-    block: $ => seq("{", repeat(choice(
-      $.declaration,
-      $.method_declaration,
-    )),
-      "}"),
+    block: $ => seq('{', repeat($._base_declaration), '}'),
     label: $ => prec.right(choice(
       $.label_codeblock,
       repeat1($._label_base),
@@ -103,30 +108,30 @@ module.exports = grammar({
     )),
 
     label_codeblock: $ => choice(
-      seq("|`", $._label_codeblock_lang, /[^`]*/, "`|"),
-      seq("|||", $._label_codeblock_lang, $._label_codeblock_body, "|||"),
-      seq("||", $._label_codeblock_lang, $._label_codeblock_body, "||"),
-      seq("|", $._label_codeblock_lang, /[^\|]+/, "|"),
+      seq('|`', $._label_codeblock_lang, /[^`]*/, '`|'),
+      seq('|||', $._label_codeblock_lang, $._label_codeblock_body, '|||'),
+      seq('||', $._label_codeblock_lang, $._label_codeblock_body, '||'),
+      seq('|', $._label_codeblock_lang, /[^\|]+/, '|'),
     ),
 
     _label_codeblock_lang: _ => token(/[a-zA-Z]+/),
     _label_codeblock_body: _ => repeat1(seq(/.+/, /\s*/)),
-    _label_constraints: $ => repeat1(seq($.label_constraint, optional(";"))),
+    _label_constraints: $ => repeat1(seq($.label_constraint, optional(';'))),
 
     label_constraint: _ => token(/[a-z_]+/),
 
     _label_base: $ => choice(
       $._ident_base,
-      token(prec(PREC.label, "\\{")),
-      token(prec(PREC.label, /[\(\)\\:\.\-%_#&\?\',\']+/)) // idk how to make it better
+      token(prec(PREC.label, '\\{')),
+      token(prec(PREC.label, /[\(\)\\:\.\-%_#&\?\',\']+/)), // idk how to make it better
     ),
 
     connection_refference: $ => seq(
-      "(", $._expr, ")",
-      field("connection_identifier", $.connection_identifier),
+      '(', $._expr, ')',
+      field('connection_identifier', $.connection_identifier),
       optional($._fields),
     ),
-    connection_identifier: _ => token(seq("[", /\d+/, "]",)),
+    connection_identifier: _ => token(seq('[', /\d+/, ']')),
 
     identifier: $ => seq(
       choice(
@@ -134,9 +139,9 @@ module.exports = grammar({
         $._identifier_base,
       )),
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
-    _fields: $ => r1seq(".", field("field", $.identifier)),
+    _fields: $ => r1seq('.', field('field', $.identifier)),
     _ident: $ => r1seq($._ident_base, optional(/[\s\',]+/)),
-    _ident_base: _ => /([\p{L}\d\/\*_+\-]|\\#)+/,
+    _ident_base: _ => /([\p{L}\d\/\*_+\-]|\\#)+/u,
 
     escape_sequence: _ => token(choice(
       '\\\\',
@@ -147,8 +152,8 @@ module.exports = grammar({
       '\\b',
       '\\f',
       /\\u[0-9a-fA-F]{4}/,
-      /\\x[0-9a-fA-F]{2}/
+      /\\x[0-9a-fA-F]{2}/,
     )),
-  }
+  },
 });
 
