@@ -583,11 +583,11 @@ PinValidation -> ATMTransaction: {
 (source_file
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -596,10 +596,10 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -610,11 +610,11 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -625,10 +625,10 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -639,21 +639,21 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
         identifier: (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -664,11 +664,11 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -679,11 +679,11 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -694,22 +694,22 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (method_declaration
         (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -718,22 +718,22 @@ PinValidation -> ATMTransaction: {
         (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
         identifier: (identifier))))
   (declaration
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier))
       (declaration
@@ -744,179 +744,179 @@ PinValidation -> ATMTransaction: {
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    label: (label)
-    block: (block
+    (label)
+    (block
       (declaration
         identifier: (identifier)
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier)
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier
           field: (identifier))
-        label: (label))
-      (declaration
-        identifier: (identifier
-          field: (identifier)
-          field: (identifier))
-        label: (label))))
-  (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
-    block: (block
-      (declaration
-        identifier: (identifier
-          field: (identifier))
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier
           field: (identifier)
           field: (identifier))
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier
           field: (identifier))
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier
           field: (identifier)
           field: (identifier))
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier
           field: (identifier))
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier
           field: (identifier)
           field: (identifier))
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier
           field: (identifier))
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier
           field: (identifier)
           field: (identifier))
-        label: (label))))
+        (label))))
   (declaration
     identifier: (identifier)
     connection: (connection)
     identifier: (identifier)
-    block: (block
+    (block
       (declaration
         identifier: (identifier
           field: (identifier))
-        label: (label))
+        (label))
       (declaration
         identifier: (identifier
           field: (identifier)
           field: (identifier))
-        label: (label)))))
+        (label))))
+  (declaration
+    identifier: (identifier)
+    connection: (connection)
+    identifier: (identifier)
+    (block
+      (declaration
+        identifier: (identifier
+          field: (identifier))
+        (label))
+      (declaration
+        identifier: (identifier
+          field: (identifier)
+          field: (identifier))
+        (label)))))
