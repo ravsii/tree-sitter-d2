@@ -44,6 +44,7 @@ module.exports = grammar({
 
     _base_declaration: $ => choice(
       $.declaration,
+      $.import,
       $.method_declaration,
     ),
 
@@ -52,11 +53,10 @@ module.exports = grammar({
         $._expr,
         $.connection_refference,
       ),
-      opseq(
-        ':',
-        optional($.label),
-        optional($.block),
-      ),
+      optional(choice(
+        seq(':', $.import),
+        seq(':', optional($.label), optional($.block)),
+      )),
       optional(terminator),
     )),
 
@@ -100,6 +100,12 @@ module.exports = grammar({
       /-+>/,
       /--+/,
     ))),
+
+    import: _ => token(seq(
+      choice('@', '...@'),
+      token(repeat1(/[^\s]/)),
+      terminator,
+    )),
 
     block: $ => seq('{', repeat($._base_declaration), '}'),
     label: $ => prec.right(choice(
