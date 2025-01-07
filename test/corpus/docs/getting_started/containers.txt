@@ -8,11 +8,11 @@ apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
 
 (source_file
   (declaration
-    identifier: (identifier
+    (identifier
       field: (identifier)
       field: (identifier))
-    connection: (connection)
-    identifier: (identifier
+    (connection)
+    (identifier
       field: (identifier)
       field: (identifier))
     (label)))
@@ -29,7 +29,7 @@ gcloud: Google Cloud {
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (comment))))
@@ -46,10 +46,10 @@ gcloud: {
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label)))))
 
 ====================|||
@@ -116,24 +116,24 @@ birthdays: {
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier))))
+        (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
-        connection: (connection)
-        identifier: (identifier)
+        (connection)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier)
           field: (identifier))

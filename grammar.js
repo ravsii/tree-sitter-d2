@@ -6,6 +6,7 @@ const PREC = {
   connection: 100,
   conn_identifier: 90,
   block: 20,
+  label_predefined: 15,
   label: 10,
 };
 
@@ -62,10 +63,10 @@ module.exports = grammar({
 
 
     _expr: $ => prec.right(seq(
-      field('identifier', $.identifier),
+      $.identifier,
       rseq(
-        field('connection', $.connection),
-        field('identifier', $.identifier),
+        $.connection,
+        $.identifier,
       ),
     )),
 
@@ -111,8 +112,9 @@ module.exports = grammar({
     label: $ => prec.right(choice(
       $.label_codeblock,
       repeat1($._label_base),
-      token(seq('"', /.*/, '"')),
       seq('[', $._label_constraints, ']'),
+      $.integer,
+      token(seq('"', /.*/, '"')),
     )),
 
     label_codeblock: $ => choice(
@@ -162,6 +164,8 @@ module.exports = grammar({
       /\\u[0-9a-fA-F]{4}/,
       /\\x[0-9a-fA-F]{2}/,
     )),
+
+    integer: _ => token(/[\-+]?\d+(\.\d+)?/),
   },
 });
 

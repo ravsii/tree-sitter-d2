@@ -10,10 +10,10 @@ my network: {
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label)))))
 
 ====================|||
@@ -52,68 +52,68 @@ vpc: VPC 1 10.1.0.0./16 {
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (block
           (declaration
-            identifier: (identifier)
+            (identifier)
             (label))
           (declaration
-            identifier: (identifier)
+            (identifier)
             (label))
           (declaration
-            identifier: (identifier)
+            (identifier)
             (label))))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label)
         (block
           (declaration
-            identifier: (identifier)
+            (identifier)
             (block
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (label))
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (label))
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (label))
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (label))))
           (declaration
-            identifier: (identifier)
+            (identifier)
             (label)
             (block
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (label))
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (block
                   (declaration
-                    identifier: (identifier)
+                    (identifier)
                     (label))
                   (declaration
-                    identifier: (identifier)
+                    (identifier)
                     (label))
                   (declaration
-                    identifier: (identifier)
+                    (identifier)
                     (label))))
               (declaration
-                identifier: (identifier)
+                (identifier)
                 (label)
                 (block
                   (declaration
-                    identifier: (identifier)
+                    (identifier)
                     (label)))))))))))
 
 ====================|||

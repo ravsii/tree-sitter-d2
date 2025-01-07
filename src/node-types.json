@@ -45,16 +45,6 @@
     "type": "connection_refference",
     "named": true,
     "fields": {
-      "connection": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "connection",
-            "named": true
-          }
-        ]
-      },
       "connection_identifier": {
         "multiple": false,
         "required": true,
@@ -74,54 +64,45 @@
             "named": true
           }
         ]
-      },
-      "identifier": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "connection",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
     "type": "declaration",
     "named": true,
-    "fields": {
-      "connection": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "connection",
-            "named": true
-          }
-        ]
-      },
-      "identifier": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block",
           "named": true
         },
         {
+          "type": "connection",
+          "named": true
+        },
+        {
           "type": "connection_refference",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -169,6 +150,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
         {
           "type": "label_codeblock",
           "named": true
@@ -325,6 +310,10 @@
   },
   {
     "type": "import",
+    "named": true
+  },
+  {
+    "type": "integer",
     "named": true
   },
   {
