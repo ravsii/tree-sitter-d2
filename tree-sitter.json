@@ -8,13 +8,23 @@
       "file-types": [
         "d2"
       ],
-      "injection-regex": "d2"
+      "injection-regex": "d2",
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm",
+      "locals": "queries/locals.scm",
+      "tags": "queries/tags.scm"
     }
   ],
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
     "description": "Tree sitter grammar for d2lang",
+    "authors": [
+      {
+        "name": "Ravsii",
+        "email": "ravsii.gh@gmail.com"
+      }
+    ],
     "links": {
       "repository": "https://github.com/ravsii/tree-sitter-d2"
     }

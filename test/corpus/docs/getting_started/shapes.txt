@@ -64,10 +64,10 @@ Cloud.shape: cloud
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label))
   (declaration
-    identifier: (identifier
+    (identifier
         field: (identifier))
     (label)))
 
@@ -85,16 +85,16 @@ Cassandra
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label))
   (declaration
-    identifier: (identifier
+    (identifier
       field: (identifier))
     (label))
   (declaration
-    identifier: (identifier))
+    (identifier))
   (declaration
-    identifier: (identifier)))
+    (identifier)))

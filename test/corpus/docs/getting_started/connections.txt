@@ -189,9 +189,9 @@ Referencing connections
 (source_file
   (declaration
     (connection_refference
-      identifier: (identifier)
-      connection: (connection)
-      identifier: (identifier)
+      (identifier)
+      (connection)
+      (identifier)
       connection_identifier: (connection_identifier)
       field: (identifier)
       field: (identifier))

@@ -35,7 +35,7 @@
 
 ; d2 syntax
 (identifier) @function
-(connection) @operator
+; (connection) @operator
 
 ; uml methods
 (arguments (argument_name) @variable.parametr)

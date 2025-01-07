@@ -176,12 +176,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "FIELD",
-            "name": "identifier",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
+            "type": "SYMBOL",
+            "name": "identifier"
           },
           {
             "type": "REPEAT",
@@ -189,20 +185,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "FIELD",
-                  "name": "connection",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "connection"
-                  }
+                  "type": "SYMBOL",
+                  "name": "connection"
                 },
                 {
-                  "type": "FIELD",
-                  "name": "identifier",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "identifier"
-                  }
+                  "type": "SYMBOL",
+                  "name": "identifier"
                 }
               ]
             }
@@ -519,6 +507,27 @@
             }
           },
           {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "["
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_label_constraints"
+              },
+              {
+                "type": "STRING",
+                "value": "]"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "integer"
+          },
+          {
             "type": "TOKEN",
             "content": {
               "type": "SEQ",
@@ -537,23 +546,6 @@
                 }
               ]
             }
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "["
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_label_constraints"
-              },
-              {
-                "type": "STRING",
-                "value": "]"
-              }
-            ]
           }
         ]
       }
@@ -948,6 +940,13 @@
             "value": "\\\\x[0-9a-fA-F]{2}"
           }
         ]
+      }
+    },
+    "integer": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[\\-+]?\\d+(\\.\\d+)?"
       }
     }
   },

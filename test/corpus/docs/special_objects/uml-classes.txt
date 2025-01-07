@@ -582,341 +582,341 @@ PinValidation -> ATMTransaction: {
 
 (source_file
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))))
+        (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))))
+        (identifier))))
   (declaration
-    identifier: (identifier)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (declaration
-        identifier: (identifier))
+        (identifier))
       (method_declaration
         (identifier))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (label)
     (block
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))
       (declaration
-        identifier: (identifier)
+        (identifier)
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier))
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier))
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier))
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier))
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier))
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
         (label))))
   (declaration
-    identifier: (identifier)
-    connection: (connection)
-    identifier: (identifier)
+    (identifier)
+    (connection)
+    (identifier)
     (block
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier))
         (label))
       (declaration
-        identifier: (identifier
+        (identifier
           field: (identifier)
           field: (identifier))
         (label)))))
