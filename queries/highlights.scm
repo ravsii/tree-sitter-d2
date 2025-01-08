@@ -1,44 +1,29 @@
-; keywords
-; [
- ; "bold"
- ; "border-radius"
- ; "direction"
- ; "double-border"
- ; "fill"
- ; "fill-pattern"
- ; "filled" "font"
- ; "font-color"
- ; "font-size"
- ; "italic"
- ; "label"
- ; "multiple"
- ; "opacity"
- ; "shadow"
- ; "shape"
- ; "source-arrowhead"
- ; "stroke"
- ; "stroke-dash"
- ; "stroke-width"
- ; "style"
- ; "target-arrowhead"
- ; "text-transform"
- ; "underline"
-; ] @keyword
 
 (comment) @comment
 
-(label) @string
-(escape_sequence) @escape
+[
+ (label)
+ (label_codeblock)
+] @string
+
+(escape_sequence) @string.escape
 
 (identifier) @variable
 (identifier
   (identifier) @variable.member)
+; TODO: Move them to the parser
+((identifier) @constant.builtin
+ (#match? @constant.builtin "^(bold|border-radius|direction|double-border|fill|fill-pattern|filled|font|font-color|font-size|italic|label|multiple|opacity|shadow|shape|source-arrowhead|stroke|stroke-dash|stroke-width|style|target-arrowhead|text-transform|underline)$"))
+
 (connection) @operator
 (integer) @number
-; (bool) @constant.builtin
+(bool) @constant.builtin
+
+(import) @module
 
 (argument_name) @variable.parameter
 (argument_type) @type
+
 
 [
   "["
