@@ -9,6 +9,7 @@ Stage One -> Stage Two -> Stage Three -> Stage Four: repeat
 b <-> c: "Reality is just a crutch for people who can't handle science fiction" {
   target-arrowhead: * {
     shape: diamond
+    label: 1
     style.filled: true
   }
 }
@@ -78,3 +79,11 @@ D2 Parser: {
   -lookaheadPos: d2ast.Position
   \#peekn(n int): (s string, eof bool)
 }
+
+a: @x.d2
+x: @x
+a: {
+  ...@x.d2
+}
+...@people.management
+y: @../y.d2
