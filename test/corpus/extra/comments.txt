@@ -1,0 +1,16 @@
+====================|||
+Multiple Comments
+====================|||
+
+# Test
+# Test2
+# Test3
+# Test4
+
+---|||
+
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment))
