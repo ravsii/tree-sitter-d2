@@ -50,7 +50,7 @@ module.exports = grammar({
     declaration: $ => prec.right(seq(
       choice(
         $._expr,
-        $.connection_refference,
+        $.connection_reference,
       ),
       optional(choice(
         seq(':', $.import),
@@ -143,9 +143,9 @@ module.exports = grammar({
       token(prec(PREC.label, /[\(\)\\:.\-%_#&\?\',\'*]+/)), // idk how to make it better
     ),
 
-    connection_refference: $ => seq(
+    connection_reference: $ => seq(
       '(', $._expr, ')',
-      field('connection_identifier', $.connection_identifier),
+      $.connection_identifier,
       optional($._fields),
     ),
     connection_identifier: _ => token(seq('[', /\d+/, ']')),

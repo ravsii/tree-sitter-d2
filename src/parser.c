@@ -11,9 +11,9 @@
 #define ALIAS_COUNT 1
 #define TOKEN_COUNT 38
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 2
+#define FIELD_COUNT 1
 #define MAX_ALIAS_SEQUENCE_LENGTH 8
-#define PRODUCTION_ID_COUNT 8
+#define PRODUCTION_ID_COUNT 7
 
 enum ts_symbol_identifiers {
   sym__ident_base = 1,
@@ -69,7 +69,7 @@ enum ts_symbol_identifiers {
   sym_label_constraint = 51,
   sym__label_literal = 52,
   sym__label_base = 53,
-  sym_connection_refference = 54,
+  sym_connection_reference = 54,
   sym_identifier = 55,
   sym__identifier_base = 56,
   aux_sym__fields = 57,
@@ -141,7 +141,7 @@ static const char * const ts_symbol_names[] = {
   [sym_label_constraint] = "label_constraint",
   [sym__label_literal] = "_label_literal",
   [sym__label_base] = "_label_base",
-  [sym_connection_refference] = "connection_refference",
+  [sym_connection_reference] = "connection_reference",
   [sym_identifier] = "identifier",
   [sym__identifier_base] = "_identifier_base",
   [aux_sym__fields] = "_fields",
@@ -213,7 +213,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_label_constraint] = sym_label_constraint,
   [sym__label_literal] = sym__label_literal,
   [sym__label_base] = sym__label_base,
-  [sym_connection_refference] = sym_connection_refference,
+  [sym_connection_reference] = sym_connection_reference,
   [sym_identifier] = sym_identifier,
   [sym__identifier_base] = sym__identifier_base,
   [aux_sym__fields] = aux_sym__fields,
@@ -447,7 +447,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [sym_connection_refference] = {
+  [sym_connection_reference] = {
     .visible = true,
     .named = true,
   },
@@ -510,13 +510,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum ts_field_identifiers {
-  field_connection_identifier = 1,
-  field_field = 2,
+  field_field = 1,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
-  [field_connection_identifier] = "connection_identifier",
   [field_field] = "field",
 };
 
@@ -526,7 +524,6 @@ static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [3] = {.index = 2, .length = 1},
   [4] = {.index = 3, .length = 2},
   [5] = {.index = 5, .length = 1},
-  [6] = {.index = 6, .length = 2},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -540,15 +537,12 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_field, 0, .inherited = true},
     {field_field, 1, .inherited = true},
   [5] =
-    {field_connection_identifier, 3},
-  [6] =
-    {field_connection_identifier, 3},
     {field_field, 4, .inherited = true},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
   [0] = {0},
-  [7] = {
+  [6] = {
     [0] = anon_alias_sym_returns,
   },
 };
@@ -1996,7 +1990,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_declaration] = STATE(5),
     [sym__expr] = STATE(72),
     [sym_method_declaration] = STATE(5),
-    [sym_connection_refference] = STATE(72),
+    [sym_connection_reference] = STATE(72),
     [sym_identifier] = STATE(46),
     [sym__identifier_base] = STATE(54),
     [aux_sym__ident] = STATE(11),
@@ -2116,7 +2110,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_identifier,
     STATE(76), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(7), 4,
       sym__base_declaration,
       sym_declaration,
@@ -2142,7 +2136,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_import,
     STATE(72), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(6), 4,
       sym__base_declaration,
       sym_declaration,
@@ -2168,7 +2162,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_import,
     STATE(72), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(6), 4,
       sym__base_declaration,
       sym_declaration,
@@ -2195,7 +2189,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_identifier,
     STATE(76), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(8), 4,
       sym__base_declaration,
       sym_declaration,
@@ -2222,7 +2216,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_identifier,
     STATE(76), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(8), 4,
       sym__base_declaration,
       sym_declaration,
@@ -2249,7 +2243,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_identifier,
     STATE(76), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(8), 4,
       sym__base_declaration,
       sym_declaration,
@@ -2276,7 +2270,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_identifier,
     STATE(76), 2,
       sym__expr,
-      sym_connection_refference,
+      sym_connection_reference,
     STATE(9), 4,
       sym__base_declaration,
       sym_declaration,
@@ -4771,8 +4765,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [175] = {.entry = {.count = 1, .reusable = false}}, SHIFT(42),
   [177] = {.entry = {.count = 1, .reusable = false}}, SHIFT(47),
   [179] = {.entry = {.count = 1, .reusable = false}}, SHIFT(124),
-  [181] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_connection_refference, 5, 0, 6),
-  [183] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_connection_refference, 5, 0, 6),
+  [181] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_connection_reference, 5, 0, 5),
+  [183] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_connection_reference, 5, 0, 5),
   [185] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym__fields, 2, 0, 3),
   [187] = {.entry = {.count = 1, .reusable = false}}, REDUCE(aux_sym__fields, 2, 0, 3),
   [189] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_identifier, 1, 0, 1),
@@ -4782,8 +4776,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [197] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym__expr, 2, 0, 0),
   [199] = {.entry = {.count = 1, .reusable = false}}, SHIFT(116),
   [201] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__expr, 2, 0, 0),
-  [203] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_connection_refference, 4, 0, 5),
-  [205] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_connection_refference, 4, 0, 5),
+  [203] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_connection_reference, 4, 0, 0),
+  [205] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_connection_reference, 4, 0, 0),
   [207] = {.entry = {.count = 1, .reusable = false}}, SHIFT(117),
   [209] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_identifier, 3, 0, 0),
   [211] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_identifier, 3, 0, 0),
@@ -4917,7 +4911,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [483] = {.entry = {.count = 1, .reusable = true}}, SHIFT(170),
   [485] = {.entry = {.count = 1, .reusable = true}}, SHIFT(101),
   [487] = {.entry = {.count = 1, .reusable = true}}, SHIFT(115),
-  [489] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_returns, 1, 0, 7),
+  [489] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_returns, 1, 0, 6),
   [491] = {.entry = {.count = 1, .reusable = true}}, SHIFT(171),
   [493] = {.entry = {.count = 1, .reusable = true}}, SHIFT(95),
   [495] = {.entry = {.count = 1, .reusable = true}}, SHIFT(91),

@@ -71,7 +71,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "connection_refference"
+                "name": "connection_reference"
               }
             ]
           },
@@ -700,7 +700,7 @@
         }
       ]
     },
-    "connection_refference": {
+    "connection_reference": {
       "type": "SEQ",
       "members": [
         {
@@ -716,12 +716,8 @@
           "value": ")"
         },
         {
-          "type": "FIELD",
-          "name": "connection_identifier",
-          "content": {
-            "type": "SYMBOL",
-            "name": "connection_identifier"
-          }
+          "type": "SYMBOL",
+          "name": "connection_identifier"
         },
         {
           "type": "CHOICE",
