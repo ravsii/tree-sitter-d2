@@ -114,14 +114,14 @@ module.exports = grammar({
     ),
 
     label_codeblock: $ => choice(
-      seq('|`', $._label_codeblock_lang, /[^`]*/, '`|'),
-      seq('|||', $._label_codeblock_lang, $._label_codeblock_body, '|||'),
-      seq('||', $._label_codeblock_lang, $._label_codeblock_body, '||'),
-      seq('|', $._label_codeblock_lang, /[^\|]*/, '|'),
+      seq('|`', $.codeblock_language, alias(/[^`]*/, $.codeblock_content), '`|'),
+      seq('|||', $.codeblock_language, $.codeblock_content, '|||'),
+      seq('||', $.codeblock_language, $.codeblock_content, '||'),
+      seq('|', $.codeblock_language, alias(/[^\|]*/, $.codeblock_content), '|'),
     ),
 
-    _label_codeblock_lang: _ => token(/[a-zA-Z0-9]+/),
-    _label_codeblock_body: _ => repeat1(seq(/.+/, /\s*/)),
+    codeblock_language: _ => token(/[a-zA-Z0-9]+/),
+    codeblock_content: _ => repeat1(seq(/.+/, /\s*/)),
     _label_constraints: $ => seq(
       '[',
       repeat1(seq($.label_constraint, optional(';'))),

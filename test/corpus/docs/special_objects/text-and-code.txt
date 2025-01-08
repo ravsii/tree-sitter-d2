@@ -16,7 +16,9 @@ explanation: |md
   (declaration
     (identifier)
     (label
-      (label_codeblock))))
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
 
 ====================|||
 LaTeX
@@ -43,7 +45,9 @@ formula: {
       (declaration
         (identifier)
         (label
-          (label_codeblock))))))
+          (label_codeblock
+            (codeblock_language)
+            (codeblock_content)))))))
 
 ====================|||
 Go
@@ -63,7 +67,9 @@ explanation: |go
   (declaration
     (identifier)
     (label
-      (label_codeblock))))
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
 
 ====================|||
 Advanced: Non-Markdown text
@@ -137,7 +143,9 @@ my_code: ||ts
   (declaration
     (identifier)
     (label
-      (label_codeblock))))
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
 
 ====================|||
 Advanced: Block strings (triple)
@@ -154,7 +162,9 @@ my_code: |||ts
   (declaration
     (identifier)
     (label
-      (label_codeblock))))
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
 
 ====================|||
 Advanced: Block strings (triple, more code)
@@ -178,7 +188,9 @@ fn main() {
   (declaration
     (identifier)
     (label
-      (label_codeblock))))
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
 
 ====================|||
 Advanced: Block strings (tick)
@@ -195,7 +207,9 @@ my_code: |`ts
   (declaration
     (identifier)
     (label
-      (label_codeblock))))
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
 
 ====================|||
 Advanced: LaTeX plugins
@@ -290,61 +304,79 @@ asm: {
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
   (declaration
     (identifier)
     (block
       (declaration
       (identifier)
       (label
-        (label_codeblock)))))
+        (label_codeblock
+          (codeblock_language)
+          (codeblock_content))))))
 )

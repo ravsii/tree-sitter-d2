@@ -47,6 +47,11 @@
     }
   },
   {
+    "type": "codeblock_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "connection_reference",
     "named": true,
     "fields": {
@@ -171,7 +176,21 @@
   {
     "type": "label_codeblock",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "codeblock_content",
+          "named": true
+        },
+        {
+          "type": "codeblock_language",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "label_constraint",
@@ -298,6 +317,10 @@
   },
   {
     "type": "bool",
+    "named": true
+  },
+  {
+    "type": "codeblock_language",
     "named": true
   },
   {
