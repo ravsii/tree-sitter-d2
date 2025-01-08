@@ -100,10 +100,12 @@ results -> favorable -> will of the people
       (block
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier)
-        (label))))))
+        (label
+          (bool)))))))
   (declaration
     (identifier)
     (connection)
@@ -266,10 +268,12 @@ asm: {
 (source_file
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier
     (identifier)

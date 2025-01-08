@@ -1,5 +1,10 @@
 [
   {
+    "type": "argument_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -151,6 +156,10 @@
       "required": false,
       "types": [
         {
+          "type": "bool",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -167,6 +176,11 @@
   },
   {
     "type": "label_codeblock",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "label_constraint",
     "named": true,
     "fields": {}
   },
@@ -285,11 +299,11 @@
     "named": false
   },
   {
-    "type": "argument_name",
+    "type": "argument_type",
     "named": true
   },
   {
-    "type": "argument_type",
+    "type": "bool",
     "named": true
   },
   {
@@ -314,10 +328,6 @@
   },
   {
     "type": "integer",
-    "named": true
-  },
-  {
-    "type": "label_constraint",
     "named": true
   },
   {
