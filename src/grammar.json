@@ -481,11 +481,16 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_label_codeblock_lang"
+              "name": "codeblock_language"
             },
             {
-              "type": "PATTERN",
-              "value": "[^`]*"
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[^`]*"
+              },
+              "named": true,
+              "value": "codeblock_content"
             },
             {
               "type": "STRING",
@@ -502,11 +507,11 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_label_codeblock_lang"
+              "name": "codeblock_language"
             },
             {
               "type": "SYMBOL",
-              "name": "_label_codeblock_body"
+              "name": "codeblock_content"
             },
             {
               "type": "STRING",
@@ -523,11 +528,11 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_label_codeblock_lang"
+              "name": "codeblock_language"
             },
             {
               "type": "SYMBOL",
-              "name": "_label_codeblock_body"
+              "name": "codeblock_content"
             },
             {
               "type": "STRING",
@@ -544,11 +549,16 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_label_codeblock_lang"
+              "name": "codeblock_language"
             },
             {
-              "type": "PATTERN",
-              "value": "[^\\|]*"
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "[^\\|]*"
+              },
+              "named": true,
+              "value": "codeblock_content"
             },
             {
               "type": "STRING",
@@ -558,14 +568,14 @@
         }
       ]
     },
-    "_label_codeblock_lang": {
+    "codeblock_language": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
         "value": "[a-zA-Z0-9]+"
       }
     },
-    "_label_codeblock_body": {
+    "codeblock_content": {
       "type": "REPEAT1",
       "content": {
         "type": "SEQ",
