@@ -2,16 +2,14 @@
 // @ts-check
 
 const PREC = {
-  term: 1000,
-  connection: 100,
-  conn_identifier: 90,
-  block: 20,
-  label_predefined: 15,
-  label: 10,
+  term: 10,
+  connection: 9,
+  conn_identifier: 9,
+  block: 5,
+  label_predefined: 2,
+  label: 1,
 };
 
-
-const terminator = token(prec(PREC.term, choice(/\n/, ';', '\0')));
 
 /**
  * Shortcut for optional(seq(...rules))
@@ -30,7 +28,7 @@ module.exports = grammar({
 
   extras: $ => [
     $.comment,
-    /\s+/,
+    /\s/,
   ],
 
   rules: {
@@ -58,7 +56,7 @@ module.exports = grammar({
         seq(':', $.import),
         seq(':', optional($.label), optional($.block)),
       )),
-      optional(terminator),
+      optional($._eol),
     )),
 
 
@@ -88,8 +86,7 @@ module.exports = grammar({
       // arg1, arg2 type1, arg3, arg4 type2
       r1seq(
         $.argument_name, r1seq(',', $.argument_name),
-        $.argument_type,
-        optional(','),
+        $.argument_type, optional(','),
       ),
     ),
     argument_name: _ => token(/[a-zA-Z0-9_]+/),
@@ -102,38 +99,48 @@ module.exports = grammar({
       /--+/,
     ))),
 
-    import: _ => token(seq(
-      choice('@', '...@'),
-      token(repeat1(/[^\s]/)),
-      terminator,
+    import: _ => token(seq(choice('@', '...@'), repeat1(/[^\s]/))),
+
+    block: $ => prec(PREC.block, seq(
+      token('{'),
+      repeat($._base_declaration),
+      token('}'),
     )),
 
-    block: $ => seq('{', repeat($._base_declaration), '}'),
-    label: $ => prec.right(choice(
+    label: $ => choice(
       $.label_codeblock,
-      repeat1($._label_base),
-      seq('[', $._label_constraints, ']'),
-      $.integer,
-      token(seq('"', /.*/, '"')),
-    )),
+      $._label_literal,
+      $._label_constraints,
+    ),
 
     label_codeblock: $ => choice(
       seq('|`', $._label_codeblock_lang, /[^`]*/, '`|'),
       seq('|||', $._label_codeblock_lang, $._label_codeblock_body, '|||'),
       seq('||', $._label_codeblock_lang, $._label_codeblock_body, '||'),
-      seq('|', $._label_codeblock_lang, /[^\|]+/, '|'),
+      seq('|', $._label_codeblock_lang, /[^\|]*/, '|'),
     ),
 
-    _label_codeblock_lang: _ => token(/[a-zA-Z]+/),
+    _label_codeblock_lang: _ => token(/[a-zA-Z0-9]+/),
     _label_codeblock_body: _ => repeat1(seq(/.+/, /\s*/)),
-    _label_constraints: $ => repeat1(seq($.label_constraint, optional(';'))),
+    _label_constraints: $ => seq(
+      '[',
+      repeat1(seq($.label_constraint, optional(';'))),
+      ']',
+    ),
 
-    label_constraint: _ => token(/[a-z_]+/),
+    label_constraint: _ => token(/[a-zA-Z0-9_]+/),
+
+    _label_literal: $ => prec.right(choice(
+      $.integer,
+      $.bool,
+      repeat1($._label_base),
+      token(seq('"', /[^"]*/, '"')),
+    )),
 
     _label_base: $ => choice(
       $._ident_base,
       token(prec(PREC.label, '\\{')),
-      token(prec(PREC.label, /[\(\)\\:\.\-%_#&\?\',\']+/)), // idk how to make it better
+      token(prec(PREC.label, /[\(\)\\:.\-%_#&\?\',\'*]+/)), // idk how to make it better
     ),
 
     connection_refference: $ => seq(
@@ -165,7 +172,14 @@ module.exports = grammar({
       /\\x[0-9a-fA-F]{2}/,
     )),
 
-    integer: _ => token(/[\-+]?\d+(\.\d+)?/),
+    // We need extra space in the end to make sure it's not a string starting
+    // with an integer.
+    integer: _ => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
+    bool: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
+
+
+    _eol: _ => token(prec(PREC.term, choice(/\n/, ';'))),
+    _eol_or_space: $ => choice($._eol, /\s+/),
   },
 });
 

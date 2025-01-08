@@ -365,7 +365,8 @@ scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
       (declaration
         (identifier
           (identifier))
-        (label))))
+        (label
+          (integer)))))
   (declaration
     (identifier
       (identifier))
@@ -384,7 +385,8 @@ scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
       (declaration
         (identifier
           (identifier))
-        (label))))
+        (label
+          (integer)))))
   (declaration
     (identifier
       (identifier))
@@ -416,7 +418,8 @@ scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
       (declaration
         (identifier
           (identifier))
-        (label))))
+        (label
+          (integer)))))
   (declaration
     (identifier
       (identifier))

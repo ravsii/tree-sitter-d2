@@ -411,7 +411,7 @@ D2 Parser: {
     (identifier)))
 
 ====================|||
-Full Example
+Full Example (pt. 1)
 ====================|||
 
 DebitCard: Debit card {
@@ -509,73 +509,6 @@ PinValidation: Pin validation transaction {
   +newPin
 
   +pinChange()
-}
-
-DebitCard -- Bank: manages {
-  source-arrowhead: 1..*
-  target-arrowhead: 1
-}
-
-Bank -- ATMInfo: maintains {
-  source-arrowhead: 1
-  target-arrowhead: 1
-}
-
-Bank -- Customer: +has {
-  source-arrowhead: 1
-  target-arrowhead: 1
-}
-
-DebitCard -- Customer: +owns {
-  source-arrowhead: 0..*
-  target-arrowhead: 1..*
-}
-
-DebitCard -- Account: +provides access to {
-  source-arrowhead: *
-  target-arrowhead: 1..*
-}
-
-Customer -- Account: owns {
-  source-arrowhead: 1..*
-  target-arrowhead: 1..*
-}
-
-ATMInfo -- ATMTransaction: +identifies {
-  source-arrowhead: 1
-  target-arrowhead: *
-}
-
-ATMTransaction -> Account: modifies {
-  source-arrowhead: *
-  target-arrowhead: 1
-}
-
-CurrentAccount -> Account: {
-  target-arrowhead.shape: triangle
-  target-arrowhead.style.filled: false
-}
-
-SavingAccount -> Account: {
-  target-arrowhead.shape: triangle
-  target-arrowhead.style.filled: false
-}
-
-WidthdrawlTransaction -> ATMTransaction: {
-  target-arrowhead.shape: triangle
-  target-arrowhead.style.filled: false
-}
-QueryTransaction -> ATMTransaction: {
-  target-arrowhead.shape: triangle
-  target-arrowhead.style.filled: false
-}
-TransferTransaction -> ATMTransaction: {
-  target-arrowhead.shape: triangle
-  target-arrowhead.style.filled: false
-}
-PinValidation -> ATMTransaction: {
-  target-arrowhead.shape: triangle
-  target-arrowhead.style.filled: false
 }
 
 ---|||
@@ -739,7 +672,123 @@ PinValidation -> ATMTransaction: {
       (declaration
         (identifier))
       (method_declaration
-        (identifier))))
+        (identifier)))))
+
+====================|||
+Full Example (pt. 2)
+====================|||
+
+DebitCard -- Bank: manages {
+  source-arrowhead: 1..*
+  target-arrowhead: 1
+}
+
+Bank -- ATMInfo: maintains {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+Bank -- Customer: +has {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+DebitCard -- Customer: +owns {
+  source-arrowhead: 0..*
+  target-arrowhead: 1..*
+}
+
+DebitCard -- Account: +provides access to {
+  source-arrowhead: *
+  target-arrowhead: 1..*
+}
+
+Customer -- Account: owns {
+  source-arrowhead: 1..*
+  target-arrowhead: 1..*
+}
+
+ATMInfo -- ATMTransaction: +identifies {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+ATMTransaction -> Account: modifies {
+  source-arrowhead: *
+  target-arrowhead: 1
+}
+
+CurrentAccount -> Account: {
+  target-arrowhead.shape: triangle
+  target-arrowhead.style.filled: false
+}
+
+SavingAccount -> Account: {
+  target-arrowhead.shape: triangle
+  target-arrowhead.style.filled: false
+}
+
+WidthdrawlTransaction -> ATMTransaction: {
+  target-arrowhead.shape: triangle
+  target-arrowhead.style.filled: false
+}
+QueryTransaction -> ATMTransaction: {
+  target-arrowhead.shape: triangle
+  target-arrowhead.style.filled: false
+}
+TransferTransaction -> ATMTransaction: {
+  target-arrowhead.shape: triangle
+  target-arrowhead.style.filled: false
+}
+PinValidation -> ATMTransaction: {
+  target-arrowhead.shape: triangle
+  target-arrowhead.style.filled: false
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
   (declaration
     (identifier)
     (connection)
@@ -784,7 +833,8 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier)
         (label))))
@@ -799,43 +849,8 @@ PinValidation -> ATMTransaction: {
         (label))
       (declaration
         (identifier)
-        (label))))
-  (declaration
-    (identifier)
-    (connection)
-    (identifier)
-    (label)
-    (block
-      (declaration
-        (identifier)
-        (label))
-      (declaration
-        (identifier)
-        (label))))
-  (declaration
-    (identifier)
-    (connection)
-    (identifier)
-    (label)
-    (block
-      (declaration
-        (identifier)
-        (label))
-      (declaration
-        (identifier)
-        (label))))
-  (declaration
-    (identifier)
-    (connection)
-    (identifier)
-    (label)
-    (block
-      (declaration
-        (identifier)
-        (label))
-      (declaration
-        (identifier)
-        (label))))
+        (label
+          (integer)))))
   (declaration
     (identifier)
     (connection)
@@ -849,7 +864,8 @@ PinValidation -> ATMTransaction: {
         (identifier
           field: (identifier)
           field: (identifier))
-        (label))))
+        (label
+          (bool)))))
   (declaration
     (identifier)
     (connection)
@@ -863,7 +879,8 @@ PinValidation -> ATMTransaction: {
         (identifier
           field: (identifier)
           field: (identifier))
-        (label))))
+        (label
+          (bool)))))
   (declaration
     (identifier)
     (connection)
@@ -877,7 +894,8 @@ PinValidation -> ATMTransaction: {
         (identifier
           field: (identifier)
           field: (identifier))
-        (label))))
+        (label
+          (bool)))))
   (declaration
     (identifier)
     (connection)
@@ -891,7 +909,8 @@ PinValidation -> ATMTransaction: {
         (identifier
           field: (identifier)
           field: (identifier))
-        (label))))
+        (label
+          (bool)))))
   (declaration
     (identifier)
     (connection)
@@ -905,7 +924,8 @@ PinValidation -> ATMTransaction: {
         (identifier
           field: (identifier)
           field: (identifier))
-        (label))))
+        (label
+          (bool)))))
   (declaration
     (identifier)
     (connection)
@@ -919,4 +939,5 @@ PinValidation -> ATMTransaction: {
         (identifier
           field: (identifier)
           field: (identifier))
-        (label)))))
+        (label
+          (bool))))))

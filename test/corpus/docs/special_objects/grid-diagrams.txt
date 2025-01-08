@@ -78,7 +78,8 @@ kubernetes.class: block
 (source_file
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier
       (identifier))
@@ -94,7 +95,8 @@ kubernetes.class: block
             (label))
           (declaration
             (identifier)
-            (label))
+            (label
+              (integer)))
           (declaration
             (identifier)
             (block
@@ -106,7 +108,8 @@ kubernetes.class: block
                 (label))
               (declaration
                 (identifier)
-                (label))))))
+                (label
+                  (integer)))))))
       (declaration
         (identifier)
         (block
@@ -166,7 +169,8 @@ kubernetes.class: block
     (block
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier)
         (label))
@@ -184,13 +188,15 @@ kubernetes.class: block
             (label))
           (declaration
             (identifier)
-            (label))))))
+            (label
+              (integer)))))))
   (declaration
     (identifier)
     (block
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier)
         (label))
@@ -208,7 +214,8 @@ kubernetes.class: block
             (label))
           (declaration
             (identifier)
-            (label))))
+            (label
+              (integer)))))
       (declaration
         (identifier)
         (label))))
@@ -232,7 +239,8 @@ kubernetes.class: block
             (label))
           (declaration
             (identifier)
-            (label))))))
+            (label
+              (integer)))))))
   (declaration
     (identifier
       (identifier))
@@ -250,53 +258,8 @@ kubernetes.class: block
       (identifier))
     (label)))
 
-
 ====================|||
-Just grid-rows
-====================|||
-
-grid-rows: 3
-Executive
-Legislative
-Judicial
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier)))
-
-====================|||
-Just grid-cols
-====================|||
-
-grid-columns: 3
-Executive
-Legislative
-Judicial
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier)))
-
-====================|||
-Both grid-cols & grid-rows
+Grid Rows & Grid Cols
 ====================|||
 
 grid-rows: 2
@@ -310,77 +273,14 @@ Judicial
 (source_file
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier)))
-
-====================|||
-Width and Height
-====================|||
-
-grid-rows: 2
-Executive
-Legislative
-Judicial
-The American Government.width: 400
-The American Government.height: 400
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier
-      (identifier))
-    (label))
-  (declaration
-    (identifier
-      (identifier))
-    (label)))
-
-====================|||
-Cells expand to fill
-====================|||
-
-grid-rows: 3
-Executive
-Legislative
-Judicial
-The American Government.width: 400
-Voters
-Non-voters
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier
-      (identifier))
-    (label))
   (declaration
     (identifier))
   (declaration
@@ -426,13 +326,16 @@ Oxygen
 (source_file
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
     (block
@@ -442,7 +345,8 @@ Oxygen
           (declaration
             (identifier
               (identifier))
-            (label))))))
+            (label
+              (bool)))))))
   (declaration
     (identifier
       (identifier))
@@ -485,7 +389,7 @@ Oxygen
     (identifier)))
 
 ====================|||
-Width and Height
+Nesting
 ====================|||
 
 grid-gap: 0
@@ -504,10 +408,12 @@ footer
 (source_file
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier))
   (declaration
@@ -516,10 +422,12 @@ footer
     (block
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier))
       (declaration
@@ -571,19 +479,22 @@ us-east-1.c -> us-west-1.a
           (declaration
             (identifier
               (identifier))
-            (label))
+            (label
+              (integer)))
           (declaration
             (identifier)
             (label))))))
   (declaration
     (identifier)
-    (label))
+    (label
+      (integer)))
   (declaration
     (identifier)
     (block
       (declaration
         (identifier)
-        (label))
+        (label
+          (integer)))
       (declaration
         (identifier))
       (declaration
@@ -599,7 +510,8 @@ us-east-1.c -> us-west-1.a
       (block
         (declaration
           (identifier)
-            (label))
+            (label
+              (integer)))
           (declaration
             (identifier
               (identifier))

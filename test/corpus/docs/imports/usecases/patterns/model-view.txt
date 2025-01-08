@@ -57,7 +57,8 @@ vpn: {
         (block
           (declaration
             (identifier)
-            (label))))
+            (label
+              (bool)))))
       (declaration
         (identifier)
         (label)))))

@@ -27,3 +27,95 @@ shape1: test label \{ {
     (label)
     (block
       (comment))))
+
+====================|||
+Numbers
+====================|||
+
+test: 0
+test: +1
+test: 1234814
+test: -1
+test: -1.5
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (integer)))
+  (declaration
+    (identifier)
+    (label
+      (integer)))
+  (declaration
+    (identifier)
+    (label
+      (integer)))
+  (declaration
+    (identifier)
+    (label
+      (integer)))
+  (declaration
+    (identifier)
+    (label
+      (integer))))
+
+====================|||
+Label with numbers and string
+====================|||
+
+test: 1..*
+test: 123aslkdjlkj
+test: 123asdasd {
+  test: test
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+Booleans
+====================|||
+
+test: true
+test: false
+test: true {
+  test: false
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (bool)))
+  (declaration
+    (identifier)
+    (label
+      (bool)))
+  (declaration
+    (identifier)
+    (label
+      (bool))
+    (block
+      (declaration
+        (identifier)
+        (label
+          (bool))))))
