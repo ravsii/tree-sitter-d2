@@ -188,11 +188,11 @@ Referencing connections
 
 (source_file
   (declaration
-    (connection_refference
+    (connection_reference
       (identifier)
       (connection)
       (identifier)
-      connection_identifier: (connection_identifier)
+      (connection_identifier)
       field: (identifier)
       field: (identifier))
     (label)))

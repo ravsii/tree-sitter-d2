@@ -47,19 +47,9 @@
     }
   },
   {
-    "type": "connection_refference",
+    "type": "connection_reference",
     "named": true,
     "fields": {
-      "connection_identifier": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "connection_identifier",
-            "named": true
-          }
-        ]
-      },
       "field": {
         "multiple": true,
         "required": false,
@@ -77,6 +67,10 @@
       "types": [
         {
           "type": "connection",
+          "named": true
+        },
+        {
+          "type": "connection_identifier",
           "named": true
         },
         {
@@ -103,7 +97,7 @@
           "named": true
         },
         {
-          "type": "connection_refference",
+          "type": "connection_reference",
           "named": true
         },
         {
