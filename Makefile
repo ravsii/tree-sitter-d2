@@ -2,7 +2,7 @@ generate:
 	tree-sitter generate
 
 highlight: generate
-	tree-sitter highlight --html test.d2 > test.html
+	tree-sitter highlight ./test/highlight.d2
 
 parse: generate
 	clear
@@ -22,8 +22,7 @@ watch-install:
 	brew install watchexec && npm i -g reload
 
 watch-hl:
-	watchexec --exts d2,js,scm -- make highlight & \
-	reload
+	watchexec --exts d2,js,scm -- make highlight
 
 watch-parse:
 	watchexec --exts d2,js,scm,txt -- make parse
@@ -36,5 +35,7 @@ watch-test:
 queries:
 	mkdir -p ~/.config/nvim/queries/d2/
 	cp queries/* ~/.config/nvim/queries/d2/
+watch-copy-queries:
+	watchexec --exts d2,js,scm,txt -- make queries
 
 .PHONY: all queries

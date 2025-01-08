@@ -6,8 +6,7 @@
  ; "double-border"
  ; "fill"
  ; "fill-pattern"
- ; "filled"
- ; "font"
+ ; "filled" "font"
  ; "font-color"
  ; "font-size"
  ; "italic"
@@ -26,22 +25,21 @@
  ; "underline"
 ; ] @keyword
 
-; comments
 (comment) @comment
 
-; strings
 (label) @string
 (escape_sequence) @escape
 
-; d2 syntax
-(identifier) @function
-; (connection) @operator
+(identifier) @variable
+(identifier
+  (identifier) @variable.member)
+(connection) @operator
+(integer) @number
+; (bool) @constant.builtin
 
-; uml methods
-(arguments (argument_name) @variable.parametr)
-(arguments (argument_type) @type)
+(argument_name) @variable.parameter
+(argument_type) @type
 
-; punctuation
 [
   "["
   "]"

@@ -1,0 +1,68 @@
+# This is an "quick-look" highlighting test file just to see if everything feels and looks right
+
+x -> y: hello world
+
+Cloud.shape: cloud
+
+Stage One -> Stage Two -> Stage Three -> Stage Four: repeat
+
+b <-> c: "Reality is just a crutch for people who can't handle science fiction" { source-arrowhead.label: 1
+  target-arrowhead: * {
+    shape: diamond
+    style.filled: true
+  }
+}
+
+(x -> y)[0].style.stroke: red
+
+birthdays: {
+  presents
+  _.christmas.style.fill -> presents: regift
+}
+
+explanation: |md
+  # I can do headers
+  - lists
+  And other normal markdown stuff
+|
+
+formula: {
+  equation: |latex
+    \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h}
+  |
+}
+
+explanation: |go
+  awsSession := From(c.Request.Context())
+  client := s3.New(awsSession)
+|
+
+my_code: ||ts
+  declare function getSmallPet(): Fish | Bird;
+||
+
+my_code: |||ts
+  const works = (a > 1) || (b < 2)
+|||
+
+my_code: |`ts
+  const works = (a > 1) || (b < 2)
+`|
+
+my_table: {
+  shape: sql_table
+  # This is defined using the shorthand syntax for labels discussed in the containers section.
+  # But here it's for the type of a constraint.
+  # The id field becomes a map that looks like {type: int; constraint: primary_key}
+  id: int {constraint: primary_key}
+  last_updated: timestamp with time zone
+}
+
+x: int { constraint: [primary_key; unique] }
+
+D2 Parser: {
+  shape: class
+  +reader: io.RuneReader
+  -lookaheadPos: d2ast.Position
+  \#peekn(n int): (s string, eof bool)
+}
