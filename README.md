@@ -3,15 +3,16 @@
 [![Build](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml)
 [![Test](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml)
 
-This is an alternative to pleshevskiy's [tree-sitter-d2] (up to date version on his own [git]).
+This is an alternative to pleshevskiy's [tree-sitter-d2] (up to date version on
+his own [git]).
 
-[tree-sitter-d2]: https://github.com/pleshevskiy/tree-sitter-d2
-[git]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2
-
-_This is still in the development phase, but sort-of usable._
+It's usable, but not yet finished
 
 The goal is to provide better experience for existing keywords, code blocks
 injections, folds, etc.
+
+[tree-sitter-d2]: https://github.com/pleshevskiy/tree-sitter-d2
+[git]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2
 
 ---
 
@@ -22,40 +23,70 @@ some bad patterns and simply bad code. Feel free to open issues._
 
 So there's already a tree-sitter grammar for d2, why make another one?
 
-Here's a list of comparisons (as of 31.12.2024), both using `Tokyonight Storm`
-theme.
+1. **The other one simply doesn't work** - On the latest stable version of
+   Neovim (v10.3 as of now), you'll probably encounter [this] error.
+1. **Better parsing of modern structures** - The latest supported version of d2
+   is **v0.6.8**.
+1. **Built with [nvim-treesitter] in mind** - We respect and follow its
+   [highlight] groups.
+1. **Keywords** - _All_ keywords from the documentation are treated as such.
+   (Open an issue if any are missing.)
+1. **Tests** - We aim to cover all edge cases and examples from the
+   documentation, resulting in more robust parsing. Currently, we have more
+   than 80 tests. (This will be reduced later when the grammar becomes stable.)
+
+[this]: https://github.com/nvim-treesitter/nvim-treesitter/discussions/4598
+[highlight]: https://neovim.io/doc/user/treesitter.html#_treesitter-queries
+
+## Comparison
+
+Here's a list of comparisons, both using `Tokyonight Storm` theme.
 
 Please note that:
 
-- Queries (highlighting) is done at a very basic level, and the main focus at
-  the moment is parsing grammar.
-- All the examples are from my random university homework, thus being in
-  Russian, please don't try make sense of them. Thanks! :D
+- On the left is our project using Neovim, on the right is Helix using
+  pleshivsky's grammar.
+- I was unable to install pleshevskiy's parser in Neovim, so I'm using [Helix]
+  for screenshots
+- Some example are my random homework, thus being in Russian, please don't try
+  make sense of them. Thanks! :D
 
-### Better handling of languages
+[Helix]: https://helix-editor.com/
 
-pleshivsky's version handles other locales and spaces very poorly.
+### Overall inconsistency
 
-| `nvim` + this project               | `helix` + pleshivsky's grammar           |
-| ----------------------------------- | ---------------------------------------- |
-| ![this](./img/comparison1-nvim.png) | ![pleshiski's](./img/comparison1-hx.png) |
+![cmp1](./img/cmp1.png)
 
-- Markdown is a mess
-- Missing highlights for `shape`
-- Note that text on the right is red, meaning it was not parsed correctly and
-  throws an `@error` instead ([this rule])
+- _Lines 3, 7, 21:_ Label isn't being recognized as such
+- _Lines 5, 10, 11, 12, ...:_ `shape`, `label` and other keywords aren't being
+  recognized as such
+- _Lines 13, 17:_ Note that text on the right is red, meaning it was not parsed
+  correctly and throws an `@error` instead ([this rule])
 
 [this rule]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2/src/branch/main/queries/highlights.scm#L61
 
-### Various missing highlights
+### Better injections
 
-| `nvim` + this project               | `helix` + pleshivsky's grammar           |
-| ----------------------------------- | ---------------------------------------- |
-| ![this](./img/comparison2-nvim.png) | ![pleshiski's](./img/comparison2-hx.png) |
+![cmp2](./img/cmp2.png)
 
-- `ID` for some reason being parsed as a _special_ keyword
-- Highlighting of `style` block is inconsistent.
-- Yet again, a lot of `@error`'s
+- We support single, double, triple and tick blocks for code.
+
+### Support for special per-shape structures
+
+![cmp3](./img/cmp3.png)
+
+- _Lines 65, 74, 76 to 84, 85:_ Inconsistency, again. Some identifiers are
+  highlighted, some are not
+- _Lines 78, 81:_ Support for "special" structures like number-only label and
+  method-like structures
+- _Lines 79-81, In Progress:_ Support for `+`, `-`, `\#` tokens
+- _Lines 84-90:_ Proper imports highlights
+- _Lines 79, 87, 89:_ Errors
+
+### Better handling of foreign languages
+
+![cmp4](./img/cmp4.png)
+![cmp5](./img/cmp5.png)
 
 ## Installation
 
@@ -106,7 +137,6 @@ Example using default [nvim-treesitter] dir with [lazy.nvim]
 
 4. Check if `:TSModuleInfo` has `highlight` option enabled.
 
-[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 
 ### Helix
@@ -144,3 +174,5 @@ name = "d2"
 ├── injections.scm
 └── locals.scm
 ```
+
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
