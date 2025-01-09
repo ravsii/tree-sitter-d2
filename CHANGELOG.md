@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.1.0...v0.2.0) (2025-01-09)
+
+
+### Features
+
+* **highlight:** add injections ([4c0e80e](https://github.com/ravsii/tree-sitter-d2/commit/4c0e80ec30d24bb32d6bbe9495f83d80514f406d))
+* **hightlight:** add support for special md injections and some keywords ([82fb5c1](https://github.com/ravsii/tree-sitter-d2/commit/82fb5c1c858fe38cc0f671e5f52b182e0e8f8449))
+* **imports:** add imports parsing ([14b85d2](https://github.com/ravsii/tree-sitter-d2/commit/14b85d2e20e073bc9bbdc11757eae83f955dfbac))
+* **labels:** better predefined value parsing (ints, bools) ([a67c6c8](https://github.com/ravsii/tree-sitter-d2/commit/a67c6c88a4883049eb85b5c560607e6318b3b3bb))
+* uml classes ([a7e3c3b](https://github.com/ravsii/tree-sitter-d2/commit/a7e3c3be0854bc75749644be7b2db4bbc51fe309))
+
+
+### Bug Fixes
+
+* **field:** remove duplicative field labels ([dd1771a](https://github.com/ravsii/tree-sitter-d2/commit/dd1771a31cd1ccfe8b403453e669fbd715762551))
+* no args / no returns bugs ([75e330a](https://github.com/ravsii/tree-sitter-d2/commit/75e330ae9b73523ae1d7239bc3504ca3e339bc4e))
+* **parsing:** remove unused fields ([892fa7f](https://github.com/ravsii/tree-sitter-d2/commit/892fa7f2116afc318d1e7ecb47ce3853e5c99dd3))
+* **typo:** refference -&gt; reference ([373530d](https://github.com/ravsii/tree-sitter-d2/commit/373530dcaba3df5879000d209f1a4a1b6ea94c21))
+
 ## 0.1.0 (2025-01-01)
 
 
