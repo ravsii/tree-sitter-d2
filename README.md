@@ -44,8 +44,8 @@ Here's a list of comparisons, both using `Tokyonight Storm` theme.
 
 Please note that:
 
-- On the left is our project using Neovim, on the right is Helix using
-  pleshivsky's grammar.
+- On the left is our project using Neovim, on the right is pleshivsky's
+  grammar using [Helix].
 - I was unable to install pleshevskiy's parser in Neovim, so I'm using [Helix]
   for screenshots
 - Some example are my random homework, thus being in Russian, please don't try
