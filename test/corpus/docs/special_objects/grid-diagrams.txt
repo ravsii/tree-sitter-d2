@@ -346,7 +346,7 @@ Oxygen
             (identifier
               (identifier))
             (label
-              (bool)))))))
+              (boolean)))))))
   (declaration
     (identifier
       (identifier))

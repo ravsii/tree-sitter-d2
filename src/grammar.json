@@ -647,7 +647,11 @@
           },
           {
             "type": "SYMBOL",
-            "name": "bool"
+            "name": "float"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "boolean"
           },
           {
             "type": "REPEAT1",
@@ -931,11 +935,22 @@
         "value": 2,
         "content": {
           "type": "PATTERN",
+          "value": "[\\-+]?\\d+?\\s+"
+        }
+      }
+    },
+    "float": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "PATTERN",
           "value": "[\\-+]?\\d+(\\.\\d+)?\\s+"
         }
       }
     },
-    "bool": {
+    "boolean": {
       "type": "TOKEN",
       "content": {
         "type": "PREC",

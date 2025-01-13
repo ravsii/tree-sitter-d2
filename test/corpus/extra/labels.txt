@@ -60,7 +60,7 @@ test: -1.5
   (declaration
     (identifier)
     (label
-      (integer))))
+      (float))))
 
 ====================|||
 Label with numbers and string
@@ -105,17 +105,17 @@ test: true {
   (declaration
     (identifier)
     (label
-      (bool)))
+      (boolean)))
   (declaration
     (identifier)
     (label
-      (bool)))
+      (boolean)))
   (declaration
     (identifier)
     (label
-      (bool))
+      (boolean))
     (block
       (declaration
         (identifier)
         (label
-          (bool))))))
+          (boolean))))))
