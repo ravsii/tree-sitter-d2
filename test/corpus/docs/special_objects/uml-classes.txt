@@ -865,7 +865,7 @@ PinValidation -> ATMTransaction: {
           field: (identifier)
           field: (identifier))
         (label
-          (bool)))))
+          (boolean)))))
   (declaration
     (identifier)
     (connection)
@@ -880,7 +880,7 @@ PinValidation -> ATMTransaction: {
           field: (identifier)
           field: (identifier))
         (label
-          (bool)))))
+          (boolean)))))
   (declaration
     (identifier)
     (connection)
@@ -895,7 +895,7 @@ PinValidation -> ATMTransaction: {
           field: (identifier)
           field: (identifier))
         (label
-          (bool)))))
+          (boolean)))))
   (declaration
     (identifier)
     (connection)
@@ -910,7 +910,7 @@ PinValidation -> ATMTransaction: {
           field: (identifier)
           field: (identifier))
         (label
-          (bool)))))
+          (boolean)))))
   (declaration
     (identifier)
     (connection)
@@ -925,7 +925,7 @@ PinValidation -> ATMTransaction: {
           field: (identifier)
           field: (identifier))
         (label
-          (bool)))))
+          (boolean)))))
   (declaration
     (identifier)
     (connection)
@@ -940,4 +940,4 @@ PinValidation -> ATMTransaction: {
           field: (identifier)
           field: (identifier))
         (label
-          (bool))))))
+          (boolean))))))

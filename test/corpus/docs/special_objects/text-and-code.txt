@@ -111,7 +111,7 @@ results -> favorable -> will of the people
       (declaration
         (identifier)
         (label
-          (bool)))))))
+          (boolean)))))))
   (declaration
     (identifier)
     (connection)

@@ -17,7 +17,8 @@
 
 (connection) @operator
 (integer) @number
-(bool) @constant.builtin
+(float) @number.float
+(boolean) @boolean
 
 (import) @module
 

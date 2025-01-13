@@ -53,7 +53,7 @@ classes: {
                 (declaration
                   (identifier)
                   (label
-                    (bool)))))))
+                    (boolean)))))))
         (declaration
           (identifier)
           (block

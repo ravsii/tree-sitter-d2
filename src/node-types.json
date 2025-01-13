@@ -155,7 +155,11 @@
       "required": false,
       "types": [
         {
-          "type": "bool",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "float",
           "named": true
         },
         {
@@ -316,7 +320,7 @@
     "named": true
   },
   {
-    "type": "bool",
+    "type": "boolean",
     "named": true
   },
   {
@@ -337,6 +341,10 @@
   },
   {
     "type": "escape_sequence",
+    "named": true
+  },
+  {
+    "type": "float",
     "named": true
   },
   {

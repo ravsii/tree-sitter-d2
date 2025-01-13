@@ -132,7 +132,8 @@ module.exports = grammar({
 
     _label_literal: $ => prec.right(choice(
       $.integer,
-      $.bool,
+      $.float,
+      $.boolean,
       repeat1($._label_base),
       token(seq('"', /[^"]*/, '"')),
     )),
@@ -174,8 +175,9 @@ module.exports = grammar({
 
     // We need extra space in the end to make sure it's not a string starting
     // with an integer.
-    integer: _ => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
-    bool: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
+    integer: _ => token(prec(PREC.label_predefined, /[\-+]?\d+?\s+/)),
+    float: _ => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
+    boolean: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
 
 
     _eol: _ => token(prec(PREC.term, choice(/\n/, ';'))),
