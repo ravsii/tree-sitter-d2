@@ -1,8 +1,8 @@
 ((comment) @comment @spell)
 
 [
- (label)
- (label_codeblock)
+  (label)
+  (label_codeblock)
 ] @string
 
 (escape_sequence) @string.escape
@@ -12,7 +12,48 @@
   (identifier) @variable.member)
 
 ((identifier) @constant.builtin
- (#match? @constant.builtin "^(bold|border-radius|direction|double-border|fill|fill-pattern|filled|font|font-color|font-size|italic|label|multiple|opacity|shadow|shape|source-arrowhead|stroke|stroke-dash|stroke-width|style|target-arrowhead|text-transform|underline)$"))
+  (#any-of? @constant.builtin
+    "3d"
+    "animated"
+    "bold"
+    "border-radius"
+    "class"
+    "classes"
+    "constraint"
+    "d2-config"
+    "direction"
+    "double-border"
+    "fill"
+    "fill-pattern"
+    "filled"
+    "font"
+    "font-color"
+    "font-size"
+    "height"
+    "italic"
+    "label"
+    "layers"
+    "link"
+    "multiple"
+    "near"
+    "opacity"
+    "scenarios"
+    "shadow"
+    "shape"
+    "source-arrowhead"
+    "steps"
+    "stroke"
+    "stroke-dash"
+    "stroke-width"
+    "style"
+    "target-arrowhead"
+    "text-transform"
+    "tooltip"
+    "underline"
+    "vars"
+    "width"
+  )
+)
 
 (connection) @operator
 (integer) @number
