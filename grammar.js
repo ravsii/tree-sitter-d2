@@ -179,7 +179,6 @@ module.exports = grammar({
     float: _ => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
     boolean: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
 
-
     _eol: _ => token(prec(PREC.term, choice(/\n/, ';'))),
     _eol_or_space: $ => choice($._eol, /\s+/),
   },
