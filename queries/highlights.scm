@@ -3,9 +3,10 @@
 [
   (label)
   (label_codeblock)
+  (label_constraint)
 ] @string
 
-(label_constraint) @keyword
+(escape_sequence) @string.escape
 
 ((label_constraint) @constant
   (#any-of? @constant
@@ -18,10 +19,8 @@
   )
 )
 
-(escape_sequence) @string.escape
 
 (identifier) @function
-
 ((identifier) @function.builtin
   (#any-of? @function.builtin
     "3d"
@@ -67,6 +66,7 @@
 )
 
 (connection) @operator
+(connection_identifier) @property
 (integer) @number
 (float) @number.float
 (boolean) @boolean
@@ -80,6 +80,8 @@
 [
   "["
   "]"
+  "("
+  ")"
   "{"
   "}"
   "|"
