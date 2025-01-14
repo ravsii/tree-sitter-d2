@@ -8,13 +8,13 @@ b <-> c: "Reality is just a crutch for people who can't handle science fiction" 
     _.christmas.style.fill -> presents: regift
   }
   id: int {constraint: primary_key}
-  id: int {constraint: [primary_key; foreign_key; unique; PK; FK; UNQ]}
+  id: int {constraint: [primary_key; foreign_key; unique; PK; FK; UNQ; random word]}
   number: -122
   float: -122.321
   boolean: true
-  +reader: io.RuneReader
-  -lookaheadPos: d2ast.Position
-  \#peekn(n int): (s string, eof bool)
+  +publicVar: io.RuneReader
+  -privateVar: d2ast.Position
+  \#protectedMethod(n int): (s string, eof bool)
 }
 (x -> y)[0].style.stroke: red
 explanation: |md
@@ -25,15 +25,23 @@ explanation: |markdown
   # I can do headers
   1. test
 |
-formula: { equation: |latex \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h} | }
-explanation: |go awsSession := From(c.Request.Context()) |
+formula: {
+    equation: |latex
+        \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h}
+    |
+}
+explanation: |go
+awsSession := From(c.Request.Context())
+|
 my_code: ||ts
   declare function getSmallPet(): Fish | Bird;
 ||
 my_code: |||d2
   x.style: test
 |||
-my_code: |`ts const works = (a > 1) || (b < 2) `|
+my_code: |`ts
+const works = (a > 1) || (b < 2)
+`|
 ...@people.management
 x: @x.d2
 x: @x
