@@ -5,14 +5,25 @@
   (label_codeblock)
 ] @string
 
+(label_constraint) @keyword
+
+((label_constraint) @constant
+  (#any-of? @constant
+    "primary_key"
+    "foreign_key"
+    "unique"
+    "PK"
+    "FK"
+    "UNQ"
+  )
+)
+
 (escape_sequence) @string.escape
 
-(identifier) @variable
-(identifier
-  (identifier) @variable.member)
+(identifier) @function
 
-((identifier) @constant.builtin
-  (#any-of? @constant.builtin
+((identifier) @function.builtin
+  (#any-of? @function.builtin
     "3d"
     "animated"
     "bold"
