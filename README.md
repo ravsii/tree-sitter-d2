@@ -45,48 +45,21 @@ Here's a list of comparisons, both using `Tokyonight Storm` theme.
 Please note that:
 
 - On the left is our project using Neovim, on the right is pleshivsky's
-  grammar using [Helix].
-- I was unable to install pleshevskiy's parser in Neovim, so I'm using [Helix]
-  for screenshots
+  grammar using [Helix] (I was unable to install pleshevskiy's grammar in Neovim)
 - Some example are my random homework, thus being in Russian, please don't try
   make sense of them. Thanks! :D
 
 [Helix]: https://helix-editor.com/
 
-### Overall inconsistency
+### Better consistency overall
 
 ![cmp1](./img/cmp1.png)
-
-- _Lines 3, 7, 21:_ Label isn't being recognized as such
-- _Lines 5, 10, 11, 12, ...:_ `shape`, `label` and other keywords aren't being
-  recognized as such
-- _Lines 13, 17:_ Note that text on the right is red, meaning it was not parsed
-  correctly and throws an `@error` instead ([this rule])
-
-[this rule]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2/src/branch/main/queries/highlights.scm#L61
-
-### Better injections
-
 ![cmp2](./img/cmp2.png)
-
-- We support single, double, triple and tick blocks for code.
-
-### Support for special per-shape structures
-
-![cmp3](./img/cmp3.png)
-
-- _Lines 65, 74, 76 to 84, 85:_ Inconsistency, again. Some identifiers are
-  highlighted, some are not
-- _Lines 78, 81:_ Support for "special" structures like number-only label and
-  method-like structures
-- _Lines 79-81, In Progress:_ Support for `+`, `-`, `\#` tokens
-- _Lines 84-90:_ Proper imports highlights
-- _Lines 79, 87, 89:_ Errors
 
 ### Better handling of foreign languages
 
-![cmp4](./img/cmp4.png)
-![cmp5](./img/cmp5.png)
+![cmpru1](./img/cmp_ru1.png)
+![cmpru2](./img/cmp_ru2.png)
 
 ## Installation
 
