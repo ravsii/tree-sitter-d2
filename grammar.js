@@ -4,8 +4,9 @@
 const PREC = {
   term: 10,
   connection: 9,
-  conn_identifier: 9,
+  conn_identifier: 8,
   block: 5,
+  string: 4,
   label_predefined: 2,
   label: 1,
 };
@@ -34,15 +35,13 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat(
-      choice(
-        $._top_level_declaratioin,
-        $.comment,
-        $.block_comment,
-      ),
-    ),
+    source_file: $ => repeat(choice(
+      $._top_level_declaratioin,
+      $.comment,
+      $.block_comment,
+    )),
 
-    comment: _ => token(seq('#', /.+/, '\n')),
+    comment: _ => token(seq('#', repeat(/./), /\n/)),
     block_comment: _ => seq('"""', repeat(/./), '"""'),
 
     _top_level_declaratioin: $ => choice(
@@ -160,11 +159,20 @@ module.exports = grammar({
     ),
     connection_identifier: _ => token(seq('[', /\d+/, ']')),
 
-    identifier: $ => seq(
-      choice(
-        seq('"', repeat(choice($.escape_sequence, /[^"]/)), '"'),
-        $._identifier_base,
-      )),
+    identifier: $ => choice(
+      $._identifier_base,
+      $._single_quoted,
+      $._double_quoted,
+    ),
+
+    _single_quoted: _ => prec(PREC.string,
+      token(seq('\'', repeat(/./), '\'')),
+    ),
+
+    _double_quoted: _ => prec(PREC.string,
+      token(seq('"', repeat(/./), '"')),
+    ),
+
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq('.', field('field', $.identifier)),
     _ident: $ => r1seq($._ident_base, optional(/[\s\',]+/)),
@@ -172,6 +180,7 @@ module.exports = grammar({
 
     escape_sequence: _ => token(choice(
       '\\\\',
+      '\\\'',
       '\\"',
       '\\n',
       '\\t',
@@ -188,8 +197,8 @@ module.exports = grammar({
     float: _ => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
     boolean: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
 
-    _eol: _ => token(prec(PREC.term, choice(/\n/, ';'))),
-    _eol_or_space: $ => choice($._eol, /\s+/),
+    _eol: _ => token(prec(PREC.term, choice(/\n/, /\r/, ';'))),
+    _eol_or_space: $ => choice($._eol, repeat1(/\s/)),
   },
 });
 

@@ -9,8 +9,6 @@
   (label_constraint)
 ] @string
 
-(escape_sequence) @string.escape
-
 ((label_constraint) @constant
   (#any-of? @constant
     "primary_key"

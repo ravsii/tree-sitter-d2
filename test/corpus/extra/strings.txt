@@ -1,0 +1,13 @@
+====================|||
+Quoted strings with quotes
+====================|||
+
+' $$$ \'Hello\' \'World\' ' -> " ### \"Hello\" \"World\" "
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))

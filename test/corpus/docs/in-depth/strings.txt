@@ -1,0 +1,31 @@
+====================|||
+Unquoted strings
+====================|||
+
+   Office Bulb   :     Philips
+            Switch   ->   Office Bulb
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+Quoted strings
+====================|||
+
+'$$$' -> "###"
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
