@@ -28,6 +28,8 @@ module.exports = grammar({
 
   extras: $ => [
     $.comment,
+    $.block_comment,
+    $._eol,
     /\s/,
   ],
 
@@ -36,10 +38,12 @@ module.exports = grammar({
       choice(
         $._top_level_declaratioin,
         $.comment,
+        $.block_comment,
       ),
     ),
 
     comment: _ => token(seq('#', /.+/, '\n')),
+    block_comment: _ => seq('"""', repeat(/./), '"""'),
 
     _top_level_declaratioin: $ => choice(
       $.declaration,

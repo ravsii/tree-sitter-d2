@@ -47,6 +47,11 @@
     }
   },
   {
+    "type": "block_comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "codeblock_content",
     "named": true,
     "fields": {}
@@ -253,6 +258,10 @@
       "required": false,
       "types": [
         {
+          "type": "block_comment",
+          "named": true
+        },
+        {
           "type": "comment",
           "named": true
         },
@@ -269,6 +278,10 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "\"\"\"",
     "named": false
   },
   {
