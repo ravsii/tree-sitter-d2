@@ -34,17 +34,16 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat(
       choice(
-        $._base_declaration,
+        $._top_level_declaratioin,
         $.comment,
       ),
     ),
 
     comment: _ => token(seq('#', /.+/, '\n')),
 
-    _base_declaration: $ => choice(
+    _top_level_declaratioin: $ => choice(
       $.declaration,
       $.import,
-      $.method_declaration,
     ),
 
     declaration: $ => prec.right(seq(
@@ -89,6 +88,7 @@ module.exports = grammar({
         $.argument_type, optional(','),
       ),
     ),
+
     argument_name: _ => token(/[a-zA-Z0-9_]+/),
     argument_type: _ => token(/[a-zA-Z0-9_\[\]]+/),
 
@@ -103,9 +103,14 @@ module.exports = grammar({
 
     block: $ => prec(PREC.block, seq(
       token('{'),
-      repeat($._base_declaration),
+      repeat($._block_declaration),
       token('}'),
     )),
+
+    _block_declaration: $ => choice(
+      $._top_level_declaratioin,
+      $.method_declaration,
+    ),
 
     label: $ => choice(
       $.label_codeblock,
