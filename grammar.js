@@ -11,9 +11,49 @@ const PREC = {
   label: 1,
 };
 
+/**
+ * Shortcut for optional(seq(...rules))
+ *
+ * @param {...RuleOrLiteral} rules
+ * @returns {ChoiceRule}
+ */
 const opseq = (...rules) => optional(seq(...rules));
-const rseq = (...x) => repeat(seq(...x));
-const r1seq = (...x) => repeat1(seq(...x));
+
+/**
+ * Shortcut for repeat(seq(...rules))
+ *
+ * @param {...RuleOrLiteral} rules
+ * @returns {RepeatRule}
+ */
+const rseq = (...rules) => repeat(seq(...rules));
+
+/**
+ * Shortcut for repeat1(seq(...rules))
+ *
+ * @param {...RuleOrLiteral} rules
+ * @returns {Repeat1Rule}
+ */
+const r1seq = (...rules) => repeat1(seq(...rules));
+
+/**
+ * Creates a rule to match one or more occurrences of `rule` separated by
+ * `separator`.
+ *
+ * @param {RuleOrLiteral} rule
+ * @param {RuleOrLiteral} separator
+ * @returns {SeqRule}
+ */
+const sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
+
+/**
+ * Creates a rule to match at least 2 occurrences of `rule` separated by
+ * `separator`.
+ *
+ * @param {RuleOrLiteral} rule
+ * @param {RuleOrLiteral} separator
+ * @returns {SeqRule}
+ */
+const sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
 
 module.exports = grammar({
   name: 'd2',
@@ -35,14 +75,11 @@ module.exports = grammar({
     ))),
 
     comment: _ => token(seq('#', repeat(/./), /\n/)),
-    block_comment: _ => seq('"""',
-      // repeat(/./),
-      repeat(choice(
-        /[^"]/,
-        /"[^"]/,
-        /""[^"]/,
-      )),
-      '"""'),
+    block_comment: _ => seq(
+      '"""',
+      repeat(choice(/[^"]/, /"[^"]/, /""[^"]/)),
+      '"""',
+    ),
 
     _top_level_declaratioin: $ => choice(
       $.declaration,
@@ -61,14 +98,7 @@ module.exports = grammar({
       optional($._eol),
     )),
 
-
-    _expr: $ => prec.right(seq(
-      $.identifier,
-      rseq(
-        $.connection,
-        $.identifier,
-      ),
-    )),
+    _expr: $ => sep($._identifier, $.connection),
 
     method_declaration: $ => prec.right(100, seq(
       $.identifier,
@@ -159,37 +189,31 @@ module.exports = grammar({
     ),
     connection_identifier: _ => token(seq('[', /\d+/, ']')),
 
+    _identifier: $ => choice(
+      $.identifier,
+      $.identifier_chain,
+    ),
+    identifier_chain: $ => sep1($.identifier_new, token('.')),
+
     identifier: $ => choice(
       $._identifier_base,
       $._single_quoted,
       $._double_quoted,
     ),
 
-    _single_quoted: _ => prec(PREC.string,
-      token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),
-    ),
-
-    _double_quoted: _ => prec(PREC.string,
-      token(seq('"', repeat(choice('\\"', /[^"]/)), '"')),
-    ),
+    identifier_new: $ => prec(1, choice(
+      $._ident,
+      $._single_quoted,
+      $._double_quoted,
+    )),
 
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq('.', field('field', $.identifier)),
     _ident: $ => r1seq($._ident_base, optional(/[\s\',]+/)),
     _ident_base: _ => /([\p{L}\d\/\*_+\-]|\\#)+/u,
 
-    escape_sequence: _ => token(choice(
-      '\\\\',
-      '\\\'',
-      '\\"',
-      '\\n',
-      '\\t',
-      '\\r',
-      '\\b',
-      '\\f',
-      /\\u[0-9a-fA-F]{4}/,
-      /\\x[0-9a-fA-F]{2}/,
-    )),
+    _single_quoted: _ => token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),
+    _double_quoted: _ => token(seq('"', repeat(choice('\\"', /[^"]/)), '"')),
 
     // We need extra space in the end to make sure it's not a string starting
     // with an integer.
