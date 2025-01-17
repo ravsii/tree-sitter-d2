@@ -11,13 +11,6 @@ const PREC = {
   label: 1,
 };
 
-
-/**
- * Shortcut for optional(seq(...rules))
- *
- * @param {RuleOrLiteral[]} rules
- * @returns {ChoiceRule}
- */
 const opseq = (...rules) => optional(seq(...rules));
 const rseq = (...x) => repeat(seq(...x));
 const r1seq = (...x) => repeat1(seq(...x));
@@ -35,21 +28,28 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat(choice(
+    source_file: $ => repeat(prec.left(choice(
       $._top_level_declaratioin,
       $.comment,
       $.block_comment,
-    )),
+    ))),
 
     comment: _ => token(seq('#', repeat(/./), /\n/)),
-    block_comment: _ => seq('"""', repeat(/./), '"""'),
+    block_comment: _ => seq('"""',
+      // repeat(/./),
+      repeat(choice(
+        /[^"]/,
+        /"[^"]/,
+        /""[^"]/,
+      )),
+      '"""'),
 
     _top_level_declaratioin: $ => choice(
       $.declaration,
       $.import,
     ),
 
-    declaration: $ => prec.right(seq(
+    declaration: $ => prec.right(-1, seq(
       choice(
         $._expr,
         $.connection_reference,
@@ -166,11 +166,11 @@ module.exports = grammar({
     ),
 
     _single_quoted: _ => prec(PREC.string,
-      token(seq('\'', repeat(/./), '\'')),
+      token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),
     ),
 
     _double_quoted: _ => prec(PREC.string,
-      token(seq('"', repeat(/./), '"')),
+      token(seq('"', repeat(choice('\\"', /[^"]/)), '"')),
     ),
 
     _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),

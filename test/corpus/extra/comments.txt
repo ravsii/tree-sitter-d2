@@ -69,3 +69,27 @@ block comment
   (block_comment)
   (declaration
     (identifier)))
+
+====================|||
+Top-level block comment
+====================|||
+
+"""test"""
+
+---|||
+
+(source_file
+  (block_comment))
+
+====================|||
+Multi line top-level block comment
+====================|||
+
+"""multiline
+block
+comment"""
+
+---|||
+
+(source_file
+  (block_comment))
