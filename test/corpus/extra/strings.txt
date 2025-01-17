@@ -2,7 +2,7 @@
 Quoted strings with quotes
 ====================|||
 
-' $$$ \'Hello\' \'World\' ' -> " ### \"Hello\" \"World\" "
+' $$$ \'Hello World ' -> " ### \"Hello\" \"World\" "
 
 ---|||
 
