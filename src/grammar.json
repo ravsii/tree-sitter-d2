@@ -10,7 +10,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_base_declaration"
+            "name": "_top_level_declaratioin"
           },
           {
             "type": "SYMBOL",
@@ -39,7 +39,7 @@
         ]
       }
     },
-    "_base_declaration": {
+    "_top_level_declaratioin": {
       "type": "CHOICE",
       "members": [
         {
@@ -49,10 +49,6 @@
         {
           "type": "SYMBOL",
           "name": "import"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "method_declaration"
         }
       ]
     },
@@ -439,7 +435,7 @@
             "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
-              "name": "_base_declaration"
+              "name": "_block_declaration"
             }
           },
           {
@@ -451,6 +447,19 @@
           }
         ]
       }
+    },
+    "_block_declaration": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_top_level_declaratioin"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "method_declaration"
+        }
+      ]
     },
     "label": {
       "type": "CHOICE",
