@@ -1,26 +1,24 @@
 ====================|||
-Multiple Comments
+Line comments
 ====================|||
 
-# Test
-# Test2
-# Test3
-# Test4
+# Comments start with a hash character and continue until the next newline or EOF.
+x -> y
 
 ---|||
 
 (source_file
   (comment)
-  (comment)
-  (comment)
-  (comment))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
 
 ====================|||
-End of line Multiple
+End of line
 ====================|||
 
-x -> y # I am at the end;
-x
+x -> y # I am at the end
 
 ---|||
 
@@ -29,35 +27,20 @@ x
     (identifier)
     (connection)
     (identifier))
-  (comment)
-  (declaration
-    (identifier)))
-
-====================|||
-Inside blocks
-====================|||
-
-x: {
-  x; # comment
-}
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (block
-      (declaration
-        (identifier))
-      (comment))))
+  (comment))
 
 ====================|||
 Block Comments
 ====================|||
 
-x -> y;"""This is a
+x -> y
+
+"""
+This is a
 block comment
-""";y
+"""
+
+y -> z
 
 ---|||
 
@@ -68,4 +51,6 @@ block comment
     (identifier))
   (block_comment)
   (declaration
+    (identifier)
+    (connection)
     (identifier)))
