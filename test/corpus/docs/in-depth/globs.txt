@@ -88,7 +88,7 @@ t*h*r.shape: person
 Glob connections
 ====================|||
 
-* -> *: 👉
+* -> *: test
 
 ---|||
 
@@ -96,8 +96,8 @@ Glob connections
   (declaration
     (glob)
     (connection)
-    (glob))
-  (label))
+    (glob)
+    (label)))
 
 ====================|||
 Glob connections reference
@@ -190,38 +190,20 @@ zone-A.** -> load balancer
 Filters
 ====================|||
 
-bravo team.shape: person
-charlie team.shape: person
-command center.shape: cloud
-hq.shape: rectangle
-
 *: {
   &shape: person
-  style.multiple: true
 }
 
 ---|||
 
-====================|||
-Filters on array values
-====================|||
-
-the-little-cannon: {
-  class: [server; deployed]
-}
-dino: {
-  class: [internal; deployed]
-}
-catapult: {
-  class: [server]
-}
-
-*: {
-  &class: server
-  style.multiple: true
-}
-
----|||
+(source_file
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (glob_filter))
+        (label)))))
 
 ====================|||
 Globs as filter values
@@ -233,6 +215,15 @@ Globs as filter values
 
 ---|||
 
+(source_file
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (glob_filter))
+        (label)))))
+
 ====================|||
 Inverse filters
 ====================|||
@@ -243,16 +234,34 @@ Inverse filters
 
 ---|||
 
+(source_file
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (inverse_glob_filter))
+        (label)))))
+
 ====================|||
 Nested globs
 ====================|||
 
 **: {
-  &shape: sequence_diagram
   **: {shape: person}
 }
 
 ---|||
+(source_file
+  (declaration
+    (recursive_glob)
+    (block
+      (declaration
+        (recursive_glob)
+        (block
+          (declaration
+            (identifier)
+            (label)))))))
 
 ====================|||
 Globsl globs

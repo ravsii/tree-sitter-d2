@@ -2,10 +2,11 @@
 // @ts-check
 
 const PREC = {
-  term: 10,
-  connection: 9,
-  conn_identifier: 8,
-  glob: 7,
+  term: 11,
+  connection: 10,
+  conn_identifier: 9,
+  glob: 8,
+  identifier_chain: 7,
   identifier: 6,
   block: 5,
   string: 4,
@@ -67,6 +68,10 @@ module.exports = grammar({
     $.block_comment,
     $._eol,
     /\s/,
+  ],
+
+  conflicts: $ => [
+    [$._single_top_level_identifier, $._ident_base],
   ],
 
   rules: {
@@ -195,12 +200,12 @@ module.exports = grammar({
       ']',
     ),
 
-    _identifier: $ => choice(
-      $._single_top_level_identifier,
+    _identifier: $ => prec.right(choice(
       $.identifier_chain,
-    ),
+      $._single_top_level_identifier,
+    )),
 
-    identifier_chain: $ => sep1($._single_top_level_identifier, token('.')),
+    identifier_chain: $ => prec.right(sep1($._single_top_level_identifier, token('.'))),
 
     _single_top_level_identifier: $ => choice(
       $.glob,
@@ -209,11 +214,16 @@ module.exports = grammar({
       $.identifier,
     ),
 
-    identifier: $ => prec.right(choice(
-      $._ident,
-      $._single_quoted,
-      $._double_quoted,
-    )),
+    identifier: $ => prec.right(
+      seq(
+        optional($._filters),
+        choice(
+          $._ident,
+          $._single_quoted,
+          $._double_quoted,
+        ),
+      ),
+    ),
 
     _fields: $ => r1seq('.', field('field', $.identifier)),
     _ident: $ => prec.right(r1seq(
@@ -224,14 +234,21 @@ module.exports = grammar({
       )),
     )),
 
-    _ident_base: $ => prec.right(PREC.identifier, choice(
+    _ident_base: $ => choice(
       $.glob,
       /([\p{L}\d\/_+\-]|\\#)+/u,
-    )),
+    ),
 
     glob: _ => prec(PREC.glob, token('*')),
-    recursive_glob: _ => token('**'),
-    global_glob: _ => token('***'),
+    recursive_glob: _ => prec(PREC.glob, token('**')),
+    global_glob: _ => prec(PREC.glob, token('***')),
+
+    _filters: $ => choice(
+      $.glob_filter,
+      $.inverse_glob_filter,
+    ),
+    glob_filter: _ => token('&'),
+    inverse_glob_filter: _ => token('!&'),
 
     _single_quoted: _ => token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),
     _double_quoted: _ => token(seq('"', repeat(choice('\\"', /[^"]/)), '"')),
