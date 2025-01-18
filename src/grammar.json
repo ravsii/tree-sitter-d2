@@ -796,31 +796,37 @@
       ]
     },
     "connection_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "["
-          },
-          {
-            "type": "PATTERN",
-            "value": "\\d+"
-          },
-          {
-            "type": "STRING",
-            "value": "]"
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\d+"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "glob"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "_identifier": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_single_top_level_identifier"
         },
         {
           "type": "SYMBOL",
@@ -833,7 +839,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_single_top_level_identifier"
         },
         {
           "type": "REPEAT1",
@@ -849,10 +855,31 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "identifier"
+                "name": "_single_top_level_identifier"
               }
             ]
           }
+        }
+      ]
+    },
+    "_single_top_level_identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "glob"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "recursive_glob"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "global_glob"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         }
       ]
     },
@@ -936,11 +963,45 @@
     },
     "_ident_base": {
       "type": "PREC_RIGHT",
-      "value": 1,
+      "value": 6,
       "content": {
-        "type": "PATTERN",
-        "value": "([\\p{L}\\d\\/\\*_+\\-]|\\\\#)+",
-        "flags": "u"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "glob"
+          },
+          {
+            "type": "PATTERN",
+            "value": "([\\p{L}\\d\\/_+\\-]|\\\\#)+",
+            "flags": "u"
+          }
+        ]
+      }
+    },
+    "glob": {
+      "type": "PREC",
+      "value": 7,
+      "content": {
+        "type": "TOKEN",
+        "content": {
+          "type": "STRING",
+          "value": "*"
+        }
+      }
+    },
+    "recursive_glob": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "**"
+      }
+    },
+    "global_glob": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "***"
       }
     },
     "_single_quoted": {

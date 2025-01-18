@@ -290,13 +290,13 @@ asm: {
       (integer)))
   (declaration
     (identifier_chain
-      (identifier)
+      (glob)
       (identifier)
       (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier)
+      (glob)
       (identifier)
       (identifier))
     (label))
