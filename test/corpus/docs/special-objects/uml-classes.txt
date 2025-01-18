@@ -5,7 +5,7 @@ Basics (No Args, Empty Returns)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method()
 }
 
@@ -31,7 +31,7 @@ Basics (No Args, No Returns)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(): ()
 }
 
@@ -57,7 +57,7 @@ Basics (No Args, Single Return)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(): (x int)
 }
 
@@ -86,7 +86,7 @@ Basics (Single Arg, no return)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(a uint64)
 }
 
@@ -115,7 +115,7 @@ Basics (Single Arg, Single Return)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(a uint64): (b int)
 }
 
@@ -147,7 +147,7 @@ Basics (Multiple Args, Single Return)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(a uint64, b int64): (b int)
 }
 
@@ -181,7 +181,7 @@ Basics (Multiple Args, Multiple Return)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(a uint64, b int64): (c int, d []string)
 }
 
@@ -217,7 +217,7 @@ Basics (Multiple Args & Returns, short ver.)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(a, b int64): (c, d []string)
 }
 
@@ -251,7 +251,7 @@ Basics (Multiple Args, Returns & Types, short ver.)
 MyClass: {
   shape: class
 
-  field: "[]string"
+  var: "[]string"
   method(a, b int64, c, d []string): (e, f int, g, h []float64)
 }
 
@@ -286,7 +286,7 @@ MyClass: {
 
 
 ====================|||
-Visibility Marks (field)
+Visibility Marks (var)
 ====================|||
 
 D2 Parser: {
@@ -343,10 +343,10 @@ D2 Parser: {
   +reader: io.RuneReader
   readerPos: d2ast.Position
 
-  # Private field.
+  # Private var.
   -lookahead: "[]rune"
 
-  # Protected field.
+  # Protected var.
   # We have to escape the # to prevent the line from being parsed as a comment.
   \#lookaheadPos: d2ast.Position
 
@@ -727,7 +727,6 @@ SavingAccount -> Account: {
   target-arrowhead.shape: triangle
   target-arrowhead.style.filled: false
 }
-
 WidthdrawlTransaction -> ATMTransaction: {
   target-arrowhead.shape: triangle
   target-arrowhead.style.filled: false
@@ -857,13 +856,15 @@ PinValidation -> ATMTransaction: {
     (identifier)
     (block
       (declaration
-        (identifier
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)
+          (identifier_new))
         (label
           (boolean)))))
   (declaration
@@ -872,13 +873,15 @@ PinValidation -> ATMTransaction: {
     (identifier)
     (block
       (declaration
-        (identifier
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)
+          (identifier_new))
         (label
           (boolean)))))
   (declaration
@@ -887,13 +890,15 @@ PinValidation -> ATMTransaction: {
     (identifier)
     (block
       (declaration
-        (identifier
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)
+          (identifier_new))
         (label
           (boolean)))))
   (declaration
@@ -902,13 +907,15 @@ PinValidation -> ATMTransaction: {
     (identifier)
     (block
       (declaration
-        (identifier
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)
+          (identifier_new))
         (label
           (boolean)))))
   (declaration
@@ -917,13 +924,15 @@ PinValidation -> ATMTransaction: {
     (identifier)
     (block
       (declaration
-        (identifier
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)
+          (identifier_new))
         (label
           (boolean)))))
   (declaration
@@ -932,12 +941,14 @@ PinValidation -> ATMTransaction: {
     (identifier)
     (block
       (declaration
-        (identifier
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)
+          (identifier_new))
         (label
           (boolean))))))

@@ -25,7 +25,7 @@ const opseq = (...rules) => optional(seq(...rules));
  * @param {...RuleOrLiteral} rules
  * @returns {RepeatRule}
  */
-const rseq = (...rules) => repeat(seq(...rules));
+// const rseq = (...rules) => repeat(seq(...rules));
 
 /**
  * Shortcut for repeat1(seq(...rules))

@@ -58,12 +58,14 @@ classes: {
           (identifier)
           (block
             (declaration
-              (identifier
-                (identifier))
+              (identifier_chain
+                (identifier_new)
+                (identifier_new))
               (label))
             (declaration
-              (identifier
-                (identifier))
+              (identifier_chain
+                (identifier_new)
+                (identifier_new))
               (label))))
         (declaration
           (identifier)
@@ -77,8 +79,9 @@ classes: {
               (label
                 (integer)))
             (declaration
-              (identifier
-                (identifier))
+              (identifier_chain
+                (identifier_new)
+                (identifier_new))
               (label
                 (integer)))))
         (declaration
@@ -93,8 +96,9 @@ classes: {
               (label
                 (integer)))
             (declaration
-              (identifier
-                (identifier))
+              (identifier_chain
+                (identifier_new)
+                (identifier_new))
               (label
                 (integer)))))
         (declaration
@@ -109,8 +113,9 @@ classes: {
               (label
                 (integer)))
             (declaration
-              (identifier
-                (identifier))
+              (identifier_chain
+                (identifier_new)
+                (identifier_new))
               (label
                 (integer)))))
         (declaration
@@ -120,8 +125,9 @@ classes: {
               (identifier)
               (label))
             (declaration
-              (identifier
-                (identifier))
+              (identifier_chain
+                (identifier_new)
+                (identifier_new))
               (label
                 (integer))))))))
 
@@ -143,36 +149,42 @@ app.signup -> modal: continue registration
 (source_file
   (import)
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label
       (label_constraint)
       (label_constraint)))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label
       (label_constraint)
       (label_constraint)))
   (declaration
     (identifier)
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
     (identifier)
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
     (identifier)
     (label)))

@@ -17,8 +17,9 @@ layers: {
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
     (identifier)
@@ -63,23 +64,27 @@ layers: {
       (declaration
         (identifier))))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
     (identifier)

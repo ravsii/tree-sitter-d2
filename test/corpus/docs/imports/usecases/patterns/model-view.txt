@@ -33,8 +33,9 @@ vpn: {
         (identifier)
         (label))
       (declaration
-        (identifier
-          (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label))))
   (declaration
     (identifier)

@@ -289,14 +289,16 @@ asm: {
     (label
       (integer)))
   (declaration
-    (identifier
-    (identifier)
-    (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-    (identifier)
-    (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
     (identifier)

@@ -149,36 +149,45 @@ alice.t2 <- bob.a
     (identifier)
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier)))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)))
   (declaration
-    (identifier
-      (identifier)
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier)))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)))
   (declaration
-    (identifier
-      (identifier)
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier)))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))))
 
 ====================|||
 Groups
@@ -253,15 +262,17 @@ bob -> alice: Chocolate chip.
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier)))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)))
   (comment)
   (declaration
     (identifier)
     (block
       (declaration
-        (identifier
-          (identifier)))))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new)))))
   (declaration
     (identifier)
     (connection)
@@ -348,110 +359,137 @@ scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
         (identifier)
         (label))))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label)
     (block
       (declaration
-        (identifier
-          (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label
           (integer)))))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label)
     (block
       (declaration
-        (identifier
-          (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label
           (integer)))))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
     (identifier)
     (connection)
-    (identifier
-      (identifier)
-      (identifier)))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)
+      (identifier_new)))
   (declaration
-    (identifier
-      (identifier)
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
     (identifier)
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label)
     (block
       (declaration
-        (identifier
-          (identifier))
+        (identifier_chain
+          (identifier_new)
+          (identifier_new))
         (label
           (integer)))))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (connection)
-    (identifier
-      (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label)))

@@ -67,8 +67,9 @@ Cloud.shape: cloud
     (identifier)
     (label))
   (declaration
-    (identifier
-        field: (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label)))
 
 ==================
@@ -91,8 +92,9 @@ Cassandra
     (identifier)
     (label))
   (declaration
-    (identifier
-      field: (identifier))
+    (identifier_chain
+      (identifier_new)
+      (identifier_new))
     (label))
   (declaration
     (identifier))
