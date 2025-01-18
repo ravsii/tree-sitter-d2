@@ -834,7 +834,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier_new"
+          "name": "identifier"
         },
         {
           "type": "REPEAT1",
@@ -850,7 +850,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "identifier_new"
+                "name": "identifier"
               }
             ]
           }
@@ -862,7 +862,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_identifier_base"
+          "name": "_ident"
         },
         {
           "type": "SYMBOL",
@@ -873,52 +873,6 @@
           "name": "_double_quoted"
         }
       ]
-    },
-    "identifier_new": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_ident"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_single_quoted"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_double_quoted"
-          }
-        ]
-      }
-    },
-    "_identifier_base": {
-      "type": "PREC_LEFT",
-      "value": -1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_ident"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_fields"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
     },
     "_fields": {
       "type": "REPEAT1",
@@ -941,27 +895,31 @@
       }
     },
     "_ident": {
-      "type": "REPEAT1",
+      "type": "PREC_RIGHT",
+      "value": 0,
       "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_ident_base"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[\\s\\',]+"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
+        "type": "REPEAT1",
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_ident_base"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[\\s\\',]+"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        }
       }
     },
     "_ident_base": {

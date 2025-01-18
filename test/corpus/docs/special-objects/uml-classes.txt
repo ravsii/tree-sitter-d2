@@ -857,14 +857,14 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier))
         (label))
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier)
+          (identifier))
         (label
           (boolean)))))
   (declaration
@@ -874,14 +874,14 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier))
         (label))
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier)
+          (identifier))
         (label
           (boolean)))))
   (declaration
@@ -891,14 +891,14 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier))
         (label))
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier)
+          (identifier))
         (label
           (boolean)))))
   (declaration
@@ -908,14 +908,14 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier))
         (label))
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier)
+          (identifier))
         (label
           (boolean)))))
   (declaration
@@ -925,14 +925,14 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier))
         (label))
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier)
+          (identifier))
         (label
           (boolean)))))
   (declaration
@@ -942,13 +942,13 @@ PinValidation -> ATMTransaction: {
     (block
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier))
         (label))
       (declaration
         (identifier_chain
-          (identifier_new)
-          (identifier_new)
-          (identifier_new))
+          (identifier)
+          (identifier)
+          (identifier))
         (label
           (boolean))))))

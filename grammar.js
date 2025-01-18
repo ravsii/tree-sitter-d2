@@ -193,23 +193,16 @@ module.exports = grammar({
       $.identifier,
       $.identifier_chain,
     ),
-    identifier_chain: $ => sep1($.identifier_new, token('.')),
+    identifier_chain: $ => sep1($.identifier, token('.')),
 
     identifier: $ => choice(
-      $._identifier_base,
+      $._ident,
       $._single_quoted,
       $._double_quoted,
     ),
 
-    identifier_new: $ => prec(1, choice(
-      $._ident,
-      $._single_quoted,
-      $._double_quoted,
-    )),
-
-    _identifier_base: $ => prec.left(-1, seq($._ident, optional($._fields))),
     _fields: $ => r1seq('.', field('field', $.identifier)),
-    _ident: $ => r1seq($._ident_base, optional(/[\s\',]+/)),
+    _ident: $ => prec.right(r1seq($._ident_base, optional(/[\s\',]+/))),
     _ident_base: _ => /([\p{L}\d\/\*_+\-]|\\#)+/u,
 
     _single_quoted: _ => token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),

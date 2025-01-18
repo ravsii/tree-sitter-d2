@@ -136,18 +136,7 @@
   {
     "type": "identifier",
     "named": true,
-    "fields": {
-      "field": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
+    "fields": {}
   },
   {
     "type": "identifier_chain",
@@ -158,16 +147,11 @@
       "required": true,
       "types": [
         {
-          "type": "identifier_new",
+          "type": "identifier",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "identifier_new",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "label",

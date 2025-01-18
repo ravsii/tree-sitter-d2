@@ -82,8 +82,8 @@ kubernetes.class: block
       (integer)))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier)
@@ -131,48 +131,48 @@ kubernetes.class: block
                 (label))))))))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier)
@@ -253,23 +253,23 @@ kubernetes.class: block
               (integer)))))))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label)))
 
 ====================|||
@@ -358,29 +358,29 @@ Oxygen
         (block
           (declaration
             (identifier_chain
-              (identifier_new)
-              (identifier_new))
+              (identifier)
+              (identifier))
             (label
               (boolean)))))))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (label))
   (declaration
     (identifier))
@@ -497,8 +497,8 @@ us-east-1.c -> us-west-1.a
         (block
           (declaration
             (identifier_chain
-              (identifier_new)
-              (identifier_new))
+              (identifier)
+              (identifier))
             (label
               (integer)))
           (declaration
@@ -534,27 +534,27 @@ us-east-1.c -> us-west-1.a
               (integer)))
           (declaration
             (identifier_chain
-              (identifier_new)
-              (identifier_new))
+              (identifier)
+              (identifier))
             (label))
           (declaration
             (identifier_chain
-              (identifier_new)
-              (identifier_new))
+              (identifier)
+              (identifier))
             (label))
           (declaration
             (identifier))
           (comment)
           (declaration
             (identifier_chain
-              (identifier_new)
-              (identifier_new))
+              (identifier)
+              (identifier))
             (label))))
   (declaration
     (identifier_chain
-      (identifier_new)
-      (identifier_new))
+      (identifier)
+      (identifier))
     (connection)
     (identifier_chain
-      (identifier_new)
-      (identifier_new))))
+      (identifier)
+      (identifier))))
