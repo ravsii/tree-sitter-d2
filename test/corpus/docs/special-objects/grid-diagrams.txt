@@ -81,7 +81,8 @@ kubernetes.class: block
     (label
       (integer)))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
@@ -129,39 +130,48 @@ kubernetes.class: block
                 (identifier)
                 (label))))))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
@@ -242,19 +252,23 @@ kubernetes.class: block
             (label
               (integer)))))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label)))
 
@@ -343,24 +357,29 @@ Oxygen
         (identifier)
         (block
           (declaration
-            (identifier
+            (identifier_chain
+              (identifier)
               (identifier))
             (label
               (boolean)))))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
@@ -477,7 +496,8 @@ us-east-1.c -> us-west-1.a
         (identifier)
         (block
           (declaration
-            (identifier
+            (identifier_chain
+              (identifier)
               (identifier))
             (label
               (integer)))
@@ -513,23 +533,28 @@ us-east-1.c -> us-west-1.a
             (label
               (integer)))
           (declaration
-            (identifier
+            (identifier_chain
+              (identifier)
               (identifier))
             (label))
           (declaration
-            (identifier
+            (identifier_chain
+              (identifier)
               (identifier))
             (label))
           (declaration
             (identifier))
           (comment)
           (declaration
-            (identifier
+            (identifier_chain
+              (identifier)
               (identifier))
             (label))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))))

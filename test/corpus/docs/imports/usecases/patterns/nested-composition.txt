@@ -17,7 +17,8 @@ layers: {
     (connection)
     (identifier))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
@@ -63,22 +64,26 @@ layers: {
       (declaration
         (identifier))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
     (identifier))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
     (identifier))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
     (identifier))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration

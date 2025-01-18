@@ -8,13 +8,15 @@ apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
 
 (source_file
   (declaration
-    (identifier
-      field: (identifier)
-      field: (identifier))
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
     (connection)
-    (identifier
-      field: (identifier)
-      field: (identifier))
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
     (label)))
 
 ====================|||
@@ -126,15 +128,17 @@ birthdays: {
       (declaration
         (identifier))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier)
+          (identifier)
+          (identifier))
         (connection)
         (identifier)
         (label))
       (declaration
-        (identifier
-          field: (identifier)
-          field: (identifier)
-          field: (identifier))
+        (identifier_chain
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier))
         (label)))))

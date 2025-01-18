@@ -149,35 +149,44 @@ alice.t2 <- bob.a
     (identifier)
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
     (identifier))
   (declaration
-    (identifier
-      (identifier))
-    (connection)
-    (identifier
-      (identifier)))
-  (declaration
-    (identifier
+    (identifier_chain
       (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier)))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier)))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier_chain
+      (identifier)
       (identifier))))
 
 ====================|||
@@ -253,14 +262,16 @@ bob -> alice: Chocolate chip.
     (connection)
     (identifier))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier)))
   (comment)
   (declaration
     (identifier)
     (block
       (declaration
-        (identifier
+        (identifier_chain
+          (identifier)
           (identifier)))))
   (declaration
     (identifier)
@@ -348,110 +359,137 @@ scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
         (identifier)
         (label))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label)
     (block
       (declaration
-        (identifier
+        (identifier_chain
+          (identifier)
           (identifier))
         (label
           (integer)))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label)
     (block
       (declaration
-        (identifier
+        (identifier_chain
+          (identifier)
           (identifier))
         (label
           (integer)))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
     (identifier)
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier)
       (identifier)))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
     (identifier)
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label)
     (block
       (declaration
-        (identifier
+        (identifier_chain
+          (identifier)
           (identifier))
         (label
           (integer)))))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label)))

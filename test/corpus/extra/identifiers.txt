@@ -1,0 +1,16 @@
+====================|||
+Escape dot
+====================|||
+
+test1.test2
+test1\.test2
+
+---|||
+
+(source_file
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier)))

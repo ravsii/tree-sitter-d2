@@ -58,11 +58,13 @@ classes: {
           (identifier)
           (block
             (declaration
-              (identifier
+              (identifier_chain
+                (identifier)
                 (identifier))
               (label))
             (declaration
-              (identifier
+              (identifier_chain
+                (identifier)
                 (identifier))
               (label))))
         (declaration
@@ -77,7 +79,8 @@ classes: {
               (label
                 (integer)))
             (declaration
-              (identifier
+              (identifier_chain
+                (identifier)
                 (identifier))
               (label
                 (integer)))))
@@ -93,7 +96,8 @@ classes: {
               (label
                 (integer)))
             (declaration
-              (identifier
+              (identifier_chain
+                (identifier)
                 (identifier))
               (label
                 (integer)))))
@@ -109,7 +113,8 @@ classes: {
               (label
                 (integer)))
             (declaration
-              (identifier
+              (identifier_chain
+                (identifier)
                 (identifier))
               (label
                 (integer)))))
@@ -120,7 +125,8 @@ classes: {
               (identifier)
               (label))
             (declaration
-              (identifier
+              (identifier_chain
+                (identifier)
                 (identifier))
               (label
                 (integer))))))))
@@ -143,17 +149,20 @@ app.signup -> modal: continue registration
 (source_file
   (import)
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label
       (label_constraint)
       (label_constraint)))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label
       (label_constraint)
@@ -161,17 +170,20 @@ app.signup -> modal: continue registration
   (declaration
     (identifier)
     (connection)
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
     (identifier)
     (label))
   (declaration
-    (identifier
+    (identifier_chain
+      (identifier)
       (identifier))
     (connection)
     (identifier)
