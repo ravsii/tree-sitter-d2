@@ -236,6 +236,7 @@ module.exports = grammar({
 
     _ident_base: $ => choice(
       $.glob,
+      '\\*',
       /([\p{L}\d\/_+\-]|\\#)+/u,
     ),
 

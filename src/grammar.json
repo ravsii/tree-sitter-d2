@@ -994,6 +994,10 @@
           "name": "glob"
         },
         {
+          "type": "STRING",
+          "value": "\\*"
+        },
+        {
           "type": "PATTERN",
           "value": "([\\p{L}\\d\\/_+\\-]|\\\\#)+",
           "flags": "u"

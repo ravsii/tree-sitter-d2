@@ -1,0 +1,13 @@
+====================|||
+Escaped globs
+====================|||
+
+\* -> \*
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
