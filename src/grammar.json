@@ -1,7 +1,6 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "d2",
-  "word": "_ident_base",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -858,21 +857,25 @@
       ]
     },
     "identifier": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_ident"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_single_quoted"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_double_quoted"
-        }
-      ]
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_ident"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_single_quoted"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_double_quoted"
+          }
+        ]
+      }
     },
     "_fields": {
       "type": "REPEAT1",
@@ -910,8 +913,17 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "PATTERN",
-                  "value": "[\\s\\',]+"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "[\\s\\',]+"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "\\."
+                    }
+                  ]
                 },
                 {
                   "type": "BLANK"
@@ -923,9 +935,13 @@
       }
     },
     "_ident_base": {
-      "type": "PATTERN",
-      "value": "([\\p{L}\\d\\/\\*_+\\-]|\\\\#)+",
-      "flags": "u"
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "PATTERN",
+        "value": "([\\p{L}\\d\\/\\*_+\\-]|\\\\#)+",
+        "flags": "u"
+      }
     },
     "_single_quoted": {
       "type": "TOKEN",

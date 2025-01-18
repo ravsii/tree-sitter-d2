@@ -58,7 +58,7 @@ const sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
 module.exports = grammar({
   name: 'd2',
 
-  word: $ => $._ident_base,
+  // word: $ => $._ident_base,
 
   extras: $ => [
     $.comment,
@@ -195,15 +195,21 @@ module.exports = grammar({
     ),
     identifier_chain: $ => sep1($.identifier, token('.')),
 
-    identifier: $ => choice(
+    identifier: $ => prec.right(choice(
       $._ident,
       $._single_quoted,
       $._double_quoted,
-    ),
+    )),
 
     _fields: $ => r1seq('.', field('field', $.identifier)),
-    _ident: $ => prec.right(r1seq($._ident_base, optional(/[\s\',]+/))),
-    _ident_base: _ => /([\p{L}\d\/\*_+\-]|\\#)+/u,
+    _ident: $ => prec.right(r1seq(
+      $._ident_base,
+      optional(choice(
+        /[\s\',]+/,
+        '\\.',
+      )),
+    )),
+    _ident_base: _ => prec.right(1, /([\p{L}\d\/\*_+\-]|\\#)+/u),
 
     _single_quoted: _ => token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),
     _double_quoted: _ => token(seq('"', repeat(choice('\\"', /[^"]/)), '"')),
