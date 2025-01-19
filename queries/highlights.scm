@@ -20,7 +20,6 @@
   )
 )
 
-
 (identifier) @function
 ((identifier) @function.builtin
   (#any-of? @function.builtin
@@ -66,6 +65,15 @@
   )
 )
 
+(identifier
+  (glob) @string.special.symbol)
+
+[
+  (glob)
+  (recursive_glob)
+  (global_glob)
+] @string.special
+
 (connection) @operator
 (connection_identifier) @property
 (integer) @number
@@ -76,7 +84,6 @@
 
 (argument_name) @variable.parameter
 (argument_type) @type
-
 
 [
   "["
@@ -91,6 +98,7 @@
   "|`"
   "`|"
 ] @punctuation.bracket
+
 [
   "."
   ";"
