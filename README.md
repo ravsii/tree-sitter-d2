@@ -1,65 +1,43 @@
 # tree-sitter-d2
 
+<!--toc:start-->
+
+- [tree-sitter-d2](#tree-sitter-d2)
+  - [Installation](#installation)
+    - [Neovim](#neovim)
+    - [Helix](#helix)
+    - [Other editors](#other-editors)
+  - [Showcase](#showcase)
+  - [Comparison](#comparison) - [Better consistency overall](#better-consistency-overall) - [Better handling of foreign languages](#better-handling-of-foreign-languages)
+  <!--toc:end-->
+
 [![Build](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml)
 [![Test](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml)
 
-This is an alternative to pleshevskiy's [tree-sitter-d2] (up to date version on
-his own [git]).
-
-It's usable, but not yet finished
+Tree Sitter grammar for [d2lang]. It's not yet finished, but usable for
+every-day cases with support for latest features like globs, filters and
+variables.
 
 The goal is to provide better experience for existing keywords, code blocks
 injections, folds, etc.
 
-[tree-sitter-d2]: https://github.com/pleshevskiy/tree-sitter-d2
-[git]: https://git.pleshevski.ru/pleshevskiy/tree-sitter-d2
+- **Better parsing of modern structures** - The latest supported version of d2
+  is **v0.6.8**.
+- **Built with [nvim-treesitter] in mind** - We respect and follow its
+  [highlight] groups.
+- **Keywords** - _All_ keywords from the documentation are treated as such.
+  (Open an issue if any are missing.)
+- **Tests** - We aim to cover all edge cases and examples from the
+  documentation, resulting in more robust parsing. Currently, we have more
+  than 100 tests. (This will be reduced later when the grammar becomes stable.)
+
+[highlight]: https://neovim.io/doc/user/treesitter.html#_treesitter-queries
+[d2lang]: https://d2lang.com/
 
 ---
 
 _I've never done anything remotely close to parsing grammar, so there could be
 some bad patterns and simply bad code. Feel free to open issues._
-
-## Why?
-
-So there's already a tree-sitter grammar for d2, why make another one?
-
-1. **The other one simply doesn't work** - On the latest stable version of
-   Neovim (v10.3 as of now), you'll probably encounter [this] error.
-1. **Better parsing of modern structures** - The latest supported version of d2
-   is **v0.6.8**.
-1. **Built with [nvim-treesitter] in mind** - We respect and follow its
-   [highlight] groups.
-1. **Keywords** - _All_ keywords from the documentation are treated as such.
-   (Open an issue if any are missing.)
-1. **Tests** - We aim to cover all edge cases and examples from the
-   documentation, resulting in more robust parsing. Currently, we have more
-   than 80 tests. (This will be reduced later when the grammar becomes stable.)
-
-[this]: https://github.com/nvim-treesitter/nvim-treesitter/discussions/4598
-[highlight]: https://neovim.io/doc/user/treesitter.html#_treesitter-queries
-
-## Comparison
-
-Here's a list of comparisons, both using `Tokyonight Storm` theme.
-
-Please note that:
-
-- On the left is our project using Neovim, on the right is pleshivsky's
-  grammar using [Helix] (I was unable to install pleshevskiy's grammar in Neovim)
-- Some example are my random homework, thus being in Russian, please don't try
-  make sense of them. Thanks! :D
-
-[Helix]: https://helix-editor.com/
-
-### Better consistency overall
-
-![cmp1](./img/cmp1.png)
-![cmp2](./img/cmp2.png)
-
-### Better handling of foreign languages
-
-![cmpru1](./img/cmp_ru1.png)
-![cmpru2](./img/cmp_ru2.png)
 
 ## Installation
 
@@ -148,4 +126,60 @@ name = "d2"
 └── locals.scm
 ```
 
+### Other editors
+
+If you're using some other editor that's using tree-sitter, please open an
+issue. Would be great if you could also provide instruction for other how to
+install it.
+
 [nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+
+## Showcase
+
+Some screenshots, using `Tokyo Night Storm` theme with `CaskaydiaCove` font.
+
+Props to Tokyo Night theme for supporting pretty much every [highlighting
+group] in neovim.
+
+[highlighting group]: <https://neovim.io/doc/user/treesitter.html#_treesitter-queries:~:text=the%20exact%20definition)%3A-,%40variable,-various%20variable%20names>
+
+![shapes](./img/shapes.png)
+![blocks](./img/blocks.png)
+![labels](./img/labels.png)
+![methods](./img/methods.png)
+![references](./img/references.png)
+![injections](./img/injections.png)
+![imports](./img/imports.png)
+![globs](./img/globs.png)
+![variables](./img/variables.png)
+
+## Comparison
+
+**This section is outdated not maintained**
+
+Actually, there's another [tree-sitter-d2] by pleshevskiy. My project's initial
+goal was to fix issues his grammar had, but later I realized that his grammar
+is not maintained and lacks many features `d2` has added since then.
+
+Here's a list of comparisons as of `v0.2` version of this project, both using
+`Tokyonight Storm` theme.
+
+Please note that:
+
+- On the left is our project using Neovim, on the right is pleshevskiy's
+  grammar using [Helix] (I was unable to install pleshevskiy's grammar in Neovim)
+- Some example are my random homework, thus being in Russian, please don't try
+  make sense of them. Thanks! :D
+
+[Helix]: https://helix-editor.com/
+[tree-sitter-d2]: https://github.com/pleshevskiy/tree-sitter-d2
+
+### Better consistency overall
+
+![cmp1](./img/cmp1.png)
+![cmp2](./img/cmp2.png)
+
+### Better handling of foreign languages
+
+![cmpru1](./img/cmp_ru1.png)
+![cmpru2](./img/cmp_ru2.png)
