@@ -1,0 +1,144 @@
+====================|||
+Basic Variable
+====================|||
+
+server1: ${server-name}-1
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (variable
+        (identifier)))))
+
+====================|||
+Nested Variable
+====================|||
+
+button: {
+  style: {
+    fill: ${primaryColors.button.active}
+    stroke: ${primaryColors.button.border}
+  }
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label
+              (variable
+                (identifier_chain
+                  (identifier)
+                  (identifier)
+                  (identifier)))))
+          (declaration
+            (identifier)
+            (label
+              (variable
+                (identifier_chain
+                  (identifier)
+                  (identifier)
+                  (identifier))))))))))
+
+
+====================|||
+Scoped variables
+====================|||
+
+lb: ${region} load balancer
+
+zone1: {
+  server: ${region} API
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (variable
+        (identifier))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (variable
+            (identifier)))))))
+
+====================|||
+No variables in single quotes
+====================|||
+
+x: 'Send field ${names}'
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)))
+
+====================|||
+Variables in double quotes
+====================|||
+
+x: "Send field ${names}"
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (variable
+        (identifier)))))
+
+
+====================|||
+Spread variable
+====================|||
+
+data: {
+  a: int {constraint: [PK; ...${base-constraints}]}
+}
+
+custom-disclaimer: DRAFT DISCLAIMER {
+  ...${disclaimer}
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (label
+              (label_constraint)
+              (label_constraint
+                (spread_variable
+                  (identifier)))))))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (spread_variable
+        (identifier)))))

@@ -42,6 +42,14 @@
         {
           "type": "method_declaration",
           "named": true
+        },
+        {
+          "type": "spread_variable",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
         }
       ]
     }
@@ -191,6 +199,10 @@
       "required": false,
       "types": [
         {
+          "type": "escape_sequence",
+          "named": true
+        },
+        {
           "type": "glob",
           "named": true
         },
@@ -245,11 +257,11 @@
           "named": true
         },
         {
-          "type": "float",
+          "type": "escape_sequence",
           "named": true
         },
         {
-          "type": "glob",
+          "type": "float",
           "named": true
         },
         {
@@ -262,6 +274,14 @@
         },
         {
           "type": "label_constraint",
+          "named": true
+        },
+        {
+          "type": "spread_variable",
+          "named": true
+        },
+        {
+          "type": "variable",
           "named": true
         }
       ]
@@ -289,7 +309,21 @@
   {
     "type": "label_constraint",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "spread_variable",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "method_declaration",
@@ -362,12 +396,98 @@
         {
           "type": "import",
           "named": true
+        },
+        {
+          "type": "method_declaration",
+          "named": true
+        },
+        {
+          "type": "spread_variable",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
         }
       ]
     }
   },
   {
+    "type": "spread_variable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "glob",
+          "named": true
+        },
+        {
+          "type": "global_glob",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "identifier_chain",
+          "named": true
+        },
+        {
+          "type": "recursive_glob",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "glob",
+          "named": true
+        },
+        {
+          "type": "global_glob",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "identifier_chain",
+          "named": true
+        },
+        {
+          "type": "recursive_glob",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "\"\"\"",
+    "named": false
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -396,6 +516,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "...$",
     "named": false
   },
   {
@@ -448,6 +572,10 @@
   },
   {
     "type": "connection",
+    "named": true
+  },
+  {
+    "type": "escape_sequence",
     "named": true
   },
   {

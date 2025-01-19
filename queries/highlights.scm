@@ -12,13 +12,17 @@
 ((label_constraint) @constant
   (#any-of? @constant
     "primary_key"
-    "foreign_key"
-    "unique"
     "PK"
+    "foreign_key"
     "FK"
+    "unique"
     "UNQ"
+    "NULL"
+    "NOT NULL"
   )
 )
+
+(escape_sequence) @string.escape
 
 (identifier) @function
 ((identifier) @function.builtin
