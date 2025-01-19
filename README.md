@@ -8,7 +8,9 @@
     - [Helix](#helix)
     - [Other editors](#other-editors)
   - [Showcase](#showcase)
-  - [Comparison](#comparison) - [Better consistency overall](#better-consistency-overall) - [Better handling of foreign languages](#better-handling-of-foreign-languages)
+  - [Comparison](#comparison)
+    - [Better consistency overall](#better-consistency-overall)
+    - [Better handling of foreign languages](#better-handling-of-foreign-languages)
   <!--toc:end-->
 
 [![Build](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml)
