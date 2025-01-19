@@ -1,37 +1,40 @@
-# This is an "quick-look" highlighting test file just to see if everything feels and looks right
+# Shapes and connections
 Stage One -> Stage Two -> Stage Three: repeat
+
+# Blocks
 b <-> c: "Reality is just a crutch for people who can't handle science fiction" {
+  # "Special" keywords are highlighted
   target-arrowhead: * {
     shape: diamond
     label: 1
     style.filled: true
     _.christmas.style.fill -> presents: regift
   }
+
+  # Label constraints and constants
   id: int {constraint: primary_key}
   id: int {constraint: [primary_key; foreign_key; unique; PK; FK; UNQ; random word]}
   number: -122
   float: -122.321
   boolean: true
+
+  # Fields and Methods
   +publicVar: io.RuneReader
   -privateVar: d2ast.Position
   \#protectedMethod(n int): (s string, eof bool)
 }
+
+""" Connection References
+and multiline comments"""
 (x -> y)[0].style.stroke: red
+
+# Injections
 explanation: |md
   # I can do headers
   1. test
 |
-explanation: |markdown
-  # I can do headers
-  1. test
-|
-formula: {
-    equation: |latex
-        \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h}
-    |
-}
 explanation: |go
-awsSession := From(c.Request.Context())
+  var awsSession = From(c.Request.Context())
 |
 my_code: ||ts
   declare function getSmallPet(): Fish | Bird;
@@ -42,6 +45,8 @@ my_code: |||d2
 my_code: |`ts
   const works = (a > 1) || (b < 2)
 `|
+
+# Imports
 ...@people.management
 x: @x.d2
 x: @x
@@ -49,12 +54,14 @@ x: {
   ...@x.d2
 }
 x: @../y.d2
-# test
-"""test"""
+
+# Globs
 test.*.test.*.test : label
 test.**.test.**.test : label
 test.***.test.***.test : label
 t*st.*.t*st.*.t*st : label
+
+# Variables
 server1: ${server-name}-1
 button: {
   style: {
