@@ -4,3 +4,4 @@ test.d2
 tree-sitter-d2.code-workspace
 test.html
 *.DS_Store
+*.dylib
