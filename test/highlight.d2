@@ -55,3 +55,22 @@ test.*.test.*.test : label
 test.**.test.**.test : label
 test.***.test.***.test : label
 t*st.*.t*st.*.t*st : label
+server1: ${server-name}-1
+button: {
+  style: {
+    fill: ${primaryColors.button.active}
+    stroke: ${primaryColors.button.border}
+  }
+}
+lb: ${region} load balancer
+zone1: {
+  server: ${region} API
+}
+x: 'Send field ${names}'
+x: "Send field ${names}"
+data: {
+  a: int {constraint: [PK; ...${base-constraints}]}
+}
+custom-disclaimer: DRAFT DISCLAIMER {
+  ...${disclaimer}
+}
