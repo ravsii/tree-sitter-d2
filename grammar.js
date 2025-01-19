@@ -76,7 +76,7 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat(prec.left(choice(
-      $._top_level_declaratioin,
+      $._declaration,
       $.comment,
       $.block_comment,
     ))),
@@ -88,9 +88,11 @@ module.exports = grammar({
       '"""',
     ),
 
-    _top_level_declaratioin: $ => choice(
+    _declaration: $ => choice(
       $.declaration,
       $.import,
+      $._variable,
+      $.method_declaration,
     ),
 
     declaration: $ => prec.right(-1, seq(
@@ -143,14 +145,9 @@ module.exports = grammar({
 
     block: $ => prec(PREC.block, seq(
       token('{'),
-      repeat($._block_declaration),
+      repeat($._declaration),
       token('}'),
     )),
-
-    _block_declaration: $ => choice(
-      $._top_level_declaratioin,
-      $.method_declaration,
-    ),
 
     label: $ => choice(
       $.label_codeblock,
@@ -173,20 +170,38 @@ module.exports = grammar({
       ']',
     ),
 
-    label_constraint: _ => token(/[a-zA-Z0-9_]+/),
+    label_constraint: $ => choice(
+      token(/[a-zA-Z0-9_]+/),
+      $._variable,
+    ),
 
-    _label_literal: $ => prec.right(choice(
+    _label_literal: $ => choice(
       $.integer,
       $.float,
       $.boolean,
-      repeat1($._label_base),
-      token(seq('"', /[^"]*/, '"')),
-    )),
+      $._label_base,
+      $._single_quoted,
+      $._label_double_quoted,
+    ),
 
-    _label_base: $ => choice(
-      $._ident_base,
+    _label_base: $ => prec.right(repeat1(choice(
+      /./,
       token(prec(PREC.label, '\\{')),
-      token(prec(PREC.label, /[\(\)\\:.\-%_#&\?\',\'*]+/)), // idk how to make it better
+      token(prec(PREC.label,
+        /[\p{L}\d:.%_#&?,*+/\-\(\)\\]+/u,
+      )), // idk how to make it better for now
+      token.immediate('\''),
+      $._variable,
+    ))),
+
+    _label_double_quoted: $ => seq(
+      '"',
+      repeat(choice(
+        token.immediate(prec(1, /[^"\n\\$]+/)),
+        $.escape_sequence,
+        $._variable,
+      )),
+      '"',
     ),
 
     connection_reference: $ => seq(
@@ -226,10 +241,12 @@ module.exports = grammar({
     ),
 
     _fields: $ => r1seq('.', field('field', $.identifier)),
+
     _ident: $ => prec.right(r1seq(
       $._ident_base,
       optional(choice(
-        /[\s\',]+/,
+        token.immediate('\''),
+        /[\s,]+/,
         '\\.',
       )),
     )),
@@ -251,8 +268,50 @@ module.exports = grammar({
     glob_filter: _ => token('&'),
     inverse_glob_filter: _ => token('!&'),
 
-    _single_quoted: _ => token(seq('\'', repeat(choice('\\\'', /[^']/)), '\'')),
-    _double_quoted: _ => token(seq('"', repeat(choice('\\"', /[^"]/)), '"')),
+    _variable: $ => choice(
+      $.variable,
+      $.spread_variable,
+    ),
+
+    variable: $ => seq(
+      token('$'), token('{'),
+      $._identifier,
+      '}',
+    ),
+
+    spread_variable: $ => seq(
+      token('...$'), token('{'),
+      $._identifier,
+      '}',
+    ),
+
+    _single_quoted: $ => seq(
+      '\'',
+      repeat(choice(
+        token.immediate(prec(1, /[^'\n\\]+/)),
+        $.escape_sequence,
+      )),
+      '\'',
+    ),
+    _double_quoted: $ => seq(
+      '"',
+      repeat(choice(
+        token.immediate(prec(1, /[^"\n\\]+/)),
+        $.escape_sequence,
+      )),
+      '"',
+    ),
+
+    escape_sequence: _ => token.immediate(seq(
+      '\\',
+      choice(
+        /[^xuU]/,
+        /\d{2,3}/,
+        /x[0-9a-fA-F]{2,}/,
+        /u[0-9a-fA-F]{4}/,
+        /U[0-9a-fA-F]{8}/,
+      ),
+    )),
 
     // We need extra space in the end to make sure it's not a string starting
     // with an integer.
@@ -261,7 +320,7 @@ module.exports = grammar({
     boolean: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
 
     _eol: _ => token(prec(PREC.term, choice(/\n/, /\r/, ';'))),
-    _eol_or_space: $ => choice($._eol, repeat1(/\s/)),
+    _eol_or_space: $ => choice($._eol, repeat(/\s/)),
   },
 });
 

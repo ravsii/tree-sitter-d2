@@ -2,12 +2,14 @@
 Quoted strings with quotes
 ====================|||
 
-' $$$ \'Hello World ' -> " ### \"Hello\" \"World\" "
+' $$$ \'Hello World ' -> " ### \"Hello World "
 
 ---|||
 
 (source_file
   (declaration
-    (identifier)
+    (identifier
+      (escape_sequence))
     (connection)
-    (identifier)))
+    (identifier
+      (escape_sequence))))

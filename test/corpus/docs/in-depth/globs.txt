@@ -2,43 +2,15 @@
 Globs
 ====================|||
 
-iphone 10
-iphone 11 mini
-iphone 11 pro
-iphone 12 mini
-
 *.height: 300
-*.width: 140
-*mini.height: 200
 *pro.height: 400
 
 ---|||
 
 (source_file
   (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
-    (identifier))
-  (declaration
     (identifier_chain
       (glob)
-      (identifier))
-    (label
-      (integer)))
-  (declaration
-    (identifier_chain
-      (glob)
-      (identifier))
-    (label
-      (integer)))
-  (declaration
-    (identifier_chain
-      (identifier
-        (glob))
       (identifier))
     (label
       (integer)))

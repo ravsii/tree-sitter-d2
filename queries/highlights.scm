@@ -12,13 +12,18 @@
 ((label_constraint) @constant
   (#any-of? @constant
     "primary_key"
-    "foreign_key"
-    "unique"
     "PK"
+    "foreign_key"
     "FK"
+    "unique"
     "UNQ"
+    "NULL"
+    "NOT NULL"
   )
 )
+
+(escape_sequence) @string.escape
+
 
 (identifier) @function
 ((identifier) @function.builtin
@@ -64,6 +69,19 @@
     "width"
   )
 )
+
+[
+ "$"
+ "...$"
+] @keyword
+
+[(variable) (spread_variable)] @variable
+
+(variable (identifier) @variable.member)
+(variable (identifier_chain (identifier) @variable.member))
+
+(spread_variable (identifier) @variable.member)
+(spread_variable (identifier_chain (identifier) @variable.member))
 
 (identifier
   (glob) @string.special.symbol)
