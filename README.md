@@ -1,8 +1,14 @@
 # tree-sitter-d2
 
+[![Build](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml)
+[![Test](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml)
+
+## Table of Contents
+
 <!--toc:start-->
 
 - [tree-sitter-d2](#tree-sitter-d2)
+  - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Neovim](#neovim)
     - [Helix](#helix)
@@ -13,8 +19,7 @@
     - [Better handling of foreign languages](#better-handling-of-foreign-languages)
   <!--toc:end-->
 
-[![Build](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/build.yml)
-[![Test](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/ravsii/tree-sitter-d2/actions/workflows/test.yml)
+## Description
 
 Tree Sitter grammar for [d2lang]. It's not yet finished, but usable for
 every-day cases with support for latest features like globs, filters and
@@ -131,7 +136,7 @@ name = "d2"
 ### Other editors
 
 If you're using some other editor that's using tree-sitter, please open an
-issue. Would be great if you could also provide instruction for other how to
+issue. Would be great if you could also provide instructions for other how to
 install it.
 
 [nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
