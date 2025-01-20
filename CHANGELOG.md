@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.3.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.2.0...v0.3.0) (2025-01-20)
+
+
+### Features
+
+* **comments:** add [@spell](https://github.com/spell) ([71f799b](https://github.com/ravsii/tree-sitter-d2/commit/71f799bba7de6071f13e097d4d4c625512e447a0))
+* **globs:** initial support for base cases ([ea4cbfe](https://github.com/ravsii/tree-sitter-d2/commit/ea4cbfeac2115a8ee6f1aaf15bfa5e90c485660a))
+* **grammar:** add block comments ([fb0be61](https://github.com/ravsii/tree-sitter-d2/commit/fb0be6173e22dc8b15c6b507150f71638d9a0a32))
+* **hightlight:** add delimiters ([0c6ff41](https://github.com/ravsii/tree-sitter-d2/commit/0c6ff41a72c35de2d507d62dc2ef0a06b4046a31))
+* **hl:** add "()" brackets to punctuation, add connection reference hl ([baf9b5e](https://github.com/ravsii/tree-sitter-d2/commit/baf9b5e763d7cc89e81e9e481484cd11f78a0652))
+* **hl:** add glob support ([234fd09](https://github.com/ravsii/tree-sitter-d2/commit/234fd0996e8a5d5489ec49de98ac1daf8163f2ff))
+* **hl:** add more brackets ([78c07e1](https://github.com/ravsii/tree-sitter-d2/commit/78c07e144fc31874f2e5dcf7272a10a7d99bcfc5))
+* **hl:** more keywords ([af39dbe](https://github.com/ravsii/tree-sitter-d2/commit/af39dbe9174f3ae81ea6ab009337c483db307f1d))
+* **hl:** move identifiers to functions, make test file compact ([fd3ef46](https://github.com/ravsii/tree-sitter-d2/commit/fd3ef467c6eb8d53ea74f30eb44ba02ac0c5e6cc))
+* **hl:** variable highlighting ([668c3c8](https://github.com/ravsii/tree-sitter-d2/commit/668c3c8d60be5ed2179d7e497a070db424c50964))
+* quoted strings ([3bc0775](https://github.com/ravsii/tree-sitter-d2/commit/3bc0775dcc1dab111d633cb5d5015e755d07e978))
+* split identifier into single and chained ([8967ee1](https://github.com/ravsii/tree-sitter-d2/commit/8967ee1c4195d53ecb6d5e76f08243e6e11cefdc))
+* split int/float, proper boolean hl ([9fced8d](https://github.com/ravsii/tree-sitter-d2/commit/9fced8d01ffa15f6ba68489a8d94aa4233310cb7))
+* **variables:** add variable parsing ([bea6440](https://github.com/ravsii/tree-sitter-d2/commit/bea64405fb009dc5c8fa0fe96686e8cd4efb3b6e))
+
+
+### Bug Fixes
+
+* **globs:** add glob escape ([bc9dfc6](https://github.com/ravsii/tree-sitter-d2/commit/bc9dfc60d1e4e52663ce65d4be94f58937511d7a))
+* **identifiers:** dot escape ([f120a7f](https://github.com/ravsii/tree-sitter-d2/commit/f120a7feaebf189fb442b695553d1e78cdc45374))
+* quoted strings and block comment ([796f01a](https://github.com/ravsii/tree-sitter-d2/commit/796f01aa15ab981e38356619e3736d6eb6f7754d))
+* remove unused rules & testing identifier ([4873a54](https://github.com/ravsii/tree-sitter-d2/commit/4873a5473c52055e052ba88fe11481af56da28e0))
+* split declarations ([23d6494](https://github.com/ravsii/tree-sitter-d2/commit/23d6494d125f6ffa60b927cc7689e19682176ff0)), closes [#28](https://github.com/ravsii/tree-sitter-d2/issues/28)
+* tests for new grammar ([7cf678e](https://github.com/ravsii/tree-sitter-d2/commit/7cf678e7e02de35a0c2f7c2c9d3e4e90857c698e))
+
 ## [0.2.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.1.0...v0.2.0) (2025-01-09)
 
 
