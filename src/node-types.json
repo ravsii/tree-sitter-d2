@@ -277,6 +277,10 @@
           "named": true
         },
         {
+          "type": "label_escape",
+          "named": true
+        },
+        {
           "type": "spread_variable",
           "named": true
         },
@@ -543,10 +547,6 @@
     "named": false
   },
   {
-    "type": "\\{",
-    "named": false
-  },
-  {
     "type": "]",
     "named": false
   },
@@ -596,6 +596,10 @@
   },
   {
     "type": "inverse_glob_filter",
+    "named": true
+  },
+  {
+    "type": "label_escape",
     "named": true
   },
   {
