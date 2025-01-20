@@ -2,14 +2,23 @@
 Escape label
 ====================|||
 
-shape1: test label \{
+shape1: {x: \{\}\;\[\]\n }
 
 ---|||
 
 (source_file
   (declaration
     (identifier)
-    (label)))
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_escape)
+          (label_escape)
+          (label_escape)
+          (label_escape)
+          (label_escape)
+          (label_escape))))))
 
 ====================|||
 Escape label with block
@@ -24,7 +33,8 @@ shape1: test label \{ {
 (source_file
   (declaration
     (identifier)
-    (label)
+    (label
+      (label_escape))
     (block
       (comment))))
 
@@ -119,3 +129,16 @@ test: true {
         (identifier)
         (label
           (boolean))))))
+
+====================|||
+Emojipasta
+====================|||
+
+x: BREAKING NEWS 🚨 🚨 One 1️⃣ D 🇩 has one less 🇩 🍆 standing 🧍‍♂️ tall 😭 tonight 🌃 as Liam 💁‍♂️ LADIES 💃 BANE 💀 Payne 😩 is no 🙅‍♂️ longer 💀 Alive 😭 😭 after making a Once 1️⃣ in a Lifetime 🗓️ fall 🍃 off of his ♂️ Buenos Aires 🇦🇷 hotel 🏨 last night 🌃 it sounds 🗣️ like a Long 🍆 Way Down ⬇️ Sounds like he just wanted 🥺 to Live 😊 While We're Young 👶 and while ♂️ he may have 🕐 been Fireproof 🔥 🔥 it seems 🤷‍♂️ gravity 🌎 in the end 💀 was able to Drag 💃 Him 👨 Down ⬇️ So while 😱 we mourn 😭 our favorite 🌟 BIG 😳 D 🍆 please 🙏 take some time ⏰ put on 💃 a Little 🤏 Black Dress 👗 and reminisce 🥲 about the Story 📖 of His Life 🧬 Send ✉️ your best 🇩 to 🔟 ONE 🍆 💦 DIRECTIONERS ➡️ and if you 🫵 get 0️⃣ back 🍑 you're 😮 a fanless 💀 SLUT 👩 😳 if you 🫵 get 5️⃣ back 🍑 you're a FAKE 🚫 FAN 🪭 and if you 🫵 get 🔟 back 🍑 you can sing 🗣️ 🎶 the BEST 🎊 SONG 🎵 EVER ‼️ to reminisce 🥲 over our fallen ⬇️ Angel 😇 Liam 👨
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)))

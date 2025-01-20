@@ -2,14 +2,25 @@
 // @ts-check
 
 const PREC = {
-  term: 11,
+  term: 1000,
+
+  ident_fix: 51,
+  string: 50,
+
+  label_block_start: 20,
+
   connection: 10,
   conn_identifier: 9,
   glob: 8,
+
   identifier_chain: 7,
   identifier: 6,
+
   block: 5,
-  string: 4,
+  import: 5,
+
+  label_codeblock: 3,
+  label_constraint: 3,
   label_predefined: 2,
   label: 1,
 };
@@ -101,8 +112,8 @@ module.exports = grammar({
         $.connection_reference,
       ),
       optional(choice(
-        seq(':', $.import),
-        seq(':', optional($.label), optional($.block)),
+        seq(token(':'), $.import),
+        seq(token(':'), optional($.label), optional($.block)),
       )),
       optional($._eol),
     )),
@@ -112,7 +123,7 @@ module.exports = grammar({
     method_declaration: $ => prec.right(100, seq(
       $.identifier,
       '(', optional($.arguments), ')',
-      opseq(':', '(', optional($.returns), ')'),
+      opseq(token(':'), token('('), optional($.returns), token(')')),
     )),
 
     returns: $ => alias($.arguments, 'returns'),
@@ -141,33 +152,65 @@ module.exports = grammar({
       /--+/,
     ))),
 
-    import: _ => token(seq(choice('@', '...@'), repeat1(/[^\s]/))),
+    import: _ => token(prec(PREC.import,
+      seq(
+        choice('@', '...@'),
+        repeat1(/[^\s]/)))),
 
     block: $ => prec(PREC.block, seq(
-      token('{'),
+      token(prec(PREC.block, '{')),
       repeat($._declaration),
       token('}'),
     )),
 
     label: $ => choice(
       $.label_codeblock,
-      $._label_literal,
       $._label_constraints,
+      $._label_literal,
     ),
 
     label_codeblock: $ => choice(
-      seq('|`', $.codeblock_language, alias(/[^`]*/, $.codeblock_content), '`|'),
-      seq('|||', $.codeblock_language, $.codeblock_content, '|||'),
-      seq('||', $.codeblock_language, $.codeblock_content, '||'),
-      seq('|', $.codeblock_language, alias(/[^\|]*/, $.codeblock_content), '|'),
+      $._label_codeblock_ticks,
+      $._label_codeblock_triple,
+      $._label_codeblock_double,
+      $._label_codeblock_single,
+    ),
+
+    _label_codeblock_ticks: $ => seq(
+      token(prec(PREC.label_constraint, '|`')),
+      $.codeblock_language,
+      alias(/[^`]*/, $.codeblock_content),
+      token(prec(PREC.label_constraint, '`|')),
+    ),
+
+    _label_codeblock_triple: $ => seq(
+      token(prec(PREC.label_codeblock, '|||')),
+      $.codeblock_language,
+      $.codeblock_content,
+      token(prec(PREC.label_codeblock, '|||')),
+    ),
+
+    _label_codeblock_double: $ => seq(
+      token(prec(PREC.label_codeblock, '||')),
+      $.codeblock_language,
+      $.codeblock_content,
+      token(prec(PREC.label_codeblock, '||')),
+    ),
+
+    _label_codeblock_single: $ => seq(
+      token(prec(PREC.label_codeblock, '|')),
+      $.codeblock_language,
+      alias(/[^\|]*/, $.codeblock_content),
+      token(prec(PREC.label_codeblock, '|')),
     ),
 
     codeblock_language: _ => token(/[a-zA-Z0-9]+/),
     codeblock_content: _ => repeat1(seq(/.+/, /\s*/)),
+
     _label_constraints: $ => seq(
-      '[',
+      token(prec(PREC.label_constraint, '[')),
       repeat1(seq($.label_constraint, optional(';'))),
-      ']',
+      token(prec(PREC.label_constraint, ']')),
     ),
 
     label_constraint: $ => choice(
@@ -179,29 +222,38 @@ module.exports = grammar({
       $.integer,
       $.float,
       $.boolean,
-      $._label_base,
-      $._single_quoted,
       $._label_double_quoted,
+      $._single_quoted,
+      $._label_base,
     ),
 
-    _label_base: $ => prec.right(repeat1(choice(
-      /./,
-      token(prec(PREC.label, '\\{')),
-      token(prec(PREC.label,
-        /[\p{L}\d:.%_#&?,*+/\-\(\)\\]+/u,
-      )), // idk how to make it better for now
-      token.immediate('\''),
-      $._variable,
-    ))),
+    _label_base: $ => prec.left(PREC.label, repeat1(
+      choice(
+        $.label_escape,
+        '*',
+        token.immediate(/[^\n;\\\{\}\[\]]+/),
+        $._variable,
+      ),
+    )),
+
+    label_escape: _ => token.immediate(seq(
+      '\\',
+      choice(
+        'n',
+        '{', '}',
+        ';',
+        '[', ']',
+      ),
+    )),
 
     _label_double_quoted: $ => seq(
-      '"',
+      token(prec(PREC.string, '"')),
       repeat(choice(
         token.immediate(prec(1, /[^"\n\\$]+/)),
         $.escape_sequence,
         $._variable,
       )),
-      '"',
+      token(prec(PREC.string, '"')),
     ),
 
     connection_reference: $ => seq(
@@ -245,7 +297,7 @@ module.exports = grammar({
     _ident: $ => prec.right(r1seq(
       $._ident_base,
       optional(choice(
-        token.immediate('\''),
+        token.immediate(prec(PREC.ident_fix, '\'')),
         /[\s,]+/,
         '\\.',
       )),
@@ -286,20 +338,20 @@ module.exports = grammar({
     ),
 
     _single_quoted: $ => seq(
-      '\'',
+      token(prec(PREC.string, '\'')),
       repeat(choice(
         token.immediate(prec(1, /[^'\n\\]+/)),
         $.escape_sequence,
       )),
-      '\'',
+      token(prec(PREC.string, '\'')),
     ),
     _double_quoted: $ => seq(
-      '"',
+      token('"'),
       repeat(choice(
         token.immediate(prec(1, /[^"\n\\]+/)),
         $.escape_sequence,
       )),
-      '"',
+      token('"'),
     ),
 
     escape_sequence: _ => token.immediate(seq(
