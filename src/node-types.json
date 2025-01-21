@@ -174,16 +174,6 @@
     }
   },
   {
-    "type": "glob",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "global_glob",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "identifier",
     "named": true,
     "fields": {},
@@ -346,11 +336,6 @@
     }
   },
   {
-    "type": "recursive_glob",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "returns",
     "named": true,
     "fields": {},
@@ -504,18 +489,6 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "**",
-    "named": false
-  },
-  {
-    "type": "***",
-    "named": false
-  },
-  {
     "type": ",",
     "named": false
   },
@@ -584,7 +557,15 @@
     "named": true
   },
   {
+    "type": "glob",
+    "named": true
+  },
+  {
     "type": "glob_filter",
+    "named": true
+  },
+  {
+    "type": "global_glob",
     "named": true
   },
   {
@@ -597,6 +578,10 @@
   },
   {
     "type": "inverse_glob_filter",
+    "named": true
+  },
+  {
+    "type": "recursive_glob",
     "named": true
   },
   {

@@ -105,7 +105,7 @@
     },
     "declaration": {
       "type": "PREC_RIGHT",
-      "value": -1,
+      "value": 100,
       "content": {
         "type": "SEQ",
         "members": [
@@ -117,61 +117,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "TOKEN",
-                        "content": {
-                          "type": "STRING",
-                          "value": ":"
-                        }
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "import"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "TOKEN",
-                        "content": {
-                          "type": "STRING",
-                          "value": ":"
-                        }
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "label"
-                          },
-                          {
-                            "type": "BLANK"
-                          }
-                        ]
-                      },
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "block"
-                          },
-                          {
-                            "type": "BLANK"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "_colon_block"
               },
               {
                 "type": "BLANK"
@@ -215,6 +162,45 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "_colon_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "label"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "import"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "label"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "block"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -836,16 +822,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "PREC",
-              "value": 1,
-              "content": {
-                "type": "SYMBOL",
-                "name": "escape"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "*"
+              "type": "SYMBOL",
+              "name": "escape"
             },
             {
               "type": "IMMEDIATE_TOKEN",
@@ -969,12 +947,12 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "glob"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "recursive_glob"
+          "type": "PREC",
+          "value": 10,
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "SYMBOL",
@@ -982,7 +960,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "glob"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "recursive_glob"
         },
         {
           "type": "SYMBOL",
@@ -1150,14 +1132,18 @@
           "type": "PATTERN",
           "value": "([\\p{L}\\d\\/_+\\-]|\\\\#)+",
           "flags": "u"
+        },
+        {
+          "type": "PATTERN",
+          "value": "."
         }
       ]
     },
     "glob": {
-      "type": "PREC",
-      "value": 8,
+      "type": "TOKEN",
       "content": {
-        "type": "TOKEN",
+        "type": "PREC",
+        "value": 8,
         "content": {
           "type": "STRING",
           "value": "*"
@@ -1165,10 +1151,10 @@
       }
     },
     "recursive_glob": {
-      "type": "PREC",
-      "value": 8,
+      "type": "TOKEN",
       "content": {
-        "type": "TOKEN",
+        "type": "PREC",
+        "value": 8,
         "content": {
           "type": "STRING",
           "value": "**"
@@ -1176,10 +1162,10 @@
       }
     },
     "global_glob": {
-      "type": "PREC",
-      "value": 8,
+      "type": "TOKEN",
       "content": {
-        "type": "TOKEN",
+        "type": "PREC",
+        "value": 8,
         "content": {
           "type": "STRING",
           "value": "***"

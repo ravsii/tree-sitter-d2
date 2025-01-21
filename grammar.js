@@ -96,16 +96,23 @@ module.exports = grammar({
       $.method_declaration,
     ),
 
-    declaration: $ => prec.right(-1, seq(
+    declaration: $ => prec.right(100, seq(
       $._expr,
-      optional(choice(
-        seq(token(':'), $.import),
-        seq(token(':'), optional($.label), optional($.block)),
-      )),
+      optional($._colon_block),
       optional($._eol),
     )),
 
     _expr: $ => sep($._identifier, $.connection),
+
+    _colon_block: $ => seq(
+      ':',
+      choice(
+        $.label,
+        $.block,
+        $.import,
+        seq($.label, $.block),
+      ),
+    ),
 
     method_declaration: $ => prec.right(100, seq(
       $.identifier,
@@ -216,8 +223,7 @@ module.exports = grammar({
 
     _label_base: $ => prec.left(PREC.label, repeat1(
       choice(
-        prec(1, $.escape),
-        '*',
+        $.escape,
         token.immediate(/[^\n;\\\{\}]+/),
         $._variable,
       ),
@@ -244,10 +250,10 @@ module.exports = grammar({
     )),
 
     _single_top_level_identifier: $ => choice(
+      prec(10, $.identifier),
+      $.global_glob,
       $.glob,
       $.recursive_glob,
-      $.global_glob,
-      $.identifier,
       $.connection_reference,
     ),
 
@@ -282,11 +288,12 @@ module.exports = grammar({
       $.glob,
       '\\*',
       /([\p{L}\d\/_+\-]|\\#)+/u,
+      /./,
     ),
 
-    glob: _ => prec(PREC.glob, token('*')),
-    recursive_glob: _ => prec(PREC.glob, token('**')),
-    global_glob: _ => prec(PREC.glob, token('***')),
+    glob: _ => token(prec(PREC.glob, '*')),
+    recursive_glob: _ => token(prec(PREC.glob, '**')),
+    global_glob: _ => token(prec(PREC.glob, '***')),
 
     _filters: $ => choice(
       $.glob_filter,
