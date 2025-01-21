@@ -17,13 +17,13 @@ bob -> alice: The ability to play bridge or\ngolf as if they were games.
     (connection)
     (identifier)
     (label
-      (label_escape)))
+      (escape)))
   (declaration
     (identifier)
     (connection)
     (identifier)
     (label
-      (label_escape))))
+      (escape))))
 
 ====================|||
 Scoping Example

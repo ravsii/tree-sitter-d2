@@ -107,10 +107,7 @@ module.exports = grammar({
     ),
 
     declaration: $ => prec.right(-1, seq(
-      choice(
-        $._expr,
-        $.connection_reference,
-      ),
+      $._expr,
       optional(choice(
         seq(token(':'), $.import),
         seq(token(':'), optional($.label), optional($.block)),
@@ -229,20 +226,10 @@ module.exports = grammar({
 
     _label_base: $ => prec.left(PREC.label, repeat1(
       choice(
-        $.label_escape,
+        $.escape,
         '*',
         token.immediate(/[^\n;\\\{\}\[\]]+/),
         $._variable,
-      ),
-    )),
-
-    label_escape: _ => token.immediate(seq(
-      '\\',
-      choice(
-        'n',
-        '{', '}',
-        ';',
-        '[', ']',
       ),
     )),
 
@@ -250,21 +237,10 @@ module.exports = grammar({
       token(prec(PREC.string, '"')),
       repeat(choice(
         token.immediate(prec(1, /[^"\n\\$]+/)),
-        $.escape_sequence,
+        $.escape,
         $._variable,
       )),
       token(prec(PREC.string, '"')),
-    ),
-
-    connection_reference: $ => seq(
-      '(', $._expr, ')',
-      $.connection_identifier,
-      optional($._fields),
-    ),
-    connection_identifier: $ => seq(
-      '[',
-      choice(/\d+/, $.glob),
-      ']',
     ),
 
     _identifier: $ => prec.right(choice(
@@ -272,25 +248,38 @@ module.exports = grammar({
       $._single_top_level_identifier,
     )),
 
-    identifier_chain: $ => prec.right(sep1($._single_top_level_identifier, token('.'))),
+    identifier_chain: $ => prec.right(sep1(
+      $._single_top_level_identifier,
+      token('.'),
+    )),
 
     _single_top_level_identifier: $ => choice(
       $.glob,
       $.recursive_glob,
       $.global_glob,
       $.identifier,
+      $.connection_reference,
     ),
 
-    identifier: $ => prec.right(
-      seq(
-        optional($._filters),
-        choice(
-          $._ident,
-          $._single_quoted,
-          $._double_quoted,
-        ),
-      ),
+    connection_reference: $ => seq(
+      token('('), $._expr, ')',
+      $.connection_identifier,
     ),
+
+    connection_identifier: $ => seq(
+      token('['),
+      choice(/\d+/, $.glob),
+      token(']'),
+    ),
+
+    identifier: $ => prec.right(seq(
+      optional($._filters),
+      choice(
+        $._ident,
+        $._single_quoted,
+        $._double_quoted,
+      ),
+    )),
 
     _fields: $ => r1seq('.', field('field', $.identifier)),
 
@@ -308,6 +297,16 @@ module.exports = grammar({
       '\\*',
       /([\p{L}\d\/_+\-]|\\#)+/u,
     ),
+
+    identifier_escape: _ => token.immediate(seq(
+      '\\',
+      choice(
+        'n',
+        '{', '}',
+        ';',
+        '[', ']',
+      ),
+    )),
 
     glob: _ => prec(PREC.glob, token('*')),
     recursive_glob: _ => prec(PREC.glob, token('**')),
@@ -328,13 +327,13 @@ module.exports = grammar({
     variable: $ => seq(
       token('$'), token('{'),
       $._identifier,
-      '}',
+      token('}'),
     ),
 
     spread_variable: $ => seq(
       token('...$'), token('{'),
       $._identifier,
-      '}',
+      token('}'),
     ),
 
     _single_quoted: $ => seq(
@@ -355,6 +354,17 @@ module.exports = grammar({
     ),
 
     escape_sequence: _ => token.immediate(seq(
+      '\\',
+      choice(
+        /[^xuU]/,
+        /\d{2,3}/,
+        /x[0-9a-fA-F]{2,}/,
+        /u[0-9a-fA-F]{4}/,
+        /U[0-9a-fA-F]{8}/,
+      ),
+    )),
+
+    escape: _ => token.immediate(seq(
       '\\',
       choice(
         /[^xuU]/,

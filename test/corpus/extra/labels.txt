@@ -13,12 +13,12 @@ shape1: {x: \{\}\;\[\]\n }
       (declaration
         (identifier)
         (label
-          (label_escape)
-          (label_escape)
-          (label_escape)
-          (label_escape)
-          (label_escape)
-          (label_escape))))))
+          (escape)
+          (escape)
+          (escape)
+          (escape)
+          (escape)
+          (escape))))))
 
 ====================|||
 Escape label with block
@@ -34,7 +34,7 @@ shape1: test label \{ {
   (declaration
     (identifier)
     (label
-      (label_escape))
+      (escape))
     (block
       (comment))))
 

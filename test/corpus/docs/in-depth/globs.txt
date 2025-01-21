@@ -81,13 +81,14 @@ Glob connections reference
 
 (source_file
   (declaration
-    (connection_reference
-      (identifier
-        (glob))
-      (connection)
-      (identifier)
-      (connection_identifier
-        (glob))
+    (identifier_chain
+      (connection_reference
+        (identifier
+          (glob))
+        (connection)
+        (identifier)
+        (connection_identifier
+          (glob)))
       (identifier)
       (identifier))
     (label)))
