@@ -22,10 +22,7 @@
   )
 )
 
-[
-  (escape_sequence)
-  (label_escape)
-] @string.escape
+(escape) @string.escape
 
 
 (identifier) @function
