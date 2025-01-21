@@ -340,7 +340,7 @@ module.exports = grammar({
       token(prec(PREC.string, '\'')),
       repeat(choice(
         token.immediate(prec(1, /[^'\n\\]+/)),
-        $.escape_sequence,
+        $.escape,
       )),
       token(prec(PREC.string, '\'')),
     ),
@@ -348,21 +348,10 @@ module.exports = grammar({
       token('"'),
       repeat(choice(
         token.immediate(prec(1, /[^"\n\\]+/)),
-        $.escape_sequence,
+        $.escape,
       )),
       token('"'),
     ),
-
-    escape_sequence: _ => token.immediate(seq(
-      '\\',
-      choice(
-        /[^xuU]/,
-        /\d{2,3}/,
-        /x[0-9a-fA-F]{2,}/,
-        /u[0-9a-fA-F]{4}/,
-        /U[0-9a-fA-F]{8}/,
-      ),
-    )),
 
     escape: _ => token.immediate(seq(
       '\\',

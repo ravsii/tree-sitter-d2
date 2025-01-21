@@ -174,16 +174,6 @@
     }
   },
   {
-    "type": "escape",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "escape_sequence",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "glob",
     "named": true,
     "fields": {}
@@ -202,7 +192,7 @@
       "required": false,
       "types": [
         {
-          "type": "escape_sequence",
+          "type": "escape",
           "named": true
         },
         {
@@ -265,10 +255,6 @@
         },
         {
           "type": "escape",
-          "named": true
-        },
-        {
-          "type": "escape_sequence",
           "named": true
         },
         {
@@ -587,6 +573,10 @@
   },
   {
     "type": "connection",
+    "named": true
+  },
+  {
+    "type": "escape",
     "named": true
   },
   {
