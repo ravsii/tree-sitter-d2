@@ -196,7 +196,7 @@ module.exports = grammar({
 
     _label_constraints: $ => seq(
       token(prec(PREC.label, '[')),
-      repeat1(seq($.label_constraint, optional(';'))),
+      repeat(sep($.label_constraint, token(';'))),
       token(prec(PREC.label, ']')),
     ),
 
@@ -216,9 +216,9 @@ module.exports = grammar({
 
     _label_base: $ => prec.left(PREC.label, repeat1(
       choice(
-        $.escape,
+        prec(1, $.escape),
         '*',
-        token.immediate(/[^\n;\\\{\}\[\]]+/),
+        token.immediate(/[^\n;\\\{\}]+/),
         $._variable,
       ),
     )),
@@ -252,14 +252,12 @@ module.exports = grammar({
     ),
 
     connection_reference: $ => seq(
-      token('('), $._expr, ')',
+      token('('), $._expr, token(')'),
       $.connection_identifier,
     ),
 
     connection_identifier: $ => seq(
-      token('['),
-      choice(/\d+/, $.glob),
-      token(']'),
+      token('['), choice(/\d+/, $.glob), token(']'),
     ),
 
     identifier: $ => prec.right(seq(
@@ -270,8 +268,6 @@ module.exports = grammar({
         $._double_quoted,
       ),
     )),
-
-    _fields: $ => r1seq('.', field('field', $.identifier)),
 
     _ident: $ => prec.right(r1seq(
       $._ident_base,

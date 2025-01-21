@@ -739,7 +739,7 @@
           }
         },
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
           "content": {
             "type": "SEQ",
             "members": [
@@ -748,16 +748,23 @@
                 "name": "label_constraint"
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ";"
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "TOKEN",
+                      "content": {
+                        "type": "STRING",
+                        "value": ";"
+                      }
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "label_constraint"
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -829,8 +836,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "escape"
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "SYMBOL",
+                "name": "escape"
+              }
             },
             {
               "type": "STRING",
@@ -840,7 +851,7 @@
               "type": "IMMEDIATE_TOKEN",
               "content": {
                 "type": "PATTERN",
-                "value": "[^\\n;\\\\\\{\\}\\[\\]]+"
+                "value": "[^\\n;\\\\\\{\\}]+"
               }
             },
             {
@@ -994,8 +1005,11 @@
           "name": "_expr"
         },
         {
-          "type": "STRING",
-          "value": ")"
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          }
         },
         {
           "type": "SYMBOL",
@@ -1069,26 +1083,6 @@
                 "name": "_double_quoted"
               }
             ]
-          }
-        ]
-      }
-    },
-    "_fields": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "."
-          },
-          {
-            "type": "FIELD",
-            "name": "field",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
           }
         ]
       }
