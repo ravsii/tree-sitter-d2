@@ -1103,8 +1103,8 @@
                       "value": "[\\s,]+"
                     },
                     {
-                      "type": "STRING",
-                      "value": "\\."
+                      "type": "SYMBOL",
+                      "name": "escape"
                     }
                   ]
                 },
@@ -1132,10 +1132,6 @@
           "type": "PATTERN",
           "value": "([\\p{L}\\d\\/_+\\-]|\\\\#)+",
           "flags": "u"
-        },
-        {
-          "type": "PATTERN",
-          "value": "."
         }
       ]
     },

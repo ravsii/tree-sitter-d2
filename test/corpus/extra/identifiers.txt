@@ -13,4 +13,5 @@ test1\.test2
       (identifier)
       (identifier)))
   (declaration
-    (identifier)))
+    (identifier
+      (escape))))

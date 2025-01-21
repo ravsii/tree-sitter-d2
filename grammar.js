@@ -280,7 +280,7 @@ module.exports = grammar({
       optional(choice(
         token.immediate(prec(PREC.ident_fix, '\'')),
         /[\s,]+/,
-        '\\.',
+        $.escape,
       )),
     )),
 
@@ -288,7 +288,6 @@ module.exports = grammar({
       $.glob,
       '\\*',
       /([\p{L}\d\/_+\-]|\\#)+/u,
-      /./,
     ),
 
     glob: _ => token(prec(PREC.glob, '*')),
