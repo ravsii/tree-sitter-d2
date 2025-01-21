@@ -2,26 +2,16 @@
 // @ts-check
 
 const PREC = {
-  term: 1000,
+  terminate: 1000,
 
   ident_fix: 51,
   string: 50,
 
-  label_block_start: 20,
-
   connection: 10,
-  conn_identifier: 9,
   glob: 8,
 
-  identifier_chain: 7,
-  identifier: 6,
-
-  block: 5,
-  import: 5,
-
-  label_codeblock: 3,
-  label_constraint: 3,
-  label_predefined: 2,
+  block: 1,
+  import: 1,
   label: 1,
 };
 
@@ -157,7 +147,7 @@ module.exports = grammar({
     block: $ => prec(PREC.block, seq(
       token(prec(PREC.block, '{')),
       repeat($._declaration),
-      token('}'),
+      token(prec(PREC.block, '}')),
     )),
 
     label: $ => choice(
@@ -174,40 +164,40 @@ module.exports = grammar({
     ),
 
     _label_codeblock_ticks: $ => seq(
-      token(prec(PREC.label_constraint, '|`')),
+      token(prec(PREC.label, '|`')),
       $.codeblock_language,
       alias(/[^`]*/, $.codeblock_content),
-      token(prec(PREC.label_constraint, '`|')),
+      token(prec(PREC.label, '`|')),
     ),
 
     _label_codeblock_triple: $ => seq(
-      token(prec(PREC.label_codeblock, '|||')),
+      token(prec(PREC.label, '|||')),
       $.codeblock_language,
       $.codeblock_content,
-      token(prec(PREC.label_codeblock, '|||')),
+      token(prec(PREC.label, '|||')),
     ),
 
     _label_codeblock_double: $ => seq(
-      token(prec(PREC.label_codeblock, '||')),
+      token(prec(PREC.label, '||')),
       $.codeblock_language,
       $.codeblock_content,
-      token(prec(PREC.label_codeblock, '||')),
+      token(prec(PREC.label, '||')),
     ),
 
     _label_codeblock_single: $ => seq(
-      token(prec(PREC.label_codeblock, '|')),
+      token(prec(PREC.label, '|')),
       $.codeblock_language,
       alias(/[^\|]*/, $.codeblock_content),
-      token(prec(PREC.label_codeblock, '|')),
+      token(prec(PREC.label, '|')),
     ),
 
     codeblock_language: _ => token(/[a-zA-Z0-9]+/),
     codeblock_content: _ => repeat1(seq(/.+/, /\s*/)),
 
     _label_constraints: $ => seq(
-      token(prec(PREC.label_constraint, '[')),
+      token(prec(PREC.label, '[')),
       repeat1(seq($.label_constraint, optional(';'))),
-      token(prec(PREC.label_constraint, ']')),
+      token(prec(PREC.label, ']')),
     ),
 
     label_constraint: $ => choice(
@@ -234,13 +224,13 @@ module.exports = grammar({
     )),
 
     _label_double_quoted: $ => seq(
-      token(prec(PREC.string, '"')),
+      token(prec(PREC.label, '"')),
       repeat(choice(
-        token.immediate(prec(1, /[^"\n\\$]+/)),
+        token.immediate(prec(PREC.label, /[^"\n\\$]+/)),
         $.escape,
         $._variable,
       )),
-      token(prec(PREC.string, '"')),
+      token(prec(PREC.label, '"')),
     ),
 
     _identifier: $ => prec.right(choice(
@@ -298,16 +288,6 @@ module.exports = grammar({
       /([\p{L}\d\/_+\-]|\\#)+/u,
     ),
 
-    identifier_escape: _ => token.immediate(seq(
-      '\\',
-      choice(
-        'n',
-        '{', '}',
-        ';',
-        '[', ']',
-      ),
-    )),
-
     glob: _ => prec(PREC.glob, token('*')),
     recursive_glob: _ => prec(PREC.glob, token('**')),
     global_glob: _ => prec(PREC.glob, token('***')),
@@ -339,15 +319,16 @@ module.exports = grammar({
     _single_quoted: $ => seq(
       token(prec(PREC.string, '\'')),
       repeat(choice(
-        token.immediate(prec(1, /[^'\n\\]+/)),
+        token.immediate(prec(PREC.string, /[^'\n\\]+/)),
         $.escape,
       )),
       token(prec(PREC.string, '\'')),
     ),
+
     _double_quoted: $ => seq(
       token('"'),
       repeat(choice(
-        token.immediate(prec(1, /[^"\n\\]+/)),
+        token.immediate(prec(PREC.string, /[^"\n\\]+/)),
         $.escape,
       )),
       token('"'),
@@ -366,11 +347,11 @@ module.exports = grammar({
 
     // We need extra space in the end to make sure it's not a string starting
     // with an integer.
-    integer: _ => token(prec(PREC.label_predefined, /[\-+]?\d+?\s+/)),
-    float: _ => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
-    boolean: _ => token(prec(PREC.label_predefined, choice('true', 'false'))),
+    integer: _ => token(prec(PREC.label, /[\-+]?\d+?\s+/)),
+    float: _ => token(prec(PREC.label, /[\-+]?\d+(\.\d+)?\s+/)),
+    boolean: _ => token(prec(PREC.label, choice('true', 'false'))),
 
-    _eol: _ => token(prec(PREC.term, choice(/\n/, /\r/, ';'))),
+    _eol: _ => token(prec(PREC.terminate, choice(/\n/, /\r/, ';'))),
     _eol_or_space: $ => choice($._eol, repeat(/\s/)),
   },
 });
