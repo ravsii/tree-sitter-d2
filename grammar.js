@@ -3,11 +3,12 @@
 
 const PREC = {
   terminate: 1000,
+  comment: 900,
+  string: 500,
 
   colon_start: 80,
 
   ident_fix: 51,
-  string: 50,
 
   connection: 10,
   glob: 8,
@@ -84,9 +85,9 @@ module.exports = grammar({
 
     comment: _ => token(seq('#', repeat(/./), /\n/)),
     block_comment: _ => seq(
-      '"""',
+      token(prec(PREC.comment, '"""')),
       repeat(choice(/[^"]/, /"[^"]/, /""[^"]/)),
-      '"""',
+      token(prec(PREC.comment, '"""')),
     ),
 
     _declaration: $ => choice(
@@ -146,10 +147,10 @@ module.exports = grammar({
       /--+/,
     ))),
 
-    import: _ => token(prec(PREC.import,
-      seq(
-        choice('@', '...@'),
-        repeat1(/[^\s]/)))),
+    import: _ => token(prec(PREC.import, seq(
+      choice('@', '...@'),
+      repeat1(/[^\s]/),
+    ))),
 
     block: $ => prec(PREC.block, seq(
       token(prec(PREC.block, '{')),
@@ -278,8 +279,7 @@ module.exports = grammar({
     _ident: $ => prec.right(r1seq(
       $._ident_base,
       optional(choice(
-        token.immediate(prec(PREC.ident_fix, '\'')),
-        /[\s,]+/,
+        /[\s,"]+/,
         $.escape,
       )),
     )),
@@ -287,7 +287,7 @@ module.exports = grammar({
     _ident_base: $ => choice(
       $.glob,
       '\\*',
-      /([\p{L}\d\/_+\-]|\\#)+/u,
+      /([\p{L}\d\/_+\-"']|\\#)+/u,
     ),
 
     glob: _ => token(prec(PREC.glob, '*')),
@@ -328,12 +328,12 @@ module.exports = grammar({
     ),
 
     _double_quoted: $ => seq(
-      token('"'),
+      token(prec(PREC.string, '"')),
       repeat(choice(
         token.immediate(prec(PREC.string, /[^"\n\\]+/)),
         $.escape,
       )),
-      token('"'),
+      token(prec(PREC.string, '"')),
     ),
 
     escape: _ => token.immediate(seq(

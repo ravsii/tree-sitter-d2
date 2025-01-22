@@ -53,8 +53,15 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "\"\"\""
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 900,
+            "content": {
+              "type": "STRING",
+              "value": "\"\"\""
+            }
+          }
         },
         {
           "type": "REPEAT",
@@ -77,8 +84,15 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "\"\"\""
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 900,
+            "content": {
+              "type": "STRING",
+              "value": "\"\"\""
+            }
+          }
         }
       ]
     },
@@ -1076,19 +1090,8 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "IMMEDIATE_TOKEN",
-                      "content": {
-                        "type": "PREC",
-                        "value": 51,
-                        "content": {
-                          "type": "STRING",
-                          "value": "'"
-                        }
-                      }
-                    },
-                    {
                       "type": "PATTERN",
-                      "value": "[\\s,]+"
+                      "value": "[\\s,\"]+"
                     },
                     {
                       "type": "SYMBOL",
@@ -1118,7 +1121,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "([\\p{L}\\d\\/_+\\-]|\\\\#)+",
+          "value": "([\\p{L}\\d\\/_+\\-\"']|\\\\#)+",
           "flags": "u"
         }
       ]
@@ -1263,7 +1266,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 50,
+            "value": 500,
             "content": {
               "type": "STRING",
               "value": "'"
@@ -1279,7 +1282,7 @@
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
                   "type": "PREC",
-                  "value": 50,
+                  "value": 500,
                   "content": {
                     "type": "PATTERN",
                     "value": "[^'\\n\\\\]+"
@@ -1297,7 +1300,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 50,
+            "value": 500,
             "content": {
               "type": "STRING",
               "value": "'"
@@ -1312,8 +1315,12 @@
         {
           "type": "TOKEN",
           "content": {
-            "type": "STRING",
-            "value": "\""
+            "type": "PREC",
+            "value": 500,
+            "content": {
+              "type": "STRING",
+              "value": "\""
+            }
           }
         },
         {
@@ -1325,7 +1332,7 @@
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
                   "type": "PREC",
-                  "value": 50,
+                  "value": 500,
                   "content": {
                     "type": "PATTERN",
                     "value": "[^\"\\n\\\\]+"
@@ -1342,8 +1349,12 @@
         {
           "type": "TOKEN",
           "content": {
-            "type": "STRING",
-            "value": "\""
+            "type": "PREC",
+            "value": 500,
+            "content": {
+              "type": "STRING",
+              "value": "\""
+            }
           }
         }
       ]

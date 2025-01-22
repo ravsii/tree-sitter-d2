@@ -22,9 +22,12 @@ Quotes inside identifier
 ====================|||
 
 x'y's
+x"y"s
 
 ---|||
 
 (source_file
+  (declaration
+    (identifier))
   (declaration
     (identifier)))
