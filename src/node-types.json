@@ -337,7 +337,7 @@
   },
   {
     "type": "returns",
-    "named": true,
+    "named": false,
     "fields": {},
     "children": {
       "multiple": true,

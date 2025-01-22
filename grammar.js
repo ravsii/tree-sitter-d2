@@ -4,13 +4,15 @@
 const PREC = {
   terminate: 1000,
 
+  colon_start: 80,
+
   ident_fix: 51,
   string: 50,
 
   connection: 10,
   glob: 8,
 
-  block: 1,
+  block: 5,
   import: 1,
   label: 1,
 };
@@ -47,7 +49,7 @@ const r1seq = (...rules) => repeat1(seq(...rules));
  * @param {RuleOrLiteral} separator
  * @returns {SeqRule}
  */
-const sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
+const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 /**
  * Creates a rule to match at least 2 occurrences of `rule` separated by
@@ -61,8 +63,6 @@ const sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
 
 module.exports = grammar({
   name: 'd2',
-
-  // word: $ => $._ident_base,
 
   extras: $ => [
     $.comment,
@@ -102,10 +102,10 @@ module.exports = grammar({
       optional($._eol),
     )),
 
-    _expr: $ => sep($._identifier, $.connection),
+    _expr: $ => repeat_sep($._identifier, $.connection),
 
     _colon_block: $ => seq(
-      ':',
+      token.immediate(prec(PREC.colon_start, ':')),
       choice(
         $.label,
         $.block,
@@ -117,24 +117,24 @@ module.exports = grammar({
     method_declaration: $ => prec.right(100, seq(
       $.identifier,
       '(', optional($.arguments), ')',
-      opseq(token(':'), token('('), optional($.returns), token(')')),
+      opseq(
+        token.immediate(prec(PREC.colon_start, ':')),
+        '(', optional($.returns), ')',
+      ),
     )),
 
-    returns: $ => alias($.arguments, 'returns'),
-    arguments: $ => choice(
-      // arg type
-      seq($.argument_name, $.argument_type),
-      // arg type, arg type
+    // x int
+    // x, y int
+    // x int, y int
+    // x, y int, z int32
+    arguments: $ => repeat_sep(
       seq(
-        $.argument_name, $.argument_type,
-        r1seq(',', $.argument_name, $.argument_type),
+        repeat_sep($.argument_name, ','),
+        $.argument_type,
       ),
-      // arg1, arg2 type1, arg3, arg4 type2
-      r1seq(
-        $.argument_name, r1seq(',', $.argument_name),
-        $.argument_type, optional(','),
-      ),
+      ',',
     ),
+    returns: $ => alias($.arguments, 'returns'),
 
     argument_name: _ => token(/[a-zA-Z0-9_]+/),
     argument_type: _ => token(/[a-zA-Z0-9_\[\]]+/),
@@ -203,7 +203,7 @@ module.exports = grammar({
 
     _label_constraints: $ => seq(
       token(prec(PREC.label, '[')),
-      repeat(sep($.label_constraint, token(';'))),
+      repeat(repeat_sep($.label_constraint, token(';'))),
       token(prec(PREC.label, ']')),
     ),
 
@@ -221,10 +221,10 @@ module.exports = grammar({
       $._label_base,
     ),
 
-    _label_base: $ => prec.left(PREC.label, repeat1(
+    _label_base: $ => prec.right(repeat1(
       choice(
         $.escape,
-        token.immediate(/[^\n;\\\{\}]+/),
+        /[^\n;\\\{\}]+/,
         $._variable,
       ),
     )),
@@ -250,7 +250,7 @@ module.exports = grammar({
     )),
 
     _single_top_level_identifier: $ => choice(
-      prec(10, $.identifier),
+      $.identifier,
       $.global_glob,
       $.glob,
       $.recursive_glob,
