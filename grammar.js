@@ -58,19 +58,12 @@ const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
  * with a simple set of rules or regexes.
  *
  * @param {RuleOrLiteral} rule
- * @returns {PrecLeftRule}
  */
 
-const spaced_str = (rule) => prec.left(seq(
-  seq(
-    rule,
-    repeat(seq(
-      /\s/,
-      rule,
-    )),
-  ),
-  optional(/\s/),
-));
+const spaced_str = (rule) => choice(
+  rule,
+  seq(repeat1(seq(rule, /\s*/)), rule),
+);
 
 /**
  * Creates a rule to match at least 2 occurrences of `rule` separated by
@@ -117,25 +110,22 @@ module.exports = grammar({
       $.method_declaration,
     ),
 
-    declaration: $ => prec.right(100, seq(
+    declaration: $ => seq(
       $._expr,
       optional($._colon_block),
       optional($._eol),
-    )),
+    ),
 
     _expr: $ => repeat_sep($._identifier, $.connection),
 
-    _colon_block: $ => seq(
-      token.immediate(prec(PREC.colon_start, ':')),
-      choice(
-        $.label,
-        $.block,
-        $.import,
-        seq($.label, $.block),
-      ),
+    _colon_block: $ => choice(
+      seq(':', $.label),
+      seq(':', $.block),
+      seq(':', $.import),
+      seq(':', $.label, $.block),
     ),
 
-    method_declaration: $ => prec.right(100, seq(
+    method_declaration: $ => prec.right(99, seq(
       $.identifier,
       '(', optional($.arguments), ')',
       opseq(
@@ -244,7 +234,7 @@ module.exports = grammar({
 
     _label_token: $ => prec.left(repeat1(choice(
       $.escape,
-      /[^\s;|\\\{\}]+/,
+      /[^\s;|{}\\]+/,
       $._variable,
     ))),
 
@@ -355,6 +345,9 @@ module.exports = grammar({
     ),
 
     escape: _ => token.immediate(seq(
+      // HACK: labels that start with an escape can't be parsed without it
+      // But it shouldn't be here.
+      /[ ]*/,
       '\\',
       choice(
         /[^xuU]/,
