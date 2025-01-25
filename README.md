@@ -21,7 +21,7 @@
 
 ## Description
 
-Tree Sitter grammar for [d2lang]. It's not yet finished, but usable for
+Tree Sitter grammar for [d2lang] \([github]\). It's not yet finished, but usable for
 every-day cases with support for latest features like globs, filters and
 variables.
 
@@ -40,6 +40,7 @@ injections, folds, etc.
 
 [highlight]: https://neovim.io/doc/user/treesitter.html#_treesitter-queries
 [d2lang]: https://d2lang.com/
+[github]: https://github.com/terrastruct/d2
 
 ---
 
