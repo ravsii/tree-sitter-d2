@@ -817,13 +817,55 @@
           "name": "_single_quoted"
         },
         {
-          "type": "SYMBOL",
-          "name": "_label_base"
+          "type": "PREC_LEFT",
+          "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_label_token"
+                  },
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "PATTERN",
+                          "value": "\\s"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "_label_token"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "\\s"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     },
-    "_label_base": {
-      "type": "PREC_RIGHT",
+    "_label_token": {
+      "type": "PREC_LEFT",
       "value": 0,
       "content": {
         "type": "REPEAT1",
@@ -836,7 +878,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "[^\\n;\\\\\\{\\}]+"
+              "value": "[^\\s;|\\\\\\{\\}]+"
             },
             {
               "type": "SYMBOL",

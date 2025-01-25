@@ -53,6 +53,26 @@ const r1seq = (...rules) => repeat1(seq(...rules));
 const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 /**
+ * Creates a special rule for labels and identifiers, because can be pretty
+ * much every character _including_ spaces, which makes it difficult to parse
+ * with a simple set of rules or regexes.
+ *
+ * @param {RuleOrLiteral} rule
+ * @returns {PrecLeftRule}
+ */
+
+const spaced_str = (rule) => prec.left(seq(
+  seq(
+    rule,
+    repeat(seq(
+      /\s/,
+      rule,
+    )),
+  ),
+  optional(/\s/),
+));
+
+/**
  * Creates a rule to match at least 2 occurrences of `rule` separated by
  * `separator`.
  *
@@ -219,16 +239,14 @@ module.exports = grammar({
       $.boolean,
       $._label_double_quoted,
       $._single_quoted,
-      $._label_base,
+      spaced_str($._label_token),
     ),
 
-    _label_base: $ => prec.right(repeat1(
-      choice(
-        $.escape,
-        /[^\n;\\\{\}]+/,
-        $._variable,
-      ),
-    )),
+    _label_token: $ => prec.left(repeat1(choice(
+      $.escape,
+      /[^\s;|\\\{\}]+/,
+      $._variable,
+    ))),
 
     _label_double_quoted: $ => seq(
       token(prec(PREC.label, '"')),

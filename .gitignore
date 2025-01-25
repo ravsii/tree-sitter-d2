@@ -2,6 +2,6 @@ node_modules
 test.d2
 .vscode
 tree-sitter-d2.code-workspace
-test.html
+*.html
 *.DS_Store
 *.dylib

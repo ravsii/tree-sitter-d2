@@ -12,6 +12,10 @@ dparse: generate
 	clear
 	tree-sitter parse test.d2 -d
 
+Dparse: generate
+	clear
+	tree-sitter parse test.d2 -D
+
 test: generate
 	clear
 	tree-sitter test
