@@ -59,6 +59,7 @@ parser_config.d2 = {
   install_info = {
     url = "https://github.com/ravsii/tree-sitter-d2",
     files = { "src/parser.c" },
+    branch = "main"
   },
   filetype = "d2",
 }
