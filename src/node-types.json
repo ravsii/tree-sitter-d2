@@ -78,6 +78,11 @@
     "fields": {}
   },
   {
+    "type": "connection",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "connection_identifier",
     "named": true,
     "fields": {},
@@ -526,10 +531,6 @@
     "named": false
   },
   {
-    "type": "\\*",
-    "named": false
-  },
-  {
     "type": "]",
     "named": false
   },
@@ -547,10 +548,6 @@
   },
   {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "connection",
     "named": true
   },
   {

@@ -8,6 +8,8 @@ Escaped globs
 
 (source_file
   (declaration
-    (identifier)
+    (identifier
+      (escape))
     (connection)
-    (identifier)))
+    (identifier
+      (escape))))

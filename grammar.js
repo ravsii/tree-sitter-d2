@@ -4,7 +4,10 @@
 const PREC = {
   terminate: 1000,
   comment: 900,
+  escape: 800,
   string: 500,
+
+  variable: 100,
 
   colon_start: 80,
 
@@ -14,6 +17,9 @@ const PREC = {
   glob: 8,
 
   block: 5,
+
+  identifier: 3,
+
   import: 1,
   label: 1,
 };
@@ -62,7 +68,7 @@ const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 const spaced_str = (rule) => choice(
   rule,
-  seq(repeat1(seq(rule, /[ ]*/)), rule),
+  seq(repeat1(seq(rule, /[ ]+/)), optional(rule)),
 );
 
 /**
@@ -79,17 +85,20 @@ module.exports = grammar({
   name: 'd2',
 
   extras: $ => [
-    /\s/,
+    /\s+/,
   ],
 
   conflicts: $ => [
-    [$._single_top_level_identifier, $._ident_base],
+    [$._single_top_level_identifier, $.identifier],
   ],
 
   rules: {
     source_file: $ => seq(
       repeat(
-        seq($._declaration, $._eol),
+        choice(
+          seq($._declaration, $._eol),
+          $._eol,
+        ),
       ),
       optional($._declaration),
     ),
@@ -114,7 +123,7 @@ module.exports = grammar({
       )),
     ),
 
-    comment: _ => token(seq('#', /[^\n]+/)),
+    comment: _ => token(prec(PREC.comment, /#[^\n]+/)),
     block_comment: _ => seq(
       token(prec(PREC.comment, '"""')),
       repeat(choice(/[^"]/, /"[^"]/, /""[^"]/)),
@@ -160,12 +169,12 @@ module.exports = grammar({
     argument_name: _ => token(/[a-zA-Z0-9_]+/),
     argument_type: _ => token(/[a-zA-Z0-9_\[\]]+/),
 
-    connection: _ => token(prec(PREC.connection, choice(
-      /<-+>/,
-      /<-+/,
-      /-+>/,
-      /--+/,
-    ))),
+    connection: _ => choice(
+      token(prec(PREC.connection, /<-+>/)),
+      token(prec(PREC.connection, /<-+/)),
+      token(prec(PREC.connection, /-+>/)),
+      token(prec(PREC.connection, /--+/)),
+    ),
 
     import: _ => token(prec(PREC.import, seq(
       choice('@', '...@'),
@@ -295,25 +304,17 @@ module.exports = grammar({
     identifier: $ => prec.right(seq(
       optional($._filters),
       choice(
-        $._ident,
+        spaced_str($._ident_base),
         $._single_quoted,
         $._double_quoted,
       ),
     )),
 
-    _ident: $ => prec.right(r1seq(
-      $._ident_base,
-      optional(choice(
-        /[\s,"]+/,
-        $.escape,
-      )),
-    )),
-
-    _ident_base: $ => choice(
+    _ident_base: $ => repeat1(choice(
+      $.escape,
       $.glob,
-      '\\*',
-      /([\p{L}\d\/_+\-"']|\\#)+/u,
-    ),
+      token(prec(PREC.identifier, /[^\s:.;&{}()!\\]/)), // All the special stuff
+    )),
 
     glob: _ => token(prec(PREC.glob, '*')),
     recursive_glob: _ => token(prec(PREC.glob, '**')),
@@ -332,13 +333,13 @@ module.exports = grammar({
     ),
 
     variable: $ => seq(
-      token('$'), token('{'),
+      token(prec(PREC.variable, '$')), token('{'),
       $._identifier,
       token('}'),
     ),
 
     spread_variable: $ => seq(
-      token('...$'), token('{'),
+      token(prec(PREC.variable, '...$')), token('{'),
       $._identifier,
       token('}'),
     ),
@@ -365,7 +366,7 @@ module.exports = grammar({
       // HACK: labels that start with an escape can't be parsed without it
       // But it shouldn't be here.
       /[ ]*/,
-      '\\',
+      token.immediate(prec(PREC.escape, '\\')),
       choice(
         /[^xuU]/,
         /\d{2,3}/,

@@ -1,21 +1,26 @@
 ====================|||
-Escape dot
+Escape
 ====================|||
 
-test1.test2
-test1\.test2
+x\.y
+\!\@\#\$\%\^asdkj123\{\}
 
 ---|||
 
 (source_file
   (declaration
-    (identifier_chain
-      (identifier)
-      (identifier)))
+    (identifier
+      (escape)))
   (declaration
     (identifier
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)
       (escape))))
-
 
 ====================|||
 Quotes inside identifier
