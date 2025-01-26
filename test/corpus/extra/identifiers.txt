@@ -36,3 +36,17 @@ x"y"s
     (identifier))
   (declaration
     (identifier)))
+
+====================|||
+Emojis
+====================|||
+
+👉 <-> 👈
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
