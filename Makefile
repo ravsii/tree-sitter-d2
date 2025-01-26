@@ -12,6 +12,10 @@ dparse: generate
 	clear
 	tree-sitter parse test.d2 -d
 
+Dparse: generate
+	clear
+	tree-sitter parse test.d2 -D
+
 test: generate
 	clear
 	tree-sitter test
@@ -28,7 +32,7 @@ watch-parse:
 	watchexec --exts d2,js,scm,txt -- make parse
 
 watch-test:
-	watchexec --exts d2,js,scm,txt -- make test
+	watchexec --exts d2,js,scm,txt -- make test 
 
 # Do not use this, this is for temporary testing until I find a better way to
 # inject queries

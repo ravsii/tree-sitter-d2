@@ -382,7 +382,8 @@ D2 Parser: {
       (comment)
       (comment)
       (declaration
-        (identifier)
+        (identifier
+          (escape))
         (label))
       (method_declaration
         (identifier)
@@ -396,7 +397,8 @@ D2 Parser: {
       (method_declaration
         (identifier))
       (method_declaration
-        (identifier)
+        (identifier
+          (escape))
         (arguments
           (argument_name)
           (argument_type))
