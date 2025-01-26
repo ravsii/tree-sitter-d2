@@ -68,7 +68,7 @@ const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 const spaced_str = (rule) => choice(
   rule,
-  seq(repeat1(seq(rule, /[ ]+/)), optional(rule)),
+  seq(repeat1(seq(rule, /[ ]+/)), rule),
 );
 
 /**
@@ -109,6 +109,7 @@ module.exports = grammar({
     // _eol.
     // I'm not if that's something quality grammars do, but it works for now.
     _declaration: $ => seq(
+      /\s*/,
       choice(
         $.declaration,
         $.import,
@@ -138,10 +139,10 @@ module.exports = grammar({
     _expr: $ => repeat_sep($._identifier, $.connection),
 
     _colon_block: $ => choice(
-      seq(':', $.label),
-      seq(':', $.block),
-      seq(':', $.import),
-      seq(':', $.label, $.block),
+      seq(token(prec(PREC.label, ':')), $.label),
+      seq(token(prec(PREC.label, ':')), $.block),
+      seq(token(prec(PREC.label, ':')), $.import),
+      seq(token(prec(PREC.label, ':')), $.label, $.block),
     ),
 
     method_declaration: $ => prec.right(99, seq(
@@ -205,33 +206,33 @@ module.exports = grammar({
 
     _label_codeblock_ticks: $ => seq(
       token(prec(PREC.label, '|`')),
-      $.codeblock_language,
+      optional($.codeblock_language), /\s/,
       alias(/[^`]*/, $.codeblock_content),
       token(prec(PREC.label, '`|')),
     ),
 
     _label_codeblock_triple: $ => seq(
       token(prec(PREC.label, '|||')),
-      $.codeblock_language,
+      optional($.codeblock_language), /\s/,
       $.codeblock_content,
       token(prec(PREC.label, '|||')),
     ),
 
     _label_codeblock_double: $ => seq(
       token(prec(PREC.label, '||')),
-      $.codeblock_language,
+      optional($.codeblock_language), /\s/,
       $.codeblock_content,
       token(prec(PREC.label, '||')),
     ),
 
     _label_codeblock_single: $ => seq(
       token(prec(PREC.label, '|')),
-      $.codeblock_language,
+      optional($.codeblock_language), /\s/,
       alias(/[^\|]*/, $.codeblock_content),
       token(prec(PREC.label, '|')),
     ),
 
-    codeblock_language: _ => token(/[a-zA-Z0-9]+/),
+    codeblock_language: _ => /[a-zA-Z0-9]+/,
     codeblock_content: _ => repeat1(seq(/.+/, /\s*/)),
 
     _label_constraints: $ => seq(

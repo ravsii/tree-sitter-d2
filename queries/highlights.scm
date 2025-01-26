@@ -70,7 +70,7 @@
 )
 
 ((identifier) @keyword
-  (#match? @keyword "\s*_")
+  (#eq? @keyword "_")
 )
 
 [
