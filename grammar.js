@@ -62,7 +62,7 @@ const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
 
 const spaced_str = (rule) => choice(
   rule,
-  seq(repeat1(seq(rule, /\s*/)), rule),
+  seq(repeat1(seq(rule, /[ ]*/)), rule),
 );
 
 /**
@@ -79,9 +79,6 @@ module.exports = grammar({
   name: 'd2',
 
   extras: $ => [
-    $.comment,
-    $.block_comment,
-    $._eol,
     /\s/,
   ],
 
@@ -90,30 +87,43 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat(prec.left(choice(
-      $._declaration,
-      $.comment,
-      $.block_comment,
-    ))),
+    source_file: $ => seq(
+      repeat(
+        seq($._declaration, $._eol),
+      ),
+      optional($._declaration),
+    ),
 
-    comment: _ => token(seq('#', repeat(/./), /\n/)),
+    // Comments can be parsed as declaration, but since we're a bit strict on
+    // our _eof rule for correct parsing, we should also consider cases like
+    // "x -> y # commend\n", where comment appears after declaration but before
+    // _eol.
+    // I'm not if that's something quality grammars do, but it works for now.
+    _declaration: $ => seq(
+      choice(
+        $.declaration,
+        $.import,
+        $._variable,
+        $.method_declaration,
+        $.comment,
+        $.block_comment,
+      ),
+      optional(choice(
+        $.comment,
+        $.block_comment,
+      )),
+    ),
+
+    comment: _ => token(seq('#', /[^\n]+/)),
     block_comment: _ => seq(
       token(prec(PREC.comment, '"""')),
       repeat(choice(/[^"]/, /"[^"]/, /""[^"]/)),
       token(prec(PREC.comment, '"""')),
     ),
 
-    _declaration: $ => choice(
-      $.declaration,
-      $.import,
-      $._variable,
-      $.method_declaration,
-    ),
-
     declaration: $ => seq(
       $._expr,
       optional($._colon_block),
-      optional($._eol),
     ),
 
     _expr: $ => repeat_sep($._identifier, $.connection),
@@ -164,7 +174,10 @@ module.exports = grammar({
 
     block: $ => prec(PREC.block, seq(
       token(prec(PREC.block, '{')),
-      repeat($._declaration),
+      seq(
+        repeat(seq($._declaration, $._eol)),
+        optional($._declaration),
+      ),
       token(prec(PREC.block, '}')),
     )),
 
@@ -223,16 +236,20 @@ module.exports = grammar({
       $._variable,
     ),
 
-    _label_literal: $ => choice(
+    _label_literal: $ => prec.right(choice(
       $.integer,
       $.float,
       $.boolean,
       $._label_double_quoted,
       $._single_quoted,
       spaced_str($._label_token),
-    ),
+    )),
 
-    _label_token: $ => prec.left(repeat1(choice(
+    integer: _ => /[\-+]?\d+/,
+    float: _ => /[\-+]?\d+\.\d+/,
+    boolean: _ => choice('true', 'false'),
+
+    _label_token: $ => prec.right(repeat1(choice(
       $.escape,
       /[^\s;|{}\\]+/,
       $._variable,
@@ -358,14 +375,8 @@ module.exports = grammar({
       ),
     )),
 
-    // We need extra space in the end to make sure it's not a string starting
-    // with an integer.
-    integer: _ => token(prec(PREC.label, /[\-+]?\d+?\s+/)),
-    float: _ => token(prec(PREC.label, /[\-+]?\d+(\.\d+)?\s+/)),
-    boolean: _ => token(prec(PREC.label, choice('true', 'false'))),
 
-    _eol: _ => token(prec(PREC.terminate, choice(/\n/, /\r/, ';'))),
-    _eol_or_space: $ => choice($._eol, repeat(/\s/)),
+    _eol: _ => token(prec(PREC.terminate, choice(/\n/, ';', '\0'))),
   },
 });
 

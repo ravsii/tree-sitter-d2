@@ -32,6 +32,14 @@
       "required": false,
       "types": [
         {
+          "type": "block_comment",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "declaration",
           "named": true
         },
@@ -56,6 +64,11 @@
   },
   {
     "type": "block_comment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "boolean",
     "named": true,
     "fields": {}
   },
@@ -529,10 +542,6 @@
     "named": true
   },
   {
-    "type": "boolean",
-    "named": true
-  },
-  {
     "type": "codeblock_language",
     "named": true
   },
@@ -547,6 +556,10 @@
   {
     "type": "escape",
     "named": true
+  },
+  {
+    "type": "false",
+    "named": false
   },
   {
     "type": "float",
@@ -579,6 +592,10 @@
   {
     "type": "recursive_glob",
     "named": true
+  },
+  {
+    "type": "true",
+    "named": false
   },
   {
     "type": "{",
