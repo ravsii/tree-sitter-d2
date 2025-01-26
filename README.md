@@ -151,14 +151,14 @@ install it.
 
 ## Showcase
 
-Some screenshots, using `Tokyo Night Storm` theme with `CaskaydiaCove` font.
+`Tokyo Night Storm` theme with `CaskaydiaCove` font.
 
-Props to Neovim's Tokyo Night theme for supporting pretty much every
-[highlighting group] in neovim.
+_Props to Neovim's Tokyo Night theme for supporting pretty much every
+[highlighting group]._
 
 [highlighting group]: <https://neovim.io/doc/user/treesitter.html#_treesitter-queries:~:text=the%20exact%20definition)%3A-,%40variable,-various%20variable%20names>
 
-![showcase](./pics/showcase.mov)
+https://github.com/user-attachments/assets/a9bd20d0-eb6c-43c2-8e58-7d211d350025
 
 ## Comparison
 
