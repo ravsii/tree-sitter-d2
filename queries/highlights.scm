@@ -24,7 +24,6 @@
 
 (escape) @string.escape
 
-
 (identifier) @function
 ((identifier) @function.builtin
   (#any-of? @function.builtin
@@ -70,9 +69,15 @@
   )
 )
 
+((identifier) @keyword
+  (#match? @keyword "\s*_")
+)
+
 [
  "$"
  "...$"
+ (glob_filter)
+ (inverse_glob_filter)
 ] @keyword
 
 [(variable) (spread_variable)] @variable

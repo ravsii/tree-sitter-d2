@@ -2,7 +2,7 @@ generate:
 	tree-sitter generate
 
 highlight: generate
-	tree-sitter highlight ./test/highlight.d2
+	tree-sitter highlight ./test/showcase.d2
 
 parse: generate
 	clear
