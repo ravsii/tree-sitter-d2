@@ -9,6 +9,7 @@
 
 - [tree-sitter-d2](#tree-sitter-d2)
   - [Table of Contents](#table-of-contents)
+  - [Description](#description)
   - [Installation](#installation)
     - [Neovim](#neovim)
     - [Helix](#helix)
@@ -17,7 +18,7 @@
   - [Comparison](#comparison)
     - [Better consistency overall](#better-consistency-overall)
     - [Better handling of foreign languages](#better-handling-of-foreign-languages)
-  <!--toc:end-->
+    <!--toc:end-->
 
 ## Description
 
@@ -64,11 +65,16 @@ parser_config.d2 = {
   filetype = "d2",
 }
 
--- in case `echo &filetype` is empty on *.d2
--- so we need to add auto set ft=d2 on *.d2 files
+-- we also need to tell neovim to use "d2" filetype on "*.d2" files, as well as
+-- token comment.
+-- ftplugin/autocmd is also an option.
 vim.filetype.add({
   extension = {
-    d2 = "d2",
+    d2 = function()
+      return "d2", function(bufnr)
+        vim.bo[bufnr].commentstring = "# %s"
+      end
+    end,
   },
 })
 ```
@@ -120,7 +126,7 @@ roots = [""]
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
-source = { git = "https://github.com/ravsii/tree-sitter-d2" }
+source = { git = "https://github.com/ravsii/tree-sitter-d2", rev = "main" }
 name = "d2"
 
 ```
@@ -147,20 +153,12 @@ install it.
 
 Some screenshots, using `Tokyo Night Storm` theme with `CaskaydiaCove` font.
 
-Props to Tokyo Night theme for supporting pretty much every [highlighting
-group] in neovim.
+Props to Neovim's Tokyo Night theme for supporting pretty much every
+[highlighting group] in neovim.
 
 [highlighting group]: <https://neovim.io/doc/user/treesitter.html#_treesitter-queries:~:text=the%20exact%20definition)%3A-,%40variable,-various%20variable%20names>
 
-![shapes](./img/shapes.png)
-![blocks](./img/blocks.png)
-![labels](./img/labels.png)
-![methods](./img/methods.png)
-![references](./img/references.png)
-![injections](./img/injections.png)
-![imports](./img/imports.png)
-![globs](./img/globs.png)
-![variables](./img/variables.png)
+![showcase](./pics/showcase.mov)
 
 ## Comparison
 
@@ -185,10 +183,10 @@ Please note that:
 
 ### Better consistency overall
 
-![cmp1](./img/cmp1.png)
-![cmp2](./img/cmp2.png)
+![cmp1](./pics/cmp1.png)
+![cmp2](./pics/cmp2.png)
 
 ### Better handling of foreign languages
 
-![cmpru1](./img/cmp_ru1.png)
-![cmpru2](./img/cmp_ru2.png)
+![cmpru1](./pics/cmp_ru1.png)
+![cmpru2](./pics/cmp_ru2.png)
