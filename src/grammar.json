@@ -741,7 +741,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "label_constraint"
+                "name": "label_array"
               },
               {
                 "type": "CHOICE",
@@ -771,7 +771,7 @@
         }
       ]
     },
-    "label_constraint": {
+    "label_array": {
       "type": "CHOICE",
       "members": [
         {
