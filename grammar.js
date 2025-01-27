@@ -1,9 +1,13 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+// FIXME: This will be refactored after fixing grammar's edge cases.
 const PREC = {
   terminate: 1000,
   comment: 900,
+
+  visibility_mark: 850,
+
   escape: 800,
   string: 500,
 
@@ -303,7 +307,10 @@ module.exports = grammar({
     ),
 
     identifier: $ => prec.right(seq(
-      optional($._filters),
+      optional(choice(
+        $._filters,
+        $.visibility_mark,
+      )),
       choice(
         spaced_str($._ident_base),
         $._single_quoted,
@@ -327,6 +334,12 @@ module.exports = grammar({
     ),
     glob_filter: _ => token('&'),
     inverse_glob_filter: _ => token('!&'),
+
+    visibility_mark: _ => choice(
+      token(prec(PREC.visibility_mark, '-')),
+      token(prec(PREC.visibility_mark, '+')),
+      token(prec(PREC.visibility_mark, '\\#')),
+    ),
 
     _variable: $ => choice(
       $.variable,

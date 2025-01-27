@@ -214,6 +214,10 @@
         {
           "type": "inverse_glob_filter",
           "named": true
+        },
+        {
+          "type": "visibility_mark",
+          "named": true
         }
       ]
     }
@@ -483,6 +487,11 @@
     }
   },
   {
+    "type": "visibility_mark",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -507,7 +516,15 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
@@ -528,6 +545,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\#",
     "named": false
   },
   {
