@@ -158,7 +158,11 @@ _Props to Neovim's Tokyo Night theme for supporting pretty much every
 
 [highlighting group]: <https://neovim.io/doc/user/treesitter.html#_treesitter-queries:~:text=the%20exact%20definition)%3A-,%40variable,-various%20variable%20names>
 
-https://github.com/user-attachments/assets/a9bd20d0-eb6c-43c2-8e58-7d211d350025
+<https://github.com/user-attachments/assets/a9bd20d0-eb6c-43c2-8e58-7d211d350025>
+
+## Contribution
+
+See [CONTRIBUTION.md](/CONTRIBUTING.md)
 
 ## Comparison
 
