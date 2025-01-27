@@ -162,7 +162,7 @@ https://github.com/user-attachments/assets/a9bd20d0-eb6c-43c2-8e58-7d211d350025
 
 ## Comparison
 
-**This section is outdated not maintained**
+**This section is outdated and not maintained**
 
 Actually, there's another [tree-sitter-d2] by pleshevskiy. My project's initial
 goal was to fix issues his grammar had, but later I realized that his grammar
