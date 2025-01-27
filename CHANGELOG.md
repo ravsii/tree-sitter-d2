@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.4.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.3.0...v0.4.0) (2025-01-27)
+
+
+### Features
+
+* add folds ([3f9bb70](https://github.com/ravsii/tree-sitter-d2/commit/3f9bb705690fb35dedee0ea5ebe3a51d4fc1e9cb))
+* add visibility marks ([630069f](https://github.com/ravsii/tree-sitter-d2/commit/630069f2f542d6b4add3b635808036f177c49e43))
+* add visibility marks ([#72](https://github.com/ravsii/tree-sitter-d2/issues/72)) ([5442481](https://github.com/ravsii/tree-sitter-d2/commit/54424819d9ed57c2f614b78416866bc7707e8d0a))
+* better eol ([106897a](https://github.com/ravsii/tree-sitter-d2/commit/106897ac058c791ab39019af0e57ccf5b45b4261))
+* better spaced_str rule ([368f43c](https://github.com/ravsii/tree-sitter-d2/commit/368f43c56200dab0384fb62ceaf61db6bc914709))
+* empty codeblock as markdown, underscore fixes ([772b81d](https://github.com/ravsii/tree-sitter-d2/commit/772b81db7a01b538ff1c80c4e05b140cd4ed9b9f))
+* **hl:** underscore and filters ([db11ec6](https://github.com/ravsii/tree-sitter-d2/commit/db11ec622b0e4da7fa8915a892d4b4df7ff9dffa))
+* **label:** better label parsing & emoji support ([fc64574](https://github.com/ravsii/tree-sitter-d2/commit/fc6457452ad2774f08a0fe362b800b8ab2f6f907))
+* unified escape, better connection references ([74f34fe](https://github.com/ravsii/tree-sitter-d2/commit/74f34fee4e9af5300633a8e0e92846219fa2d61c))
+
+
+### Bug Fixes
+
+* reduce amounts of PRECs ([6d483a6](https://github.com/ravsii/tree-sitter-d2/commit/6d483a67db4e747d63a7265fdeb234e427c372a8))
+* **strings:** escape token duplicate ([7fb6870](https://github.com/ravsii/tree-sitter-d2/commit/7fb687067367ec8b03be83871614a4abae64ea99))
+
 ## [0.3.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.2.0...v0.3.0) (2025-01-20)
 
 
