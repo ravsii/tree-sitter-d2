@@ -76,9 +76,13 @@
 [
  "$"
  "...$"
+] @keyword
+
+[
  (glob_filter)
  (inverse_glob_filter)
-] @keyword
+ (visibility_mark)
+] @keyword.modifier
 
 [(variable) (spread_variable)] @variable
 

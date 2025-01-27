@@ -304,7 +304,8 @@ D2 Parser: {
         (identifier)
         (label))
       (declaration
-        (identifier)
+        (identifier
+          (visibility_mark))
         (label)))))
 
 ====================|||
@@ -326,7 +327,8 @@ D2 Parser: {
         (identifier)
         (label))
       (method_declaration
-        (identifier)
+        (identifier
+          (visibility_mark))
         (arguments
           (argument_name)
           (argument_type))))))
@@ -370,23 +372,26 @@ D2 Parser: {
         (label))
       (comment)
       (declaration
-        (identifier)
+        (identifier
+          (visibility_mark))
         (label))
       (declaration
         (identifier)
         (label))
       (comment)
       (declaration
-        (identifier)
+        (identifier
+          (visibility_mark))
         (label))
       (comment)
       (comment)
       (declaration
         (identifier
-          (escape))
+          (visibility_mark))
         (label))
       (method_declaration
-        (identifier)
+        (identifier
+          (visibility_mark))
         (returns
           (argument_name)
           (argument_type)
@@ -398,7 +403,7 @@ D2 Parser: {
         (identifier))
       (method_declaration
         (identifier
-          (escape))
+          (visibility_mark))
         (arguments
           (argument_name)
           (argument_type))
@@ -524,11 +529,14 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (block
@@ -536,52 +544,17 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))))
-  (declaration
-    (identifier)
-    (label)
-    (block
-      (declaration
-        (identifier)
-        (label))
-      (declaration
-        (identifier))
-      (declaration
-        (identifier))
-      (method_declaration
-        (identifier))
-      (method_declaration
-        (identifier))))
-  (declaration
-    (identifier)
-    (block
-      (declaration
-        (identifier)
-        (label))
-      (declaration
-        (identifier))
-      (declaration
-        (identifier))
-      (declaration
-        (identifier))
-      (method_declaration
-        (identifier))))
-  (declaration
-    (identifier)
-    (block
-      (declaration
-        (identifier)
-        (label))
-      (declaration
-        (identifier))
-      (declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -590,13 +563,47 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))
-      (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))
+      (method_declaration
+        (identifier
+          (visibility_mark)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier
+          (visibility_mark)))
+      (declaration
+        (identifier
+          (visibility_mark)))
+      (declaration
+        (identifier
+          (visibility_mark)))
+      (method_declaration
+        (identifier
+          (visibility_mark)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier
+          (visibility_mark)))
+      (declaration
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -605,13 +612,17 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
+      (declaration
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))
-      (method_declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -620,13 +631,17 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -635,9 +650,17 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
+      (declaration
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))
+      (method_declaration
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -646,11 +669,11 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
-      (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -659,9 +682,14 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))))
+        (identifier
+          (visibility_mark)))
+      (method_declaration
+        (identifier
+          (visibility_mark)))))
   (declaration
     (identifier)
     (label)
@@ -670,11 +698,27 @@ PinValidation: Pin validation transaction {
         (identifier)
         (label))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))
       (declaration
-        (identifier))
+        (identifier
+          (visibility_mark)))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier
+          (visibility_mark)))
+      (declaration
+        (identifier
+          (visibility_mark)))
       (method_declaration
-        (identifier)))))
+        (identifier
+          (visibility_mark))))))
 
 ====================|||
 Full Example (pt. 2)
