@@ -132,8 +132,8 @@ custom-disclaimer: DRAFT DISCLAIMER {
           (declaration
             (identifier)
             (label
-              (label_constraint)
-              (label_constraint
+              (label_array)
+              (label_array
                 (spread_variable
                   (identifier)))))))))
   (declaration

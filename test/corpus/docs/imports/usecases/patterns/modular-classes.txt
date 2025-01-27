@@ -158,15 +158,15 @@ app.signup -> modal: continue registration
       (identifier)
       (identifier))
     (label
-      (label_constraint)
-      (label_constraint)))
+      (label_array)
+      (label_array)))
   (declaration
     (identifier_chain
       (identifier)
       (identifier))
     (label
-      (label_constraint)
-      (label_constraint)))
+      (label_array)
+      (label_array)))
   (declaration
     (identifier)
     (connection)

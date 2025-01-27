@@ -28,11 +28,5 @@ dist/
 
 # OS artifacts
 *.DS_Store
-
-# IDE artifacts
-.vscode
-*.code-workspace
-
-# Test artifacts
-/test.d2
-*.html
+*.dylib
+/target

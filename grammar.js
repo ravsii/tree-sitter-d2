@@ -24,7 +24,9 @@ const PREC = {
 
   identifier: 3,
 
-  import: 1,
+  label_codeblock: 3,
+  label_array: 3,
+  label_predefined: 2,
   label: 1,
 };
 
@@ -70,10 +72,8 @@ const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
  * @param {RuleOrLiteral} rule
  */
 
-const spaced_str = (rule) => choice(
-  rule,
-  seq(repeat1(seq(rule, /[ ]+/)), rule),
-);
+const spaced_str = (rule) =>
+  choice(rule, seq(repeat1(seq(rule, /[ ]+/)), rule));
 
 /**
  * Creates a rule to match at least 2 occurrences of `rule` separated by
@@ -86,316 +86,289 @@ const spaced_str = (rule) => choice(
 const sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
 
 module.exports = grammar({
-  name: 'd2',
+  name: "d2",
 
-  extras: $ => [
-    /\s+/,
-  ],
+  // word: $ => $._ident_base,
 
-  conflicts: $ => [
-    [$._single_top_level_identifier, $.identifier],
-  ],
+  extras: ($) => [$.comment, $.block_comment, $._eol, /\s/],
+
+  conflicts: ($) => [[$._single_top_level_identifier, $._ident_base]],
 
   rules: {
-    source_file: $ => seq(
-      repeat(
-        choice(
-          seq($._declaration, $._eol),
-          $._eol,
+    source_file: ($) =>
+      repeat(prec.left(choice($._declaration, $.comment, $.block_comment))),
+
+    comment: (_) => token(seq("#", repeat(/./), /\n/)),
+    block_comment: (_) =>
+      seq('"""', repeat(choice(/[^"]/, /"[^"]/, /""[^"]/)), '"""'),
+
+    _declaration: ($) =>
+      choice($.declaration, $.import, $._variable, $.method_declaration),
+
+    declaration: ($) =>
+      prec.right(
+        -1,
+        seq(
+          $._expr,
+          optional(
+            choice(
+              seq(token(":"), $.import),
+              seq(token(":"), optional($.label), optional($.block))
+            )
+          ),
+          optional($._eol)
+        )
+      ),
+
+    _expr: ($) => sep($._identifier, $.connection),
+
+    method_declaration: ($) =>
+      prec.right(
+        100,
+        seq(
+          $.identifier,
+          "(",
+          optional($.arguments),
+          ")",
+          opseq(token(":"), token("("), optional($.returns), token(")"))
+        )
+      ),
+
+    returns: ($) => alias($.arguments, "returns"),
+    arguments: ($) =>
+      choice(
+        // arg type
+        seq($.argument_name, $.argument_type),
+        // arg type, arg type
+        seq(
+          $.argument_name,
+          $.argument_type,
+          r1seq(",", $.argument_name, $.argument_type)
         ),
+        // arg1, arg2 type1, arg3, arg4 type2
+        r1seq(
+          $.argument_name,
+          r1seq(",", $.argument_name),
+          $.argument_type,
+          optional(",")
+        )
       ),
-      optional($._declaration),
-    ),
 
-    // Comments can be parsed as declaration, but since we're a bit strict on
-    // our _eof rule for correct parsing, we should also consider cases like
-    // "x -> y # commend\n", where comment appears after declaration but before
-    // _eol.
-    // I'm not if that's something quality grammars do, but it works for now.
-    _declaration: $ => seq(
-      /\s*/,
+    argument_name: (_) => token(/[a-zA-Z0-9_]+/),
+    argument_type: (_) => token(/[a-zA-Z0-9_\[\]]+/),
+
+    connection: (_) =>
+      token(prec(PREC.connection, choice(/<-+>/, /<-+/, /-+>/, /--+/))),
+
+    import: (_) =>
+      token(prec(PREC.import, seq(choice("@", "...@"), repeat1(/[^\s]/)))),
+
+    block: ($) =>
+      prec(
+        PREC.block,
+        seq(token(prec(PREC.block, "{")), repeat($._declaration), token("}"))
+      ),
+
+    label: ($) =>
+      choice($.label_codeblock, $._label_constraints, $._label_literal),
+
+    label_codeblock: ($) =>
       choice(
-        $.declaration,
-        $.import,
-        $._variable,
-        $.method_declaration,
-        $.comment,
-        $.block_comment,
+        $._label_codeblock_ticks,
+        $._label_codeblock_triple,
+        $._label_codeblock_double,
+        $._label_codeblock_single
       ),
-      optional(choice(
-        $.comment,
-        $.block_comment,
-      )),
-    ),
 
-    comment: _ => token(prec(PREC.comment, /#[^\n]+/)),
-    block_comment: _ => seq(
-      token(prec(PREC.comment, '"""')),
-      repeat(choice(/[^"]/, /"[^"]/, /""[^"]/)),
-      token(prec(PREC.comment, '"""')),
-    ),
-
-    declaration: $ => seq(
-      $._expr,
-      optional($._colon_block),
-    ),
-
-    _expr: $ => repeat_sep($._identifier, $.connection),
-
-    _colon_block: $ => choice(
-      seq(token(prec(PREC.label, ':')), $.label),
-      seq(token(prec(PREC.label, ':')), $.block),
-      seq(token(prec(PREC.label, ':')), $.import),
-      seq(token(prec(PREC.label, ':')), $.label, $.block),
-    ),
-
-    method_declaration: $ => prec.right(99, seq(
-      $.identifier,
-      '(', optional($.arguments), ')',
-      opseq(
-        token.immediate(prec(PREC.colon_start, ':')),
-        '(', optional($.returns), ')',
-      ),
-    )),
-
-    // x int
-    // x, y int
-    // x int, y int
-    // x, y int, z int32
-    arguments: $ => repeat_sep(
+    _label_codeblock_ticks: ($) =>
       seq(
-        repeat_sep($.argument_name, ','),
-        $.argument_type,
+        token(prec(PREC.label_array, "|`")),
+        $.codeblock_language,
+        alias(/[^`]*/, $.codeblock_content),
+        token(prec(PREC.label_array, "`|"))
       ),
-      ',',
-    ),
-    returns: $ => alias($.arguments, 'returns'),
 
-    argument_name: _ => token(/[a-zA-Z0-9_]+/),
-    argument_type: _ => token(/[a-zA-Z0-9_\[\]]+/),
-
-    connection: _ => choice(
-      token(prec(PREC.connection, /<-+>/)),
-      token(prec(PREC.connection, /<-+/)),
-      token(prec(PREC.connection, /-+>/)),
-      token(prec(PREC.connection, /--+/)),
-    ),
-
-    import: _ => token(prec(PREC.import, seq(
-      choice('@', '...@'),
-      repeat1(/[^\s]/),
-    ))),
-
-    block: $ => prec(PREC.block, seq(
-      token(prec(PREC.block, '{')),
+    _label_codeblock_triple: ($) =>
       seq(
-        repeat(seq($._declaration, $._eol)),
-        optional($._declaration),
+        token(prec(PREC.label_codeblock, "|||")),
+        $.codeblock_language,
+        $.codeblock_content,
+        token(prec(PREC.label_codeblock, "|||"))
       ),
-      token(prec(PREC.block, '}')),
-    )),
 
-    label: $ => choice(
-      $.label_codeblock,
-      $._label_constraints,
-      $._label_literal,
-    ),
+    _label_codeblock_double: ($) =>
+      seq(
+        token(prec(PREC.label_codeblock, "||")),
+        $.codeblock_language,
+        $.codeblock_content,
+        token(prec(PREC.label_codeblock, "||"))
+      ),
 
-    label_codeblock: $ => choice(
-      $._label_codeblock_ticks,
-      $._label_codeblock_triple,
-      $._label_codeblock_double,
-      $._label_codeblock_single,
-    ),
+    _label_codeblock_single: ($) =>
+      seq(
+        token(prec(PREC.label_codeblock, "|")),
+        $.codeblock_language,
+        alias(/[^\|]*/, $.codeblock_content),
+        token(prec(PREC.label_codeblock, "|"))
+      ),
 
-    _label_codeblock_ticks: $ => seq(
-      token(prec(PREC.label, '|`')),
-      optional($.codeblock_language), /\s/,
-      alias(/[^`]*/, $.codeblock_content),
-      token(prec(PREC.label, '`|')),
-    ),
+    codeblock_language: (_) => token(/[a-zA-Z0-9]+/),
+    codeblock_content: (_) => repeat1(seq(/.+/, /\s*/)),
 
-    _label_codeblock_triple: $ => seq(
-      token(prec(PREC.label, '|||')),
-      optional($.codeblock_language), /\s/,
-      $.codeblock_content,
-      token(prec(PREC.label, '|||')),
-    ),
+    _label_constraints: ($) =>
+      seq(
+        token(prec(PREC.label_array, "[")),
+        repeat1(seq($.label_array, optional(";"))),
+        token(prec(PREC.label_array, "]"))
+      ),
 
-    _label_codeblock_double: $ => seq(
-      token(prec(PREC.label, '||')),
-      optional($.codeblock_language), /\s/,
-      optional($.codeblock_content),
-      token(prec(PREC.label, '||')),
-    ),
+    label_array: ($) => choice(token(/[a-zA-Z0-9_]+/), $._variable),
 
-    _label_codeblock_single: $ => seq(
-      token(prec(PREC.label, '|')),
-      optional($.codeblock_language), /\s/,
-      alias(/[^\|]*/, $.codeblock_content),
-      token(prec(PREC.label, '|')),
-    ),
-
-    codeblock_language: _ => /[a-zA-Z0-9]+/,
-    codeblock_content: _ => repeat1(seq(/.+/, /\s*/)),
-
-    _label_constraints: $ => seq(
-      token(prec(PREC.label, '[')),
-      repeat_sep($.label_constraint, token(';')),
-      token(prec(PREC.label, ']')),
-    ),
-
-    label_constraint: $ => repeat1(choice(
-      spaced_str(/[^\s;\]]+/),
-      $._variable,
-    )),
-
-    _label_literal: $ => prec.right(choice(
-      $.integer,
-      $.float,
-      $.boolean,
-      $._label_double_quoted,
-      $._single_quoted,
-      spaced_str($._label_token),
-    )),
-
-    integer: _ => /[\-+]?\d+/,
-    float: _ => /[\-+]?\d+\.\d+/,
-    boolean: _ => choice('true', 'false'),
-
-    _label_token: $ => prec.right(repeat1(choice(
-      $.escape,
-      /[^\s;|{}\\]+/,
-      $._variable,
-    ))),
-
-    _label_double_quoted: $ => seq(
-      token(prec(PREC.label, '"')),
-      repeat(choice(
-        token.immediate(prec(PREC.label, /[^"\n\\$]+/)),
-        $.escape,
-        $._variable,
-      )),
-      token(prec(PREC.label, '"')),
-    ),
-
-    _identifier: $ => prec.right(choice(
-      $.identifier_chain,
-      $._single_top_level_identifier,
-    )),
-
-    identifier_chain: $ => prec.right(sep1(
-      $._single_top_level_identifier,
-      token('.'),
-    )),
-
-    _single_top_level_identifier: $ => choice(
-      $.identifier,
-      $.global_glob,
-      $.glob,
-      $.recursive_glob,
-      $.connection_reference,
-    ),
-
-    connection_reference: $ => seq(
-      token('('), $._expr, token(')'),
-      $.connection_identifier,
-    ),
-
-    connection_identifier: $ => seq(
-      token('['), choice(/\d+/, $.glob), token(']'),
-    ),
-
-    identifier: $ => prec.right(seq(
-      optional(choice(
-        $._filters,
-        $.visibility_mark,
-      )),
+    _label_literal: ($) =>
       choice(
-        spaced_str($._ident_base),
+        $.integer,
+        $.float,
+        $.boolean,
+        $._label_double_quoted,
         $._single_quoted,
-        $._double_quoted,
+        $._label_base
       ),
-    )),
 
-    _ident_base: $ => repeat1(choice(
-      $.escape,
-      $.glob,
-      token(prec(PREC.identifier, /[^\s:.;&{}()!\\]/)), // All the special stuff
-    )),
+    _label_base: ($) =>
+      prec.left(
+        PREC.label,
+        repeat1(
+          choice(
+            $.escape,
+            "*",
+            token.immediate(/[^\n;\\\{\}\[\]]+/),
+            $._variable
+          )
+        )
+      ),
 
-    glob: _ => token(prec(PREC.glob, '*')),
-    recursive_glob: _ => token(prec(PREC.glob, '**')),
-    global_glob: _ => token(prec(PREC.glob, '***')),
+    _label_double_quoted: ($) =>
+      seq(
+        token(prec(PREC.string, '"')),
+        repeat(
+          choice(token.immediate(prec(1, /[^"\n\\$]+/)), $.escape, $._variable)
+        ),
+        token(prec(PREC.string, '"'))
+      ),
 
-    _filters: $ => choice(
-      $.glob_filter,
-      $.inverse_glob_filter,
-    ),
-    glob_filter: _ => token('&'),
-    inverse_glob_filter: _ => token('!&'),
+    _identifier: ($) =>
+      prec.right(choice($.identifier_chain, $._single_top_level_identifier)),
 
-    visibility_mark: _ => choice(
-      token(prec(PREC.visibility_mark, '-')),
-      token(prec(PREC.visibility_mark, '+')),
-      token(prec(PREC.visibility_mark, '\\#')),
-    ),
+    identifier_chain: ($) =>
+      prec.right(sep1($._single_top_level_identifier, token("."))),
 
-    _variable: $ => choice(
-      $.variable,
-      $.spread_variable,
-    ),
-
-    variable: $ => seq(
-      token(prec(PREC.variable, '$')), token('{'),
-      $._identifier,
-      token('}'),
-    ),
-
-    spread_variable: $ => seq(
-      token(prec(PREC.variable, '...$')), token('{'),
-      $._identifier,
-      token('}'),
-    ),
-
-    _single_quoted: $ => seq(
-      token(prec(PREC.string, '\'')),
-      repeat(choice(
-        token.immediate(prec(PREC.string, /[^'\n\\]+/)),
-        $.escape,
-      )),
-      token(prec(PREC.string, '\'')),
-    ),
-
-    _double_quoted: $ => seq(
-      token(prec(PREC.string, '"')),
-      repeat(choice(
-        token.immediate(prec(PREC.string, /[^"\n\\]+/)),
-        $.escape,
-      )),
-      token(prec(PREC.string, '"')),
-    ),
-
-    escape: _ => token.immediate(seq(
-      // HACK: labels that start with an escape can't be parsed without it
-      // But it shouldn't be here.
-      /[ ]*/,
-      token.immediate(prec(PREC.escape, '\\')),
+    _single_top_level_identifier: ($) =>
       choice(
-        /[^xuU]/,
-        /\d{2,3}/,
-        /x[0-9a-fA-F]{2,}/,
-        /u[0-9a-fA-F]{4}/,
-        /U[0-9a-fA-F]{8}/,
+        $.glob,
+        $.recursive_glob,
+        $.global_glob,
+        $.identifier,
+        $.connection_reference
       ),
-    )),
 
+    connection_reference: ($) =>
+      seq(token("("), $._expr, ")", $.connection_identifier),
 
-    _eol: _ => choice(
-      token(prec(PREC.terminate, /\n/)),
-      token(prec(PREC.terminate, ';')),
-      token(prec(PREC.terminate, '\0')),
-    ),
+    connection_identifier: ($) =>
+      seq(token("["), choice(/\d+/, $.glob), token("]")),
+
+    identifier: ($) =>
+      prec.right(
+        seq(
+          optional($._filters),
+          choice($._ident, $._single_quoted, $._double_quoted)
+        )
+      ),
+
+    _fields: ($) => r1seq(".", field("field", $.identifier)),
+
+    _ident: ($) =>
+      prec.right(
+        r1seq(
+          $._ident_base,
+          optional(
+            choice(token.immediate(prec(PREC.ident_fix, "'")), /[\s,]+/, "\\.")
+          )
+        )
+      ),
+
+    _ident_base: ($) => choice($.glob, "\\*", /([\p{L}\d\/_+\-]|\\#)+/u),
+
+    identifier_escape: (_) =>
+      token.immediate(seq("\\", choice("n", "{", "}", ";", "[", "]"))),
+
+    glob: (_) => prec(PREC.glob, token("*")),
+    recursive_glob: (_) => prec(PREC.glob, token("**")),
+    global_glob: (_) => prec(PREC.glob, token("***")),
+
+    _filters: ($) => choice($.glob_filter, $.inverse_glob_filter),
+    glob_filter: (_) => token("&"),
+    inverse_glob_filter: (_) => token("!&"),
+
+    _variable: ($) => choice($.variable, $.spread_variable),
+
+    variable: ($) => seq(token("$"), token("{"), $._identifier, token("}")),
+
+    spread_variable: ($) =>
+      seq(token("...$"), token("{"), $._identifier, token("}")),
+
+    _single_quoted: ($) =>
+      seq(
+        token(prec(PREC.string, "'")),
+        repeat(
+          choice(token.immediate(prec(1, /[^'\n\\]+/)), $.escape_sequence)
+        ),
+        token(prec(PREC.string, "'"))
+      ),
+    _double_quoted: ($) =>
+      seq(
+        token('"'),
+        repeat(
+          choice(token.immediate(prec(1, /[^"\n\\]+/)), $.escape_sequence)
+        ),
+        token('"')
+      ),
+
+    escape_sequence: (_) =>
+      token.immediate(
+        seq(
+          "\\",
+          choice(
+            /[^xuU]/,
+            /\d{2,3}/,
+            /x[0-9a-fA-F]{2,}/,
+            /u[0-9a-fA-F]{4}/,
+            /U[0-9a-fA-F]{8}/
+          )
+        )
+      ),
+
+    escape: (_) =>
+      token.immediate(
+        seq(
+          "\\",
+          choice(
+            /[^xuU]/,
+            /\d{2,3}/,
+            /x[0-9a-fA-F]{2,}/,
+            /u[0-9a-fA-F]{4}/,
+            /U[0-9a-fA-F]{8}/
+          )
+        )
+      ),
+
+    // We need extra space in the end to make sure it's not a string starting
+    // with an integer.
+    integer: (_) => token(prec(PREC.label_predefined, /[\-+]?\d+?\s+/)),
+    float: (_) => token(prec(PREC.label_predefined, /[\-+]?\d+(\.\d+)?\s+/)),
+    boolean: (_) => token(prec(PREC.label_predefined, choice("true", "false"))),
+
+    _eol: (_) => token(prec(PREC.term, choice(/\n/, /\r/, ";"))),
+    _eol_or_space: ($) => choice($._eol, repeat(/\s/)),
   },
 });
-
