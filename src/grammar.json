@@ -527,36 +527,72 @@
       ]
     },
     "import": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "SEQ",
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
                   "type": "STRING",
                   "value": "@"
-                },
-                {
+                }
+              }
+            },
+            {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
                   "type": "STRING",
                   "value": "...@"
                 }
-              ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_double_quoted"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_single_quoted"
             },
             {
               "type": "REPEAT1",
               "content": {
-                "type": "PATTERN",
-                "value": "[^\\s]"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "escape"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[^\\n;]+"
+                  }
+                ]
               }
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\n]"
+          }
         }
-      }
+      ]
     },
     "block": {
       "type": "PREC",

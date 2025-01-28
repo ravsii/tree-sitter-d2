@@ -105,6 +105,8 @@
 [
  "$"
  "...$"
+ "@"
+ "...@"
 ] @keyword
 
 [
@@ -113,7 +115,7 @@
  (visibility_mark)
 ] @keyword.modifier
 
-(import) @keyword
+(import) @module
 
 [(variable) (spread_variable)] @variable
 

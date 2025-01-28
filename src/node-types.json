@@ -264,6 +264,21 @@
     }
   },
   {
+    "type": "import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "label",
     "named": true,
     "fields": {},
@@ -550,11 +565,19 @@
     "named": false
   },
   {
+    "type": "...@",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
   {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {
@@ -603,10 +626,6 @@
   },
   {
     "type": "global_glob",
-    "named": true
-  },
-  {
-    "type": "import",
     "named": true
   },
   {
