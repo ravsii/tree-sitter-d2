@@ -113,6 +113,8 @@
  (visibility_mark)
 ] @keyword.modifier
 
+(import) @keyword
+
 [(variable) (spread_variable)] @variable
 
 (variable (identifier) @variable.member)
@@ -135,8 +137,6 @@
 (integer) @number
 (float) @number.float
 (boolean) @boolean
-
-(import) @module
 
 (argument_name) @variable.parameter
 (argument_type) @type
