@@ -15,6 +15,7 @@
     - [Helix](#helix)
     - [Other editors](#other-editors)
   - [Showcase](#showcase)
+  - [Contribution](#contribution)
   - [Comparison](#comparison)
     - [Better consistency overall](#better-consistency-overall)
     - [Better handling of foreign languages](#better-handling-of-foreign-languages)
