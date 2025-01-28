@@ -181,9 +181,11 @@ module.exports = grammar({
       token(prec(PREC.connection, /--+/)),
     ),
 
-    import: _ => token(prec(PREC.import, seq(
+    import: $ => token(prec(PREC.import, seq(
       choice('@', '...@'),
-      repeat1(/[^\s]/),
+      repeat(choice(/["]/, /[']/)),
+      repeat1(/[^\n]+/),
+      repeat(choice(/["]/, /[']/)),
     ))),
 
     block: $ => prec(PREC.block, seq(
