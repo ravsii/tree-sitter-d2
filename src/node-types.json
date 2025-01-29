@@ -1,10 +1,5 @@
 [
   {
-    "type": "argument_name",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -302,7 +297,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "codeblock_content",
@@ -320,7 +315,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -492,6 +487,10 @@
     "fields": {}
   },
   {
+    "type": "\u0000",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -558,6 +557,10 @@
   {
     "type": "`|",
     "named": false
+  },
+  {
+    "type": "argument_name",
+    "named": true
   },
   {
     "type": "argument_type",

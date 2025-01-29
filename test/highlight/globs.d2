@@ -1,0 +1,19 @@
+*
+# <- @string.special
+
+*.**.***
+# <- @string.special
+# ^^ @string.special
+#    ^^^ @string.special
+
+x*x.**.x*x
+#^ @string.special.symbol
+#   ^^ @string.special
+#       ^ @string.special.symbol
+
+&x
+# <- @keyword.modifier
+
+!&x
+# <- @keyword.modifier
+#^ @keyword.modifier

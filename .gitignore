@@ -34,5 +34,5 @@ dist/
 *.code-workspace
 
 # Test artifacts
-test.d2
+/test.d2
 *.html
