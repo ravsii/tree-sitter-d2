@@ -1,7 +1,7 @@
 ([
   (comment)
   (block_comment)
-] @comment @spell)
+] @spell @comment)
 
 [
   (label)
@@ -92,14 +92,14 @@
 (spread_variable (identifier) @variable.member)
 (spread_variable (identifier_chain (identifier) @variable.member))
 
-(identifier
-  (glob) @string.special.symbol)
-
 [
   (glob)
   (recursive_glob)
   (global_glob)
 ] @string.special
+
+(identifier
+  (glob) @string.special.symbol)
 
 (connection) @operator
 (connection_identifier) @property
@@ -128,6 +128,7 @@
 
 [
   "."
-  ";"
+  ","
   ":"
+  ";"
 ] @punctuation.delimiter

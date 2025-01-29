@@ -225,7 +225,7 @@ module.exports = grammar({
     _label_codeblock_double: $ => seq(
       token(prec(PREC.label, '||')),
       optional($.codeblock_language), /\s/,
-      $.codeblock_content,
+      optional($.codeblock_content),
       token(prec(PREC.label, '||')),
     ),
 
@@ -241,14 +241,14 @@ module.exports = grammar({
 
     _label_constraints: $ => seq(
       token(prec(PREC.label, '[')),
-      repeat(repeat_sep($.label_constraint, token(';'))),
+      repeat_sep($.label_constraint, token(';')),
       token(prec(PREC.label, ']')),
     ),
 
-    label_constraint: $ => choice(
-      token(/[a-zA-Z0-9_]+/),
+    label_constraint: $ => repeat1(choice(
+      spaced_str(/[^\s;\]]+/),
       $._variable,
-    ),
+    )),
 
     _label_literal: $ => prec.right(choice(
       $.integer,
@@ -391,7 +391,11 @@ module.exports = grammar({
     )),
 
 
-    _eol: _ => token(prec(PREC.terminate, choice(/\n/, ';', '\0'))),
+    _eol: _ => choice(
+      token(prec(PREC.terminate, /\n/)),
+      token(prec(PREC.terminate, ';')),
+      token(prec(PREC.terminate, '\0')),
+    ),
   },
 });
 

@@ -1,0 +1,28 @@
+x(a int)
+# ^ @variable.parameter
+#   ^ @type
+
+x(a, b int)
+# ^ @variable.parameter
+#    ^ @variable.parameter
+#      ^ @type
+
+x(a int, b int)
+# ^ @variable.parameter
+#   ^ @type
+#        ^ @variable.parameter
+#          ^ @type
+
+x(): (a int)
+#     ^ @variable.parameter
+#       ^ @type
+
++x
+# <- @keyword.modifier
+
+-x
+# <- @keyword.modifier
+
+\#x
+# <- @keyword.modifier
+#^ @keyword.modifier

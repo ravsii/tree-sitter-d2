@@ -1,0 +1,14 @@
+x\{y
+# <- @function
+#^^ @string.escape
+#  ^ @function
+
+
+x: " \" "
+#    ^^ @string.escape
+
+x: ' \' '
+#    ^^ @string.escape
+
+x: x \{ y
+#    ^^ @string.escape
