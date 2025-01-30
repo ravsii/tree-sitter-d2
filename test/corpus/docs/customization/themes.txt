@@ -1,0 +1,274 @@
+====================|||
+End of line
+====================|||
+
+vars: {
+  d2-config: {
+    layout-engine: elk
+    # Terminal theme code
+    theme-id: 300
+  }
+}
+
+network: {
+  cell tower: {
+    satellites: {
+      shape: stored_data
+      style.multiple: true
+    }
+
+    transmitter
+
+    satellites -> transmitter: send
+    satellites -> transmitter: send
+    satellites -> transmitter: send
+  }
+
+  online portal: {
+    ui: {shape: hexagon}
+  }
+
+  data processor: {
+    storage: {
+      shape: cylinder
+      style.multiple: true
+    }
+  }
+
+  cell tower.transmitter -> data processor.storage: phone logs
+}
+
+user: {
+  shape: person
+  width: 130
+}
+
+user -> network.cell tower: make call
+user -> network.online portal.ui: access {
+  style.stroke-dash: 3
+}
+
+api server -> network.online portal.ui: display
+api server -> logs: persist
+logs: {shape: page; style.multiple: true}
+
+network.data processor -> api server
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (comment)
+          (declaration
+            (identifier)
+            (label
+              (integer)))))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (label))
+              (declaration
+                (identifier_chain
+                  (identifier)
+                  (identifier))
+                (label
+                  (boolean)))))
+          (declaration
+            (identifier))
+          (declaration
+            (identifier)
+            (connection)
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (connection)
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (connection)
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (label))))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (label))
+              (declaration
+                (identifier_chain
+                  (identifier)
+                  (identifier))
+                (label
+                  (boolean)))))))
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (connection)
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
+    (label)
+    (block
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label
+          (boolean)))))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier)))
+
+====================|||
+Customizing themes
+====================|||
+
+vars: {
+  d2-config: {
+    theme-overrides: {
+      B1: "#2E7D32"
+      B2: "#66BB6A"
+      B3: "#A5D6A7"
+      B4: "#C5E1A5"
+      B5: "#E6EE9C"
+      B6: "#FFF59D"
+
+      AA2: "#0D47A1"
+      AA4: "#42A5F5"
+      AA5: "#90CAF9"
+
+      AB4: "#F44336"
+      AB5: "#FFCDD2"
+    }
+  }
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+      (block
+        (declaration
+          (identifier)
+          (block
+            (declaration
+              (identifier)
+              (block
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label))
+                (declaration
+                  (identifier)
+                  (label)))))))))
