@@ -1,0 +1,95 @@
+====================|||
+Dimensions
+====================|||
+
+direction: right
+
+small jerry: "" {
+  shape: image
+  icon: https://static.wikia.nocookie.net/tomandjerry/images/4/46/JerryJumbo3-1-.jpg
+  width: 200
+  height: 200
+}
+
+med jerry: "" {
+  shape: image
+  icon: https://static.wikia.nocookie.net/tomandjerry/images/4/46/JerryJumbo3-1-.jpg
+  width: 300
+  height: 300
+}
+
+big jerry: "" {
+  shape: image
+  icon: https://static.wikia.nocookie.net/tomandjerry/images/4/46/JerryJumbo3-1-.jpg
+  width: 500
+  height: 400
+}
+
+big jerry -> med jerry -> small jerry
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (integer)))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)))
