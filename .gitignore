@@ -29,4 +29,3 @@ dist/
 # OS artifacts
 *.DS_Store
 *.dylib
-/target
