@@ -197,6 +197,11 @@
     }
   },
   {
+    "type": "escape",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {},
@@ -557,6 +562,10 @@
     "named": false
   },
   {
+    "type": "\\",
+    "named": false
+  },
+  {
     "type": "\\#",
     "named": false
   },
@@ -574,10 +583,6 @@
   },
   {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "escape",
     "named": true
   },
   {

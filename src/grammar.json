@@ -48,10 +48,6 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\s*"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
@@ -1163,27 +1159,23 @@
       ]
     },
     "_label_token": {
-      "type": "PREC_RIGHT",
-      "value": 0,
+      "type": "REPEAT1",
       "content": {
-        "type": "REPEAT1",
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "escape"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\\s;|{}\\\\]+"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_variable"
-            }
-          ]
-        }
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^\\s;|{}\\\\]+"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_variable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "escape"
+          }
+        ]
       }
     },
     "_label_double_quoted": {
@@ -1456,14 +1448,6 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "escape"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "glob"
-          },
-          {
             "type": "TOKEN",
             "content": {
               "type": "PREC",
@@ -1473,6 +1457,14 @@
                 "value": "[^\\s:.;&{}()!\\\\]"
               }
             }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "glob"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "escape"
           }
         ]
       }
@@ -1757,52 +1749,45 @@
       ]
     },
     "escape": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "[ ]*"
-          },
-          {
-            "type": "IMMEDIATE_TOKEN",
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 800,
             "content": {
-              "type": "PREC",
-              "value": 800,
-              "content": {
-                "type": "STRING",
-                "value": "\\"
-              }
+              "type": "STRING",
+              "value": "\\"
             }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[^xuU]"
-              },
-              {
-                "type": "PATTERN",
-                "value": "\\d{2,3}"
-              },
-              {
-                "type": "PATTERN",
-                "value": "x[0-9a-fA-F]{2,}"
-              },
-              {
-                "type": "PATTERN",
-                "value": "u[0-9a-fA-F]{4}"
-              },
-              {
-                "type": "PATTERN",
-                "value": "U[0-9a-fA-F]{8}"
-              }
-            ]
           }
-        ]
-      }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[^xuU]"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\d{2,3}"
+            },
+            {
+              "type": "PATTERN",
+              "value": "x[0-9a-fA-F]{2,}"
+            },
+            {
+              "type": "PATTERN",
+              "value": "u[0-9a-fA-F]{4}"
+            },
+            {
+              "type": "PATTERN",
+              "value": "U[0-9a-fA-F]{8}"
+            }
+          ]
+        }
+      ]
     },
     "_eol": {
       "type": "CHOICE",
@@ -1847,6 +1832,10 @@
     {
       "type": "PATTERN",
       "value": "\\s+"
+    },
+    {
+      "type": "PATTERN",
+      "value": "\\s"
     }
   ],
   "conflicts": [

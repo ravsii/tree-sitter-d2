@@ -29,40 +29,6 @@ const PREC = {
 };
 
 /**
- * Shortcut for optional(seq(...rules))
- *
- * @param {...RuleOrLiteral} rules
- * @returns {ChoiceRule}
- */
-const opseq = (...rules) => optional(seq(...rules));
-
-/**
- * Shortcut for repeat(seq(...rules))
- *
- * @param {...RuleOrLiteral} rules
- * @returns {RepeatRule}
- */
-// const rseq = (...rules) => repeat(seq(...rules));
-
-/**
- * Shortcut for repeat1(seq(...rules))
- *
- * @param {...RuleOrLiteral} rules
- * @returns {Repeat1Rule}
- */
-const r1seq = (...rules) => repeat1(seq(...rules));
-
-/**
- * Creates a rule to match one or more occurrences of `rule` separated by
- * `separator`.
- *
- * @param {RuleOrLiteral} rule
- * @param {RuleOrLiteral} separator
- * @returns {SeqRule}
- */
-const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
-
-/**
  * Creates a special rule for labels and identifiers, because can be pretty
  * much every character _including_ spaces, which makes it difficult to parse
  * with a simple set of rules or regexes.
@@ -76,6 +42,17 @@ const spaced_str = (rule) => choice(
 );
 
 /**
+ * Creates a rule to match one or more occurrences of `rule` separated by
+ * `separator`.
+ *
+ * @param {RuleOrLiteral} rule
+ * @param {RuleOrLiteral} separator
+ * @returns {SeqRule}
+ */
+const repeat_sep = (rule, separator) => seq(rule, repeat(seq(separator, rule)));
+
+
+/**
  * Creates a rule to match at least 2 occurrences of `rule` separated by
  * `separator`.
  *
@@ -83,14 +60,14 @@ const spaced_str = (rule) => choice(
  * @param {RuleOrLiteral} separator
  * @returns {SeqRule}
  */
-const sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
+const repeat_sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
 
 module.exports = grammar({
   name: 'd2',
 
-  extras: $ => [
-    /\s+/,
-  ],
+  // I don't know why it works, but it works...
+  // Keeping it /\s*/, /\s/ or /\s+/ (single value) doesn't work somehow.
+  extras: _ => [/\s+/, /\s/],
 
   conflicts: $ => [
     [$._single_top_level_identifier, $.identifier],
@@ -113,7 +90,6 @@ module.exports = grammar({
     // _eol.
     // I'm not if that's something quality grammars do, but it works for now.
     _declaration: $ => seq(
-      /\s*/,
       choice(
         $.declaration,
         $.import,
@@ -152,10 +128,10 @@ module.exports = grammar({
     method_declaration: $ => prec.right(99, seq(
       $.identifier,
       '(', optional($.arguments), ')',
-      opseq(
+      optional(seq(
         token.immediate(prec(PREC.colon_start, ':')),
         '(', optional($.returns), ')',
-      ),
+      )),
     )),
 
     // x int
@@ -280,11 +256,11 @@ module.exports = grammar({
     float: _ => /[\-+]?\d+\.\d+/,
     boolean: _ => choice('true', 'false'),
 
-    _label_token: $ => prec.right(repeat1(choice(
-      $.escape,
+    _label_token: $ => repeat1(choice(
       /[^\s;|{}\\]+/,
       $._variable,
-    ))),
+      $.escape,
+    )),
 
     _label_double_quoted: $ => seq(
       token(prec(PREC.label, '"')),
@@ -301,7 +277,7 @@ module.exports = grammar({
       $._single_top_level_identifier,
     )),
 
-    identifier_chain: $ => prec.right(sep1(
+    identifier_chain: $ => prec.right(repeat_sep1(
       $._single_top_level_identifier,
       token('.'),
     )),
@@ -336,9 +312,9 @@ module.exports = grammar({
     )),
 
     _ident_base: $ => repeat1(choice(
-      $.escape,
-      $.glob,
       token(prec(PREC.identifier, /[^\s:.;&{}()!\\]/)), // All the special stuff
+      $.glob,
+      $.escape,
     )),
 
     glob: _ => token(prec(PREC.glob, '*')),
@@ -393,11 +369,8 @@ module.exports = grammar({
       token(prec(PREC.string, '"')),
     ),
 
-    escape: _ => token.immediate(seq(
-      // HACK: labels that start with an escape can't be parsed without it
-      // But it shouldn't be here.
-      /[ ]*/,
-      token.immediate(prec(PREC.escape, '\\')),
+    escape: _ => seq(
+      token(prec(PREC.escape, '\\')),
       choice(
         /[^xuU]/,
         /\d{2,3}/,
@@ -405,8 +378,7 @@ module.exports = grammar({
         /u[0-9a-fA-F]{4}/,
         /U[0-9a-fA-F]{8}/,
       ),
-    )),
-
+    ),
 
     _eol: _ => choice(
       token(prec(PREC.terminate, /\n/)),
