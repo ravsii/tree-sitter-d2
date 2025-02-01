@@ -905,16 +905,16 @@
           }
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "label_constraint"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SEQ",
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "label_array"
+              },
+              {
+                "type": "CHOICE",
                 "members": [
                   {
                     "type": "TOKEN",
@@ -945,51 +945,21 @@
         }
       ]
     },
-    "label_constraint": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[^\\s;\\]]+"
-              },
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "REPEAT1",
-                    "content": {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "PATTERN",
-                          "value": "[^\\s;\\]]+"
-                        },
-                        {
-                          "type": "PATTERN",
-                          "value": "[ ]+"
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "PATTERN",
-                    "value": "[^\\s;\\]]+"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_variable"
+    "label_array": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "[a-zA-Z0-9_]+"
           }
-        ]
-      }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_variable"
+        }
+      ]
     },
     "_label_literal": {
       "type": "PREC_RIGHT",

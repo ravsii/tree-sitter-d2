@@ -273,13 +273,32 @@
           "named": true
         },
         {
+          "type": "label_array",
+          "named": true
+        },
+        {
           "type": "label_codeblock",
           "named": true
         },
         {
-          "type": "label_constraint",
+          "type": "spread_variable",
           "named": true
         },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "label_array",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
         {
           "type": "spread_variable",
           "named": true
@@ -305,25 +324,6 @@
         },
         {
           "type": "codeblock_language",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "label_constraint",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "spread_variable",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         }
       ]
