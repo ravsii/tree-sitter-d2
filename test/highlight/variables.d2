@@ -1,0 +1,17 @@
+${x}
+# <- @keyword
+# ^ @variable.member
+
+${x.y}
+# <- @keyword
+# ^ @variable.member
+#   ^ @variable.member
+
+...${x}
+# <- @keyword
+#    ^ @variable.member
+
+...${x.y}
+# <- @keyword
+#    ^ @variable.member
+#      ^ @variable.member

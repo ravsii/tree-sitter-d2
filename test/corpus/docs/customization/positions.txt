@@ -1,0 +1,335 @@
+====================|||
+Near: Giving your diagram a title
+====================|||
+
+title: |md
+  # A winning strategy
+| {near: top-center}
+
+poll the people -> results
+results -> unfavorable -> poll the people
+results -> favorable -> will of the people
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+Near: Creating a legend
+====================|||
+
+direction: right
+
+x -> y: {
+  style.stroke: green
+}
+
+y -> z: {
+  style.stroke: red
+}
+
+legend: {
+  near: bottom-center
+  color1: foo {
+    shape: text
+    style.font-color: green
+  }
+
+  color2: bar {
+    shape: text
+    style.font-color: red
+  }
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (block
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (block
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (declaration
+            (identifier_chain
+              (identifier)
+              (identifier))
+            (label))))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (declaration
+            (identifier_chain
+              (identifier)
+              (identifier))
+            (label)))))))
+
+====================|||
+Near: Longform description
+====================|||
+
+explanation: |md
+  # LLMs
+  The Large Language Model (LLM) is a powerful AI\
+    system that learns from vast amounts of text data.\
+  By analyzing patterns and structures in language,\
+  it gains an understanding of grammar, facts,\
+  and even some reasoning abilities. As users input text,\
+  the LLM predicts the most likely next words or phrases\
+  to create coherent responses. The model\
+  continuously fine-tunes its output, considering both the\
+  user's input and its own vast knowledge base.\
+  This cutting-edge technology enables LLM to generate human-like text,\
+  making it a valuable tool for various applications.
+| {
+  near: center-left
+}
+
+ML Platform -> Pre-trained models
+ML Platform -> Model registry
+ML Platform -> Compiler
+ML Platform -> Validation
+ML Platform -> Auditing
+
+Model registry -> Server.Batch Predictor
+Server.Online Model Server
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier_chain
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))))
+
+====================|||
+Label and icon positioning
+====================|||
+
+direction: right
+x -> y
+
+x: worker {
+  label.near: top-center
+  icon: https://icons.terrastruct.com/essentials%2F005-programmer.svg
+  icon.near: outside-top-right
+}
+
+y: profits {
+  label.near: bottom-right
+  icon: https://icons.terrastruct.com/essentials%2Fprofits.svg
+  icon.near: outside-top-left
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (label)))))
+
+====================|||
+Near objects
+====================|||
+
+vars: {
+  d2-config: {
+    layout-engine: tala
+  }
+}
+aws: {
+  load_balancer -> api
+  api -> db
+}
+gcloud: {
+  auth -> db
+}
+
+gcloud -> aws
+
+explanation: |md
+  # Why do we use AWS?
+  - It has more uptime than GCloud
+  - We have free credits
+| {
+  near: aws
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (connection)
+        (identifier))
+      (declaration
+        (identifier)
+        (connection)
+        (identifier))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (connection)
+        (identifier))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))
+    (block
+      (declaration
+        (identifier)
+        (label)))))

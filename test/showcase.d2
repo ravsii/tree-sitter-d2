@@ -8,7 +8,7 @@ b <-> c: "Reality is just a crutch for people who can't handle science fiction" 
     shape: diamond
     label: 1
     style.filled: true
-    _.christmas.style.fill -> presents: regift
+    _.underscore_name_._.fill -> presents: regift
   }
 
   # Label constraints and constants
@@ -33,6 +33,10 @@ and multiline comments"""
 explanation: |md
   # I can do headers
   1. test
+|
+explanation: |
+  # No language
+  1. Equals markdown
 |
 explanation: |go
   var awsSession = From(c.Request.Context())
@@ -61,6 +65,9 @@ test.*.test.*.test : label
 test.**.test.**.test : label
 test.***.test.***.test : label
 t*st.*.t*st.*.t*st : label
+(lady* -> barbie)[*].style.stroke: pink
+*: { &shape: person }
+*: { !&shape: person }
 
 # Variables
 server1: ${server-name}-1
@@ -82,3 +89,4 @@ data: {
 custom-disclaimer: DRAFT DISCLAIMER {
   ...${disclaimer}
 }
+    _.underscore_name_._.fill -> presents: regift

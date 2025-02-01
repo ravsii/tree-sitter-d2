@@ -1,0 +1,53 @@
+x: [a; b]
+#  ^ @punctuation.bracket
+#       ^ @punctuation.bracket
+
+(x -> y)[0]
+#  <- @punctuation.bracket
+#      ^ @punctuation.bracket
+#       ^ @punctuation.bracket
+#         ^ @punctuation.bracket
+
+x(a int): (int, int64)
+#^ @punctuation.bracket
+#      ^ @punctuation.bracket
+#       ^ @punctuation.delimiter
+#         ^ @punctuation.bracket
+#             ^ @punctuation.delimiter
+#                    ^ @punctuation.bracket
+
+x: |x |
+#  ^ @punctuation.bracket
+#     ^ @punctuation.bracket
+
+x: ||go ||
+#  ^ @punctuation.bracket
+#   ^ @punctuation.bracket
+#       ^ @punctuation.bracket
+#        ^ @punctuation.bracket
+
+x: |`go `|
+#  ^ @punctuation.bracket
+#   ^ @punctuation.bracket
+#       ^ @punctuation.bracket
+#        ^ @punctuation.bracket
+
+x: |||go
+// ^ @punctuation.bracket
+//  ^ @punctuation.bracket
+//   ^ @punctuation.bracket
+    var x = y;
+|||
+#<- @punctuation.bracket
+#^ @punctuation.bracket
+# ^ @punctuation.bracket
+
+x; y
+#^ @punctuation.delimiter
+
+x: label
+#^ @punctuation.delimiter
+
+x.x.x
+#^ @punctuation.delimiter
+#  ^ @punctuation.delimiter

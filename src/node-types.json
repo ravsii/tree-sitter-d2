@@ -1,10 +1,5 @@
 [
   {
-    "type": "argument_name",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -31,6 +26,14 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "block_comment",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "declaration",
           "named": true
@@ -60,7 +63,17 @@
     "fields": {}
   },
   {
+    "type": "boolean",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "codeblock_content",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "connection",
     "named": true,
     "fields": {}
   },
@@ -174,26 +187,6 @@
     }
   },
   {
-    "type": "escape",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "escape_sequence",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "glob",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "global_glob",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "identifier",
     "named": true,
     "fields": {},
@@ -202,7 +195,7 @@
       "required": false,
       "types": [
         {
-          "type": "escape_sequence",
+          "type": "escape",
           "named": true
         },
         {
@@ -215,6 +208,10 @@
         },
         {
           "type": "inverse_glob_filter",
+          "named": true
+        },
+        {
+          "type": "visibility_mark",
           "named": true
         }
       ]
@@ -268,10 +265,6 @@
           "named": true
         },
         {
-          "type": "escape_sequence",
-          "named": true
-        },
-        {
           "type": "float",
           "named": true
         },
@@ -304,7 +297,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "codeblock_content",
@@ -322,7 +315,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -360,13 +353,8 @@
     }
   },
   {
-    "type": "recursive_glob",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "returns",
-    "named": true,
+    "named": false,
     "fields": {},
     "children": {
       "multiple": true,
@@ -494,6 +482,15 @@
     }
   },
   {
+    "type": "visibility_mark",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "\u0000",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
@@ -518,19 +515,15 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "**",
-    "named": false
-  },
-  {
-    "type": "***",
+    "type": "+",
     "named": false
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
@@ -554,11 +547,7 @@
     "named": false
   },
   {
-    "type": "\\*",
-    "named": false
-  },
-  {
-    "type": "\\.",
+    "type": "\\#",
     "named": false
   },
   {
@@ -570,11 +559,11 @@
     "named": false
   },
   {
-    "type": "argument_type",
+    "type": "argument_name",
     "named": true
   },
   {
-    "type": "boolean",
+    "type": "argument_type",
     "named": true
   },
   {
@@ -586,15 +575,27 @@
     "named": true
   },
   {
-    "type": "connection",
+    "type": "escape",
     "named": true
+  },
+  {
+    "type": "false",
+    "named": false
   },
   {
     "type": "float",
     "named": true
   },
   {
+    "type": "glob",
+    "named": true
+  },
+  {
     "type": "glob_filter",
+    "named": true
+  },
+  {
+    "type": "global_glob",
     "named": true
   },
   {
@@ -608,6 +609,14 @@
   {
     "type": "inverse_glob_filter",
     "named": true
+  },
+  {
+    "type": "recursive_glob",
+    "named": true
+  },
+  {
+    "type": "true",
+    "named": false
   },
   {
     "type": "{",

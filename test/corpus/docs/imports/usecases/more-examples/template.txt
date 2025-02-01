@@ -1,0 +1,94 @@
+====================|||
+diagram.d2
+====================|||
+
+template: {
+  ...@imports-wrapper-template
+  synergy: {
+    our firm -> yours: value add
+  }
+  stakeholders: {
+    george.shape: person
+    tim.shape: person
+    tim.tooltip: is this web scale?
+  }
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (import)
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (connection)
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier_chain
+              (identifier)
+              (identifier))
+            (label))
+          (declaration
+            (identifier_chain
+              (identifier)
+              (identifier))
+            (label))
+          (declaration
+            (identifier_chain
+              (identifier)
+              (identifier))
+            (label)))))))
+
+====================|||
+wrapper-template.d2
+====================|||
+
+style: {
+  fill: "#E3EDE6"
+  fill-pattern: dots
+  stroke: "#820758"
+  stroke-width: 3
+  border-radius: 2
+  shadow: true
+}
+label: ""
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (integer)))
+      (declaration
+        (identifier)
+        (label
+          (boolean)))))
+  (declaration
+    (identifier)
+    (label)))

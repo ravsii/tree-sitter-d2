@@ -9,7 +9,7 @@ Quoted strings with quotes
 (source_file
   (declaration
     (identifier
-      (escape_sequence))
+      (escape))
     (connection)
     (identifier
-      (escape_sequence))))
+      (escape))))

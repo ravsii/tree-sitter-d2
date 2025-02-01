@@ -1,0 +1,312 @@
+====================|||
+Classes
+====================|||
+
+direction: right
+classes: {
+  load balancer: {
+    label: load\nbalancer
+    width: 100
+    height: 200
+    style: {
+      stroke-width: 0
+      fill: "#44C7B1"
+      shadow: true
+      border-radius: 5
+    }
+  }
+  unhealthy: {
+    style: {
+      fill: "#FE7070"
+      stroke: "#F69E03"
+    }
+  }
+}
+
+web traffic -> web lb
+web lb.class: load balancer
+
+web lb -> api1
+web lb -> api2
+web lb -> api3
+
+api2.class: unhealthy
+
+api1 -> cache lb
+api3 -> cache lb
+
+cache lb.class: load balancer
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label
+              (escape)))
+          (declaration
+            (identifier)
+            (label
+              (integer)))
+          (declaration
+            (identifier)
+            (label
+              (integer)))
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (label
+                  (integer)))
+              (declaration
+                (identifier)
+                (label))
+              (declaration
+                (identifier)
+                (label
+                  (boolean)))
+              (declaration
+                (identifier)
+                (label
+                  (integer)))))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (block
+              (declaration
+                (identifier)
+                (label))
+              (declaration
+                (identifier)
+                (label))))))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label)))
+
+====================|||
+Connection classes
+====================|||
+
+a -> b: {class: something}
+
+a -> b
+# ...
+(a -> b)[0].class: something
+
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (comment)
+  (declaration
+    (identifier_chain
+      (connection_reference
+        (identifier)
+        (connection)
+        (identifier)
+        (connection_identifier))
+      (identifier))
+    (label)))
+
+
+====================|||
+Overriding classes
+====================|||
+
+classes: {
+  unhealthy: {
+    style.fill: red
+  }
+}
+x.class: unhealthy
+x.style.fill: orange
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+      (block
+        (declaration
+          (identifier)
+          (block
+            (declaration
+              (identifier_chain
+                (identifier)
+                (identifier))
+              (label))))))
+    (declaration
+      (identifier_chain
+        (identifier)
+        (identifier))
+      (label))
+    (declaration
+      (identifier_chain
+        (identifier)
+        (identifier)
+        (identifier))
+      (label)))
+
+====================|||
+Multiple classes
+====================|||
+
+classes: {
+  d2: {
+    label: ""
+    icon: https://play.d2lang.com/assets/icons/d2-logo.svg
+  }
+  sphere: {
+    shape: circle
+    style.stroke-width: 0
+  }
+}
+
+logo.class: [d2; sphere]
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (declaration
+            (identifier)
+            (label))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label))
+          (declaration
+            (identifier_chain
+              (identifier)
+              (identifier))
+            (label
+              (integer)))))))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label
+      (label_constraint)
+      (label_constraint))))
+
+====================|||
+Order matters
+====================|||
+
+classes: {
+  uno: {
+    label: 1
+  }
+  dos: {
+    label: 2
+  }
+}
+
+x.class: [uno; dos]
+y.class: [dos; uno]
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label
+              (integer)))))
+      (declaration
+        (identifier)
+        (block
+          (declaration
+            (identifier)
+            (label
+              (integer)))))))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label
+      (label_constraint)
+      (label_constraint)))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label
+      (label_constraint)
+      (label_constraint))))
+

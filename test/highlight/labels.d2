@@ -1,0 +1,31 @@
+x: label
+#  ^ @string
+
+x: [one; two]
+#   ^ @string
+#        ^ @string
+
+x: [primary_key; PK; foreign_key; FK; unique; UNQ; NULL; NOT NULL]
+#   ^ @constant
+#                ^  @constant
+#                    ^  @constant
+#                                 ^  @constant
+#                                     ^  @constant
+#                                             ^  @constant
+#                                                  ^  @constant
+#                                                        ^  @constant
+
+x: |go var x = 5; |
+#      ^ @string
+
+x: 1
+#  ^ @number
+
+x: 1.1
+#  ^ @number.float
+
+x: true
+#  ^ @boolean
+
+x: false
+#  ^ @boolean

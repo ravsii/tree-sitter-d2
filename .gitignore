@@ -1,7 +1,38 @@
-node_modules
-test.d2
-.vscode
-tree-sitter-d2.code-workspace
-test.html
-*.DS_Store
+# Rust artifacts
+target/
+
+# Node artifacts
+build/
+prebuilds/
+node_modules/
+
+# Swift artifacts
+.build/
+
+# Go artifacts
+_obj/
+
+# Python artifacts
+.venv/
+dist/
+*.egg-info
+*.whl
+
+# C artifacts
+*.a
+*.so
+*.so.*
 *.dylib
+*.dll
+*.pc
+
+# OS artifacts
+*.DS_Store
+
+# IDE artifacts
+.vscode
+*.code-workspace
+
+# Test artifacts
+/test.d2
+*.html
