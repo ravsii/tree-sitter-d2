@@ -86,7 +86,7 @@ const spaced_str = (rule) =>
 const sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule)));
 
 module.exports = grammar({
-  name: 'd2',
+  name: "d2",
 
   // word: $ => $._ident_base,
 
