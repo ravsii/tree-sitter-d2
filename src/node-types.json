@@ -1,5 +1,10 @@
 [
   {
+    "type": "argument_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "arguments",
     "named": true,
     "fields": {},
@@ -69,6 +74,11 @@
   },
   {
     "type": "codeblock_content",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "codeblock_language",
     "named": true,
     "fields": {}
   },
@@ -559,15 +569,7 @@
     "named": false
   },
   {
-    "type": "argument_name",
-    "named": true
-  },
-  {
     "type": "argument_type",
-    "named": true
-  },
-  {
-    "type": "codeblock_language",
     "named": true
   },
   {
