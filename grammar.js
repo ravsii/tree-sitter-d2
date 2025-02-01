@@ -201,25 +201,23 @@ module.exports = grammar({
       $._label_literal,
     ),
 
+    // tree-sitter is a context-free parser, so it's impossible to catch cases
+    // with custom start & end tokens (see #64)
+    // We've hardcoded all the basic options and added fallback that could
+    // catch some cases, but not all of them.
     label_codeblock: $ => choice(
-      $._label_codeblock_ticks,
-      $._label_codeblock_triple,
-      $._label_codeblock_double,
       $._label_codeblock_single,
+      $._label_codeblock_double,
+      $._label_codeblock_triple,
+      $._label_codeblock_ticks,
+      $._label_codeblock_fallback,
     ),
 
-    _label_codeblock_ticks: $ => seq(
-      token(prec(PREC.label, '|`')),
+    _label_codeblock_single: $ => seq(
+      token(prec(PREC.label, '|')),
       optional($.codeblock_language), /\s/,
-      alias(/[^`]*/, $.codeblock_content),
-      token(prec(PREC.label, '`|')),
-    ),
-
-    _label_codeblock_triple: $ => seq(
-      token(prec(PREC.label, '|||')),
-      optional($.codeblock_language), /\s/,
-      $.codeblock_content,
-      token(prec(PREC.label, '|||')),
+      optional(alias(/[^\|]*/, $.codeblock_content)),
+      token(prec(PREC.label, '|')),
     ),
 
     _label_codeblock_double: $ => seq(
@@ -229,15 +227,34 @@ module.exports = grammar({
       token(prec(PREC.label, '||')),
     ),
 
-    _label_codeblock_single: $ => seq(
-      token(prec(PREC.label, '|')),
+    _label_codeblock_triple: $ => seq(
+      token(prec(PREC.label, '|||')),
       optional($.codeblock_language), /\s/,
-      alias(/[^\|]*/, $.codeblock_content),
-      token(prec(PREC.label, '|')),
+      optional($.codeblock_content),
+      token(prec(PREC.label, '|||')),
     ),
 
-    codeblock_language: _ => /[a-zA-Z0-9]+/,
-    codeblock_content: _ => repeat1(seq(/.+/, /\s*/)),
+    _label_codeblock_ticks: $ => seq(
+      token(prec(PREC.label, '|`')),
+      optional($.codeblock_language), /\s/,
+      optional(alias(/[^`]*/, $.codeblock_content)),
+      token(prec(PREC.label, '`|')),
+    ),
+
+    // Fallback label rule, when others failed.
+    // It tries to catch cases with custom start & end labels,
+    // but still could fail
+    _label_codeblock_fallback: $ => seq(
+      token(prec(PREC.label, /\|[^a-zA-Z0-9_\s]+/)),
+      optional($.codeblock_language), /\s/,
+      optional($.codeblock_content),
+      token(prec(PREC.label, /[^a-zA-Z0-9_\s]+\|/)),
+    ),
+
+    codeblock_language: _ => /[a-zA-Z0-9_]+/,
+    codeblock_content: _ => prec.right(
+      repeat1(choice(/./, /\s/)),
+    ),
 
     _label_constraints: $ => seq(
       token(prec(PREC.label, '[')),
