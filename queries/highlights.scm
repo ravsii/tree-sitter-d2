@@ -9,6 +9,35 @@
   (label_constraint)
 ] @string
 
+((label) @keyword
+  (#any-of? @keyword
+    "null"
+    "Null"
+    "NULL"
+  )
+)
+
+((label) @string.special
+  (#any-of? @string.special
+    "top-left"
+    "top-center"
+    "top-right"
+    "center-left"
+    "center-right"
+    "bottom-left"
+    "bottom-center"
+    "bottom-right"
+    "outside-top-left"
+    "outside-top-center"
+    "outside-top-right"
+    "outside-left-center"
+    "outside-right-center"
+    "outside-bottom-left"
+    "outside-bottom-center"
+    "outside-bottom-right"
+  )
+)
+
 ((label_constraint) @constant
   (#any-of? @constant
     "primary_key"
