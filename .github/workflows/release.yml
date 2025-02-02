@@ -4,6 +4,9 @@ on:
   push:
     tags: ["*"]
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
   cancel-in-progress: true
@@ -28,13 +31,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: latest
-      - name: Update version
+      - name: Install node packages
         run: |
           npm i
+      - name: Update version
+        run: |
           tree-sitter version ${{ steps.tag.outputs.version }}
-          git add .
-          git commit -m 'ci: bumb version to ${{ steps.tag.outputs.version }}'
-          git push
+      - name: Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -am 'ci: bumb version to ${{ steps.tag.outputs.version }}'
+          git push origin $BRANCH_NAME
 
   # release:
   #   uses: tree-sitter/workflows/.github/workflows/release.yml@main
