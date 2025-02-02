@@ -1,25 +1,25 @@
 generate:
-	tree-sitter generate
+	npx tree-sitter generate
 
 highlight: generate
 	clear
-	tree-sitter highlight ./test/showcase.d2
+	npx tree-sitter highlight ./test/showcase.d2
 
 parse: generate
 	clear
-	tree-sitter parse test.d2
+	npx tree-sitter parse test.d2
 
 dparse: generate
 	clear
-	tree-sitter parse test.d2 -d
+	npx tree-sitter parse test.d2 -d
 
 Dparse: generate
 	clear
-	tree-sitter parse test.d2 -D
+	npx tree-sitter parse test.d2 -D
 
 test: generate
 	clear
-	tree-sitter test
+	npx tree-sitter test
 
 # The `watch-*` commands utilize an excellent tool called `watchexec`, a
 # hot-reload CLI tool. It allows you to re-execute tests or highlights
