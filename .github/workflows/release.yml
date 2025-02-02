@@ -25,13 +25,12 @@ jobs:
       - name: Get Tags
         id: tag
         uses: ildug/get-tag-action@v1
-
-      - name: My Step
-        run: |
-          echo ${{ steps.tag.outputs.version }}
-
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
       - name: Update version
         run: |
+          npm i
           tree-sitter version ${{ steps.tag.outputs.version }}
           git add .
           git commit -m 'ci: bumb version to ${{ steps.tag.outputs.version }}'
