@@ -105,6 +105,8 @@
 [
  "$"
  "...$"
+ "@"
+ "...@"
 ] @keyword
 
 [
@@ -112,6 +114,8 @@
  (inverse_glob_filter)
  (visibility_mark)
 ] @keyword.modifier
+
+(import) @module
 
 [(variable) (spread_variable)] @variable
 
@@ -135,8 +139,6 @@
 (integer) @number
 (float) @number.float
 (boolean) @boolean
-
-(import) @module
 
 (argument_name) @variable.parameter
 (argument_type) @type

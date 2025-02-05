@@ -1,10 +1,13 @@
 ...@x.d2
-# <- @module
+# <- @keyword
+#   ^ @module
 
 x: @x.d2
-#  ^ @module
+#  ^ @keyword
+#   ^ @module
 
 x: {
   ...@x.d2
-# ^ @module
+# ^ @keyword
+#     ^ @module
 }
