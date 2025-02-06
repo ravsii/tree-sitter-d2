@@ -162,12 +162,12 @@ module.exports = grammar({
         token(prec(PREC.import, '@')),
         token(prec(PREC.import, '...@')),
       ),
-      choice(
+      repeat1(choice(
         $._double_quoted,
         $._single_quoted,
-        repeat1(choice($.escape, /[^\n;]+/)),
-      ),
-      repeat(/[^\n]/), // Getting field/property in import module
+        $.escape,
+        /[^\n;\\]+/,
+      )),
     ),
 
     block: $ => prec(PREC.block, seq(
