@@ -135,7 +135,6 @@ classes: {
 main.d2
 ====================|||
 
-...@classes
 user.class: person
 error.class: [base; error]
 modal.class: [base; med]
@@ -147,7 +146,6 @@ app.signup -> modal: continue registration
 ---|||
 
 (source_file
-  (import)
   (declaration
     (identifier_chain
       (identifier)

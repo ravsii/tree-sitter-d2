@@ -3,13 +3,9 @@ History: history.d2
 ====================|||
 
 direction: right
-Users 1: Users Table (v0.1) {
-  ...@"users-v0.1"
-}
+Users 1: Users Table (v0.1) { }
 
-Users 2: Users Table (current) {
-  ...@users-current
-}
+Users 2: Users Table (current) { }
 
 Users 1 -> Users 2
 
@@ -22,13 +18,11 @@ Users 1 -> Users 2
   (declaration
     (identifier)
     (label)
-    (block
-      (import)))
+    (block))
   (declaration
     (identifier)
     (label)
-    (block
-      (import)))
+    (block))
   (declaration
     (identifier)
     (connection)
@@ -179,12 +173,8 @@ Team Alpha: {
   Quick facts: |md
     - 3 L6 engineers
   |
-  Schema: {
-    ...@alpha-schema
-  }
-  API: {
-    ...@alpha-api
-  }
+  Schema: { }
+  API: { }
   # etc etc
 }
 
@@ -194,12 +184,8 @@ Team Charlie: {
     - 5 L4
     - 15 L3
   |
-  Schema: {
-    ...@charlie-schema
-  }
-  API: {
-    ...@charlie-api
-  }
+  Schema: { }
+  API: { }
   # etc etc
 }
 
@@ -217,12 +203,10 @@ Team Charlie: {
             (codeblock_content))))
       (declaration
         (identifier)
-        (block
-          (import)))
+        (block))
       (declaration
         (identifier)
-        (block
-          (import)))
+        (block))
       (comment)))
   (declaration
     (identifier)
@@ -235,10 +219,8 @@ Team Charlie: {
             (codeblock_content))))
       (declaration
         (identifier)
-        (block
-          (import)))
+        (block))
       (declaration
         (identifier)
-        (block
-          (import)))
+        (block))
       (comment))))

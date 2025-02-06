@@ -68,13 +68,11 @@ vpn: {
 access-view.d2
 ====================|||
 
-...@models
 it -> vpn -> postgres
 
 ---|||
 
 (source_file
-  (import)
   (declaration
     (identifier)
     (connection)
@@ -86,13 +84,11 @@ it -> vpn -> postgres
 ssh-view.d2
 ====================|||
 
-...@models
 it -> postgres: ssh, bypassing VPN
 
 ---|||
 
 (source_file
-  (import)
   (declaration
     (identifier)
     (connection)

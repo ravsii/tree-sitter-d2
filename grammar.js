@@ -166,7 +166,7 @@ module.exports = grammar({
         $._double_quoted,
         $._single_quoted,
         $.escape,
-        /[^\n;\\]+/,
+        /[^\n;}\\]+/,
       )),
     ),
 

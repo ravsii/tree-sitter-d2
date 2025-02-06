@@ -3,7 +3,6 @@ diagram.d2
 ====================|||
 
 template: {
-  ...@imports-wrapper-template
   synergy: {
     our firm -> yours: value add
   }
@@ -20,7 +19,6 @@ template: {
   (declaration
     (identifier)
     (block
-      (import)
       (declaration
         (identifier)
         (block
