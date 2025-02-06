@@ -104,6 +104,7 @@ d: @ x file.d2
 b: @"x file"
 c: @ x file
 ...@"people one".management
+...@"test".'test'\\..test; decl
 
 ---|||
 
@@ -123,4 +124,8 @@ c: @ x file
   (declaration
     (identifier)
     (import))
-  (import))
+  (import)
+  (import
+    (escape))
+  (declaration
+    (identifier)))
