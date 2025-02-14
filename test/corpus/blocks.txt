@@ -1,0 +1,80 @@
+====================|||
+Basic
+====================|||
+
+gcloud: {}
+gcloud: x {}
+gcloud: { label: Google Cloud }
+gcloud: {
+  label: Google Cloud
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block))
+  (declaration
+    (identifier)
+    (label)
+    (block))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+Nested
+====================|||
+
+clouds: {
+  aws: AWS {
+    load_balancer -> api
+    api -> db
+  }
+  gcloud: Google Cloud {
+    auth -> db
+  }
+
+  gcloud -> aws
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (connection)
+            (identifier))
+          (declaration
+            (identifier)
+            (connection)
+            (identifier))))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (connection)
+            (identifier))))
+      (declaration
+        (identifier)
+        (connection)
+        (identifier)))))

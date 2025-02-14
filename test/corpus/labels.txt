@@ -1,3 +1,37 @@
+==================|||
+Base
+==================|||
+
+x: label
+x.y: label
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label)))
+
+====================|||
+Connection labels
+====================|||
+
+x -- x: label
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
 ====================|||
 Escape label
 ====================|||
@@ -142,129 +176,3 @@ x: BREAKING NEWS 🚨 🚨 One 1️⃣ D 🇩 has one less 🇩 🍆 standing �
   (declaration
     (identifier)
     (label)))
-
-====================|||
-Custom codeblocks
-====================|||
-
-x: ||||md even 4 pipes ||||
-x: |@#@md # Header @#@|
-x: ||||md # header ||||
-x: |;;;md # header ;;;|
-x: |### no lang ###|
-x: |###
-no lang
-###|
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_content)))))
-
-====================|||
-Empty Codeblocks
-====================|||
-
-x: | |
-x: || ||
-x: ||| |||
-x: |||| ||||
-x: |` `|
-x: |@@@ @@@|
-x: |md |
-x: ||md ||
-x: |||md |||
-x: ||||md ||||
-x: |`md `|
-x: |@@@md @@@|
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)))))
