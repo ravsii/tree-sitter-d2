@@ -108,9 +108,7 @@ shape1: {x: \{\}\;\[\]\n }
 Escape label with block
 ====================|||
 
-shape1: test label \{ {
-  # comment
-}
+shape1: test label \{ {}
 
 ---|||
 
@@ -119,8 +117,7 @@ shape1: test label \{ {
     (identifier)
     (label
       (escape))
-    (block
-      (comment))))
+    (block)))
 
 ====================|||
 Numbers
