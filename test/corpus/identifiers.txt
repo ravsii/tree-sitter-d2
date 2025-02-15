@@ -70,6 +70,7 @@ x.y
 x.y.z
 x.y.z -> x.y.z
 apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
+bob."Cold hands, no gloves."
 
 ---|||
 
@@ -103,7 +104,11 @@ apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
       (identifier)
       (identifier)
       (identifier))
-    (label)))
+    (label))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))))
 
 ====================|||
 Reference parent

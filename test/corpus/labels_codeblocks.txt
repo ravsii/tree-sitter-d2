@@ -92,6 +92,35 @@ explanation: |md
         (label)))))
 
 ====================|||
+LaTeX
+====================|||
+
+plankton -> formula: will steal
+formula: {
+  equation: |latex
+    \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h}
+  |
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_codeblock
+            (codeblock_language)
+            (codeblock_content)))))))
+
+====================|||
 Custom codeblocks
 ====================|||
 
@@ -216,3 +245,85 @@ x: |@@@md @@@|
     (label
       (label_codeblock
         (codeblock_language)))))
+
+====================|||
+Advanced: Block strings (double)
+====================|||
+
+my_code: ||ts
+  declare function getSmallPet(): Fish | Bird;
+||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+Advanced: Block strings (triple)
+====================|||
+
+my_code: |||ts
+  declare function getSmallPet(): Fish | Bird;
+  const works = (a > 1) || (b < 2)
+|||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+Advanced: Block strings (triple, more code)
+====================|||
+
+my_code: |||ts
+fn main() {
+   let numbers: Vec<i32> = vec![1, 2, 3];
+   
+   // using the map iterator adapter
+   let even_numbers: Vec<i32> = numbers.iter().map(|i| i * 2).collect();
+   
+   println!("numbers = {:?}", numbers);
+   println!("even_numbers = {:?}", even_numbers);
+}
+|||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+Advanced: Block strings (tick)
+====================|||
+
+my_code: |`ts
+    declare function getSmallPet(): Fish | Bird;
+    const works = (a > 1) || (b < 2)
+`|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))

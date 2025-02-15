@@ -8,6 +8,7 @@ x: 'label'
 x: "la'b'el"
 x: Users Table (v0.1)
 x: https://icons.terrastruct.com/dev%2Fpostgresql.svg
+vpc: VPC 1 10.1.0.0./16
 
 ---|||
 
@@ -19,6 +20,9 @@ x: https://icons.terrastruct.com/dev%2Fpostgresql.svg
     (identifier_chain
       (identifier)
       (identifier))
+    (label))
+  (declaration
+    (identifier)
     (label))
   (declaration
     (identifier)

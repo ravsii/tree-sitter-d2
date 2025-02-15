@@ -1,0 +1,71 @@
+====================|||
+Visibility Marks (var)
+====================|||
+
+D2 Parser: { +reader: io.RuneReader }
+D2 Parser: { -reader: io.RuneReader }
+D2 Parser: { \#reader: io.RuneReader }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier
+          (visibility_mark))
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier
+          (visibility_mark))
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier
+          (visibility_mark))
+        (label)))))
+
+====================|||
+Visibility Marks (method)
+====================|||
+
+D2 Parser: { +Read(buf []byte) }
+D2 Parser: { -Read(buf []byte) }
+D2 Parser: { \#Read(buf []byte) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier
+          (visibility_mark))
+        (arguments
+          (argument_name)
+          (argument_type)))))
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier
+          (visibility_mark))
+        (arguments
+          (argument_name)
+          (argument_type)))))
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier
+          (visibility_mark))
+        (arguments
+          (argument_name)
+          (argument_type))))))
