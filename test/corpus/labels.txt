@@ -4,6 +4,8 @@ Base
 
 x: label
 x.y: label
+x: 'label'
+x: "la'b'el"
 
 ---|||
 
@@ -15,6 +17,12 @@ x.y: label
     (identifier_chain
       (identifier)
       (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
     (label)))
 
 ====================|||

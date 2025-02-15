@@ -12,7 +12,7 @@ i'm a shape
 a-shape
 SQLite; Cassandra
 
----
+---|||
 
 (source_file
   (declaration
@@ -109,6 +109,8 @@ Escape
 
 x\.y
 \!\@\#\$\%\^asdkj123\{\}
+' $$$ \'Hello World '
+" ### \"Hello World "
 
 ---|||
 
@@ -125,6 +127,12 @@ x\.y
       (escape)
       (escape)
       (escape)
+      (escape)))
+  (declaration
+    (identifier
+      (escape)))
+  (declaration
+    (identifier
       (escape))))
 
 ====================|||
