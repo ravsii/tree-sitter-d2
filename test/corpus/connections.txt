@@ -1,0 +1,95 @@
+==============|||
+Basics
+==============|||
+
+x y <-> x
+x y -> x
+x y <- x
+x y -- x
+super long shape id here -> super long shape id even longer here
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
+
+==============|||
+Connections Chaining
+==============|||
+
+x -> y -> z
+x <-> y -> z <- y -- w
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+Referencing connections
+====================|||
+
+(x -> y)[0]
+(x -> y)[0]: red
+(x -> y)[0].style.stroke: red
+
+---|||
+
+(source_file
+  (declaration
+    (connection_reference
+      (identifier)
+      (connection)
+      (identifier)
+      (connection_identifier)))
+  (declaration
+    (connection_reference
+      (identifier)
+      (connection)
+      (identifier)
+      (connection_identifier))
+    (label))
+  (declaration
+    (identifier_chain
+      (connection_reference
+        (identifier)
+        (connection)
+        (identifier)
+        (connection_identifier))
+      (identifier)
+      (identifier))
+    (label)))

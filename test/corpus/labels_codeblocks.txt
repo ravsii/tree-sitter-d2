@@ -1,0 +1,329 @@
+====================|||
+Basic
+====================|||
+
+Quick facts: |md - 3 L6 engineers |
+Quick facts: |md
+  - 3 L6 engineers
+|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+With Block
+====================|||
+
+title: |md # A winning strategy | {near: top-center}
+title: |md
+  # A winning strategy
+| {near: top-center}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))
+    (block
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+Long Block
+====================|||
+
+explanation: |md
+  # LLMs
+  The Large Language Model (LLM) is a powerful AI\
+    system that learns from vast amounts of text data.\
+  By analyzing patterns and structures in language,\
+  it gains an understanding of grammar, facts,\
+  and even some reasoning abilities. As users input text,\
+  the LLM predicts the most likely next words or phrases\
+  to create coherent responses. The model\
+  continuously fine-tunes its output, considering both the\
+  user's input and its own vast knowledge base.\
+  This cutting-edge technology enables LLM to generate human-like text,\
+  making it a valuable tool for various applications.
+| {
+  near: center-left
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))
+    (block
+      (declaration
+        (identifier)
+        (label)))))
+
+====================|||
+LaTeX
+====================|||
+
+plankton -> formula: will steal
+formula: {
+  equation: |latex
+    \\lim_{h \\rightarrow 0 } \\frac{f(x+h)-f(x)}{h}
+  |
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_codeblock
+            (codeblock_language)
+            (codeblock_content)))))))
+
+====================|||
+Custom codeblocks
+====================|||
+
+x: ||||md even 4 pipes ||||
+x: |@#@md # Header @#@|
+x: ||||md # header ||||
+x: |;;;md # header ;;;|
+x: |### no lang ###|
+x: |###
+no lang
+###|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_content))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_content)))))
+
+====================|||
+Empty Codeblocks
+====================|||
+
+x: | |
+x: || ||
+x: ||| |||
+x: |||| ||||
+x: |` `|
+x: |@@@ @@@|
+x: |md |
+x: ||md ||
+x: |||md |||
+x: ||||md ||||
+x: |`md `|
+x: |@@@md @@@|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock)))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock)))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock)))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock)))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock)))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock)))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language))))
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)))))
+
+====================|||
+Advanced: Block strings (double)
+====================|||
+
+my_code: ||ts
+  declare function getSmallPet(): Fish | Bird;
+||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+Advanced: Block strings (triple)
+====================|||
+
+my_code: |||ts
+  declare function getSmallPet(): Fish | Bird;
+  const works = (a > 1) || (b < 2)
+|||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+Advanced: Block strings (triple, more code)
+====================|||
+
+my_code: |||ts
+fn main() {
+   let numbers: Vec<i32> = vec![1, 2, 3];
+   
+   // using the map iterator adapter
+   let even_numbers: Vec<i32> = numbers.iter().map(|i| i * 2).collect();
+   
+   println!("numbers = {:?}", numbers);
+   println!("even_numbers = {:?}", even_numbers);
+}
+|||
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
+Advanced: Block strings (tick)
+====================|||
+
+my_code: |`ts
+    declare function getSmallPet(): Fish | Bird;
+    const works = (a > 1) || (b < 2)
+`|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))

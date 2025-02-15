@@ -16,10 +16,19 @@ Multiple Comments
   (comment))
 
 ====================|||
+EOF
+====================|||
+# Test
+---|||
+
+(source_file
+  (comment))
+
+====================|||
 End of line Multiple
 ====================|||
 
-x -> y # I am at the end;
+x -> y # I am at the end; x
 x
 
 ---|||

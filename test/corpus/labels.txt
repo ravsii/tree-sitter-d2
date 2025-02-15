@@ -1,3 +1,91 @@
+==================|||
+Base
+==================|||
+
+x: label
+x.y: label
+x: 'label'
+x: "la'b'el"
+x: Users Table (v0.1)
+x: https://icons.terrastruct.com/dev%2Fpostgresql.svg
+vpc: VPC 1 10.1.0.0./16
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (label)))
+
+==================|||
+Constraints
+==================|||
+
+error: [base; error]
+id: int {constraint: [primary_key]}
+id: int {constraint: [primary_key; foreign_key]}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_constraint)
+      (label_constraint)))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_constraint)))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_constraint)
+          (label_constraint))))))
+
+====================|||
+Connection labels
+====================|||
+
+x -- x: label
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)))
+
 ====================|||
 Escape label
 ====================|||
@@ -24,9 +112,7 @@ shape1: {x: \{\}\;\[\]\n }
 Escape label with block
 ====================|||
 
-shape1: test label \{ {
-  # comment
-}
+shape1: test label \{ {}
 
 ---|||
 
@@ -35,8 +121,7 @@ shape1: test label \{ {
     (identifier)
     (label
       (escape))
-    (block
-      (comment))))
+    (block)))
 
 ====================|||
 Numbers
@@ -142,129 +227,3 @@ x: BREAKING NEWS 🚨 🚨 One 1️⃣ D 🇩 has one less 🇩 🍆 standing �
   (declaration
     (identifier)
     (label)))
-
-====================|||
-Custom codeblocks
-====================|||
-
-x: ||||md even 4 pipes ||||
-x: |@#@md # Header @#@|
-x: ||||md # header ||||
-x: |;;;md # header ;;;|
-x: |### no lang ###|
-x: |###
-no lang
-###|
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_content))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_content)))))
-
-====================|||
-Empty Codeblocks
-====================|||
-
-x: | |
-x: || ||
-x: ||| |||
-x: |||| ||||
-x: |` `|
-x: |@@@ @@@|
-x: |md |
-x: ||md ||
-x: |||md |||
-x: ||||md ||||
-x: |`md `|
-x: |@@@md @@@|
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock)))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language))))
-  (declaration
-    (identifier)
-    (label
-      (label_codeblock
-        (codeblock_language)))))

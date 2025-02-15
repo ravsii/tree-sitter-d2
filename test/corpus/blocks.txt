@@ -1,0 +1,110 @@
+====================|||
+Basic
+====================|||
+
+x: {}
+x: x {}
+x: { label: Google Cloud }
+x: int {constraint: foreign_key}
+x: {shape: page; style: true}
+x: {
+  label: Google Cloud
+}
+x: {
+  key
+  token
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block))
+  (declaration
+    (identifier)
+    (label)
+    (block))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (boolean)))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier))
+      (declaration
+        (identifier)))))
+
+====================|||
+Nested
+====================|||
+
+clouds: {
+  aws: AWS {
+    load_balancer -> api
+    api -> db
+  }
+  gcloud: Google Cloud {
+    auth -> db
+  }
+
+  gcloud -> aws
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (connection)
+            (identifier))
+          (declaration
+            (identifier)
+            (connection)
+            (identifier))))
+      (declaration
+        (identifier)
+        (label)
+        (block
+          (declaration
+            (identifier)
+            (connection)
+            (identifier))))
+      (declaration
+        (identifier)
+        (connection)
+        (identifier)))))

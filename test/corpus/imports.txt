@@ -1,0 +1,80 @@
+====================|||
+Regular imports
+====================|||
+
+x: @x.d2
+x: @x
+x: @../../x
+x: @file with spaces.d2
+x: @'x d2'
+x: @"x d2"
+x: @x y z; y: @x y z
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import))
+  (declaration
+    (identifier)
+    (import)))
+
+============================|||
+Spread imports
+============================|||
+
+...@x.d2
+...@x
+...@file with spaces
+...@"people one".management
+...@"test".'test'\\..test
+x: { ...@'x.d2' }
+x: { ...@"x.d2" }
+x: { ...@file with spaces }
+x: { ...@file 1; ...@file 2 }
+
+---|||
+
+(source_file
+  (import)
+  (import)
+  (import)
+  (import)
+  (import
+    (escape))
+  (declaration
+    (identifier)
+    (block
+      (import)))
+  (declaration
+    (identifier)
+    (block
+      (import)))
+  (declaration
+    (identifier)
+    (block
+      (import)))
+  (declaration
+    (identifier)
+    (block
+      (import)
+      (import))))

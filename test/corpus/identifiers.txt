@@ -1,0 +1,194 @@
+==================|||
+Basic
+==================|||
+
+x
+x y
+x y z; x y z
+imAShape
+im_a_shape
+im a shape
+i'm a shape
+a-shape
+SQLite; Cassandra
+'$$$'
+"###"
+
+---|||
+
+(source_file
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier)))
+
+====================|||
+Unquoted strings
+====================|||
+
+   Office Bulb   :     Philips
+            Switch   ->   Office Bulb
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))
+
+====================|||
+Chains
+====================|||
+
+x.y
+x.y.z
+x.y.z -> x.y.z
+apartment.Bedroom.Bathroom -> office.Spare Room.Bathroom: Portal
+bob."Cold hands, no gloves."
+
+---|||
+
+(source_file
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier)))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
+    (connection)
+    (identifier_chain
+      (identifier)
+      (identifier)
+      (identifier))
+    (label))
+  (declaration
+    (identifier_chain
+      (identifier)
+      (identifier))))
+
+====================|||
+Reference parent
+====================|||
+
+birthdays: {
+  _.x -> y: label
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier_chain
+          (identifier)
+          (identifier))
+        (connection)
+        (identifier)
+        (label)))))
+
+====================|||
+Escape
+====================|||
+
+x\.y
+\!\@\#\$\%\^asdkj123\{\}
+' $$$ \'Hello World '
+" ### \"Hello World "
+
+---|||
+
+(source_file
+  (declaration
+    (identifier
+      (escape)))
+  (declaration
+    (identifier
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)
+      (escape)))
+  (declaration
+    (identifier
+      (escape)))
+  (declaration
+    (identifier
+      (escape))))
+
+====================|||
+Quotes inside identifier
+====================|||
+
+x'y's
+x"y"s
+
+---|||
+
+(source_file
+  (declaration
+    (identifier))
+  (declaration
+    (identifier)))
+
+====================|||
+Emojis
+====================|||
+
+👉 <-> 👈
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)))

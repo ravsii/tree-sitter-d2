@@ -1,0 +1,189 @@
+====================|||
+Basics (No Args, Empty Returns)
+====================|||
+
+method()
+MyClass: { method() }
+
+---|||
+
+(source_file
+  (method_declaration
+    (identifier))
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)))))
+
+====================|||
+Basics (No Args, No Returns)
+====================|||
+
+MyClass: { method(): () }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)))))
+
+====================|||
+Basics (No Args, Single Return)
+====================|||
+
+MyClass: { method(): (x int) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (returns
+          (argument_name)
+          (argument_type))))))
+
+====================|||
+Basics (Single Arg, no return)
+====================|||
+
+MyClass: { method(a uint64) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (arguments
+          (argument_name)
+          (argument_type))))))
+
+====================|||
+Basics (Single Arg, Single Return)
+====================|||
+
+MyClass: { method(a uint64): (b int) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (arguments
+          (argument_name)
+          (argument_type))
+        (returns
+          (argument_name)
+          (argument_type))))))
+
+====================|||
+Basics (Multiple Args, Single Return)
+====================|||
+
+MyClass: { method(a uint64, b int64): (b int) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (arguments
+          (argument_name)
+          (argument_type)
+          (argument_name)
+          (argument_type))
+        (returns
+          (argument_name)
+          (argument_type))))))
+
+====================|||
+Basics (Multiple Args, Multiple Return)
+====================|||
+
+MyClass: { method(a uint64, b int64): (c int, d []string) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (arguments
+          (argument_name)
+          (argument_type)
+          (argument_name)
+          (argument_type))
+        (returns
+          (argument_name)
+          (argument_type)
+          (argument_name)
+          (argument_type))))))
+
+====================|||
+Basics (Multiple Args & Returns, short ver.)
+====================|||
+
+MyClass: { method(a, b int64): (c, d []string) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (arguments
+          (argument_name)
+          (argument_name)
+          (argument_type))
+        (returns
+          (argument_name)
+          (argument_name)
+          (argument_type))))))
+
+====================|||
+Basics (Multiple Args, Returns & Types, short ver.)
+====================|||
+
+MyClass: { method(a, b int64, c, d []string): (e, f int, g, h []float64) }
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (block
+      (method_declaration
+        (identifier)
+        (arguments
+          (argument_name)
+          (argument_name)
+          (argument_type)
+          (argument_name)
+          (argument_name)
+          (argument_type))
+        (returns
+          (argument_name)
+          (argument_name)
+          (argument_type)
+          (argument_name)
+          (argument_name)
+          (argument_type))))))

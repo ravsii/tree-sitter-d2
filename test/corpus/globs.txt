@@ -1,0 +1,150 @@
+====================|||
+Globs
+====================|||
+
+*
+t*h*r
+*.*
+**
+**.**
+***
+***.***
+
+---|||
+
+(source_file
+  (declaration
+    (glob))
+  (declaration
+    (identifier
+      (glob)
+      (glob)))
+  (declaration
+    (identifier_chain
+      (glob)
+      (glob)))
+  (declaration
+    (recursive_glob))
+  (declaration
+    (identifier_chain
+      (recursive_glob)
+      (recursive_glob)))
+  (declaration
+    (global_glob))
+  (declaration
+    (identifier_chain
+      (global_glob)
+      (global_glob))))
+
+====================|||
+Nested globs
+====================|||
+
+*.he*ght: 300
+*pro.he*ght: 400
+
+---|||
+
+(source_file
+  (declaration
+    (identifier_chain
+      (glob)
+      (identifier
+        (glob)))
+    (label
+      (integer)))
+  (declaration
+    (identifier_chain
+      (identifier
+        (glob))
+      (identifier
+        (glob)))
+    (label
+      (integer))))
+
+====================|||
+Glob connections
+====================|||
+
+* -> *: test
+
+---|||
+
+(source_file
+  (declaration
+    (glob)
+    (connection)
+    (glob)
+    (label)))
+
+====================|||
+Glob connections reference
+====================|||
+
+(lady* -> barbie)[*].style.stroke: pink
+
+---|||
+
+(source_file
+  (declaration
+    (identifier_chain
+      (connection_reference
+        (identifier
+          (glob))
+        (connection)
+        (identifier)
+        (connection_identifier
+          (glob)))
+      (identifier)
+      (identifier))
+    (label)))
+
+====================|||
+Escaped globs
+====================|||
+
+\* -> \*
+
+---|||
+
+(source_file
+  (declaration
+    (identifier
+      (escape))
+    (connection)
+    (identifier
+      (escape))))
+
+====================|||
+Filters
+====================|||
+
+*: { &shape: person }
+*: { &link: * }
+*: { !&shape: person }
+
+---|||
+
+(source_file
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (glob_filter))
+        (label))))
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (glob_filter))
+        (label))))
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (inverse_glob_filter))
+        (label)))))
+
