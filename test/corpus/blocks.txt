@@ -9,6 +9,10 @@ x: int {constraint: foreign_key}
 x: {
   label: Google Cloud
 }
+x: {
+  key
+  token
+}
 
 ---|||
 
@@ -38,7 +42,14 @@ x: {
     (block
       (declaration
         (identifier)
-        (label)))))
+        (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier))
+      (declaration
+        (identifier)))))
 
 ====================|||
 Nested

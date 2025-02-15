@@ -2,6 +2,7 @@
 Basic
 ====================|||
 
+Quick facts: |md - 3 L6 engineers |
 Quick facts: |md
   - 3 L6 engineers
 |
@@ -9,6 +10,12 @@ Quick facts: |md
 ---|||
 
 (source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content))))
   (declaration
     (identifier)
     (label

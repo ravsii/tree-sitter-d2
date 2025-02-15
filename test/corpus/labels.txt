@@ -7,6 +7,7 @@ x.y: label
 x: 'label'
 x: "la'b'el"
 x: Users Table (v0.1)
+x: https://icons.terrastruct.com/dev%2Fpostgresql.svg
 
 ---|||
 
@@ -27,18 +28,27 @@ x: Users Table (v0.1)
     (label))
   (declaration
     (identifier)
+    (label))
+  (declaration
+    (identifier)
     (label)))
 
 ==================|||
 Constraints
 ==================|||
 
+error: [base; error]
 id: int {constraint: [primary_key]}
 id: int {constraint: [primary_key; foreign_key]}
 
 ---|||
 
 (source_file
+  (declaration
+    (identifier)
+    (label
+      (label_constraint)
+      (label_constraint)))
   (declaration
     (identifier)
     (label)
