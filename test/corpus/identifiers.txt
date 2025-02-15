@@ -11,6 +11,8 @@ im a shape
 i'm a shape
 a-shape
 SQLite; Cassandra
+'$$$'
+"###"
 
 ---|||
 
@@ -36,6 +38,28 @@ SQLite; Cassandra
   (declaration
     (identifier))
   (declaration
+    (identifier))
+  (declaration
+    (identifier))
+  (declaration
+    (identifier)))
+
+====================|||
+Unquoted strings
+====================|||
+
+   Office Bulb   :     Philips
+            Switch   ->   Office Bulb
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label))
+  (declaration
+    (identifier)
+    (connection)
     (identifier)))
 
 ====================|||

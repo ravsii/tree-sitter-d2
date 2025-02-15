@@ -16,6 +16,15 @@ Multiple Comments
   (comment))
 
 ====================|||
+EOF
+====================|||
+# Test
+---|||
+
+(source_file
+  (comment))
+
+====================|||
 End of line Multiple
 ====================|||
 

@@ -17,66 +17,28 @@ server1: ${server-name}-1
 Nested Variable
 ====================|||
 
-button: {
-  style: {
-    fill: ${primaryColors.button.active}
-    stroke: ${primaryColors.button.border}
-  }
-}
+x: ${primaryColors.button.active}
+y: ${primaryColors.button.border}
 
 ---|||
 
 (source_file
   (declaration
     (identifier)
-    (block
-      (declaration
-        (identifier)
-        (block
-          (declaration
+      (label
+        (variable
+          (identifier_chain
             (identifier)
-            (label
-              (variable
-                (identifier_chain
-                  (identifier)
-                  (identifier)
-                  (identifier)))))
-          (declaration
             (identifier)
-            (label
-              (variable
-                (identifier_chain
-                  (identifier)
-                  (identifier)
-                  (identifier))))))))))
-
-
-====================|||
-Scoped variables
-====================|||
-
-lb: ${region} load balancer
-
-zone1: {
-  server: ${region} API
-}
-
----|||
-
-(source_file
-  (declaration
-    (identifier)
-    (label
-      (variable
-        (identifier))))
-  (declaration
-    (identifier)
-    (block
-      (declaration
-        (identifier)
-        (label
-          (variable
-            (identifier)))))))
+            (identifier)))))
+    (declaration
+      (identifier)
+      (label
+        (variable
+          (identifier_chain
+            (identifier)
+            (identifier)
+            (identifier))))))
 
 ====================|||
 No variables in single quotes
