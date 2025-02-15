@@ -6,6 +6,7 @@ x: {}
 x: x {}
 x: { label: Google Cloud }
 x: int {constraint: foreign_key}
+x: {shape: page; style: true}
 x: {
   label: Google Cloud
 }
@@ -37,6 +38,16 @@ x: {
       (declaration
         (identifier)
         (label))))
+  (declaration
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))
+      (declaration
+        (identifier)
+        (label
+          (boolean)))))
   (declaration
     (identifier)
     (block
