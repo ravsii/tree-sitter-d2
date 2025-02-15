@@ -2,10 +2,11 @@
 Basic
 ====================|||
 
-gcloud: {}
-gcloud: x {}
-gcloud: { label: Google Cloud }
-gcloud: {
+x: {}
+x: x {}
+x: { label: Google Cloud }
+x: int {constraint: foreign_key}
+x: {
   label: Google Cloud
 }
 
@@ -21,6 +22,13 @@ gcloud: {
     (block))
   (declaration
     (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label))))
+  (declaration
+    (identifier)
+    (label)
     (block
       (declaration
         (identifier)

@@ -1,4 +1,22 @@
 ====================|||
+Basic
+====================|||
+
+Quick facts: |md
+  - 3 L6 engineers
+|
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label
+      (label_codeblock
+        (codeblock_language)
+        (codeblock_content)))))
+
+====================|||
 Custom codeblocks
 ====================|||
 

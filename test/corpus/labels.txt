@@ -6,6 +6,7 @@ x: label
 x.y: label
 x: 'label'
 x: "la'b'el"
+x: Users Table (v0.1)
 
 ---|||
 
@@ -23,7 +24,38 @@ x: "la'b'el"
     (label))
   (declaration
     (identifier)
+    (label))
+  (declaration
+    (identifier)
     (label)))
+
+==================|||
+Constraints
+==================|||
+
+id: int {constraint: [primary_key]}
+id: int {constraint: [primary_key; foreign_key]}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_constraint)))))
+  (declaration
+    (identifier)
+    (label)
+    (block
+      (declaration
+        (identifier)
+        (label
+          (label_constraint)
+          (label_constraint))))))
 
 ====================|||
 Connection labels
