@@ -1,3 +1,5 @@
+name: release-please
+
 on:
   push:
     branches:
@@ -7,8 +9,6 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release
-
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -16,4 +16,4 @@ jobs:
       - uses: googleapis/release-please-action@v4
         with:
           release-type: node
-          skip-github-releease: true
+          skip-github-release: true
