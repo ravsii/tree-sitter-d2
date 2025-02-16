@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.5.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.4.0...v0.5.0) (2025-02-16)
+
+
+### Features
+
+* **hl:** highlights for custom null & position labels ([bb47154](https://github.com/ravsii/tree-sitter-d2/commit/bb47154e32e12d9307b85479b8010ded877c63d9))
+* improve parsing import statement in string ([7722157](https://github.com/ravsii/tree-sitter-d2/commit/7722157da1dfd798c42fa7bfc4bc5a0ca4037fde))
+* **parsing:** custom start & end tokes ([d98f70f](https://github.com/ravsii/tree-sitter-d2/commit/d98f70f8ce233d69efbd13c58b0dd247e798affc))
+
+
+### Bug Fixes
+
+* **imports:** simplify logic, add extra tests ([df4877e](https://github.com/ravsii/tree-sitter-d2/commit/df4877eb015d5ad91e72a1b4f4a3bf23fb463e29))
+
 ## [0.4.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.3.0...v0.4.0) (2025-01-27)
 
 
