@@ -15,8 +15,6 @@ const PREC = {
 
   colon_start: 80,
 
-  ident_fix: 51,
-
   connection: 10,
   glob: 8,
 
