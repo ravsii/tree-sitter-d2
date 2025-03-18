@@ -180,7 +180,7 @@ module.exports = grammar({
 
     label: $ => choice(
       $.label_codeblock,
-      $._label_constraints,
+      $._label_array,
       $._label_literal,
     ),
 
@@ -239,13 +239,13 @@ module.exports = grammar({
       repeat1(choice(/./, /\s/)),
     ),
 
-    _label_constraints: $ => seq(
+    _label_array: $ => seq(
       token(prec(PREC.label, '[')),
-      repeat_sep($.label_constraint, token(';')),
+      repeat_sep($.label_array, token(';')),
       token(prec(PREC.label, ']')),
     ),
 
-    label_constraint: $ => repeat1(choice(
+    label_array: $ => repeat1(choice(
       spaced_str(/[^\s;\]]+/),
       $._variable,
     )),

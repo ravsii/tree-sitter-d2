@@ -51,8 +51,8 @@ id: int {constraint: [primary_key; foreign_key]}
   (declaration
     (identifier)
     (label
-      (label_constraint)
-      (label_constraint)))
+      (label_array)
+      (label_array)))
   (declaration
     (identifier)
     (label)
@@ -60,7 +60,7 @@ id: int {constraint: [primary_key; foreign_key]}
       (declaration
         (identifier)
         (label
-          (label_constraint)))))
+          (label_array)))))
   (declaration
     (identifier)
     (label)
@@ -68,8 +68,8 @@ id: int {constraint: [primary_key; foreign_key]}
       (declaration
         (identifier)
         (label
-          (label_constraint)
-          (label_constraint))))))
+          (label_array)
+          (label_array))))))
 
 ====================|||
 Connection labels
