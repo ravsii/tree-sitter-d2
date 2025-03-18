@@ -26,21 +26,20 @@ x: ||go ||
 #       ^ @punctuation.bracket
 #        ^ @punctuation.bracket
 
+x: |||go var x = y; |||
+#  ^ @punctuation.bracket
+#   ^ @punctuation.bracket
+#    ^ @punctuation.bracket
+#                   ^ @punctuation.bracket
+#                    ^ @punctuation.bracket
+#                     ^ @punctuation.bracket
+
 x: |`go `|
 #  ^ @punctuation.bracket
 #   ^ @punctuation.bracket
 #       ^ @punctuation.bracket
 #        ^ @punctuation.bracket
 
-x: |||go
-// ^ @punctuation.bracket
-//  ^ @punctuation.bracket
-//   ^ @punctuation.bracket
-    var x = y;
-|||
-#<- @punctuation.bracket
-#^ @punctuation.bracket
-# ^ @punctuation.bracket
 
 x; y
 #^ @punctuation.delimiter
