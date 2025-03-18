@@ -103,7 +103,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 900,
+        "value": 9,
         "content": {
           "type": "PATTERN",
           "value": "#[^\\n]+"
@@ -117,7 +117,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 900,
+            "value": 9,
             "content": {
               "type": "STRING",
               "value": "\"\"\""
@@ -148,7 +148,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 900,
+            "value": 9,
             "content": {
               "type": "STRING",
               "value": "\"\"\""
@@ -213,7 +213,7 @@
               "type": "TOKEN",
               "content": {
                 "type": "PREC",
-                "value": 1,
+                "value": 2,
                 "content": {
                   "type": "STRING",
                   "value": ":"
@@ -233,7 +233,7 @@
               "type": "TOKEN",
               "content": {
                 "type": "PREC",
-                "value": 1,
+                "value": 2,
                 "content": {
                   "type": "STRING",
                   "value": ":"
@@ -253,7 +253,7 @@
               "type": "TOKEN",
               "content": {
                 "type": "PREC",
-                "value": 1,
+                "value": 2,
                 "content": {
                   "type": "STRING",
                   "value": ":"
@@ -273,7 +273,7 @@
               "type": "TOKEN",
               "content": {
                 "type": "PREC",
-                "value": 1,
+                "value": 2,
                 "content": {
                   "type": "STRING",
                   "value": ":"
@@ -331,12 +331,8 @@
                   {
                     "type": "IMMEDIATE_TOKEN",
                     "content": {
-                      "type": "PREC",
-                      "value": 80,
-                      "content": {
-                        "type": "STRING",
-                        "value": ":"
-                      }
+                      "type": "STRING",
+                      "value": ":"
                     }
                   },
                   {
@@ -484,7 +480,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 10,
+            "value": 4,
             "content": {
               "type": "PATTERN",
               "value": "<-+>"
@@ -495,7 +491,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 10,
+            "value": 4,
             "content": {
               "type": "PATTERN",
               "value": "<-+"
@@ -506,7 +502,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 10,
+            "value": 4,
             "content": {
               "type": "PATTERN",
               "value": "-+>"
@@ -517,7 +513,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 10,
+            "value": 4,
             "content": {
               "type": "PATTERN",
               "value": "--+"
@@ -583,68 +579,64 @@
       ]
     },
     "block": {
-      "type": "PREC",
-      "value": 5,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "TOKEN",
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 3,
             "content": {
-              "type": "PREC",
-              "value": 5,
-              "content": {
-                "type": "STRING",
-                "value": "{"
-              }
+              "type": "STRING",
+              "value": "{"
             }
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_declaration"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "_eol"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "CHOICE",
+          }
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
                 "members": [
                   {
                     "type": "SYMBOL",
                     "name": "_declaration"
                   },
                   {
-                    "type": "BLANK"
+                    "type": "SYMBOL",
+                    "name": "_eol"
                   }
                 ]
               }
-            ]
-          },
-          {
-            "type": "TOKEN",
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_declaration"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 3,
             "content": {
-              "type": "PREC",
-              "value": 5,
-              "content": {
-                "type": "STRING",
-                "value": "}"
-              }
+              "type": "STRING",
+              "value": "}"
             }
           }
-        ]
-      }
+        }
+      ]
     },
     "label": {
       "type": "CHOICE",
@@ -695,7 +687,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "|"
@@ -739,7 +731,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "|"
@@ -755,7 +747,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "||"
@@ -794,7 +786,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "||"
@@ -810,7 +802,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "|||"
@@ -849,7 +841,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "|||"
@@ -865,7 +857,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "|`"
@@ -909,7 +901,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "`|"
@@ -925,7 +917,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "PATTERN",
               "value": "\\|[^a-zA-Z0-9_\\s]+"
@@ -964,7 +956,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "PATTERN",
               "value": "[^a-zA-Z0-9_\\s]+\\|"
@@ -1004,7 +996,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "["
@@ -1043,7 +1035,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "]"
@@ -1209,7 +1201,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "\""
@@ -1225,7 +1217,7 @@
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
                   "type": "PREC",
-                  "value": 1,
+                  "value": 2,
                   "content": {
                     "type": "PATTERN",
                     "value": "[^\"\\n\\\\$]+"
@@ -1247,7 +1239,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1,
+            "value": 2,
             "content": {
               "type": "STRING",
               "value": "\""
@@ -1474,12 +1466,8 @@
           {
             "type": "TOKEN",
             "content": {
-              "type": "PREC",
-              "value": 3,
-              "content": {
-                "type": "PATTERN",
-                "value": "[^\\s:.;&{}()!\\\\]"
-              }
+              "type": "PATTERN",
+              "value": "[^\\s:.;&{}()!\\\\]"
             }
           },
           {
@@ -1496,34 +1484,22 @@
     "glob": {
       "type": "TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 8,
-        "content": {
-          "type": "STRING",
-          "value": "*"
-        }
+        "type": "STRING",
+        "value": "*"
       }
     },
     "recursive_glob": {
       "type": "TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 8,
-        "content": {
-          "type": "STRING",
-          "value": "**"
-        }
+        "type": "STRING",
+        "value": "**"
       }
     },
     "global_glob": {
       "type": "TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 8,
-        "content": {
-          "type": "STRING",
-          "value": "***"
-        }
+        "type": "STRING",
+        "value": "***"
       }
     },
     "_filters": {
@@ -1559,34 +1535,22 @@
         {
           "type": "TOKEN",
           "content": {
-            "type": "PREC",
-            "value": 850,
-            "content": {
-              "type": "STRING",
-              "value": "-"
-            }
+            "type": "STRING",
+            "value": "-"
           }
         },
         {
           "type": "TOKEN",
           "content": {
-            "type": "PREC",
-            "value": 850,
-            "content": {
-              "type": "STRING",
-              "value": "+"
-            }
+            "type": "STRING",
+            "value": "+"
           }
         },
         {
           "type": "TOKEN",
           "content": {
-            "type": "PREC",
-            "value": 850,
-            "content": {
-              "type": "STRING",
-              "value": "\\#"
-            }
+            "type": "STRING",
+            "value": "\\#"
           }
         }
       ]
@@ -1611,7 +1575,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 100,
+            "value": 6,
             "content": {
               "type": "STRING",
               "value": "$"
@@ -1645,7 +1609,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 100,
+            "value": 6,
             "content": {
               "type": "STRING",
               "value": "...$"
@@ -1679,7 +1643,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 500,
+            "value": 5,
             "content": {
               "type": "STRING",
               "value": "'"
@@ -1694,12 +1658,8 @@
               {
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
-                  "type": "PREC",
-                  "value": 500,
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[^'\\n\\\\]+"
-                  }
+                  "type": "PATTERN",
+                  "value": "[^'\\n\\\\]+"
                 }
               },
               {
@@ -1713,7 +1673,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 500,
+            "value": 5,
             "content": {
               "type": "STRING",
               "value": "'"
@@ -1729,7 +1689,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 500,
+            "value": 5,
             "content": {
               "type": "STRING",
               "value": "\""
@@ -1744,12 +1704,8 @@
               {
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
-                  "type": "PREC",
-                  "value": 500,
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[^\"\\n\\\\]+"
-                  }
+                  "type": "PATTERN",
+                  "value": "[^\"\\n\\\\]+"
                 }
               },
               {
@@ -1763,7 +1719,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 500,
+            "value": 5,
             "content": {
               "type": "STRING",
               "value": "\""
@@ -1778,12 +1734,8 @@
         {
           "type": "TOKEN",
           "content": {
-            "type": "PREC",
-            "value": 800,
-            "content": {
-              "type": "STRING",
-              "value": "\\"
-            }
+            "type": "STRING",
+            "value": "\\"
           }
         },
         {
@@ -1820,7 +1772,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1000,
+            "value": 10,
             "content": {
               "type": "PATTERN",
               "value": "\\n"
@@ -1831,7 +1783,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1000,
+            "value": 10,
             "content": {
               "type": "STRING",
               "value": ";"
@@ -1842,7 +1794,7 @@
           "type": "TOKEN",
           "content": {
             "type": "PREC",
-            "value": 1000,
+            "value": 10,
             "content": {
               "type": "STRING",
               "value": "\u0000"

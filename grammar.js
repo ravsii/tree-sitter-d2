@@ -1,31 +1,15 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-// FIXME: This will be refactored after fixing grammar's edge cases.
 const PREC = {
-  terminate: 1000,
-  comment: 900,
-
-  visibility_mark: 850,
-
-  escape: 800,
-  string: 500,
-
-  variable: 100,
-
-  colon_start: 80,
-
-  ident_fix: 51,
-
-  connection: 10,
-  glob: 8,
-
-  block: 5,
-
-  identifier: 3,
-
+  terminate: 10,
+  comment: 9,
+  variable: 6,
+  string: 5,
+  connection: 4,
+  block: 3,
+  label: 2,
   import: 1,
-  label: 1,
 };
 
 /**
@@ -128,7 +112,7 @@ module.exports = grammar({
       $.identifier,
       '(', optional($.arguments), ')',
       optional(seq(
-        token.immediate(prec(PREC.colon_start, ':')),
+        token.immediate(':'),
         '(', optional($.returns), ')',
       )),
     )),
@@ -169,14 +153,14 @@ module.exports = grammar({
       )),
     ),
 
-    block: $ => prec(PREC.block, seq(
+    block: $ => seq(
       token(prec(PREC.block, '{')),
       seq(
         repeat(seq($._declaration, $._eol)),
         optional($._declaration),
       ),
       token(prec(PREC.block, '}')),
-    )),
+    ),
 
     label: $ => choice(
       $.label_codeblock,
@@ -319,14 +303,14 @@ module.exports = grammar({
     )),
 
     _ident_base: $ => repeat1(choice(
-      token(prec(PREC.identifier, /[^\s:.;&{}()!\\]/)), // All the special stuff
+      token(/[^\s:.;&{}()!\\]/), // All the special stuff
       $.glob,
       $.escape,
     )),
 
-    glob: _ => token(prec(PREC.glob, '*')),
-    recursive_glob: _ => token(prec(PREC.glob, '**')),
-    global_glob: _ => token(prec(PREC.glob, '***')),
+    glob: _ => token('*'),
+    recursive_glob: _ => token('**'),
+    global_glob: _ => token('***'),
 
     _filters: $ => choice(
       $.glob_filter,
@@ -336,9 +320,9 @@ module.exports = grammar({
     inverse_glob_filter: _ => token('!&'),
 
     visibility_mark: _ => choice(
-      token(prec(PREC.visibility_mark, '-')),
-      token(prec(PREC.visibility_mark, '+')),
-      token(prec(PREC.visibility_mark, '\\#')),
+      token('-'),
+      token('+'),
+      token('\\#'),
     ),
 
     _variable: $ => choice(
@@ -361,7 +345,7 @@ module.exports = grammar({
     _single_quoted: $ => seq(
       token(prec(PREC.string, '\'')),
       repeat(choice(
-        token.immediate(prec(PREC.string, /[^'\n\\]+/)),
+        token.immediate(/[^'\n\\]+/),
         $.escape,
       )),
       token(prec(PREC.string, '\'')),
@@ -370,14 +354,14 @@ module.exports = grammar({
     _double_quoted: $ => seq(
       token(prec(PREC.string, '"')),
       repeat(choice(
-        token.immediate(prec(PREC.string, /[^"\n\\]+/)),
+        token.immediate(/[^"\n\\]+/),
         $.escape,
       )),
       token(prec(PREC.string, '"')),
     ),
 
     escape: _ => seq(
-      token(prec(PREC.escape, '\\')),
+      token('\\'),
       choice(
         /[^xuU]/,
         /\d{2,3}/,
