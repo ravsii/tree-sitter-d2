@@ -655,7 +655,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_label_constraints"
+          "name": "_label_array"
         },
         {
           "type": "SYMBOL",
@@ -997,7 +997,7 @@
         }
       }
     },
-    "_label_constraints": {
+    "_label_array": {
       "type": "SEQ",
       "members": [
         {
@@ -1016,7 +1016,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "label_constraint"
+              "name": "label_array"
             },
             {
               "type": "REPEAT",
@@ -1032,7 +1032,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "label_constraint"
+                    "name": "label_array"
                   }
                 ]
               }
@@ -1052,7 +1052,7 @@
         }
       ]
     },
-    "label_constraint": {
+    "label_array": {
       "type": "REPEAT1",
       "content": {
         "type": "CHOICE",

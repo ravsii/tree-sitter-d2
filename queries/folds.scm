@@ -1,6 +1,6 @@
 [
   (label_codeblock)
-  (label_constraint)
+  (label_array)
   (block_comment)
   (block)
 ] @fold

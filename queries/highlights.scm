@@ -6,7 +6,7 @@
 [
   (label)
   (label_codeblock)
-  (label_constraint)
+  (label_array)
 ] @string
 
 ((label) @keyword
@@ -38,7 +38,7 @@
   )
 )
 
-((label_constraint) @constant
+((label_array) @constant
   (#any-of? @constant
     "primary_key"
     "PK"
