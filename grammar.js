@@ -38,7 +38,7 @@ const PREC = {
 
 const spaced_str = (rule) => choice(
   rule,
-  seq(repeat1(seq(rule, /[ ]+/)), rule),
+  seq(repeat1(seq(rule, /[ \t]+/)), rule),
 );
 
 /**
@@ -65,9 +65,7 @@ const repeat_sep1 = (rule, separator) => seq(rule, repeat1(seq(separator, rule))
 module.exports = grammar({
   name: 'd2',
 
-  // I don't know why it works, but it works...
-  // Keeping it /\s*/, /\s/ or /\s+/ (single value) doesn't work somehow.
-  extras: _ => [/\s+/, /\s/],
+  extras: _ => [/\s+/],
 
   conflicts: $ => [
     [$._single_top_level_identifier, $.identifier],
@@ -88,7 +86,8 @@ module.exports = grammar({
     // our _eof rule for correct parsing, we should also consider cases like
     // "x -> y # commend\n", where comment appears after declaration but before
     // _eol.
-    // I'm not if that's something quality grammars do, but it works for now.
+    // I'm not sure if that's something quality grammars do, but it works for
+    // now.
     _declaration: $ => seq(
       choice(
         $.declaration,

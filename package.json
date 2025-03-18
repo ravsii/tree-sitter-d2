@@ -3,7 +3,7 @@
   "version": "0.5.0",
   "description": "Tree sitter grammar for d2lang",
   "dependencies": {
-    "node-addon-api": "^8.3.0",
+    "node-addon-api": "^8.3.1",
     "node-gyp-build": "^4.8.4"
   },
   "peerDependencies": {
@@ -17,10 +17,10 @@
   "main": "bindings/node",
   "types": "bindings/node",
   "devDependencies": {
-    "eslint": "^9.20.1",
+    "eslint": "^9.22.0",
     "eslint-config-treesitter": "^1.0.2",
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.24.7"
+    "tree-sitter-cli": "^0.25.3"
   },
   "repository": "https://github.com/ravsii/tree-sitter-d2",
   "files": [

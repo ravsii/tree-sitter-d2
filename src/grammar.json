@@ -1078,7 +1078,7 @@
                         },
                         {
                           "type": "PATTERN",
-                          "value": "[ ]+"
+                          "value": "[ \\t]+"
                         }
                       ]
                     }
@@ -1145,7 +1145,7 @@
                         },
                         {
                           "type": "PATTERN",
-                          "value": "[ ]+"
+                          "value": "[ \\t]+"
                         }
                       ]
                     }
@@ -1440,7 +1440,7 @@
                             },
                             {
                               "type": "PATTERN",
-                              "value": "[ ]+"
+                              "value": "[ \\t]+"
                             }
                           ]
                         }
@@ -1856,10 +1856,6 @@
     {
       "type": "PATTERN",
       "value": "\\s+"
-    },
-    {
-      "type": "PATTERN",
-      "value": "\\s"
     }
   ],
   "conflicts": [
@@ -1871,5 +1867,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
