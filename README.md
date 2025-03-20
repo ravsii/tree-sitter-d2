@@ -23,15 +23,15 @@
 
 ## Description
 
-Tree Sitter grammar for [d2lang] \([github]\). It's not yet finished, but usable for
-every-day cases with support for latest features like globs, filters and
-variables.
+Tree Sitter grammar for [d2lang] \([github]\). It's not yet finished, but
+usable for every-day cases with support for latest features like globs, filters
+and variables.
 
 The goal is to provide better experience for existing keywords, code blocks
 injections, folds, etc.
 
 - **Better parsing of modern structures** - The latest supported version of d2
-  is **v0.6.8**.
+  is **v0.6.9**.
 - **Built with [nvim-treesitter] in mind** - We respect and follow its
   [highlight] groups.
 - **Keywords** - _All_ keywords from the documentation are treated as such.
