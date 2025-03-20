@@ -119,6 +119,8 @@ Escaped globs
 Filters
 ====================|||
 
+*: { &connected: true }
+*: { &leaf: true }
 *: { &shape: person }
 *: { &link: * }
 *: { !&shape: person }
@@ -126,6 +128,22 @@ Filters
 ---|||
 
 (source_file
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (glob_filter))
+        (label
+          (boolean)))))
+  (declaration
+    (glob)
+    (block
+      (declaration
+        (identifier
+          (glob_filter))
+        (label
+          (boolean)))))
   (declaration
     (glob)
     (block
