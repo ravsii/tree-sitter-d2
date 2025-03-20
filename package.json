@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-d2",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Tree sitter grammar for d2lang",
   "dependencies": {
     "node-addon-api": "^8.3.1",

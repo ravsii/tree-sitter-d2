@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.5.1...v0.6.0) (2025-03-20)
+
+
+### Features
+
+* **d2:** update tests for v0.6.9 ([8172352](https://github.com/ravsii/tree-sitter-d2/commit/81723528bbf6816bf7977171f57313ab4df30406))
+* **d2:** update tests for v0.6.9 ([eb5f34d](https://github.com/ravsii/tree-sitter-d2/commit/eb5f34d79e53baafbcea46335eab2c6f5d7cce0a))
+
+
+### Bug Fixes
+
+* simplify prec values ([e71b7a4](https://github.com/ravsii/tree-sitter-d2/commit/e71b7a49b83a40789080860d16c84e88659465a4))
+* simplify prec values ([381d23d](https://github.com/ravsii/tree-sitter-d2/commit/381d23d1394af8e522367471d46e0e2d538cac27))
+
 ## [0.5.0](https://github.com/ravsii/tree-sitter-d2/compare/v0.4.0...v0.5.0) (2025-02-16)
 
 
