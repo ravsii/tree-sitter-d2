@@ -142,6 +142,23 @@ name = "d2"
 └── locals.scm
 ```
 
+> [!WARNING]  
+> We found out that Helix is using `tree-sitter v0.22.x` which makes it incompatible with this grammar, as it was built using `tree-sitter v0.25.x`.
+> 
+> If the highlighting doesn't work and `:log-open` has this error:
+> ```
+> Incompatible language version 15. Expected minimum 13, maximum 14
+> ```
+>
+> then try using these options
+> ```bash
+> [[grammar]]
+> source = { git = "https://github.com/ravsii/tree-sitter-d2", rev = "main-helix" }
+> name = "d2"
+> ```
+> 
+> For more info see: https://github.com/ravsii/tree-sitter-d2/issues/102
+
 ### Other editors
 
 If you're using some other editor that's using tree-sitter, please open an
