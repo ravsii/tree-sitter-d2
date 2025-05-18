@@ -19,6 +19,8 @@
 
 ((label) @string.special
   (#any-of? @string.special
+    "suspend"
+    "unsuspend"
     "top-left"
     "top-center"
     "top-right"
@@ -64,6 +66,7 @@
     "classes"
     "constraint"
     "d2-config"
+    "d2-legend"
     "direction"
     "double-border"
     "fill"
@@ -76,6 +79,7 @@
     "italic"
     "label"
     "layers"
+    "level"
     "link"
     "multiple"
     "near"
