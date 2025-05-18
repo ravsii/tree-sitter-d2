@@ -9,6 +9,9 @@ parse: generate
 	clear
 	npx tree-sitter parse test.d2
 
+playground:
+	npx tree-sitter build --wasm && npx tree-sitter playground
+
 dparse: generate
 	clear
 	npx tree-sitter parse test.d2 -d

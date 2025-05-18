@@ -33,6 +33,38 @@ super long shape id here -> super long shape id even longer here
     (identifier)))
 
 ==============|||
+Icons
+==============|||
+
+a -> b: hello {
+  icon: https://icons.terrastruct.com/essentials%2F213-alarm.svg
+}
+b -> c: {
+  icon: https://icons.terrastruct.com/essentials%2F213-alarm.svg
+}
+
+---|||
+
+(source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (label)
+          (block
+            (declaration
+              (identifier)
+              (label))))
+  (declaration
+    (identifier)
+    (connection)
+    (identifier)
+    (block
+      (declaration
+        (identifier)
+        (label)))))
+
+==============|||
 Connections Chaining
 ==============|||
 

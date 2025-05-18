@@ -31,7 +31,7 @@ The goal is to provide better experience for existing keywords, code blocks
 injections, folds, etc.
 
 - **Better parsing of modern structures** - The latest supported version of d2
-  is **v0.6.9**.
+  is **v0.7.0**.
 - **Built with [nvim-treesitter] in mind** - We respect and follow its
   [highlight] groups.
 - **Keywords** - _All_ keywords from the documentation are treated as such.
@@ -144,20 +144,22 @@ name = "d2"
 
 > [!WARNING]  
 > We found out that Helix is using `tree-sitter v0.22.x` which makes it incompatible with this grammar, as it was built using `tree-sitter v0.25.x`.
-> 
+>
 > If the highlighting doesn't work and `:log-open` has this error:
+>
 > ```
 > Incompatible language version 15. Expected minimum 13, maximum 14
 > ```
 >
 > then try using these options
+>
 > ```bash
 > [[grammar]]
 > source = { git = "https://github.com/ravsii/tree-sitter-d2", rev = "main-helix" }
 > name = "d2"
 > ```
-> 
-> For more info see: https://github.com/ravsii/tree-sitter-d2/issues/102
+>
+> For more info see: <https://github.com/ravsii/tree-sitter-d2/issues/102>
 
 ### Other editors
 

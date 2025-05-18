@@ -36,3 +36,4 @@ dist/
 # Test artifacts
 /test.d2
 *.html
+tree-sitter-d2.wasm
