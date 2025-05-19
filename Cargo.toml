@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-d2"
 description = "d2 grammar for the tree-sitter parsing library"
-version = "0.7.0"
+version = "0.7.1"
 keywords = ["incremental", "parsing", "d2"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/ravsii/tree-sitter-d2"
