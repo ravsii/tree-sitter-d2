@@ -53,56 +53,21 @@ some bad patterns and simply bad code. Feel free to open issues._
 
 ### Neovim
 
-1. Add this to your config, after installing [nvim-treesitter]
+_via [lazy.nvim]_
 
 ```lua
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.d2 = {
-  install_info = {
-    url = "https://github.com/ravsii/tree-sitter-d2",
-    files = { "src/parser.c" },
-    branch = "main"
-  },
-  filetype = "d2",
-}
-
--- we also need to tell neovim to use "d2" filetype on "*.d2" files, as well as
--- token comment.
--- ftplugin/autocmd is also an option.
-vim.filetype.add({
-  extension = {
-    d2 = function()
-      return "d2", function(bufnr)
-        vim.bo[bufnr].commentstring = "# %s"
-      end
-    end,
-  },
-})
+{
+  "ravsii/tree-sitter-d2",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  build = "make nvim-install",
+  branch = "v0.7.1",
+},
 ```
 
-2. Do `:TSInstall d2`
-3. Copy queries to one of your `rtp` paths. Usually `~/.config/nvim/` will do
-   the job. You can check it using `:echo &rtp` command.
-
-Example using `~/.config/nvim`
-
-```text
-~/.config/nvim/queries/d2
-├── highlights.scm
-├── injections.scm
-└── locals.scm
-```
-
-Example using default [nvim-treesitter] dir with [lazy.nvim]
-
-```text
-~/.local/share/nvim/lazy/nvim-treesitter/queries/d2
-├── highlights.scm
-├── injections.scm
-└── locals.scm
-```
-
-4. Check if `:TSModuleInfo` has `highlight` option enabled.
+> [!TIP]
+> We recommend using `branch` set to the latest release tag instead of `main`,
+> as we cannot guarantee that there won't be breaking changes, because that's
+> fully on d2 team. But if there are, we simply follow the latest release.
 
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 

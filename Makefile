@@ -1,3 +1,4 @@
+
 generate:
 	npx tree-sitter generate
 
@@ -47,3 +48,10 @@ watch-test:
 queries:
 	mkdir -p ~/.config/nvim/queries/d2/
 	cp queries/* ~/.config/nvim/queries/d2/
+
+# Special case for nvim paths
+.PHONY: nvim-install
+nvim-install:
+	rm -rf ./queries/d2
+	mkdir ./queries/d2
+	cp ./queries/*.scm ./queries/d2/
