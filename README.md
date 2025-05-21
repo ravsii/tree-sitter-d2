@@ -65,7 +65,7 @@ _via [lazy.nvim]_
 ```
 
 > [!TIP]
-> We recommend using `branch` set to the latest release tag instead of `main`,
+> We recommend using `tag` set to the latest release tag instead of `main`,
 > as we cannot guarantee that there won't be breaking changes, because that's
 > fully on d2 team. But if there are, we simply follow the latest release.
 
