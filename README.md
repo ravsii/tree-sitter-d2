@@ -60,7 +60,7 @@ _via [lazy.nvim]_
   "ravsii/tree-sitter-d2",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   build = "make nvim-install",
-  branch = "v0.7.1",
+  tag = "v0.7.1",
 },
 ```
 
