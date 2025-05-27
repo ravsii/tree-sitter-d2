@@ -60,14 +60,8 @@ _via [lazy.nvim]_
   "ravsii/tree-sitter-d2",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   build = "make nvim-install",
-  tag = "v0.7.1",
 },
 ```
-
-> [!TIP]
-> We recommend using `tag` set to the latest release tag instead of `main`,
-> as we cannot guarantee that there won't be breaking changes, because that's
-> fully on d2 team. But if there are, we simply follow the latest release.
 
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 

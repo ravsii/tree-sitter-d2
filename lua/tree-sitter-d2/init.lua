@@ -10,23 +10,10 @@ function M.setup()
   -- doesn't exist in new versions
   local is_old = type(nvim_parsers.get_parser_configs) == "function"
 
-  --- @type table<string,ParserInfo>
-  local parsers
-
-  if type(nvim_parsers.get_parser_configs) == "function" then
-    parsers = nvim_parsers.get_parser_configs()
-  else
-    parsers = nvim_parsers
-  end
-
-  if type(parsers.d2) == "table" then -- already present
-    return
-  end
-
   local file = debug.getinfo(1).source:match("@(.*/)")
   local plugin_dir = vim.fn.fnamemodify(file, ":p:h:h:h")
   if is_old then
-    M.setup_master(parsers, plugin_dir)
+    M.setup_master(nvim_parsers, plugin_dir)
   else
     M.setup_main(plugin_dir)
   end
@@ -47,7 +34,7 @@ function M.setup_main(plugin_dir)
   vim.api.nvim_create_autocmd("User", {
     pattern = "TSUpdate",
     callback = function()
-      require("nvim-treesitter.parsers").zimbu = {
+      require("nvim-treesitter.parsers").d2 = {
         install_info = { path = plugin_dir },
       }
     end,
