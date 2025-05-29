@@ -63,6 +63,8 @@ _via [lazy.nvim]_
 },
 ```
 
+And then `:TSInstall d2`. After reloading Neovim everything should be working.
+
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 
 ### Helix
