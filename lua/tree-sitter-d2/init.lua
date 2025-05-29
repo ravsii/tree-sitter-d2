@@ -1,26 +1,26 @@
 local M = {}
 
 function M.setup()
-  local ok, nvim_parsers = pcall(require, "nvim-treesitter.parsers")
+  local ok, parsers = pcall(require, "nvim-treesitter.parsers")
   if not ok then
     vim.notify("tree-sitter-d2: can't import nvim-treesitter.parsers", vim.log.levels.WARN)
     return
   end
 
   -- doesn't exist in new versions
-  local is_old = type(nvim_parsers.get_parser_configs) == "function"
+  local is_old = type(parsers.get_parser_configs) == "function"
 
   local file = debug.getinfo(1).source:match("@(.*/)")
   local plugin_dir = vim.fn.fnamemodify(file, ":p:h:h:h")
   if is_old then
-    M.setup_master(nvim_parsers, plugin_dir)
+    M.setup_master(parsers, plugin_dir)
   else
     M.setup_main(plugin_dir)
   end
 end
 
 function M.setup_master(parsers, plugin_dir)
-  parsers.d2 = {
+  parsers.get_parser_configs().d2 = {
     install_info = {
       url = plugin_dir,
       files = { "src/parser.c" },
