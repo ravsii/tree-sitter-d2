@@ -40,7 +40,7 @@ injections, folds, etc.
   documentation, resulting in more robust parsing. Currently, we have more
   than 100 tests. (This will be reduced later when the grammar becomes stable.)
 
-[highlight]: https://neovim.io/doc/user/treesitter.html#_treesitter-queries
+[highlight]: https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups
 [d2lang]: https://d2lang.com/
 [github]: https://github.com/terrastruct/d2
 
