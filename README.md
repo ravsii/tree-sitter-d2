@@ -24,10 +24,10 @@
 ## Description
 
 Tree Sitter grammar for [d2lang] \([github]\). It's not yet finished, but
-usable for every-day cases with support for latest features like globs, filters
+usable for everyday cases with support for latest features like globs, filters
 and variables.
 
-The goal is to provide better experience for existing keywords, code blocks
+The goal is to provide a better experience for existing keywords, code blocks
 injections, folds, etc.
 
 - **Better parsing of modern structures** - The latest supported version of d2
@@ -69,14 +69,13 @@ And then `:TSInstall d2`. After reloading Neovim everything should be working.
 
 ### Helix
 
-Fortunately Helix has it's own [guide] on how to add new languages and
-grammars.
+Fortunately Helix has its own [guide] on how to add new languages and grammars.
 
 [guide]: https://docs.helix-editor.com/guides/adding_languages.html
 
 A quick example for installing `d2` would be:
 
-1. Add new language to `languages.toml`
+1. Add a new language to `languages.toml`
 
 ```toml
 [[language]]
@@ -104,11 +103,12 @@ name = "d2"
 ```
 
 > [!WARNING]  
-> We found out that Helix is using `tree-sitter v0.22.x` which makes it incompatible with this grammar, as it was built using `tree-sitter v0.25.x`.
+> We found out that Helix is using `tree-sitter v0.22.x` which makes it
+> incompatible with this grammar, as it was built using `tree-sitter v0.25.x`.
 >
-> If the highlighting doesn't work and `:log-open` has this error:
+> If the highlighting doesn't work **AND** `:log-open` has this error:
 >
-> ```
+> ```text
 > Incompatible language version 15. Expected minimum 13, maximum 14
 > ```
 >
@@ -124,9 +124,9 @@ name = "d2"
 
 ### Other editors
 
-If you're using some other editor that's using tree-sitter, please open an
-issue. Would be great if you could also provide instructions for other how to
-install it.
+If you're using some other editor that uses tree-sitter, please open an issue.
+Would be great if you could also provide instructions for others how to install
+it.
 
 [nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
 
@@ -147,7 +147,10 @@ See [CONTRIBUTION.md](/CONTRIBUTING.md)
 
 ## Comparison
 
-**This section is outdated and not maintained**
+> [!NOTE]
+> This section is left "as is" from the very early development. It's outdated
+> and not maintained, but it should give you a good perspective on the differences
+> between these two grammars.
 
 Actually, there's another [tree-sitter-d2] by pleshevskiy. My project's initial
 goal was to fix issues his grammar had, but later I realized that his grammar
@@ -159,9 +162,9 @@ Here's a list of comparisons as of `v0.2` version of this project, both using
 Please note that:
 
 - On the left is our project using Neovim, on the right is pleshevskiy's
-  grammar using [Helix] (I was unable to install pleshevskiy's grammar in Neovim)
-- Some example are my random homework, thus being in Russian, please don't try
-  make sense of them. Thanks! :D
+grammar using [Helix] (I was unable to install pleshevskiy's grammar in Neovim)
+- Some examples are my random homework, thus being in Russian, please don't try
+to make sense of them. Thanks! :D
 
 [Helix]: https://helix-editor.com/
 [tree-sitter-d2]: https://github.com/pleshevskiy/tree-sitter-d2
