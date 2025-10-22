@@ -7,10 +7,15 @@ x y -> x
 x y <- x
 x y -- x
 super long shape id here -> super long shape id even longer here
+api (v1) -> api (v2)
 
 ---|||
 
 (source_file
+  (declaration
+    (identifier)
+    (connection)
+    (identifier))
   (declaration
     (identifier)
     (connection)
