@@ -13,10 +13,13 @@ a-shape
 SQLite; Cassandra
 '$$$'
 "###"
+with (brackets)
 
 ---|||
 
 (source_file
+  (declaration
+    (identifier))
   (declaration
     (identifier))
   (declaration

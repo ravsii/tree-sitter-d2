@@ -303,7 +303,7 @@ module.exports = grammar({
     )),
 
     _ident_base: $ => repeat1(choice(
-      token(/[^\s:.;&{}()!\\]/), // All the special stuff
+      token(/[^\s:.;&{}!\\]/), // All the special stuff
       $.glob,
       $.escape,
     )),
