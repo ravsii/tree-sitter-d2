@@ -55,3 +55,7 @@ nvim-install:
 	rm -rf ./queries/d2
 	mkdir ./queries/d2
 	cp ./queries/*.scm ./queries/d2/
+
+.PHONY: nvim-test
+nvim-test:
+	NVIM_APPNAME="nvim-tree-sitter-d2-test" nvim -u ./test/nvim_init.lua 

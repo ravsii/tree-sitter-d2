@@ -6,12 +6,13 @@
 ## Table of Contents
 
 <!--toc:start-->
-
 - [tree-sitter-d2](#tree-sitter-d2)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Installation](#installation)
     - [Neovim](#neovim)
+      - [lazy.nvim](#lazynvim)
+      - [vim.pack](#vimpack)
     - [Helix](#helix)
     - [Other editors](#other-editors)
   - [Showcase](#showcase)
@@ -19,7 +20,7 @@
   - [Comparison](#comparison)
     - [Better consistency overall](#better-consistency-overall)
     - [Better handling of foreign languages](#better-handling-of-foreign-languages)
-    <!--toc:end-->
+<!--toc:end-->
 
 ## Description
 
@@ -53,7 +54,18 @@ some bad patterns and simply bad code. Feel free to open issues._
 
 ### Neovim
 
-_via [lazy.nvim]_
+> [!IMPORTANT]
+> Both methods require running `:TSInstall d2` manually and then reloading
+> (`:reload` on 0.12+, or restarting on <=0.11) after both `nvim-treesitter` and
+> `tree-sitter-d2` are installed. This seems to be a weird quirk of custom
+> grammar installation.
+
+> [!NOTE]
+> _I believe it could be automated, it just requires a lot of code in user
+> configs, and I don't really like that idea. It's only one command, executed
+> once on installation_
+
+#### lazy.nvim
 
 ```lua
 {
@@ -64,9 +76,33 @@ _via [lazy.nvim]_
 },
 ```
 
-And then `:TSInstall d2`. After reloading Neovim everything should be working.
+#### vim.pack
 
-[lazy.nvim]: https://github.com/folke/lazy.nvim
+vim.pack is a lot simpler compared to lazy, thus requiring a bit more code to
+setup.
+
+_Code below assumes you have `nvim-treesitter` installed and **active**. There's
+also a full minimal init example inside the `./test/nvim_init.lua` if you also
+need `nvim-treesitter` autocmd code_
+
+```lua
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "tree-sitter-d2" and kind == "install" and kind == "update" then
+      if not ev.data.active then
+        vim.cmd.packadd("tree-sitter-d2")
+      end
+      vim.system({ "make", "nvim-install" }, { cwd = ev.data.path })
+    end
+  end,
+})
+
+vim.pack.add({
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/ravsii/tree-sitter-d2", version = vim.version.range("*"), },
+})
+```
 
 ### Helix
 
@@ -93,8 +129,8 @@ name = "d2"
 
 ```
 
-2. `hx --grammar fetch` && `hx --grammar build`
-3. Add your queries to `~/.config/helix/runtime/queries/d2`
+1. `hx --grammar fetch` && `hx --grammar build`
+2. Add your queries to `~/.config/helix/runtime/queries/d2`
 
 ```text
 ~/.config/helix/runtime/queries/d2
