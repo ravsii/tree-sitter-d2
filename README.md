@@ -89,7 +89,7 @@ need `nvim-treesitter` autocmd code_
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
-    if name == "tree-sitter-d2" and kind == "install" and kind == "update" then
+    if name == "tree-sitter-d2" and (kind == "install" or kind == "update") then
       if not ev.data.active then
         vim.cmd.packadd("tree-sitter-d2")
       end
